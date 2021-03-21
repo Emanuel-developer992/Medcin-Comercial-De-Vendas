@@ -1,0 +1,196 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/style-guide/css/fluig-style-guide.min.css">
+        <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+        <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+        <script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js"> charset="uft-8"</script>
+        </head>
+        <body>
+            <div class="fluig-style-guide">
+                <form name="form" role="form">
+                    <div class="row">
+
+                        <!-- 1° Painel -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Informações Básicas</h3>
+                            </div>
+                            <div class="panel-body">
+                                                            
+                                <!-- 1° Input -->
+                                <!-- ID (P-01) Automatico -->
+        
+                                <!-- 2° Input -->
+                                <div class="form-group col-md-5">
+                                    <label for="codClientP">Código do Cliente/Patrocinador</label>
+                                    <input name="codClientP" type="number" class="form-control" id="codClientP">
+                                </div>
+        
+                                <!-- 3° Input -->
+                                <div class="form-group col-md-5">
+                                    <label for="client">Cliente/Patrocinador</label>
+                                    <input name="client" type="text" class="form-control" id="client">
+                                </div>
+        
+                                <!-- 4° Input -->
+                                <div class="form-group col-md-2">
+                                    <label for="dataCadastro">Data da Cadastro</label>
+                                    <input name="dataCadastro" type="date" class="form-control" id="dataCadastro">
+                                </div>
+        
+                                <!-- 5° Input -->
+                                <div class="form-group col-md-4">
+                                    <label for="solicitante">Nome do Solicitante</label>
+                                    <input name="solicitante" type="text" class="form-control" id="solicitante">
+                                </div>
+
+                                <!-- 6° Input -->
+                                <div class="form-group col-md-3">
+                                    <label for="revisao">Revisão</label>
+                                    <input name="revisao" type="number" class="form-control" id="revisao">
+                                </div>
+
+                                <!-- 7° Input -->
+                                <div class="form-group col-md-2">
+                                    <label for="dateRevisao">Data da Revisão</label>
+                                    <input name="dateRevisao" type="date" class="form-control" id="dateRevisao">
+                                </div>
+                            </div>
+                        </div>
+
+                                <!-- 2° Painel -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Cadastro de Item</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                <!-- 8° Input -->
+                                <div class="form-group col-md-3">
+                                    <label for="item">Código do Item</label>
+                                    <input
+                                        type="zoom"
+                                        id = "codItem"
+                                        name="codItem"
+                                        data-zoom="{
+                                            'displayKey':'codP',
+                                            'datasetId':'dscProdutos_Servicos',
+                                            'maximumSelectionLength':'1',
+                                            'placeholder':'Selecione o Item Desejado...',
+                                            'fields':[
+                                                {
+                                                'field':'codP',
+                                                'label':'Código'
+                                                },{
+                                                'field':'descricao',
+                                                'label':'Descrição',
+                                                'standard':'true'
+                                                }
+                                            ]
+                                        }"
+                                        />
+                                </div>
+                            
+                                <div class="clearfix"></div>
+
+                                <!-- 9° Input -->
+                                <div class="form-group col-md-5">
+                                    <label for="descricaoItem">Descrição do Item</label>
+                                    <textarea name="descricaoItem" type="text" class="form-control" id="descricaoItem" style="height: 100px"></textarea>
+                                </div>
+        
+                                <!-- 10° Input -->
+                                <div class="form-group col-md-5">
+                                    <label for="rItem">R$ do Item</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">R$</div>
+                                        <input name="rItem" type="text" class="form-control" id="rItem" mask="#.##0,00">
+                                    </div>
+                                </div>
+        
+                                <!-- 11° Input -->
+                                <div class="form-group col-md-2">
+                                    <label for="prazoExe">Prazo de Execução</label>
+                                    <input name="prazoExe" type="date" class="form-control" id="prazoExe">
+                                </div>
+        
+                                <!-- 12° Input -->
+                                <div class="form-group col-md-3">
+                                    <label for="prazoER">Prazo para Entrega do Relatório</label>
+                                    <input name="prazoER" type="date" class="form-control" id="prazoER">
+                                </div>
+
+                                <!-- 13° Input -->
+                                <div class="form-group col-md-5">
+                                    <label for="rOrc">R$ Total do Oçamento</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">R$</div>
+                                             <input name="rOrc" type="text" class="form-control" id="rOrc" mask="#.##0,00">
+                                    </div>
+                                </div>
+
+                                <!-- 14° Input -->
+                                <div class="form-group col-md-3">
+                                    <label for="desconto">% Desconto</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">R$</div>
+                                            <input name="desconto" type="text" class="form-control" id="desconto" mask="#.##0,00">
+                                    </div>
+                                </div>
+
+                                <!-- 15° Input -->
+                                <div class="form-group col-md-4">
+                                    <label for="rOrcD">R$ Total do Orçamento c/ Desconto</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">R$</div>
+                                             <input name="rOrcD" type="text" class="form-control" id="rOrcD" mask="#.##0,00">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                            <!-- 3° Painel -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Pagamentos e Documentos</h3>
+                            </div>
+                            <div class="panel-body">
+        
+                                <!-- 16° Input -->
+                                <div class="form-group col-md-5">
+                                    <label for="formPag">Forma de Pagamento</label>
+                                    <input name="formPag" type="text" class="form-control" id="formPag">
+                                </div>
+        
+                                <!-- 17° Input -->
+                                <div class="form-group col-md-2">
+                                    <label for="infoOrc">Infomações do Orçamento</label>
+                                    <input name="infoOrc" type="text" class="form-control" id="infoOrc">
+                                </div>
+        
+                                <!-- 18° Input -->
+                                <div class="form-group col-md-3">
+                                    <label for="satus">Status</label>
+                                    <select name="satus" type="text" class="form-control" id="satus">
+                                        <option value="Solicitado">Solicitado</option>
+                                        <option value="Negociação">Negociação</option>
+                                        <option value="Prospecção">Prospecção</option>
+                                        <option value="Cancelado">Cancelado</option>
+                                        <option value="Reprovado">Reprovado</option>
+                                        <option value="Aprovado">Aprovado</option>
+                                    </select>
+                                </div>
+
+                                <!-- 19° Input -->
+                                <div class="form-group col-md-5">
+                                    <label for="regMov">Resgistro de Movimentação</label>
+                                    <input name="regMov" type="text" class="form-control" id="regMov">
+                                </div>
+                            </div>
+                        </div>
+                    </div>                 
+                </form>
+            </div>
+        </body>
+</html>        

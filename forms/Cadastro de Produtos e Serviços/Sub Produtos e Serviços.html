@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/style-guide/css/fluig-style-guide.min.css">
+        <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+        <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+        <script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js"> charset="uft-8"</script>
+        </head>
+        <body>
+            <div class="fluig-style-guide">
+                <form name="form" role="form">
+                    <div class="row">
+                        <!-- 1° Painel -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Sub Cadastro</h3>
+                            </div>
+                            <div class="panel-body">
+                                
+                                <!-- 1° Input -->
+                                <!-- ID Automatico -->
+        
+                                <!-- 2° Input -->
+                                <div class="form-group col-md-12">
+                                    <label for="kitPacote">Item do Kit/Pacote</label>
+                                    <input name="kitPacote" type="text" class="form-control" id="kitPacote">
+                                </div>
+        
+                                <!-- 3° Input -->
+                                <div class="form-group col-md-4">
+                                    <label for="description">Descrição</label>
+                                    <textarea name="description" type="text" class="form-control" id="description" style="height: 100px"></textarea>
+                                </div>
+        
+                                <!-- 4° Input -->
+                                <div class="form-group col-md-2">
+                                    <label for="quld">Qualidade</label>
+                                    <input name="quld" type="number" class="form-control" id="quld">
+                                </div>
+        
+                                
+                        </div>
+                        
+                        <!-- 2° Painel -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Endereço e Complemento</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                <!-- 5° Input -->
+                                <div class="form-group col-md-3">
+                                    <label for="vti">Valor Total do item (R$)</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">R$</div>
+                                        <input name="vti" type="text" class="form-control" id="vti" mask="R$ #.##0,00">
+                                    </div>
+                                </div>
+
+                                <!-- 6° Input -->
+                                <div class="form-group col-md-3">
+                                    <label for="pVenda">Preço de Venda (Médio)</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">R$</div>
+                                        <input name="pVenda" type="text" class="form-control" id="pVenda" mask="R$ #.##0,00">
+                                    </div>
+                                </div>
+
+                                <!-- 7° Input -->
+                                <div class="form-group col-md-3">
+                                    <label for="pCusto">Preço de Custo (Mínimo)</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">R$</div>
+                                        <input name="pCusto" type="text" class="form-control" id="pCusto" mask="R$ #.##0,00">
+                                    </div>
+                                </div>
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </body>
+</html>        

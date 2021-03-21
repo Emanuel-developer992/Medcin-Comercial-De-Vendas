@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Form</title>
+
+            <link rel="stylesheet" type="text/css" href="/style-guide/css/fluig-style-guide.min.css">
+            <script src="/resources/js/jquery/jquery.js"></script>
+            <script src="/resources/js/jquery/jquery-ui.min.js"></script>
+            <script src="/resources/js/mustache/mustache-min.js"></script>
+            <script src="/style-guide/js/fluig-style-guide.min.js"></script>
+
+            <!-- CUSTOM -->
+            <link href="/style-guide/css/fluig-style-guide-filter.min.css" rel="stylesheet" type="text/css">
+            <link href="/style-guide/css/fluig-style-guide-ratingstars.min.css" rel="stylesheet" type="text/css">
+            <script src="/style-guide/js/fluig-style-guide-filter.min.js"></script>
+            <script src="/style-guide/js/fluig-style-guide-ratingstars.min.js"></script>
+
+            <link href='/webdesk/customresources?cid=1&resourceName=temaFormulario/0.css' type='text/css' rel='stylesheet' />
+		</head>
+        <body class="fluig-style-guide">
+			
+			<form class="totvs-form grid vertical create-form-components ui-sortable t0" name="createFormComponents" style="padding-left: 10px; padding-right: 10px;"><h1 class="title-form-application">Formulário de Cadastro de Cliente_Patrocinador</h1><div class="paragraph-is-required system-message-information alert alert-info" role="alert">Todos os campos com * são de preenchimento obrigatório.</div>
+			<div class="form-field" data-type="number" data-show-properties="" data-field-name="codigo_cliente"><div class="form-input"><div class="form-group"><label>Código do Cliente/ Patrocinador</label><span class="required text-danger"><strong>*</strong></span><input type="number" class="form-control" name="codigo_cliente" value="" placeholder="Código sequencial. automático do sistema." min="0" data-size="small" data-only-numbers="" required="required" analytics="true" gooddataid="1" style="width: 25%;"></div></div></div><div class="form-field" data-type="textbox" data-show-properties="" data-field-name="cnpj_patrocinad" style="position: relative; left: 0px; top: 0px;">
+		
+		
+		<div class="form-input"><div class="form-group">
+		<label>CNPJ</label><span class="required text-danger"><strong>*</strong></span>
+		<input type="text" class="form-control" name="cnpj_patrocinad" value="" placeholder="Inserir CNPJ completo, sem pontuação." data-size="small" mask="00.000.000/0000-00" maxlength="18" data-only-numbers="true" analytics="true" gooddataid="2" required="required" style="width: 25%;">
+	</div></div>
+	</div><div class="form-field" data-type="textbox" data-show-properties="" data-field-name="razao_social" style="position: relative; left: 0px; top: 0px;"><div class="form-input"><div class="form-group"><label>Razão Social</label><span class="required text-danger"><strong>*</strong></span><input type="text" class="form-control" name="razao_social" value="Razão Social conforme Cartão CNPJ." placeholder="" data-size="medium" required="required" style="width: 50%;"></div></div></div><div class="form-field" data-type="textbox" data-show-properties="" data-field-name="nome_patrocinad" style="position: relative; left: 0px; top: 0px;"><div class="form-input"><div class="form-group"><label>Nome do Cliente/ Patrocinador</label><span class="required text-danger"><strong>*</strong></span><input type="text" class="form-control" name="nome_patrocinad" value="" placeholder="Inserir nome comercial utilizado na Medcin." data-size="medium" style="width: 50%;" required="required" analytics="true" gooddataid="1"></div></div></div><div class="form-field" data-type="textbox" data-show-properties="" data-field-name="atividades_clie"><div class="form-input"><div class="form-group"><label>Atividades da Empresa:</label><span class="required text-danger"><strong>*</strong></span><input type="text" class="form-control" name="atividades_clie" value="" placeholder="Descrever o seguimento e atividades exercidas pela empresa." data-size="big" required="required" style="width: 100%;"></div></div></div><div class="form-field" data-type="textbox" data-show-properties="" data-field-name="cep_patrocinado">
+		
+		
+		<div class="form-input"><div class="form-group">
+		<label>CEP</label><span class="required text-danger"><strong>*</strong></span>
+		<input type="text" class="form-control" name="cep_patrocinado" value="" placeholder="" data-size="small" mask="00000-000" maxlength="9" data-only-numbers="true" required="required" style="width: 25%;">
+	</div></div>
+	</div><div class="form-field" data-type="textbox" data-show-properties="" data-field-name="rua_patrocinado">
+		
+		
+		<div class="form-input"><div class="form-group">
+		<label>Rua, Avenida, Estrada, etc.</label><span class="required text-danger"><strong>*</strong></span>
+		<input type="text" class="form-control" name="rua_patrocinado" value="" placeholder="" data-size="medium" required="required" style="width: 50%;">
+	</div></div>
+	</div><div class="form-field" data-type="textbox" data-show-properties="" data-field-name="num_end_patroci">
+		
+		
+		<div class="form-input"><div class="form-group">
+		<label>Número/Complemento</label><span class="required text-danger"><strong>*</strong></span>
+		<input type="text" class="form-control" name="num_end_patroci" value="" placeholder="" data-size="small" required="required" style="width: 25%;">
+	</div></div>
+	</div><div class="form-field" data-type="textbox" data-show-properties="" data-field-name="cidade_patroci">
+		
+		
+		<div class="form-input"><div class="form-group">
+		<label>Cidade/Município</label><span class="required text-danger"><strong>*</strong></span>
+		<input type="text" class="form-control" name="cidade_patroci" value="" placeholder="" data-size="small" required="required" style="width: 25%;">
+	</div></div>
+	</div><div class="form-field" data-type="textbox" data-show-properties="" data-field-name="estado_patroci">
+		
+		
+		<div class="form-input"><div class="form-group">
+		<label>Estado</label><span class="required text-danger"><strong>*</strong></span>
+		<input type="text" class="form-control" name="estado_patroci" value="" placeholder="" data-size="small" required="required" style="width: 25%;" analytics="true" gooddataid="3">
+	</div></div>
+	</div><div class="form-field" data-type="textbox" data-show-properties="" data-field-name="pais_patrocinad">
+		
+		
+		<div class="form-input"><div class="form-group">
+		<label>País</label><span class="required text-danger"><strong>*</strong></span>
+		<input type="text" class="form-control" name="pais_patrocinad" value="" placeholder="" data-size="small" required="required" style="width: 25%;" analytics="true" gooddataid="4">
+	</div></div>
+	</div><div class="form-field" data-type="tabledetail" data-show-properties="" data-field-name="Contato_Comerci" style="position: relative; left: 0px; top: 0px;">
+		
+		
+		<div class="form-input"><div class="form-group">
+		<label>Contato Comercial</label>
+		<table tablename="tabledetailname3" class="table" noaddbutton="true">
+			<thead>
+				<tr class="tableHeadRow"><th class="tableColumn">Nome</th><th class="tableColumn">Função</th><th class="tableColumn">Área/Departamento</th><th class="tableColumn">e-mail</th><th class="tableColumn">DDD</th><th class="tableColumn">Telefone</th><th class="tableColumn">Ramal</th><th class="tableColumn">DDD</th><th class="tableColumn">Celular</th><th class="tableColumn">Obs.</th></tr>
+			</thead>
+			<tbody>
+				<tr class="tableBodyRow">
+	<td class="fs-v-align-middle">
+		<div class="form-input">
+			<input type="text" name="column1_3" class="form-control" label="Nome">
+		</div>
+	</td>
+
+	<td class="fs-v-align-middle">
+		<div class="form-input">
+			<input type="text" name="column2_3" class="form-control" label="Função">
+		</div>
+	</td>
+
+	<td class="fs-v-align-middle">
+		<div class="form-input">
+			<input type="text" name="column3_3" class="form-control" label="Área/Departamento">
+		</div>
+	</td>
+
+	<td class="fs-v-align-middle">
+		<div class="form-input">
+			<input type="text" name="column4_3" class="form-control" label="e-mail">
+		</div>
+	</td>
+
+	<td class="fs-v-align-middle">
+		<div class="form-input">
+			<input type="text" name="column5_3" class="form-control" label="DDD">
+		</div>
+	</td>
+
+	<td class="fs-v-align-middle">
+		<div class="form-input">
+			<input type="text" name="column6_3" class="form-control" label="Telefone">
+		</div>
+	</td>
+
+	<td class="fs-v-align-middle">
+		<div class="form-input">
+			<input type="text" name="column7_3" class="form-control">
+		</div>
+	</td>
+
+	<td class="fs-v-align-middle">
+		<div class="form-input">
+			<input type="text" name="column8_3" class="form-control">
+		</div>
+	</td>
+
+	<td class="fs-v-align-middle">
+		<div class="form-input">
+			<input type="text" name="column9_3" class="form-control">
+		</div>
+	</td>
+
+	<td class="fs-v-align-middle">
+		<div class="form-input">
+			<input type="text" name="column10_3" class="form-control">
+		</div>
+	</td>
+</tr>
+			</tbody>
+		</table>
+		<button type="button" class="btn btn-primary" onclick="wdkAddChild('tabledetailname3')">Adicionar</button>
+	</div></div>
+	</div><div class="form-field" data-type="tabledetail" data-show-properties="" data-field-name="Contato_Finance">
+		
+		
+		<div class="form-input"><div class="form-group">
+		<label>Contato Financeiro</label>
+		<table tablename="tabledetailname1" class="table" noaddbutton="true">
+			<thead>
+				<tr class="tableHeadRow"><th class="tableColumn">Nome</th><th class="tableColumn">Função</th><th class="tableColumn">e-mail</th><th class="tableColumn">DDD</th><th class="tableColumn">Telefone</th><th class="tableColumn">Ramal</th><th class="tableColumn">DDD</th><th class="tableColumn">Celular</th></tr>
+			</thead>
+			<tbody>
+				<tr class="tableBodyRow">
+	<td class="fs-v-align-middle">
+		<div class="form-input">
+			<input type="text" name="column1_1" class="form-control" label="Nome">
+		</div>
+	</td>
+
+	<td class="fs-v-align-middle">
+		<div class="form-input">
+			<input type="text" name="column2_1" class="form-control" label="Função">
+		</div>
+	</td>
+
+	<td class="fs-v-align-middle">
+		<div class="form-input">
+			<input type="text" name="column3_1" class="form-control" label="e-mail">
+		</div>
+	</td>
+
+	<td class="fs-v-align-middle">
+		<div class="form-input">
+			<input type="text" name="column4_1" class="form-control" label="DDD">
+		</div>
+	</td>
+
+	<td class="fs-v-align-middle">
+		<div class="form-input">
+			<input type="text" name="column5_1" class="form-control" label="Telefone">
+		</div>
+	</td>
+
+	<td class="fs-v-align-middle">
+		<div class="form-input">
+			<input type="text" name="column6_1" class="form-control" label="Ramal">
+		</div>
+	</td>
+
+	<td class="fs-v-align-middle">
+		<div class="form-input">
+			<input type="text" name="column7_1" class="form-control" label="DDD">
+		</div>
+	</td>
+
+	<td class="fs-v-align-middle">
+		<div class="form-input">
+			<input type="text" name="column8_1" class="form-control" label="Celular">
+		</div>
+	</td>
+</tr>
+			</tbody>
+		</table>
+		<button type="button" class="btn btn-primary" onclick="wdkAddChild('tabledetailname1')">Adicionar</button>
+	</div></div>
+	</div><div class="form-field" data-type="combo" data-show-properties="" data-field-name="aprova_patrocin" style="position: relative; left: 0px; top: 0px;">
+		
+		
+		<div class="form-input"><div class="form-group">
+		<label>Cadastro Aprovado?</label><span class="required text-danger"><strong>*</strong></span>
+		<select class="form-control" name="aprova_patrocin" required="required" analytics="true" gooddataid="5" dataset="" datasetkey="" datasetvalue=""><option value="Sim">Sim</option><option value="Não">Não</option></select>
+	</div></div>
+	</div><div class="form-field" data-type="number" data-show-properties="" data-field-name="media_faturamen" style="position: relative; left: 0px; top: 0px;">
+		
+		
+		<div class="form-input"><div class="form-group">
+		<label>Média de Faturamento Mensal</label><span class="required text-danger"><strong>*</strong></span>
+		<input type="number" class="form-control" name="media_faturamen" value="" placeholder="" min="0" data-size="small" data-only-numbers="" required="required" analytics="true" gooddataid="2" style="width: 25%;">
+	</div></div>
+	</div><div class="form-field" data-type="textbox" data-show-properties="" data-field-name="patrocinador_de">
+		
+		
+		<div class="form-input"><div class="form-group">
+		<label>Cliente Desde:</label><span class="required text-danger"><strong>*</strong></span>
+		<input type="text" class="form-control" name="patrocinador_de" value="" placeholder="" data-size="small" mask="00/00/0000" maxlength="10" data-only-numbers="true" required="required" style="width: 25%;">
+	</div></div>
+	</div></form>
+		
+
+			<script type="text/javascript">
+				var keyDown = false, ctrl = 17, vKey = 86, Vkey = 118; 
+				  
+				$(document).keydown(function (e) {
+					if (e.keyCode == ctrl) keyDown = true;
+				}).keyup(function (e) {
+					if (e.keyCode == ctrl) keyDown = false;
+				});
+				
+				$('[data-only-numbers]').on('keypress', function (e) {
+				    if (!e) {
+					    var e = window.event;
+					}
+					
+				    if (e.keyCode > 0 && e.which == 0) {
+				    	 return true;
+					}
+					
+				    if (e.keyCode) {
+				        code = e.keyCode;
+					} else if (e.which) {
+				    	code = e.which;
+					}
+
+					if(code == 46) {
+						return true;
+					}
+					
+				    var character = String.fromCharCode(code);
+				    if (character == '\b' || character == ' ' || character == '\t') {
+				    	 return true;
+					}
+				    if (keyDown && (code == vKey || code == Vkey)) {
+				    	return (character);
+					} else  {
+						return (/[0-9]$/.test(character));
+					}
+				}).on('focusout', function (e) {
+				    var $this = $(this);
+					if($this.val() == "") {
+						return true;
+					}
+				    $this.val($this.val().replace(/[^0-9\.]/g, ''));
+				}).on('paste', function (e) {
+				    var $this = $(this);
+				    setTimeout(function () {
+				        $this.val($this.val().replace(/[^0-9\.]/g, ''));
+				    }, 5);
+				 });				
+
+				
+
+				$('.create-form-components').on('keyup', 'input[required="required"][type="text"], input[required="required"][type="number"], input[required="required"][type="date"], textarea[required="required"]', function(){
+					validationFieldsForm($(this), $(this).parents('.form-field').data('type'));
+				});
+
+				$('.create-form-components').on('change', 'input[required="required"][type="checkbox"], input[required="required"][type="radio"], select[required="required"]', function(){
+					validationFieldsForm($(this), $(this).parents('.form-field').data('type'));
+				});
+
+				function validationFieldsForm(field, type){
+					if(type === "checkbox" || type === "radio"){
+						if(!field.is(':checked')){
+							field.parents('.form-field').addClass('required');
+						}else{
+							field.parents('.form-field').removeClass('required');
+						}
+					}else{
+						if(!field.val().trim()){
+							field.parents('.form-field').addClass('required');
+						}else{
+							field.parents('.form-field').removeClass('required');
+						}
+					}
+				}
+
+				var $zoomPreview = $(".zoom-preview");
+				if ($zoomPreview.length) {
+                    $zoomPreview.parent().removeClass("input-group");
+                    $zoomPreview.remove();
+                }
+
+				var ratings = $(".rating");
+				if (ratings.length > 0) ratingStars(ratings);
+				function ratingStars(stars) {
+					$.each(stars, function(i, obj) {
+                        var field = $(this).closest(".form-group").find(".rating-value");
+						var tgt = $(obj);
+						tgt.html("");
+						var rating = FLUIGC.stars(tgt, { value: field.val() });
+                        rating.on("click", function(o) {
+                            field.val($(this).index() + 1);
+                        });
+					});
+				}
+
+				$.each($("[data-date]"), function(i, o) {
+                    var id = $(o).attr("id");
+					FLUIGC.calendar("#" + id);
+				});
+
+				$(document).ready(function() {
+					$.each($("[data-date]"), function(i, o) {
+	                    var id = $(o).attr("id");
+	                    if($("#" + id).attr("readonly")) {
+	                    	$("#" + id).data('DateTimePicker').disable();
+	                    }
+					});
+				});
+			</script>
+		</body>
+	</html>

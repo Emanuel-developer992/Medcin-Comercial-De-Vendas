@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/style-guide/css/fluig-style-guide.min.css">
+        <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+        <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+        <script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js"> charset="uft-8"</script>
+        </head>
+        <body>
+            <div class="fluig-style-guide">
+                <form name="form" role="form">
+                    <div class="row">
+                        <!-- 1° Painel -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Informações Básicas</h3>
+                            </div>
+                            <div class="panel-body">
+                                
+                                <!-- 1° Input -->
+                                <!-- ID Automatico -->
+                                <div class="form-group col-md-2">
+                                    <label for="codP">Código do Produto</label>
+                                    <input name="codP" type="text" class="form-control" id="codP">
+                                </div>
+
+                                <div class="clearfix"></div>
+        
+                                <!-- 2° Input -->
+                                <div class="form-group col-md-4">
+                                    <label for="descricao">Descrição</label>
+                                    <textarea name="descricao" type="text" class="form-control" id="descricao" style="height: 100px"></textarea>
+                                </div>
+        
+                                <!-- 3° Input -->
+                                <div class="form-group col-md-4">
+                                    <label for="specificChar">Características Específicas</label>
+                                    <textarea name="specificChar" type="text" class="form-control" id="specificChar" style="height: 100px"></textarea>
+                                </div>
+        
+                                <!-- 4° Input -->
+                                <div class="form-group col-md-4">
+                                    <label for="descricaoEn">Descrição em Inglês</label>
+                                    <textarea name="descricaoEn" type="text" class="form-control" id="descricaoEn" style="height: 100px"></textarea>
+                                </div>
+        
+                                <!-- 5° Input -->
+                                <div class="form-group col-md-3">
+                                    <label for="controlEstoq">Controle de Estoque</label>
+                                    <input name="controlEstoq" type="text" class="form-control" id="controlEstoq">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 2° Painel -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Gestão Monetária</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                <!-- 6° Input -->
+                                <div class="form-group col-md-3">
+                                    <label for="pVenda">Preço de Venda (Médio)</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">R$</div>
+                                        <input name="pVenda" type="text" class="form-control" id="pVenda" mask="R$ #.##0,00">
+                                    </div>  
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="pCusto">Preço de Custo (Mínimo)</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">R$</div>
+                                        <input name="pCusto" type="text" class="form-control" id="pCusto" mask="R$ #.##0,00">
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="fornecedores">Fornecedores</label>
+                                    <input name="fornecedores" type="text" class="form-control" id="fornecedores">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </body>
+</html>        

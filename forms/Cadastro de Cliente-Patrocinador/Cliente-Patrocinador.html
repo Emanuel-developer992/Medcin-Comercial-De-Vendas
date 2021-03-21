@@ -1,0 +1,381 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/style-guide/css/fluig-style-guide.min.css">
+        <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+        <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+        <script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js"> charset="uft-8"</script>
+        </head>
+        <body>
+            <div class="fluig-style-guide">
+                <form name="form" role="form">
+                    <div class="row">
+                        <!-- 1° Painel -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Informações Básicas</h3>
+                            </div>
+                            <div class="panel-body">
+                                
+                                <!-- 1° Input -->
+                                <!-- id automatico -->
+        
+                                <!-- 2° Input -->
+                                <div class="form-group col-md-4">
+                                    <label for="cnpj">CNPJ</label>
+                                    <input name="cnpj" type="text" class="form-control" id="cnpj" mask="00.000.000/0000-00">
+                                </div>
+        
+                                <!-- 3° Input -->
+                                <div class="form-group col-md-8">
+                                    <label for="companyName">Razão Social</label>
+                                    <input name="companyName" type="text" class="form-control" id="companyName">
+                                </div>
+        
+                                <!-- 4° Input -->
+                                <div class="form-group col-md-3">
+                                    <label for="nomeFantasia">Nome Fantasia</label>
+                                    <input name="nomeFantasia" type="text" class="form-control" id="nomeFantasia">
+                                </div>
+        
+                                <!-- 5° Input -->
+                                <div class="form-group col-md-3">
+                                    <label for="escopo">Escopo do Cliente/Patrocinador</label>
+                                    <input name="escopo" type="text" class="form-control" id="escopo">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 2° Painel -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Endereço e Complemento</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                <!-- 6° Input (Endereço e Complemento)-->
+                                <div class="form-group col-md-3">
+                                    <label for="cep">CEP</label>
+                                    <input name="cep" type="text" class="form-control" id="cep" mask="00000-000">
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="endereco">Endereço</label>
+                                    <input name="endereco" type="text" class="form-control" id="endereco">
+                                </div>
+
+                                <div class="form-group col-md-1">
+                                    <label for="numero">N°</label>
+                                    <input name="numero" type="text" class="form-control" id="numero">
+                                </div>
+
+                                <div class="form-group col-md-4">
+                                    <label for="complemento">Complemento</label>
+                                    <input name="complemento" type="text" class="form-control" id="complemento">
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="bairro">Bairro</label>
+                                    <input name="bairro" type="text" class="form-control" id="bairro">
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="estado">Estado</label>
+                                    <input name="estado" type="text" class="form-control" id="estado">
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="cidade">Pais</label>
+                                    <input name="cidade" type="text" class="form-control" id="cidade">
+                                </div>
+                            </div>    
+                        </div>
+
+                        <!-- 3° Painel -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Contatos</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                <!-- 7° Input -->
+                                <div class="form-group col-md-3">
+                                    <label for="telefone">Telefone</label>
+                                    <input name="telefone" type="text" class="form-control" id="telefone" mask="(00) 0000-0000">
+                                </div>
+
+                                <!-- 8° Input -->
+                                <div class="form-group col-md-5">
+                                    <label for="email">E-mail</label>
+                                    <input name="email" type="email" class="form-control" id="email">
+                                </div>
+
+                            </div>
+                        </div>        
+
+                        <!-- 4° Painel -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Contato Comercial</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                <!-- 9° Input (Contato Comercial)-->
+                                <div class="form-input"><div class="form-group">
+                                    <label>Contato Comercial</label>
+                                    <table tablename="tabledetailname1" class="table" noaddbutton="true">
+                                        <thead>
+                                            <tr class="tableHeadRow">
+                                                <th class="tableColumn">Nome</th>
+                                                <th class="tableColumn">Departamento</th>
+                                                <th class="tableColumn">(DD)</th>
+                                                <th class="tableColumn">Celular</th>
+                                                <th class="tableColumn">(DD)</th>
+                                                <th class="tableColumn">Telefone</th>
+                                                <th class="tableColumn">E-mail</th>
+                                            </tr>
+
+                                        </thead>
+                                        <tbody>
+                                            <tr class="tableBodyRow">
+                                                <td class="fs-v-align-middle">
+                                                    <div class="form-input">
+                                                        <input type="text" name="column1_1" class="form-control" label="Nome">
+                                                    </div>
+                                                </td>
+                                            
+                                                <td class="fs-v-align-middle">
+                                                    <div class="form-input">
+                                                        <input type="text" name="column2_1" class="form-control" label="Departamento">
+                                                    </div>
+                                                </td>
+
+                                                <td class="fs-v-align-middle">
+                                                    <div class="form-input">
+                                                        <input type="text" name="columnDD3_1" class="form-control" label="DD" mask= "00">
+                                                    </div>
+                                                </td>
+                                            
+                                                <td class="fs-v-align-middle">
+                                                    <div class="form-input">
+                                                        <input type="text" name="column3_1" class="form-control" label="Celular" mask="000000000">
+                                                    </div>
+                                                </td>
+
+                                                <td class="fs-v-align-middle">
+                                                    <div class="form-input">
+                                                        <input type="text" name="columnDD4_1" class="form-control" label="DD" mask= "00">
+                                                    </div>
+                                                </td>
+                                            
+                                                <td class="fs-v-align-middle">
+                                                    <div class="form-input">
+                                                        <input type="text" name="column4_1" class="form-control" label="Telefone" mask="00000000">
+                                                    </div>
+                                                </td>
+                                            
+                                                <td class="fs-v-align-middle">
+                                                    <div class="form-input">
+                                                        <input type="text" name="column5_1" class="form-control" label="E-mail">
+    
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    
+                                    <button type="button" class="btn btn-primary" onclick="wdkAddChild('tabledetailname1')">Adicionar</button>
+                                </div></div>
+                                </div><div class="form-field" data-type="tabledetail" data-show-properties="" data-field-name="Contato_Comerce">
+                            </div>
+
+                                <!-- 5° Painel -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Contato Financeiro</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                <!-- 10° Input (Contato Financeiro) -->
+                                <div class="form-input"><div class="form-group">
+                                    <label>Contato Financeiro</label>
+                                    <table tablename="tabledetailname2" class="table" noaddbutton="true">
+                                        <thead>
+                                            <tr class="tableHeadRow">
+                                                <th class="tableColumn">Nome</th>
+                                                <th class="tableColumn">Departamento</th>
+                                                <th class="tableColumn">(DD)</th>
+                                                <th class="tableColumn">Celular</th>
+                                                <th class="tableColumn">(DD)</th>
+                                                <th class="tableColumn">Telefone</th>
+                                                <th class="tableColumn">E-mail</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="tableBodyRow">
+                                                <td class="fs-v-align-middle">
+                                                    <div class="form-input">
+                                                        <input type="text" name="column1_2" class="form-control" label="Nome">
+                                                    </div>
+                                                </td>
+                                            
+                                                <td class="fs-v-align-middle">
+                                                    <div class="form-input">
+                                                        <input type="text" name="column2_2" class="form-control" label="Departamento">
+                                                    </div>
+                                                </td>
+
+                                                <td class="fs-v-align-middle">
+                                                    <div class="form-input">
+                                                        <input type="text" name="columnDD3_2" class="form-control" label="DD" mask= "00">
+                                                    </div>
+                                                </td>
+                                            
+                                                <td class="fs-v-align-middle">
+                                                    <div class="form-input">
+                                                        <input type="text" name="column3_2" class="form-control" label="Celular" mask="000000000">
+                                                    </div>
+                                                </td>
+                                            
+                                                <td class="fs-v-align-middle">
+                                                    <div class="form-input">
+                                                        <input type="text" name="columnDD4_2" class="form-control" label="DD" mask= "00">
+                                                    </div>
+                                                </td>
+
+                                                <td class="fs-v-align-middle">
+                                                    <div class="form-input">
+                                                        <input type="text" name="column4_2" class="form-control" label="Telefone" mask="00000000">
+                                                    </div>
+                                                </td>
+
+                                                <td class="fs-v-align-middle">
+                                                    <div class="form-input">
+                                                        <input type="text" name="column5_2" class="form-control" label="E-mail">
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <button type="button" class="btn btn-primary" onclick="wdkAddChild('tabledetailname2')">Adicionar</button>
+                                </div></div>
+                                </div><div class="form-field" data-type="combo" data-show-properties="" data-field-name="Contato_Finance">
+                                
+                            </div>
+
+                        <!-- 6° Painel -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Contato Adicional</h3>
+                            </div>
+                            <div class="panel-body">
+                        
+                                <!-- 11° Input (Contato Adicional) -->
+                                <div class="form-input"><div class="form-group">
+                                    <label>Contato Adicional</label>
+                                    <table tablename="tabledetailname3" class="table" noaddbutton="true">
+                                        <thead>
+                                            <tr class="tableHeadRow">
+                                                <th class="tableColumn">Nome</th>
+                                                <th class="tableColumn">Departamento</th>
+                                                <th class="tableColumn">(DD)</th>
+                                                <th class="tableColumn">Celular</th>
+                                                <th class="tableColumn">(DD)</th>
+                                                <th class="tableColumn">Telefone</th>
+                                                <th class="tableColumn">E-mail</th>
+                                            </tr>
+
+                                        </thead>
+                                        <tbody>
+                                            <tr class="tableBodyRow">
+                                                <td class="fs-v-align-middle">
+                                                    <div class="form-input">
+                                                        <input type="text" name="column1_3" class="form-control" label="Nome">
+                                                    </div>
+                                                </td>
+                                            
+                                                <td class="fs-v-align-middle">
+                                                    <div class="form-input">
+                                                        <input type="text" name="column2_3" class="form-control" label="Departamento">
+                                                    </div>
+                                                </td>
+
+                                                <td class="fs-v-align-middle">
+                                                    <div class="form-input">
+                                                        <input type="text" name="columnDD3_3" class="form-control" label="DD" mask= "00">
+                                                    </div>
+                                                </td>
+                                            
+                                                <td class="fs-v-align-middle">
+                                                    <div class="form-input">
+                                                        <input type="text" name="column3_3" class="form-control" label="Celular" mask="000000000">
+                                                    </div>
+                                                </td>
+
+                                                <td class="fs-v-align-middle">
+                                                    <div class="form-input">
+                                                        <input type="text" name="column4DD_3" class="form-control" label="DD" mask= "00">
+                                                    </div>
+                                                </td>
+                                            
+                                                <td class="fs-v-align-middle">
+                                                    <div class="form-input">
+                                                        <input type="text" name="column4_3" class="form-control" label="Telefone" mask="00000000">
+                                                    </div>
+                                                </td>
+
+                                                <td class="fs-v-align-middle">
+                                                    <div class="form-input">
+                                                        <input type="text" name="column5_3" class="form-control" label="E-mail">
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <button type="button" class="btn btn-primary" onclick="wdkAddChild('tabledetailname3')">Adicionar</button>
+                                </div></div>
+                                </div><div class="form-field" data-type="combo" data-show-properties="" data-field-name="Contato_Add">
+                            </div>
+
+
+                            <!-- 7° Painel -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Complementos</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                <!-- 12° Input (Ativo?) -->
+                                <div class="form-group col-md-3">
+                                    <label for="ativo">Status</label>
+                                    <input name="ativo" type="text" class="form-control" id="ativo">
+                                </div>
+
+                                <!-- 13° Input -->
+                                <div class="form-group col-md-3">
+                                    <label for="indiceF">Índice Financeiro</label>
+                                    <input name="indiceF" type="text" class="form-control" id="indiceF">
+                                </div>
+
+                                <!-- 14° Input -->
+                                <div class="form-group col-md-3">
+                                    <label for="dataClient">Cliente desde</label>
+                                    <input name="dataClient" type="date" class="form-control" id="dataClient">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>               
+                </form>
+            </div>
+        </body>
+        <script type="text/javascript">
+        var dataClient = FLUIGC.calendar('#dataClient');
+        </script>
+        <script type="text/javascript" src="cepAuto.js"></script>
+        <!-- JavaScript Bundle with Popper -->
+
+</html>        

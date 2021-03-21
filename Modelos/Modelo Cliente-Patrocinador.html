@@ -1,0 +1,254 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/style-guide/css/fluig-style-guide.min.css">
+        <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+        <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+        <script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js"> charset="uft-8"</script>
+        </head>
+        <body>
+            <div class="fluig-style-guide">
+                <form name="form" role="form">
+                    <div class="row">
+                        <!-- 1° Painel -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Informações Básicas</h3>
+                            </div>
+                            <div class="panel-body">
+                                
+                                <!-- 1° Input -->
+                                <!-- id automatico -->
+        
+                                <!-- 2° Input -->
+                                <div class="form-group col-md-6">
+                                    <label for="cnpj">CNPJ</label>
+                                    <input name="cnpj" type="text" class="form-control" id="cnpj">
+                                </div>
+        
+                                <!-- 3° Input -->
+                                <div class="form-group col-md-3">
+                                    <label for="companyName">Razão Social</label>
+                                    <input name="companyName" type="text" class="form-control" id="companyName">
+                                </div>
+        
+                                <!-- 4° Input -->
+                                <div class="form-group col-md-3">
+                                    <label for="nomeFantasia">Nome Fantasia</label>
+                                    <input name="nomeFantasia" type="text" class="form-control" id="nomeFantasia">
+                                </div>
+        
+                                <!-- 5° Input -->
+                                <div class="form-group col-md-3">
+                                    <label for="escopo">Escopo do Cliente/Patrocinador</label>
+                                    <input name="escopo" type="text" class="form-control" id="escopo">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 2° Painel -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Endereço e Complemento</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                <!-- 6° Input (Endereço e Complemento)-->
+                                <div class="form-group col-md-3">
+                                    <label for="cep">CEP</label>
+                                    <input name="cep" type="text" class="form-control" id="cep" mask="00000-000">
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="endereco">Endereço</label>
+                                    <input name="endereco" type="text" class="form-control" id="endereco">
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="numero">N°</label>
+                                    <input name="numero" type="text" class="form-control" id="numero">
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="complemento">Complemento</label>
+                                    <input name="complemento" type="text" class="form-control" id="complemento">
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="bairro">Bairro</label>
+                                    <input name="bairro" type="text" class="form-control" id="bairro">
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="estado">Estado</label>
+                                    <input name="estado" type="text" class="form-control" id="estado">
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="cidade">Pais</label>
+                                    <input name="cidade" type="text" class="form-control" id="cidade">
+                                </div>
+                            </div>    
+                        </div>
+
+                        <!-- 3° Painel -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Contatos</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                <!-- 7° Input -->
+                                <div class="form-group col-md-3">
+                                    <label for="telefone">Telefone</label>
+                                    <input name="telefone" type="text" class="form-control" id="telefone" mask="(00) 0000-0000">
+                                </div>
+
+                                <!-- 8° Input -->
+                                <div class="form-group col-md-3">
+                                    <label for="email">E-mail</label>
+                                    <input name="email" type="email" class="form-control" id="email">
+                                </div>
+                            </div>
+                        </div>        
+
+                        <!-- 4° Painel -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Contato Comercial</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                <!-- 9° Input (Contato Comercial)-->
+                                <div class="form-group col-md-3">
+                                    <label for="nomeComerc">Nome</label>
+                                    <input name="nomeComerc" type="text" class="form-control" id="nomeComerc">
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="departamentoComerc">Departamento</label>
+                                    <input name="departamentoComerc" type="text" class="form-control" id="departamentoComerc">
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="celularComerc">Celular</label>
+                                    <input name="celularComerc" type="text" class="form-control" id="celularComerc" mask="(00) 00000-0000">
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="telefoneComerc">Telefone</label>
+                                    <input name="telefoneComerc" type="text" class="form-control" id="telefoneComerc" mask="(00) 0000-0000">
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="emailComerc">E-mail</label>
+                                    <input name="emailComerc" type="email" class="form-control" id="emailComerc">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 5° Painel -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Contato Financeiro</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                <!-- 10° Input (Contato Financeiro) -->
+                                <div class="form-group col-md-3">
+                                    <label for="nomeFinanc">Nome</label>
+                                    <input name="nomeFinanc" type="text" class="form-control" id="nomeFinanc">
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="departamentoFinanc">Departamento</label>
+                                    <input name="departamentoFinanc" type="text" class="form-control" id="departamentoFinanc">
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="celularFinanc">Celular</label>
+                                    <input name="celularFinanc" type="text" class="form-control" id="celularFinanc" mask="(00) 00000-0000">
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="telefoneFinanc">Telefone</label>
+                                    <input name="telefoneFinanc" type="text" class="form-control" id="telefoneFinanc" mask="(00) 0000-0000">
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="emailFinanc">E-mail</label>
+                                    <input name="emailFinanc" type="email" class="form-control" id="emailFinanc">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 6° Painel -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Contato Adicional</h3>
+                            </div>
+                            <div class="panel-body">
+                        
+                                <!-- 11° Input (Contato Adicional) -->
+                                <div class="form-group col-md-3">
+                                    <label for="nomeAdd">Nome</label>
+                                    <input name="nomeAdd" type="text" class="form-control" id="nomeAdd">
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="departamentoAdd">Departamento</label>
+                                    <input name="departamentoAdd" type="text" class="form-control" id="departamentoAdd">
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="celularAdd">Celular</label>
+                                    <input name="celularAdd" type="text" class="form-control" id="celularAdd" mask="(00) 00000-0000">
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="telefoneAdd">Telefone</label>
+                                    <input name="telefoneAdd" type="text" class="form-control" id="telefoneAdd" mask="(00) 0000-0000">
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="emailAdd">E-mail</label>
+                                    <input name="emailAdd" type="email" class="form-control" id="emailAdd">
+                                </div>
+                            </div>
+                        </div>
+
+                            <!-- 7° Painel -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Complementos</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                <!-- 12° Input (Ativo?) -->
+                                <div class="form-group col-md-3">
+                                    <label for="ativo">Status</label>
+                                    <input name="ativo" type="text" class="form-control" id="ativo">
+                                </div>
+
+                                <!-- 13° Input -->
+                                <div class="form-group col-md-3">
+                                    <label for="indiceF">Índice Financeiro</label>
+                                    <input name="indiceF" type="text" class="form-control" id="indiceF">
+                                </div>
+
+                                <!-- 14° Input -->
+                                <div class="form-group col-md-3">
+                                    <label for="dataClient">Cliente desde</label>
+                                    <input name="dataClient" type="date" class="form-control" id="dataClient">
+                                </div>
+                            </div>
+                        </div>
+                    </div>               
+                </form>
+            </div>
+        </body>
+        <script type="text/javascript">
+        var dataClient = FLUIGC.calendar('#dataClient');
+        </script>
+        <script type="text/javascript" src="cepAuto.js"></script>
+</html>        
