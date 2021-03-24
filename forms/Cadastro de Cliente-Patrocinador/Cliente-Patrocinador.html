@@ -10,8 +10,21 @@
             <div class="fluig-style-guide">
                 <form name="form" role="form">
                     <div class="row">
+
+                        <div class="jumbotron jumbotron-fluid">
+                            <div class="container">
+                              <h1 class="display-4">Cliente/Patrocinador</h1>
+                              <p class="lead">Cadastro de cliente ou patrocinador</p>
+                            </div>
+                          </div>
+    
+                        <div class="alert alert-warning alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                            <strong>Atenção!</strong> Para dar andamento ao processo preencha corretamente todos os campos.
+                        </div>
+
                         <!-- 1° Painel -->
-                        <div class="panel panel-default">
+                        <div class="panel panel-warning">
                             <div class="panel-heading">
                                 <h3 class="panel-title">Informações Básicas</h3>
                             </div>
@@ -47,7 +60,7 @@
                         </div>
                         
                         <!-- 2° Painel -->
-                        <div class="panel panel-default">
+                        <div class="panel panel-warning">
                             <div class="panel-heading">
                                 <h3 class="panel-title">Endereço e Complemento</h3>
                             </div>
@@ -85,14 +98,14 @@
                                 </div>
 
                                 <div class="form-group col-md-3">
-                                    <label for="cidade">Pais</label>
-                                    <input name="cidade" type="text" class="form-control" id="cidade">
+                                    <label for="pais">Pais</label>
+                                    <input name="pais" value="${blur.pais}" type="text" class="form-control" id="pais">
                                 </div>
                             </div>    
                         </div>
 
                         <!-- 3° Painel -->
-                        <div class="panel panel-default">
+                        <div class="panel panel-warning">
                             <div class="panel-heading">
                                 <h3 class="panel-title">Contatos</h3>
                             </div>
@@ -114,235 +127,246 @@
                         </div>        
 
                         <!-- 4° Painel -->
-                        <div class="panel panel-default">
+                        <div class="panel panel-warning">
                             <div class="panel-heading">
                                 <h3 class="panel-title">Contato Comercial</h3>
                             </div>
                             <div class="panel-body">
 
                                 <!-- 9° Input (Contato Comercial)-->
-                                <div class="form-input"><div class="form-group">
-                                    <label>Contato Comercial</label>
-                                    <table tablename="tabledetailname1" class="table" noaddbutton="true">
-                                        <thead>
-                                            <tr class="tableHeadRow">
-                                                <th class="tableColumn">Nome</th>
-                                                <th class="tableColumn">Departamento</th>
-                                                <th class="tableColumn">(DD)</th>
-                                                <th class="tableColumn">Celular</th>
-                                                <th class="tableColumn">(DD)</th>
-                                                <th class="tableColumn">Telefone</th>
-                                                <th class="tableColumn">E-mail</th>
-                                            </tr>
+                                <div class="form-input">
+                                    <div class="form-group">
+                                        <label>Contato Comercial</label>
+                                        <table tablename="tabledetailname1" class="table" noaddbutton="true">
+                                            <thead>
+                                                <tr class="tableHeadRow">
+                                                    <th class="tableColumn">Nome</th>
+                                                    <th class="tableColumn">Departamento</th>
+                                                    <th class="tableColumn">(DD)</th>
+                                                    <th class="tableColumn">Celular</th>
+                                                    <th class="tableColumn">(DD)</th>
+                                                    <th class="tableColumn">Telefone</th>
+                                                    <th class="tableColumn">E-mail</th>
+                                                </tr>
 
-                                        </thead>
-                                        <tbody>
-                                            <tr class="tableBodyRow">
-                                                <td class="fs-v-align-middle">
-                                                    <div class="form-input">
-                                                        <input type="text" name="column1_1" class="form-control" label="Nome">
-                                                    </div>
-                                                </td>
-                                            
-                                                <td class="fs-v-align-middle">
-                                                    <div class="form-input">
-                                                        <input type="text" name="column2_1" class="form-control" label="Departamento">
-                                                    </div>
-                                                </td>
+                                            </thead>
 
-                                                <td class="fs-v-align-middle">
-                                                    <div class="form-input">
-                                                        <input type="text" name="columnDD3_1" class="form-control" label="DD" mask= "00">
-                                                    </div>
-                                                </td>
-                                            
-                                                <td class="fs-v-align-middle">
-                                                    <div class="form-input">
-                                                        <input type="text" name="column3_1" class="form-control" label="Celular" mask="000000000">
-                                                    </div>
-                                                </td>
+                                            <tbody>
+                                                <tr class="tableBodyRow">
+                                                    <td class="fs-v-align-middle">
+                                                        <div class="form-input">
+                                                            <input type="text" name="column1_1" class="form-control" label="Nome">
+                                                        </div>
+                                                    </td>
+                                                
+                                                    <td class="fs-v-align-middle">
+                                                        <div class="form-input">
+                                                            <input type="text" name="column2_1" class="form-control" label="Departamento">
+                                                        </div>
+                                                    </td>
 
-                                                <td class="fs-v-align-middle">
-                                                    <div class="form-input">
-                                                        <input type="text" name="columnDD4_1" class="form-control" label="DD" mask= "00">
-                                                    </div>
-                                                </td>
-                                            
-                                                <td class="fs-v-align-middle">
-                                                    <div class="form-input">
-                                                        <input type="text" name="column4_1" class="form-control" label="Telefone" mask="00000000">
-                                                    </div>
-                                                </td>
-                                            
-                                                <td class="fs-v-align-middle">
-                                                    <div class="form-input">
-                                                        <input type="text" name="column5_1" class="form-control" label="E-mail">
-    
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    
-                                    <button type="button" class="btn btn-primary" onclick="wdkAddChild('tabledetailname1')">Adicionar</button>
-                                </div></div>
-                                </div><div class="form-field" data-type="tabledetail" data-show-properties="" data-field-name="Contato_Comerce">
+                                                    <td class="fs-v-align-middle">
+                                                        <div class="form-input">
+                                                            <input type="text" name="columnDD3_1" class="form-control" label="DD" mask= "00">
+                                                        </div>
+                                                    </td>
+                                                
+                                                    <td class="fs-v-align-middle">
+                                                        <div class="form-input">
+                                                            <input type="text" name="column3_1" class="form-control" label="Celular" mask="000000000">
+                                                        </div>
+                                                    </td>
+
+                                                    <td class="fs-v-align-middle">
+                                                        <div class="form-input">
+                                                            <input type="text" name="columnDD4_1" class="form-control" label="DD" mask= "00">
+                                                        </div>
+                                                    </td>
+                                                
+                                                    <td class="fs-v-align-middle">
+                                                        <div class="form-input">
+                                                            <input type="text" name="column4_1" class="form-control" label="Telefone" mask="00000000">
+                                                        </div>
+                                                    </td>
+                                                
+                                                    <td class="fs-v-align-middle">
+                                                        <div class="form-input">
+                                                            <input type="text" name="column5_1" class="form-control" label="E-mail">
+        
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        
+                                        <button type="button" class="btn btn-primary" onclick="wdkAddChild('tabledetailname1')">Adicionar</button>
+                                        <div class="form-field" data-type="tabledetail" data-show-properties="" data-field-name="Contato_Comerce"></div>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
 
-                                <!-- 5° Painel -->
-                        <div class="panel panel-default">
+                        <!-- 5° Painel -->
+                        <div class="panel panel-warning">
                             <div class="panel-heading">
                                 <h3 class="panel-title">Contato Financeiro</h3>
                             </div>
                             <div class="panel-body">
 
                                 <!-- 10° Input (Contato Financeiro) -->
-                                <div class="form-input"><div class="form-group">
-                                    <label>Contato Financeiro</label>
-                                    <table tablename="tabledetailname2" class="table" noaddbutton="true">
-                                        <thead>
-                                            <tr class="tableHeadRow">
-                                                <th class="tableColumn">Nome</th>
-                                                <th class="tableColumn">Departamento</th>
-                                                <th class="tableColumn">(DD)</th>
-                                                <th class="tableColumn">Celular</th>
-                                                <th class="tableColumn">(DD)</th>
-                                                <th class="tableColumn">Telefone</th>
-                                                <th class="tableColumn">E-mail</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="tableBodyRow">
-                                                <td class="fs-v-align-middle">
-                                                    <div class="form-input">
-                                                        <input type="text" name="column1_2" class="form-control" label="Nome">
-                                                    </div>
-                                                </td>
-                                            
-                                                <td class="fs-v-align-middle">
-                                                    <div class="form-input">
-                                                        <input type="text" name="column2_2" class="form-control" label="Departamento">
-                                                    </div>
-                                                </td>
+                                <div class="form-input">
+                                    <div class="form-group">
+                                        <label>Contato Financeiro</label>
+                                        <table tablename="tabledetailname2" class="table" noaddbutton="true">
+                                            <thead>
+                                                <tr class="tableHeadRow">
+                                                    <th class="tableColumn">Nome</th>
+                                                    <th class="tableColumn">Departamento</th>
+                                                    <th class="tableColumn">(DD)</th>
+                                                    <th class="tableColumn">Celular</th>
+                                                    <th class="tableColumn">(DD)</th>
+                                                    <th class="tableColumn">Telefone</th>
+                                                    <th class="tableColumn">E-mail</th>
+                                                </tr>
+                                            </thead>
 
-                                                <td class="fs-v-align-middle">
-                                                    <div class="form-input">
-                                                        <input type="text" name="columnDD3_2" class="form-control" label="DD" mask= "00">
-                                                    </div>
-                                                </td>
-                                            
-                                                <td class="fs-v-align-middle">
-                                                    <div class="form-input">
-                                                        <input type="text" name="column3_2" class="form-control" label="Celular" mask="000000000">
-                                                    </div>
-                                                </td>
-                                            
-                                                <td class="fs-v-align-middle">
-                                                    <div class="form-input">
-                                                        <input type="text" name="columnDD4_2" class="form-control" label="DD" mask= "00">
-                                                    </div>
-                                                </td>
+                                            <tbody>
+                                                <tr class="tableBodyRow">
+                                                    <td class="fs-v-align-middle">
+                                                        <div class="form-input">
+                                                            <input type="text" name="column1_2" class="form-control" label="Nome">
+                                                        </div>
+                                                    </td>
+                                                
+                                                    <td class="fs-v-align-middle">
+                                                        <div class="form-input">
+                                                            <input type="text" name="column2_2" class="form-control" label="Departamento">
+                                                        </div>
+                                                    </td>
 
-                                                <td class="fs-v-align-middle">
-                                                    <div class="form-input">
-                                                        <input type="text" name="column4_2" class="form-control" label="Telefone" mask="00000000">
-                                                    </div>
-                                                </td>
+                                                    <td class="fs-v-align-middle">
+                                                        <div class="form-input">
+                                                            <input type="text" name="columnDD3_2" class="form-control" label="DD" mask= "00">
+                                                        </div>
+                                                    </td>
+                                                
+                                                    <td class="fs-v-align-middle">
+                                                        <div class="form-input">
+                                                            <input type="text" name="column3_2" class="form-control" label="Celular" mask="000000000">
+                                                        </div>
+                                                    </td>
+                                                
+                                                    <td class="fs-v-align-middle">
+                                                        <div class="form-input">
+                                                            <input type="text" name="columnDD4_2" class="form-control" label="DD" mask= "00">
+                                                        </div>
+                                                    </td>
 
-                                                <td class="fs-v-align-middle">
-                                                    <div class="form-input">
-                                                        <input type="text" name="column5_2" class="form-control" label="E-mail">
-                                                    </div>
-                                                </td>
+                                                    <td class="fs-v-align-middle">
+                                                        <div class="form-input">
+                                                            <input type="text" name="column4_2" class="form-control" label="Telefone" mask="00000000">
+                                                        </div>
+                                                    </td>
 
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <button type="button" class="btn btn-primary" onclick="wdkAddChild('tabledetailname2')">Adicionar</button>
-                                </div></div>
-                                </div><div class="form-field" data-type="combo" data-show-properties="" data-field-name="Contato_Finance">
-                                
+                                                    <td class="fs-v-align-middle">
+                                                        <div class="form-input">
+                                                            <input type="text" name="column5_2" class="form-control" label="E-mail">
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <button type="button" class="btn btn-primary" onclick="wdkAddChild('tabledetailname2')">Adicionar</button>
+                                        <div class="form-field" data-type="combo" data-show-properties="" data-field-name="Contato_Finance"></div>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
 
                         <!-- 6° Painel -->
-                        <div class="panel panel-default">
+                        <div class="panel panel-warning">
                             <div class="panel-heading">
                                 <h3 class="panel-title">Contato Adicional</h3>
                             </div>
                             <div class="panel-body">
                         
                                 <!-- 11° Input (Contato Adicional) -->
-                                <div class="form-input"><div class="form-group">
-                                    <label>Contato Adicional</label>
-                                    <table tablename="tabledetailname3" class="table" noaddbutton="true">
-                                        <thead>
-                                            <tr class="tableHeadRow">
-                                                <th class="tableColumn">Nome</th>
-                                                <th class="tableColumn">Departamento</th>
-                                                <th class="tableColumn">(DD)</th>
-                                                <th class="tableColumn">Celular</th>
-                                                <th class="tableColumn">(DD)</th>
-                                                <th class="tableColumn">Telefone</th>
-                                                <th class="tableColumn">E-mail</th>
-                                            </tr>
+                                <div class="form-input">
+                                    <div class="form-group">
+                                        <label>Contato Adicional</label>
+                                        <table tablename="tabledetailname3" class="table" noaddbutton="true">
+                                            <thead>
+                                                <tr class="tableHeadRow">
+                                                    <th class="tableColumn">Nome</th>
+                                                    <th class="tableColumn">Departamento</th>
+                                                    <th class="tableColumn">(DD)</th>
+                                                    <th class="tableColumn">Celular</th>
+                                                    <th class="tableColumn">(DD)</th>
+                                                    <th class="tableColumn">Telefone</th>
+                                                    <th class="tableColumn">E-mail</th>
+                                                </tr>
 
-                                        </thead>
-                                        <tbody>
-                                            <tr class="tableBodyRow">
-                                                <td class="fs-v-align-middle">
-                                                    <div class="form-input">
-                                                        <input type="text" name="column1_3" class="form-control" label="Nome">
-                                                    </div>
-                                                </td>
+                                            </thead>
                                             
-                                                <td class="fs-v-align-middle">
-                                                    <div class="form-input">
-                                                        <input type="text" name="column2_3" class="form-control" label="Departamento">
-                                                    </div>
-                                                </td>
+                                            <tbody>
+                                                <tr class="tableBodyRow">
+                                                    <td class="fs-v-align-middle">
+                                                        <div class="form-input">
+                                                            <input type="text" name="column1_3" class="form-control" label="Nome">
+                                                        </div>
+                                                    </td>
+                                                
+                                                    <td class="fs-v-align-middle">
+                                                        <div class="form-input">
+                                                            <input type="text" name="column2_3" class="form-control" label="Departamento">
+                                                        </div>
+                                                    </td>
 
-                                                <td class="fs-v-align-middle">
-                                                    <div class="form-input">
-                                                        <input type="text" name="columnDD3_3" class="form-control" label="DD" mask= "00">
-                                                    </div>
-                                                </td>
-                                            
-                                                <td class="fs-v-align-middle">
-                                                    <div class="form-input">
-                                                        <input type="text" name="column3_3" class="form-control" label="Celular" mask="000000000">
-                                                    </div>
-                                                </td>
+                                                    <td class="fs-v-align-middle">
+                                                        <div class="form-input">
+                                                            <input type="text" name="columnDD3_3" class="form-control" label="DD" mask= "00">
+                                                        </div>
+                                                    </td>
+                                                
+                                                    <td class="fs-v-align-middle">
+                                                        <div class="form-input">
+                                                            <input type="text" name="column3_3" class="form-control" label="Celular" mask="000000000">
+                                                        </div>
+                                                    </td>
 
-                                                <td class="fs-v-align-middle">
-                                                    <div class="form-input">
-                                                        <input type="text" name="column4DD_3" class="form-control" label="DD" mask= "00">
-                                                    </div>
-                                                </td>
-                                            
-                                                <td class="fs-v-align-middle">
-                                                    <div class="form-input">
-                                                        <input type="text" name="column4_3" class="form-control" label="Telefone" mask="00000000">
-                                                    </div>
-                                                </td>
+                                                    <td class="fs-v-align-middle">
+                                                        <div class="form-input">
+                                                            <input type="text" name="column4DD_3" class="form-control" label="DD" mask= "00">
+                                                        </div>
+                                                    </td>
+                                                
+                                                    <td class="fs-v-align-middle">
+                                                        <div class="form-input">
+                                                            <input type="text" name="column4_3" class="form-control" label="Telefone" mask="00000000">
+                                                        </div>
+                                                    </td>
 
-                                                <td class="fs-v-align-middle">
-                                                    <div class="form-input">
-                                                        <input type="text" name="column5_3" class="form-control" label="E-mail">
-                                                    </div>
-                                                </td>
+                                                    <td class="fs-v-align-middle">
+                                                        <div class="form-input">
+                                                            <input type="text" name="column5_3" class="form-control" label="E-mail">
+                                                        </div>
+                                                    </td>
 
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-                                    <button type="button" class="btn btn-primary" onclick="wdkAddChild('tabledetailname3')">Adicionar</button>
-                                </div></div>
-                                </div><div class="form-field" data-type="combo" data-show-properties="" data-field-name="Contato_Add">
+                                        <button type="button" class="btn btn-primary" onclick="wdkAddChild('tabledetailname3')">Adicionar</button>
+                                        <div class="form-field" data-type="combo" data-show-properties="" data-field-name="Contato_Add"></div>
+                                    </div>
+                                </div>
                             </div>
-
+                        </div>
 
                             <!-- 7° Painel -->
-                        <div class="panel panel-default">
+                        <div class="panel panel-warning">
                             <div class="panel-heading">
                                 <h3 class="panel-title">Complementos</h3>
                             </div>
