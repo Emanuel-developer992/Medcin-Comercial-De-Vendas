@@ -5,6 +5,11 @@ function cadastroCP() {
 
     cadastroCard.value = clienteP;
 
+    const testAPI = document.getElementById("cadastroCard").value;
+    const testI = document.getElementById("text");
+
+    testI.value = testAPI;
+
 
 }
 function cadastroPS() {
