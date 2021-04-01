@@ -1,0 +1,1763 @@
+<!DOCTYPE html>
+
+
+
+<html>
+    <head>
+		<meta http-equiv="X-UA-Compatible" content="IE=11" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="Fluig - Cadastro de Participantes" />
+        <meta name="keywords" content="Portal, ECM, Social, TOTVS, WCM, WEB, Management" />
+        <meta name="author" content="VP Fluig" />
+        <title>TOTVS Fluig Plataforma - Cadastro de Participantes</title>
+        <link id="favicon" rel="shortcut icon" type="image/x-icon" href="/portal/resources/images/favicon.ico"/>
+<!-- Variável utilizada pelas APIS do portal carregadas antes da configuração do WCMAPI -->
+<script type="text/javascript">
+	window.wcmlocation = "pt_BR";
+</script>
+<script type="text/javascript">
+		window.jQueryMigrateMute = false;
+		window.jQueryMigrateTrace = true;
+</script>
+<link type="text/css" rel="stylesheet" href="/portal/resources/merged/wcm_global.css?v=1.7.0-210202"/><link type="text/css" rel="stylesheet" href="/CadastroParticipantes/resources/css/CadastroParticipantes.css?v=1.7.0-210202"/><link type="text/css" rel="stylesheet" href="/alertpopover/resources/css/alertpopover.css?v=1.7.0-210202"/><link type="text/css" rel="stylesheet" href="/resources/components/datatable/datatable.css?v=1.7.0-210202"/><link type="text/css" rel="stylesheet" href="/suggestsearch/resources/css/suggestsearch.css?v=1.7.0-210202"/><link type="text/css" rel="stylesheet" href="/resources/components/message/message.css?v=1.7.0-210202"/><link type="text/css" rel="stylesheet" href="/menu/resources/css/menu.css?v=1.7.0-210202"/><link type="text/css" rel="stylesheet" href="/usepolicy/resources/css/usepolicy.css?v=1.7.0-210202"/>
+<!-- Plugin utilizado para fazer a analise da imagem e verificar se ela foi rotacionada ou não -->
+<script type="text/javascript" src="/portal/resources/js/blueimp-load-image/load-image.all.min.js?v=1.7.0-210202"></script>
+<script type="text/javascript" src="/portal/resources/js/api_pt_BR.js?v=1.7.0-210202" charset="utf-8"></script><script type="text/javascript" src="/resources/js/wcm_global_pt_BR.js?v=1.7.0-210202" charset="utf-8"></script><script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js?v=1.7.0-210202" charset="utf-8"></script><script type="text/javascript" src="/CadastroParticipantes/resources/js/FLUIGIP_pt_BR.js?v=1.7.0-210202" charset="utf-8"></script><script type="text/javascript" src="/CadastroParticipantes/resources/js/CadastroParticipantes_pt_BR.js?v=1.7.0-210202" charset="utf-8"></script><script type="text/javascript" src="/social/resources/components/socialformanswer/socialformanswer_pt_BR.js?v=1.7.0-210202" charset="utf-8"></script><script type="text/javascript" src="/alertpopover/resources/js/alertcentralbs_pt_BR.js?v=1.7.0-210202" charset="utf-8"></script><script type="text/javascript" src="/alertpopover/resources/js/alertpopover_pt_BR.js?v=1.7.0-210202" charset="utf-8"></script><script type="text/javascript" src="/resources/js/jqgrid/jquery.jqGrid.min.js?v=1.7.0-210202" charset="utf-8"></script><script type="text/javascript" src="/resources/components/datatable/datatable_pt_BR.js?v=1.7.0-210202" charset="utf-8"></script><script type="text/javascript" src="/suggestsearch/resources/js/suggestsearch_pt_BR.js?v=1.7.0-210202" charset="utf-8"></script><script type="text/javascript" src="/social/resources/js/api_pt_BR.js?v=1.7.0-210202" charset="utf-8"></script><script type="text/javascript" src="/social/resources/js/socialglobal_pt_BR.js?v=1.7.0-210202" charset="utf-8"></script><script type="text/javascript" src="/ecm_resources/resources/ecm-plugins_pt_BR.js?v=1.7.0-210202" charset="utf-8"></script><script type="text/javascript" src="/globalsearchapi/resources/js/api_pt_BR.js?v=1.7.0-210202" charset="utf-8"></script><script type="text/javascript" src="/sociallogin/resources/js/login_pt_BR.js?v=1.7.0-210202" charset="utf-8"></script><script type="text/javascript" src="/resources/components/cropimage/cropimage_pt_BR.js?v=1.7.0-210202" charset="utf-8"></script><script type="text/javascript" src="/resources/components/message/message_pt_BR.js?v=1.7.0-210202" charset="utf-8"></script><script type="text/javascript" src="/menu/resources/js/jquery.slidearrow_pt_BR.js?v=1.7.0-210202" charset="utf-8"></script><script type="text/javascript" src="/menu/resources/js/menu_pt_BR.js?v=1.7.0-210202" charset="utf-8"></script><script type="text/javascript" src="/socialmessagingnotify/resources/js/rocketchatnotify_pt_BR.js?v=1.7.0-210202" charset="utf-8"></script><script type="text/javascript" src="/usepolicy/resources/js/usepolicy_pt_BR.js?v=1.7.0-210202" charset="utf-8"></script><script type="text/javascript" src="/usepolicyapi/resources/js/api_pt_BR.js?v=1.7.0-210202" charset="utf-8"></script>
+<script type="text/javascript" src="/portal/resources/js/editpage.js?v=1.7.0-210202"></script>
+<script type="text/javascript">
+var postLoading = {
+		fns: [],
+		add: function(newFn) {
+			this.fns.push(newFn);
+			
+			//se postLoading ja rodou, executa a funcao agora mesmo
+			if(this.alreadyRan) {
+				newFn();
+			}
+		}
+};
+</script>
+        <style>
+				.fluig-brand-color {
+					color: #e8255c !important;
+				}
+
+				.fluig-brand-bg-color {
+					background-color: #e8255c !important;
+				}
+
+				.fluig-brand-border-color {
+					border-color: #e8255c !important;
+				}
+
+				.menu-profile-container,
+				.img-menu-profile,
+	        	.img-menu-profile-slim {
+	        		border-color: #e8255c !important;
+	        	}
+	        	
+				.active-menu,
+				.profile-pencil,
+	        	.menu-item.back a {
+	        		color: #e8255c !important;
+	        	}
+
+				.fl-badge,
+				.icon-list-item:hover, .icon-list-item.checked,
+				.icon-list-item.checked::before,
+				.fl-button-adjust,
+				.fl-header .fl-li-button a:hover {
+	        		background-color: #e8255c !important;
+	        	}
+        
+	        	.wcm-menu-background{
+	        		background-color : rgb(214, 146, 0) !important;
+	        	}
+
+	        	.wcm-menu-indicator-background{
+	        		border-top-color : rgb(214, 146, 0) !important;
+	        		border-bottom-color : rgb(214, 146, 0) !important;
+	        	}
+
+	        	.wcm-menu-more-indicator-background-top{
+	        		border-right-color : rgb(214, 146, 0) !important;
+	        	}
+
+	        	.wcm-menu-more-indicator-background-bottom{
+	        		border-top-color : rgb(214, 146, 0) !important;
+	        	}
+
+        	.wcm-background{
+        			background-color : rgb(255, 255, 255) !important;
+
+        	}
+
+       		.wcm-header-background{
+	        		background-color : rgb(255, 255, 255) !important;
+       		}
+
+        </style>
+
+        <link type="text/css" rel="stylesheet" href="/social/resources/css/socialGlobal.css?v=1.7.0-210202">
+		
+			<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css?v=1.7.0-210202">
+
+        <link type="text/css" rel="stylesheet" href="/portal/api/servlet/image/1/custom/custom-theme.css?v=1.7.0-210202">
+        
+    </head>
+
+    <body>
+    	<input type="hidden" id="wcm-edit-mode" value="false"/>
+    	    <div id="wcm_header" class="wcm-header-background wcm-header">
+        <div class="header-grouper-left">
+                <a href="https://medcininstituto120197.fluig.cloudtotvs.com.br/portal/p/1/home" class="wcm_logo" title="Fluig">
+                <img src="https://medcininstituto120197.fluig.cloudtotvs.com.br/portal/api/servlet/image/1/custom/logo_image.png" />
+            </a>
+        </div>
+        <div class="header-grouper-right">
+                    <div id="SlotInstantSearch" slot="true" class="slotint slot-header-actions search-auto-hide">
+                            
+
+<div id="_instance_1104_" appCode="suggestsearch">
+    <div id="wcm_widget_1104" class="wcm_widget">
+        <div class="wcm_corpo_widget_single">
+
+<div id="suggestSearch_1104" class="fluig-style-guide suggest-search wcm-widget-class clearfix super-widget" data-params="SearchSuggest.instance({'openNewTab': 'false', 'pattern' : ''})">
+	<form role="form" data-submit-search>
+		<div class="form-group has-feedback">
+			<input
+				name="searchInputText_1104"
+				class="form-control"
+				type="text"
+				placeholder="O que deseja encontrar?"
+				autocomplete="off" 
+				value=""
+			>
+			<i class="fluigicon fluigicon-search form-control-feedback"></i>
+		</div>
+	</form>
+	<script type="text/template" class="suggest-search-see-all-template">
+		<li class="see-all-results">
+			<a href="#" onclick="suggestSearch_1104.seeAllResults(this, event);">Ver todos os resultados</a>
+		</li>
+	</script>
+</div>
+
+        
+        </div>
+    </div>
+</div>
+
+
+                    </div>
+				<div id="SlotMessagingNotify" slot="true" class="slotint slot-header-actions">
+						
+
+<div id="_instance_1107_" appCode="socialmessagingnotify">
+    <div id="wcm_widget_1107" class="wcm_widget">
+        <div class="wcm_corpo_widget_single">
+
+    <div class="wcm-widget-class super-widget fluig-style-guide rocketchat-notify"
+         data-params='Rocketchatnotify.instance({instanceId: "1107"})' id="rocketchatnotify_1107">
+
+        <a id="rocketchatnotifylink_1107" target="_blank" class="btn btn-primary btn-block hidden"
+           role="button" href="#">
+            <img src="/socialmessagingnotify/resources/images/rocket-chat.svg" alt="rocket chat logo" style="height: 18px;"/>
+        </a>
+
+    </div>
+
+        
+        </div>
+    </div>
+</div>
+
+
+				</div>
+				<div id="SlotGlobalAlert" slot="true" class="slotint slot-header-actions">
+						
+
+<div id="_instance_1103_" appCode="alertpopover">
+    <div id="wcm_widget_1103" class="wcm_widget">
+        <div class="wcm_corpo_widget_single">
+
+
+<div id="alert_popover_1103" class="fluig-style-guide wcm-widget-class super-widget global-alert-popover" data-params="AlertPopover.instance({})">
+
+	<a id="global-alert-popover" data-global-alert-popover class="btn btn-primary btn-block" role="button" href="#">
+		<span class="fluigicon fluigicon-warning-sign"></span>&nbsp;
+		<span id="unread-alert-counter">0</span>
+	</a>
+
+	<script type="text/template" class="tpl_notification_list">
+
+	{{^hasNotifications}}
+	<li class="list-group-item"><div class="alert alert-info fs-no-margin-bottom" role="alert">Sem notificações.</div></li>
+	{{/hasNotifications}}
+
+	{{#notifications}}
+	<li class="list-group-item {{^read}}notification-unread{{/read}} clearfix" data-alert-id="{{id}}" data-is-note-visible={{isNoteVisible}}>
+
+		{{^read}}
+			<a href="#" class="fl-mark-read fs-no-text-underline" data-mark-read title="Marcar notificação como lida">
+				<i class="flaticon flaticon-view icon-sm"></i>
+			</a>
+		{{/read}}
+
+		<div class="media clearfix  fs-no-margin-top fl-media-alert-container">
+			{{#hasSenders}}
+				<a class="pull-left" href="#">
+				    <img class="fluig-style-guide thumb-profile thumb-profile-xs media-object img-rounded" src="/social/api/rest/social/image/profile/{{getLastSenderLogin}}/X_SMALL_PICTURE">
+				</a>
+			{{/hasSenders}}
+			{{^hasSenders}}
+				{{#hasEventIcon}}
+					<span class="pull-left">
+						<img class="fluig-style-guide thumb-profile thumb-profile-xs media-object img-rounded" src="{{getEventIcon}}" />
+					</span>
+				{{/hasEventIcon}}
+				{{^hasEventIcon}}
+					<span class="pull-left">
+						<img class="fluig-style-guide thumb-profile thumb-profile-xs media-object img-rounded" src="{{getComunityIcon}}">
+					</span>
+				{{/hasEventIcon}}
+			{{/hasSenders}}
+			<div class="media-body">
+				<small>
+					{{#getSenders}}
+					<a href="{{getSenderLink}}">{{user.fullName}}</a>
+					{{/getSenders}}
+					{{#hasMorePeople}}
+						e mais <a href="#"
+						data-object-id="{{object.objectId}}" data-timeline-link-supported
+						data-alert-id="{{id}}"
+						data-dialog-title="Lista de usuários"
+						data-users="{{#getAdditionalPeople}}{{user.login}},{{/getAdditionalPeople}}">{{getNumAdditionalPeople}}
+						pessoas</a>&nbsp;
+					{{/hasMorePeople}}
+
+					<span>
+						{{getEvent}}
+
+						{{#object}}
+							{{typeDescription}}
+							{{#descriptionNotEmpty}}
+								{{#hasLink}}
+									{{#isForm}}
+										<a href="{{defaultURL}}{{link}}" data-open-answer-form={{formId}}>"{{description}}"{{^place}}.{{/place}}</a>
+									{{/isForm}}
+									{{^isForm}}
+										<a href="{{defaultURL}}{{link}}">"{{description}}"{{^place}}.{{/place}}</a>
+									{{/isForm}}
+								{{/hasLink}}
+								{{^hasLink}}
+									{{#description}}
+										"{{description}}"{{^place}}.{{/place}}
+									{{/description}}
+								{{/hasLink}}
+							{{/descriptionNotEmpty}}
+							{{objectDetail}}
+						{{/object}}
+						{{#isEventKeyWatch}}, que você está acompanhando{{/isEventKeyWatch}}
+					</span>
+
+					{{#place}}
+						em
+						{{#descriptionNotEmpty}}
+							{{#hasLink}}
+								{{#hasExternalLink}}
+									<a href="{{link}}">{{description}}.</a>
+								{{/hasExternalLink}}
+								{{^hasExternalLink}}
+									<a href="{{defaultURL}}{{link}}">{{description}}.</a>
+								{{/hasExternalLink}}
+							{{/hasLink}}
+							{{^hasLink}}
+								{{description}}.
+							{{/hasLink}}
+						{{/descriptionNotEmpty}}						
+						{{objectDetail}}
+					{{/place}}
+					{{#hasNote}}
+						<a href="#" class="fluigicon fluigicon-notes fs-no-text-underline" title=ver nota
+						data-note="{{object.note}}" data-show-note data-note-html ></a>
+					{{/hasNote}}
+
+					<p class="text-muted"><small data-creation-date="{{creationDate}}"></small></p>
+				</small>
+			</div>
+		</div>
+
+		{{#hasActionsNotification}}
+
+				{{#hasNotificationsSingleActions}}
+				<p class="pull-right">
+					{{#getActionsNotification}}
+  					<button type="button" class="btn {{getClassButtonType}} btn-sm" data-actions-notification="{{id}}" data-notification-action-type="{{type}}" data-notification-action-url="{{url}}">{{description}}</button>
+					{{/getActionsNotification}}
+				</p>
+				{{/hasNotificationsSingleActions}}
+
+				{{#hasNotificationsGroupActions}}
+					<div class="btn-group pull-right">
+						<button type="button" class="btn {{getClassButtonType}} btn-sm dropdown-toggle" data-toggle="dropdown">
+							Ações <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu">
+							{{#getActionsNotification}}
+								<li><a href="#" data-actions-notification="{{id}}" data-notification-action-type="{{type}}" data-notification-action-url="{{url}}">{{description}}</a></li>
+							{{/getActionsNotification}}
+						</ul>
+					</div>
+				{{/hasNotificationsGroupActions}}
+
+				{{#getExecutedActionsNotification}}
+					<p class="text-info pull-right"><small>{{descriptionAfterExec}}</small></p>
+				{{/getExecutedActionsNotification}}
+
+		{{/hasActionsNotification}}
+
+		{{{noteValue}}}
+
+	</li>
+	{{/notifications}}
+	</script>
+
+	<script type="text/template" class="social-timeline-mention-template">
+		<a href="{{{tenantURI}}}/social/{{alias}}">{{name}}</a>
+	</script>
+
+	<script type="text/template" class="social-timeline-tag-template">
+		<a href="#" data-search-action>$1</a>
+	</script>
+
+	<script type="text/template" class="social-timeline-link-template">
+		<a href="$1" target="_blank">$1</a>
+	</script>
+
+	<script type="text/template" class="social-timeline-line-break-template">
+	</script>
+
+	<script type="text/template" class="social-alertpopover-seemore">
+		<a role="button" href="/portal/p/1/globalalertview">ver mais</a>
+	</script>
+
+
+</div>
+
+        
+        </div>
+    </div>
+</div>
+
+
+				</div>
+			<div id="SlotLogin" slot="true" class="slotint slot-header-actions">
+					
+
+<div id="_instance_1105_" appCode="sociallogin">
+    <div id="wcm_widget_1105" class="wcm_widget">
+        <div class="wcm_corpo_widget_single">
+
+<div id="sociallogin_1105" class="fluig-style-guide wcm-widget-class wcm_login wcm-widget-login super-widget" data-params="SocialLogin.instance()">
+
+	<div class="btn-group" role="group">
+		<div class="img-thumbnail pull-left fs-no-padding fs-overflow-hidden fs-no-top-right-radius fs-no-bottom-right-radius fs-no-border-right fs-border-light-gray">
+			<img
+				data-update-image-profile="Emanuel"
+				style="width: 32px; height: 32px;"
+				data-image-size="X_SMALL_PICTURE" src="/social/api/rest/social/image/profile/Emanuel/X_SMALL_PICTURE"
+				class="fluig-style-guide thumb-profile thumb-profile-xs"
+			>
+		</div>
+		<div class="btn-group" role="group">
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<span id="logged-user-name">Emanuel Ferreira</span>
+				<span class="fluigicon fluigicon-cog"></span>
+				<span class="sr-only">Toggle Dropdown</span>
+			</button>
+			<ul class="dropdown-menu dropdown-menu-right">
+						<li id="identity-context" style="display:none" data-choose-context>
+							<a href="#">
+								<strong>Trocar contexto</strong>
+							</a>
+							<a id="identityUserContext" href="#"></a>
+						</li>
+						<li id="identity-app-company" style="display:none" data-choose-company>
+							<a href="#">
+								<strong>Trocar empresa</strong>
+							</a>
+							<a id="identityAppCompany" href="#"></a>
+						</li>
+						<li id="identity-clear" style="display:none" class="divider"></li>
+						<li id="linkPageEditProfile" data-login-config-list-itens data-page-alias="wcmuserpreferences">
+							<a href="#">Editar perfil</a>
+						</li>
+							<li data-edit-image-profile>
+								<a href="#">Editar imagem</a>
+							</li>
+								<li data-login-config-list-itens data-page-alias="wcm-edit" data-href="/portal/p/1/page_cadastro_participante?edit=true">
+									<a href="#">Editar página</a>
+								</li>
+						<li class="divider"></li>
+						<li data-login-config-list-itens data-page-alias="language">
+							<a href="#">Idioma</a>
+						</li>
+					<li class="divider"></li>
+					<li  data-login-config-list-itens data-page-alias="logoff">
+						<a href="#">Sair</a>
+					</li>
+			</ul>
+		</div>
+	</div>
+
+    <script type="text/template" class="tpl_select_identity_context" >
+        <div id="identityCompany_{{instanceId}}" class="wcm-widget-class widget-select-identity widget-select-identity-{{type}} super-widget">
+        	<div class="fluig-style-guide">
+	            <ul>
+	                {{#list}}
+	                <li class="dialog-select-identity {{#selected}}bg-info{{/selected}} " data-id="{{id}}" data-select-{{type}} >{{displayName}}</li>
+	                {{/list}}
+	            </ul>
+            </div>
+        </div>
+    </script>
+</div>
+
+        
+        </div>
+    </div>
+</div>
+
+
+			</div>
+        </div>
+    </div>
+
+<!-- WCM Wrapper content -->
+<div class="wcm-wrapper-content">
+
+    <nav class="wcm-navigation wcm-menu-background">
+        <div id="SlotMenu" slot="true">
+                
+
+<div id="_instance_1106_" appCode="menu">
+    <div id="wcm_widget_1106" class="wcm_widget">
+        <div class="wcm_corpo_widget_single">
+<div id="wcmmenu_1106" class="wcm-widget-class super-widget" wcm-menu-content 
+	data-params="WCMMenu.instance({isPortalAdmin: 'false'})">
+	<div class="wcm-menu">
+		<ul id="wcm-menu-list" style="list-style: none; margin: 0px; padding: 0px;">
+			<li class="wcm-menu-more">
+			    <a class="wcm-luminosity-menu-color wcm-luminosity-menu-background-image" href="#"
+			       style="background-image: url('/portal/resources/images/mainmenu/icon_mais_light.png');">
+			    	Mais
+			    </a>
+			    <div class="wcm-menu-more-container wcm-menu-more-background wcm-menu-background wcm-menu-overflow-hidden">
+			    	<div class="wcm-menu-more-indicator-top-line">&nbsp;</div>
+			    	<div class="wcm-menu-more-indicator-top wcm-menu-more-indicator-background-top">&nbsp;</div>
+			    	<div class="wcm-menu-more-indicator-bottom-line">&nbsp;</div>
+			    	<div class="wcm-menu-more-indicator-bottom wcm-menu-more-indicator-background-bottom">&nbsp;</div>
+			    	<ul class="wcm-menu-more-content"></ul>
+			    </div>
+			</li>
+		</ul>
+	</div>
+</div>
+        
+        </div>
+    </div>
+</div>
+
+
+        </div>
+    </nav>
+
+    <!-- Wrapper -->
+    <div class="wcm-all-content">
+        <div id="wcm-content" class="clearfix wcm-background">
+
+            <!-- Onde deverá estar a barra de formatação -->
+        <div id="visualizacaoPagina" class="clearfix">
+
+            <!-- Titulo da página -->
+            <div class="slotfull layout-1-1">
+                <span class="titleArea">Título da página</span>
+
+                <h2 class="pageTitle" title="Cadastro de Participantes">Cadastro de Participantes</h2>
+            </div>
+
+            <!-- Slot 1 -->
+            <div class="editable-slot slotfull layout-1-1" id="slotFull1">
+    <div id="SlotC" slot="true" decorator="false" editableSlot="true" class="  slotint sortable">
+            
+
+<div id="_instance_1102_" appCode="CadastroParticipantes">
+    <div id="wcm_widget_1102" class="wcm_widget">
+        <div class="wcm_corpo_widget_single">
+<script type="text/javascript" src="/fluighub/assets/js/fluighub.js"></script>
+<div id="MyWidget_1102" class="super-widget wcm-widget-class fluig-style-guide" data-params="MyWidget.instance()">
+
+	<div id="termoAutorizacao">
+		<div class="panel panel-default">
+			<div class="termoAutorizacao">
+				<div class="row">
+					<div class="col-sm-12">
+						<h5 class="card-subtitle mb-2 text-muted">Termo de Autorização de Uso de Dados Pessoais</h5>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<p>Eu autorizo a coleta e inclusão de dados pessoais para o banco de dados da Medcin Instituto da Pele.</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+					    <div class="custom-radio custom-radio-inline custom-radio-primary">
+					        <input class="autorizacao" type="radio" id="termo-autorizacao-sim" name="radio-termo-autorizacao" value="sim">
+					        <label for="termo-autorizacao-sim">Sim</label>
+					    </div>
+					    <div class="custom-radio custom-radio-inline custom-radio-primary">
+					        <input class="autorizacao" type="radio" id="termo-autorizacao-nao" name="radio-termo-autorizacao" value="nao">
+					        <label for="termo-autorizacao-nao">Não</label>
+					    </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Abas -->
+	<ul class="nav nav-tabs clearfix" role="tablist">
+	    <li class="hide" id="li-dadosIniciais" onclick="changeHeader('dadosIniciais')">
+	    	<a href="#dadosIniciais" role="tab" data-toggle="tab">
+	    		Informações Iniciais
+	    	</a>
+	    </li>
+	    <li class="hide" id="li-dadosCadastrais" onclick="changeHeader('dadosCadastrais')">
+	    	<a href="#dadosCadastrais" role="tab" data-toggle="tab">
+	    		Dados Cadastrais do Participante
+	    	</a>
+	    </li>
+	    <li class="hide" id="li-dadosGerais" onclick="changeHeader('dadosGerais')">
+	    	<a href="#dadosGerais" role="tab" data-toggle="tab">
+	    		Informações Participantes
+	    	</a>
+	    </li>
+	    <li class="hide" id="li-classeSocial" onclick="changeHeader('classeSocial')">
+	    	<a href="#classeSocial" role="tab" data-toggle="tab">
+	    		Classe Social
+	    	</a>
+	    </li>
+	</ul>
+		
+	<!-- Dados Iniciais -->
+	<div class="hide container-fluid tab-pane" id="dadosIniciais">
+		<div class="row">
+			<div class="col-sm-2">
+				<label class="control-label">Data Nascimento</label> 
+				<input id="dataNascimento" name="dataNascimento" type="text" class="form-control form-control-sm calendar" 
+					onchange="preencheIdade();validacao()" 
+					data-fluig-required="true">
+			</div>
+			<div class="col-sm-8">
+				<label class="control-label">Nome Responsável</label> 
+				<input type="text" class="form-control form-control-sm" 
+					id="nomeResponsavel" name="nomeResponsavel" />
+			</div>
+			<div class="col-sm-2">
+				<label class="control-label">RG Responsável</label> 
+				<input type="text" class="form-control form-control-sm mAlfanum" 
+					id="rgResponsavel" name="rgResponsavel" rg-mask="00.000.000-0" 
+					onchange="defineMascaraCampo(this)"/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-2">
+				<label class="control-label">Celular do Responsável</label> 
+				<input type="text" class="form-control form-control-sm" 
+					id="celularResponsavel" name="celularResponsavel"/>
+			</div>
+			<div class="col-sm-10">
+				<label class="control-label">E-mail Responsável</label> 
+				<input type="text" class="form-control form-control-sm" 
+					id="emailResponsavel" name="emailResponsavel"/>
+			</div>
+		</div>
+		</br></br>
+		
+		<!-- Termo de Autorização do Responsável -->
+		<div class="hide" id="termoAutorizacaoResponsavel">
+			<div class="panel panel-default">
+				<div class="termoAutorizacao">
+					<div class="row">
+						<div class="col-sm-12">
+							<h5 class="card-subtitle mb-2 text-muted">Declaração de Responsabilidade</h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
+							<p>Eu declaro que sou responsável legal pelo participante cadastrado e autorizo seu cadastro.</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-sm-12">
+						    <div class="custom-radio custom-radio-inline custom-radio-primary">
+						        <input type="radio" id="responsavel-sim" name="radio-responsavel" value="sim">
+						        <label for="responsavel-sim">Sim</label>
+						    </div>
+						    <div class="custom-radio custom-radio-inline custom-radio-primary">
+						        <input type="radio" id="responsavel-nao" name="radio-responsavel" value="nao">
+						        <label for="responsavel-nao">Não</label>
+						    </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Dados Cadastrais -->
+	<div class="hide container-fluid tab-pane" id="dadosCadastrais">
+		<div class="row">
+			<div class="form-group col-sm-6">
+				<label class="control-label">Nome Completo</label> 
+				<input type="text" class="form-control form-control-sm" 
+					id="nomeComp" name="nomeComp" 
+					data-fluig-required="true"/>
+			</div>
+            <div class="form-group col-sm-2">
+            	<label class="control-label">Sexo</label> 
+                <select id="sexo" name="sexo" type="text" class="form-control form-control-sm"
+                	onchange="vldSexo(this);"
+                	data-fluig-required="true">
+                	<option value="">Selecione...</option>
+                    <option value="M">Masculino</option>
+                    <option value="F">Feminino</option>
+                </select>
+            </div>
+            <div class="form-group col-sm-2">
+            	<label class="control-label">RG</label> 
+                <input id="rg" name="rg" type="text" class="form-control form-control-sm mRg"
+                	data-fluig-required="true">
+            </div>
+            <div class="form-group col-sm-2">
+            	<label class="control-label">CPF</label> 
+                <input id="cpf" name="cpf" type="text" class="form-control form-control-sm mCpf"
+                	data-fluig-required="true">
+            </div>
+		</div>
+		<div class="row">
+			<div class="form-group col-sm-2">
+            	<label class="control-label">Data de Nascimento</label> 
+            	<input id="dataNasc" name="dataNasc" type="text" class="form-control form-control-sm calendar">
+            </div>
+			<div class="form-group col-sm-1">
+                <label class="control-label">Idade</label>
+                <input id="idade" name="idade" type="text" class="form-control form-control-sm mInt">     	
+            </div>
+            <div class="form-group col-sm-2">
+                <label class="control-label">CEP da Resisdência</label>
+                <input id="cepResid" name="cepResid" type="text" class="form-control form-control-sm mCep"
+                	onchange="teste();"
+                	data-fluig-required="true">
+            </div>
+            <div class="form-group col-sm-3">
+                <label class="control-label">Endereço</label>
+                <input id="endereco" name="endereco" type="text" class="form-control form-control-sm" 
+                	placeholder="Rua/Av./Via/Estrada/Rodovia"
+                	data-fluig-required="true">
+            </div>
+            <div class="form-group col-sm-1">
+                <label class="control-label">N°</label>
+                <input id="numero" name="numero" type="number" class="form-control form-control-sm"
+                	data-fluig-required="true">
+            </div>
+            <div class="form-group col-sm-3">
+                <label class="control-label">Complemento</label>
+                <input id="complemento" name="complemento" type="text" class="form-control form-control-sm"
+                	data-fluig-required="true">
+            </div>
+		</div>
+		<div class="row">
+			<div class="form-group col-sm-3">
+                <label class="control-label">Bairro</label>
+                <input id="bairro" name="bairro" type="text" class="form-control form-control-sm"
+                	data-fluig-required="true">
+            </div>
+	        <div class="form-group col-sm-3">
+	            <label class="control-label">Cidade/Município</label>
+	            <input id="cidade" name="cidade" type="text" class="form-control form-control-sm"
+	            	data-fluig-required="true">
+	        </div>
+	        <div class="form-group col-sm-3">
+	            <label class="control-label">Estado</label>
+	            <input id="estado" name="estado" type="text" class="form-control form-control-sm"
+	            	data-fluig-required="true">
+	        </div>
+	        <div class="form-group col-sm-3">
+	            <label class="control-label">País</label>
+	            <input id="pais" name="pais" type="text" class="form-control form-control-sm"
+	            	data-fluig-required="true">
+	        </div>
+        </div>
+        <div class="row">
+        	<div class="form-group col-sm-3">
+                <label class="control-label">Celular de Contato</label>
+                <input id="cContato" name="cContato" type="text" class="form-control form-control-sm"
+                	data-fluig-required="true">
+            </div>
+            <div class="form-group col-sm-3">
+                <label class="control-label">Telefone de Contato</label>
+                <input id="tContato" name="tContato" type="text" class="form-control form-control-sm"
+                	data-fluig-required="true">
+            </div>
+            <div class="form-group col-sm-3">
+                <label class="control-label">Telefone para Recado</label>
+                <input id="tRecado" name="tRecado" type="text" class="form-control form-control-sm"
+                	data-fluig-required="true">
+            </div>
+            <div class="form-group col-sm-3">
+                <label class="control-label">Nome do Contato para Recado</label>
+                <input id="nRecado" name="nRecado" type="text" class="form-control form-control-sm"
+                	data-fluig-required="true">
+            </div>
+        </div> 
+        
+        <!-- Botão para adicionar os contatos -->
+       	<h5 class="card-subtitle mb-2 text-muted">Contatos</h5>
+		
+		<div class="row">
+			<div class="form-group col-sm-6">
+                <label class="control-label">Nome</label>
+               	<input type="text" id="nomeContato" name="nomeContato" class="form-control form-control-sm"
+					data-fluig-write="true"/>
+            </div>
+			<div class="form-group col-sm-6">
+				<label class="control-label">Telefone</label>
+				<input type="text" id="telefoneContato" name="telefoneContato" class="form-control form-control-sm"
+					data-fluig-write="true"/>
+			</div>
+		</div>
+		
+		<button type="button" class="btn btn-primary" onclick="inserirLinhaTabela()">
+			Adicionar Contato
+		</button>
+		
+		<!-- Tabela de Contatos -->
+		<div class="table-responsive">
+			<table class="table table-hover table-striped table-sm" tablename="tb_contatos" 
+				id="tb_contatos" noaddbutton="false" nodeletebutton="false">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Telefone</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+		
+		<div class="row">
+			<div class="form-group col-sm-6">
+                <label class="control-label">E-mail</label>
+                <input id="email" name="email" type="text" class="form-control form-control-sm" 
+                	placeholder="Em caso de menor, não conter um e-mail próprio, informar do responsável legal"
+                	data-fluig-required="false">
+            </div>
+            <div class="form-group col-sm-3">
+                <label class="control-label">Instagram</label>
+                <input id="instagram" name="instagram" type="text" class="form-control form-control-sm"
+                	data-fluig-required="false">
+            </div>
+            <div class="form-group col-sm-3">
+                <label class="control-label">Facebook</label>
+                <input id="facebook" name="facebook" type="text" class="form-control form-control-sm"
+                	data-fluig-required="false">
+            </div>
+		</div>
+	</div>
+	
+	<!-- Dados Gerais -->
+	<div class="hide container-fluid tab-pane" id="dadosGerais">
+		
+		<!-- Definição de Fototipo -->
+		<div class="panel panel-default">
+           	<div class="panel-heading">
+           		<h4 class="card-title mb-2 text-muted">Definição Fototipo</h4>
+			</div>
+               <div class="panel-body">
+               	<div class="row">
+               		<div class="form-group col-sm-4">
+                       	<label class="control-label">Cor dos seus olhos?</label>
+                       	<select id="corOlhos" name="corOlhos" class="form-control form-control-sm"
+                       		onchange="defineFototipo()"
+                       		data-fluig-required="true">
+                       		<option value="">Selecione...</option>
+                           	<option value="1">Azul</option>
+                           	<option value="2">Verde</option>
+                           	<option value="3">Mel, Castanho Claro</option>
+                           	<option value="4">Castanho Escuro</option>
+                       	</select>
+                   	</div>
+                   	<div class="form-group col-sm-4">
+                       	<label class="control-label">Cor natural dos seus cabelos?</label>
+                       	<select id="corCabelos" name="corCabelos" class="form-control form-control-sm"
+                       		onchange="defineFototipo()"
+                       		data-fluig-required="true">
+                           	<option value="">Selecione...</option>
+                           	<option value="1">Ruivo, avermelhado</option>
+                            	<option value="2">Loiro</option>
+                            	<option value="3">Castanho Claro</option>
+                            	<option value="4">Castanho Escuro</option>
+                            	<option value="5">Preto</option>
+                        	</select>
+                   	</div>
+                   	<div class="form-group col-sm-4">
+                       	<label class="control-label">Cor natural da sua pele?</label>
+                       	<select id="corPele" name="corPele" class="form-control form-control-sm"
+                       		onchange="defineFototipo()"
+                       		data-fluig-required="true">
+                           	<option value="">Selecione...</option>
+                           	<option value="1">Branca Palída</option>
+                            	<option value="2">Branca</option>
+                            	<option value="3">Morena Clara</option>
+                            	<option value="4">Morena Escura</option>
+                            	<option value="5">Negra</option>
+                        	</select>
+                   	</div>
+               	</div>
+				<div class="row">
+					<div class="form-group col-sm-8">
+                       	<label class="control-label">Após exposição SOLAR, sua pele:</label>
+                       	<select id="exposicaoSolar" name="exposicaoSolar" class="form-control form-control-sm"
+                       		onchange="defineFototipo()"
+                       		data-fluig-required="true">
+                           	<option value="">Selecione...</option>
+                           	<option value="1">Queima (vermelhidão) com facilidade, nunca bronzeia</option>
+                            	<option value="2">Queima (vermelhidão) com facilidade, bronzeia muito pouco</option>
+                            	<option value="3">Queima (Vermelhidão) moderadamente, bronzeia moderadamente</option>
+                            	<option value="4">Queima (vermelhidão) pouco, bronzeia com facilidade</option>
+                            	<option value="5">Queima (vermelhidão) raramente, bronzeia bastante</option>
+                            	<option value="6">Nunca Queima (vermelhidão), pele muito pigmentada (escura)</option>
+                        	</select>
+                   	</div>
+					<div class="form-group col-sm-4"
+						data-fluig-required="true">
+                        	<label class="control-label">Seu Fototipo Conforme Respondido, é:</label>
+                        	<input id="fototipoResp" name="fototipoResp" type="text" class="form-control form-control-sm" readonly>
+                    	</div>
+				</div>
+           	</div>
+		</div>
+		
+		<!-- Definição sensibilidade da Pele -->
+		<div class="panel panel-default">
+            <div class="panel-heading">
+            	<h4 class="card-title mb-2 text-muted">Definição sensibilidade da Pele</h4>
+            </div>
+            <div class="panel-body">
+            	<div class="row">
+            		<div class="form-group col-sm-7">
+                    	<label class="control-label">Sua pele fica sensível, com vermelhidão e/ou coceira em dias de temperaturas muito quente e/ou frio?</label>
+	                    <select id="reacaoTemperatura" name="reacaoTemperatura" class="form-control form-control-sm"
+	                    	onchange="defineSensibilidadePele()"
+	                    	data-fluig-required="true">
+	                    	<option value="">Selecione...</option>
+	                    	<option value="S">Sim</option>
+	                        <option value="N">Não</option>
+	                    </select>
+                	</div>
+                	<div class="form-group col-sm-5">
+	                   	<label class="control-label">Sua pele costuma descamar (descascar) ao redor do nariz e boca?</label>
+	                    <select id="descamar" name="descamar" class="form-control form-control-sm"
+	                    	onchange="defineSensibilidadePele()"
+	                    	data-fluig-required="true">
+	                    	<option value="">Selecione...</option>
+	                    	<option value="S">Sim</option>
+	                        <option value="N">Não</option>
+	                    </select>
+	               	</div>
+	               	<div class="form-group col-sm-6">
+                    	<label class="control-label">Sua pele fica sensível, com vermelhindão e/ou coceira após uso de sabonete?</label>
+	                    <select id="reacaoSabonete" name="reacaoSabonete" class="form-control form-control-sm"
+	                    	onchange="defineSensibilidadePele()"
+	                    	data-fluig-required="true">
+	                    	<option value="">Selecione...</option>
+	                    	<option value="S">Sim</option>
+	                        <option value="N">Não</option>
+	                    </select>
+                	</div>
+	               	<div class="form-group col-sm-6 reacaoTonico hide">
+	                   	<label class="control-label">Sua pele fica sensível, com vermelhidão e/ou coceira após uso de tônicos?</label>
+	                    <select id="reacaoTonico" name="reacaoTonico" class="form-control form-control-sm"
+	                    	onchange="defineSensibilidadePele()">
+	                    	<option value="">Selecione...</option>
+	                    	<option value="S">Sim</option>
+	                        <option value="N">Não</option>
+	                    </select>
+	               	</div>
+	               	<div class="form-group col-sm-6 reacaoPosBarba hide">
+	                   	<label class="control-label">Sua pele fica sensível, com vermelhindão e/ou coceira ao utilizar pós barba?</label>
+	                    <select id="reacaoPosBarba" name="reacaoPosBarba" class="form-control form-control-sm"
+	                    	onchange="defineSensibilidadePele()">
+	                    	<option value="">Selecione...</option>
+	                    	<option value="S">Sim</option>
+	                        <option value="N">Não</option>
+	                    </select>
+	               	</div>
+	               	<div class="form-group col-sm-6">
+	                   	<label class="control-label">A sensibilidade da sua pele, mediante as respostas enviadas, é considerada:</label>
+	                    <input id="sensibilidadeResp" name="sensibilidadeResp" type="text" class="form-control form-control-sm" readonly>
+	               	</div>
+               </div>
+            </div> 
+		</div>
+		
+		<!-- Definição do Perfil da Pele do Rosto -->
+		<div class="panel panel-default">
+        	<div class="panel-heading">
+            	<h4 class="card-title mb-2 text-muted">Definição do Perfil da Pele do Rosto</h4>
+            </div>
+            <div class="panel-body">
+            	<div class="row">
+            		<div class="form-group col-sm-6">
+                    	<label class="control-label">Como você classificaria sua pele do rosto?</label>
+                    	<select id="classificacaoPeleRosto" name="classificacaoPeleRosto" class="form-control form-control-sm"
+                    		data-fluig-required="true">
+	                        <option value="">Selecione...</option>
+	                        <option value="1">Hiratada</option>
+	                        <option value="2">Ressecada</option>
+	                        <option value="3">Mista, oleosidade somente na testa nariz e queixo</option>
+	                        <option value="4">Oleosa</option>
+	                        <option value="5">Normal</option>
+                 		</select>
+                	</div>
+                	<div class="form-group col-sm-6 classificacaoEvelhecimentoPele hide">
+                    	<label class="control-label">Como você classificaria o evelhecimento da sua pele?</label>
+                    	<select id="classificacaoEvelhecimentoPele" name="classificacaoEvelhecimentoPele" class="form-control form-control-sm">
+	                        <option value="">Selecione...</option>
+	                        <option value="1">Tenho rugas e linhas de expessões intensas</option>
+		                    <option value="2">Tenhos rugas e linhas de expressões moderadas</option>
+		                    <option value="3">Tenhos rugas e linhas de expressões leves</option>
+		                    <option value="4">Não tenho rugas e linhas de expressão</option>
+                 		</select>
+                	</div>
+            		<div class="form-group col-sm-6 classificacaoManchasFacial hide">
+                    	<label class="control-label">Como você classificaria as manchas da sua pele facial?</label>
+                    	<select id="classificacaoManchasFacial" name="classificacaoManchasFacial" class="form-control form-control-sm">
+	                        <option value="">Selecione...</option>
+	                        <option value="1">Tenho manchas intensas</option>
+		                    <option value="2">Tenho manchas moderadas</option>
+		                    <option value="3">Tenho manchas leves</option>
+		                    <option value="4">Não tenho manchas</option>
+                 		</select>
+                	</div>
+                	<div class="form-group col-sm-6 tipoDepilacao hide">
+                    	<label class="control-label">Você tem o habito de se depilar/barbear? Se sim, quais tipos utiliza?</label>
+                    	<select id="tipoDepilacao" name="tipoDepilacao" class="form-control form-control-sm">
+	                        <option value="">Selecione...</option>
+	                        <option value="1">Não tenho o hábito</option>
+                    		<option value="2">Cera</option>
+                    		<option value="3">Lamina (tipo Gilette)</option>
+                    		<option value="4">Aparelho depilatório</option>
+                   			<option value="5">Laser</option>
+                 		</select>
+                	</div>
+            		<div class="form-group col-sm-6 classificacaoOlheiras hide">
+                    	<label class="control-label">Como você classificaria as bolsas e olheiras do seu rosto?</label>
+                    	<select id="classificacaoOlheiras" name="classificacaoOlheiras" class="form-control form-control-sm">
+	                        <option value="">Selecione...</option>
+	                        <option value="1">Tenho bolsas e olheiras intensas</option>
+                    		<option value="2">Tenho bolsas e olheiras moderadas</option>
+                    		<option value="3">Tenho bolsas e olheiras leves</option>
+                    		<option value="4">Não tenho bolsas e olheiras</option>
+                 		</select>
+                	</div>
+                	<div class="form-group col-sm-6">
+                    	<label class="control-label">Qual a fequência do surgimento de ESPINHAS no seu rosto?</label>
+                    	<select id="fequenciaEspinhas" name="fequenciaEspinhas" class="form-control form-control-sm"
+                    		data-fluig-required="true">
+	                        <option value="">Selecione...</option>
+	                        <option value="1">Sempre tenho espinha no rosto</option>
+                               <option value="2">As vezes, sem motivo aparente</option>
+                               <option value="3">Somente próximo ao ciclo menstrual</option>
+                               <option value="4">Não tenho espinhas</option>
+                 		</select>
+                	</div>
+                </div>
+            </div>
+		</div>
+		
+		<!-- Definição do Perfil do Cabelo -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+            	<h4 class="card-title mb-2 text-muted">Definição do Perfil do Cabelo</h4>
+            </div>
+            <div class="panel-body">
+            	<div class="row">	
+            		<div class="form-group col-sm-6">
+                    	<label class="control-label">Qual o seu tipo de cabelo?</label>
+                    	<select id="tipoCabelo" name="tipoCabelo" class="form-control form-control-sm"
+                    		data-fluig-required="true">
+	                        <option value="">Selecione...</option>
+	                        <option value="1">Liso</option>
+		                    <option value="2">Ondulado</option>
+		                    <option value="3">Enrolado</option>
+		                    <option value="4">Crespo</option>
+                 		</select>
+                	</div>
+                	<div class="form-group col-sm-6">
+                    	<label class="control-label">Quais procedimentos você faz nos cabelos com frequência?</label>
+                    	<select id="procedimentoCapilar" name="procedimentoCapilar" class="form-control form-control-sm"
+                    		data-fluig-required="true">
+	                        <option value="">Selecione...</option>
+	                        <option value="1">Alisamento/Progrssiva</option>
+		                    <option value="2">Tintura</option>
+		                    <option value="3">Luzes</option>
+		                    <option value="4">Mega hair</option>
+		                    <option value="5">Nenhum, meu cabelo está virgem</option>
+                 		</select>
+                	</div>
+	           		<div class="form-group col-sm-6">
+	                   	<label class="control-label">Em relação a CASPAS no couro cabeludo, você:</label>
+	                   	<select id="caspas" name="caspas" class="form-control form-control-sm"
+	                   		data-fluig-required="true">
+	                        <option value="">Selecione...</option>
+	                        <option value="1">Tenho muitas caspas</option>
+		                    <option value="2">Tenho quantidade normal de caspas</option>
+		                    <option value="3">Não tenho caspas</option>
+	                		</select>
+	               	</div>
+	               	<div class="form-group col-sm-6">
+	                   	<label class="control-label">Em relação a QUEDA CAPILAR, você:</label>
+	                   	<select id="quedaCapilar" name="quedaCapilar" class="form-control form-control-sm"
+	                   		data-fluig-required="true">
+	                        <option value="">Selecione...</option>
+	                        <option value="1">Tenho muita queda capilar</option>
+		                    <option value="2">Tenho queda capilar moderada</option>
+		                    <option value="3">Não tenho queda capilar</option>
+	                		</select>
+	               	</div>
+               </div>
+            </div>
+        </div>
+		
+		<!-- Definição do Perfil Corporal -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+            	<h4 class="card-title mb-2 text-muted">Definição do Perfil Corporal</h4>
+            </div>
+            <div class="panel-body">
+            	<div class="row">
+            		<div class="form-group col-sm-6">
+                    	<label class="control-label">Como você classificaria sua pele do corpo?</label>
+                    	<select id="classificacaoPele" name="classificacaoPele" class="form-control form-control-sm"
+                    		data-fluig-required="true">
+	                        <option value="">Selecione...</option>
+	                        <option value="Hidratada">Hidratada</option>
+		                    <option value="Ressecada">Ressecada</option>
+		                    <option value="Normal">Normal</option>
+                 		</select>
+                	</div>
+                	<div class="form-group col-sm-6 classificacaoCelulites hide">
+                    	<label class="control-label">Como você classificaria suas CELULITES?</label>
+                    	<select id="classificacaoCelulites" name="classificacaoCelulites" class="form-control form-control-sm">
+	                        <option value="">Selecione...</option>
+	                        <option value="1">Tenho celulite intesa</option>
+                    		<option value="2">Tenho celulite moderado</option>
+                    		<option value="3">Tenho celulite leve</option>
+                    		<option value="4">Não tenho celulite</option>
+                 		</select>
+                	</div>
+	           		<div class="form-group col-sm-6 classificacaoEstrias hide">
+	                   	<label class="control-label">Como você classifica suas ESTRIAS?</label>
+	                   	<select id="classificacaoEstrias" name="classificacaoEstrias" class="form-control form-control-sm">
+	                        <option value="">Selecione...</option>
+	                        <option value="1">Tenho muitas estrias</option>
+		                    <option value="2">Tenho estria de forma moderada</option>
+		                    <option value="3">Tenho poucas estrias</option>
+		                    <option value="4">Não tenho estrias</option>
+	                		</select>
+	               	</div>
+	               	<div class="form-group col-sm-6 classificacaoUnhas hide">
+	                   	<label class="control-label">Como você classificaria suas UNHAS?</label>
+	                   	<select id="classificacaoUnhas" name="classificacaoUnhas" class="form-control form-control-sm">
+	                        <option value="">Selecione...</option>
+	                        <option value="1">Muito fracas, descamandas e não crescem</option>
+		                    <option value="2">Fracas, quebram com frequência</option>
+		                    <option value="3">Normal, unhas saudáveis</option>
+		                    <option value="4">Muito fortes, não quebram com facilidade</option>
+	                		</select>
+	               	</div>
+	           		<div class="form-group col-sm-6 pelosAxilas hide">
+	                   	<label class="control-label">Sobre os pêlos das axilas, você:</label>
+	                   	<select id="pelosAxilas" name="pelosAxilas" class="form-control form-control-sm">
+	                        <option value="">Selecione...</option>
+	                        <option value="1">Depilo com frequência</option>
+		                    <option value="2">Não depilo mas depilaria se necessário</option>
+		                    <option value="3">Não depilo</option>
+	                		</select>
+	               	</div>
+	               	<div class="form-group col-sm-6 transpiracao hide">
+	                   	<label class="control-label">Sobre sua transpiração/suor, você a considera:</label>
+	                   	<select id="transpiracao" name="transpiracao" class="form-control form-control-sm">
+	                        <option value="">Selecione...</option>
+	                        <option value="1">Excessiva, suo muito</option>
+		                    <option value="2">Normal</option>
+		                    <option value="3">Não suo, dificilmente transpiro</option>
+	                		</select>
+	               	</div>
+               </div>
+            </div>
+        </div>
+		
+		<!-- Saúde e Hábitos -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+            	<h4 class="card-title mb-2 text-muted">Saúde e Hábitos</h4>
+            </div>
+            <div class="panel-body">
+            	<div class="row">
+            		<div class="form-group col-sm-8">
+	                   	<label class="control-label">Possui histórico de alergias e/ou irritações (descamação, vermelhidão, coceira, rachaduras, etc) frequentes na pele?</label>
+	                   	<select id="historicoAlergias" name="historicoAlergias" class="form-control form-control-sm"
+	                   		data-fluig-required="true">
+	                        <option value="">Selecione...</option>
+	                        <option value="Sim, com frequência">Sim, com frequência</option>
+		                    <option value="Às vezes">Às vezes</option>
+		                    <option value="Não">Não</option>
+	                		</select>
+	               	</div>
+            		<div class="form-group col-sm-4">
+                    	<label class="control-label">Quais produtos cosméticos você ultiliza com frequência?</label>
+                    	<select id="cosmeticosUtilizados" name="cosmeticosUtilizados" class="form-control form-control-sm"
+                    		data-fluig-required="true">
+	                        <option value="">Selecione...</option>
+	                        <option value="1">Protetor solar</option>
+		                    <option value="2">Cremes antienvelhecimento</option>
+		                    <option value="3">Maquiagem (rímel, pó compacto, base, batom)</option>
+		                    <option value="4">Hidratantes para o corpo</option>
+		                    <option value="5">Perfumes</option>
+		                    <option value="6">Desodorantes e Antitranspirante</option>
+		                    <option value="7">Cremes para os cabelos</option>
+		                    <option value="8">Esmaltes</option>
+		                    <option value="9">Óleo corporal</option>
+                 		</select>
+                	</div>
+	               	<div class="form-group col-sm-6">
+	                   	<label class="control-label">Você tem disponibilidade de ficar no Centro quantas horas durante os dias de semana?</label>
+	                   	<select id="disponibilidade" name="disponibilidade" class="form-control form-control-sm"
+	                   		data-fluig-required="true">
+	                        <option value="">Selecione...</option>
+	                        <option value="1">Entre 1 e 2 horas no máximo</option>
+		                    <option value="2">Até 4 horas</option>
+		                    <option value="3">Até 6 horas</option>    
+		                    <option value="4">Mais de 6 horas</option>
+	                		</select>
+	               	</div>
+	           		<div class="form-group col-sm-6 cicloMenstrual hide">
+	                   	<label class="control-label">Em relação ao ciclo mentrual, você:</label>
+	                   	<select id="cicloMenstrual" name="cicloMenstrual" class="form-control form-control-sm">
+	                        <option value="">Selecione...</option>
+	                        <option value="1">Ciclo regular com uso de anticoncepcional</option>
+		                    <option value="2">Ciclo regular sem uso de anticoncepcional</option>
+		                    <option value="3">Ciclo irregular com uso de anticoncepcional</option>
+		                    <option value="4">Ciclo irregular sem uso de anteconcepcional</option>
+		                    <option value="5">Pré menopausa(Climatério)</option>
+		                    <option value="6">Menopausa</option>
+	                		</select>
+	               	</div>
+	           		<div class="form-group col-sm-6">
+	                   	<label class="control-label">Faz o uso de medicamento de uso contínuo?</label>
+	                   	<select id="usoMedicamentos" name="usoMedicamentos" class="form-control form-control-sm"
+	                   		data-fluig-required="true">
+	                        <option value="">Selecione...</option>
+	                        <option value="S">Sim</option>
+	                   		<option value="N">Não</option>
+	                		</select>
+	                </div>
+	               	<div class="form-group col-sm-6">
+	                   	<label class="control-label">Atualmente, você pratica algum tipo de esporte?</label>
+	                   	<select id="praticaEsportes" name="praticaEsportes" class="form-control form-control-sm"
+	                   		data-fluig-required="true">
+	                        <option value="">Selecione...</option>
+	                        <option value="S">Sim</option>
+	                   		<option value="N">Não</option>
+	                		</select>
+	               	</div>
+	           		<div class="form-group col-sm-6">
+	                   	<label class="control-label">Atualmente você fuma?</label>
+	                   	<select id="fuma" name="fuma" class="form-control form-control-sm"
+	                   		data-fluig-required="true">
+	                        <option value="">Selecione...</option>
+	                        <option value="S">Sim</option>
+	                   		<option value="N">Não</option>
+	                		</select>
+	               	</div>
+	               	<div class="form-group col-sm-6">
+	                   	<label class="control-label">Atualmente ingere bebidas alcoólicas?</label>
+	                   	<select id="bebidaAlcoolica" name="bebidaAlcoolica" class="form-control form-control-sm"
+	                   		data-fluig-required="true">
+	                        <option value="">Selecione...</option>
+	                        <option value="S">Sim</option>
+	                   		<option value="N">Não</option>
+	                		</select>
+	               	</div>
+            	</div>
+        	</div>
+		</div>
+	</div>
+		
+	<div class="hide container-fluid tab-pane" id="classeSocial">
+		<div class="row">
+			<div class="col-sm-2">
+				<label class="control-label">Banheiros</label> 
+				<select class="form-control form-control-sm" id="qtdBanheiros" name="qtdBanheiros"
+					onchange="defineClasseSocial()"
+					data-fluig-required="true">
+					<option value="">Selecione...</option>
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4 ou +</option>
+				</select>
+			</div>
+			<div class="col-sm-2">
+				<label class="control-label">Empregados Domésticos</label> 
+				<select class="form-control form-control-sm" id="qtdEmpregados" name="qtdEmpregados"
+					onchange="defineClasseSocial()"
+					data-fluig-required="true">
+					<option value="">Selecione...</option>
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4 ou +</option>
+				</select>
+			</div>
+			<div class="col-sm-2">
+				<label class="control-label">Automóveis</label> 
+				<select class="form-control form-control-sm" id="qtdAutomoveis" name="qtdAutomoveis"
+					onchange="defineClasseSocial()"
+					data-fluig-required="true">
+					<option value="">Selecione...</option>
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4 ou +</option>
+				</select>
+			</div>
+			<div class="col-sm-2">
+				<label class="control-label">Microcomputadores</label> 
+				<select class="form-control form-control-sm" id="qtdMicrocomputadores" name="qtdMicrocomputadores"
+					onchange="defineClasseSocial()"
+					data-fluig-required="true">
+					<option value="">Selecione...</option>
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4 ou +</option>
+				</select>
+			</div>
+			<div class="col-sm-2">
+				<label class="control-label">Lava louça</label> 
+				<select class="form-control form-control-sm" id="qtdLavaLoucas" name="qtdLavaLoucas"
+					onchange="defineClasseSocial()"
+					data-fluig-required="true">
+					<option value="">Selecione...</option>
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4 ou +</option>
+				</select>
+			</div>
+			<div class="col-sm-2">
+				<label class="control-label">Geladeira</label> 
+				<select class="form-control form-control-sm" id="qtdGeladeiras" name="qtdGeladeiras"
+					onchange="defineClasseSocial()"
+					data-fluig-required="true">
+					<option value="">Selecione...</option>
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4 ou +</option>
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-2">
+				<label class="control-label">Freezer</label> 
+				<select class="form-control form-control-sm" id="qtdFreezer" name="qtdFreezer"
+					onchange="defineClasseSocial()"
+					data-fluig-required="true">
+					<option value="">Selecione...</option>
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4 ou +</option>
+				</select>
+			</div>
+			<div class="col-sm-2">
+				<label class="control-label">Lava roupa</label> 
+				<select class="form-control form-control-sm" id="qtdLavaRoupas" name="qtdLavaRoupas"
+					onchange="defineClasseSocial()"
+					data-fluig-required="true">
+					<option value="">Selecione...</option>
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4 ou +</option>
+				</select>
+			</div>
+			<div class="col-sm-2">
+				<label class="control-label">DVD</label> 
+				<select class="form-control form-control-sm" id="qtdDVD" name="qtdDVD"
+					onchange="defineClasseSocial()"
+					data-fluig-required="true">
+					<option value="">Selecione...</option>
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4 ou +</option>
+				</select>
+			</div>
+			<div class="col-sm-2">
+				<label class="control-label">Microondas</label> 
+				<select class="form-control form-control-sm" id="qtdMicroondas" name="qtdMicroondas"
+					onchange="defineClasseSocial()"
+					data-fluig-required="true">
+					<option value="">Selecione...</option>
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4 ou +</option>
+				</select>
+			</div>
+			<div class="col-sm-2">
+				<label class="control-label">Motocicleta</label> 
+				<select class="form-control form-control-sm" id="qtdMotocicletas" name="qtdMotocicletas"
+					onchange="defineClasseSocial()"
+					data-fluig-required="true">
+					<option value="">Selecione...</option>
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4 ou +</option>
+				</select>
+			</div>
+			<div class="col-sm-2">
+				<label class="control-label">Secador de roupa</label> 
+				<select class="form-control form-control-sm" id="qtdSecadorRoupas" name="qtdSecadorRoupas"
+					onchange="defineClasseSocial()"
+					data-fluig-required="true">
+					<option value="">Selecione...</option>
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4 ou +</option>
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<label class="control-label">Grau de instrução do chefe da família:</label> 
+				<select class="form-control form-control-sm" id="grauInstrucao" name="grauInstrucao"
+					onchange="defineClasseSocial()"
+					data-fluig-required="true">
+					<option value="">Selecione...</option>
+					<option value="0">Analfabeto / Fundamental I incompleto</option>
+					<option value="1">Fundamental I completo / Fundamental II incompleto</option>
+					<option value="2">Fundamental II completo / Médio incompleto</option>
+					<option value="3">Médio completo / Superior incompleto</option>
+					<option value="4">Superior completo</option>
+				</select>
+			</div>
+			<div class="col-sm-3">
+				<label class="control-label">Água encanada?</label> 
+				<select class="form-control form-control-sm" id="aguaEncanada" name="aguaEncanada"
+					onchange="defineClasseSocial()"
+					data-fluig-required="true">
+					<option value="">Selecione...</option>
+					<option value="S">Sim</option>
+					<option value="N">Não</option>
+				</select>
+			</div>
+			<div class="col-sm-3">
+				<label class="control-label">Rua pavimentada?</label> 
+				<select class="form-control form-control-sm" id="ruaPavimentada" name="ruaPavimentada"
+					onchange="defineClasseSocial()"
+					data-fluig-required="true">
+					<option value="">Selecione...</option>
+					<option value="S">Sim</option>
+					<option value="N">Não</option>
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+				<label class="control-label">Classe Social</label> 
+				<input id="resultClasseSocial" name="resultClasseSocial" class="form-control form-control-sm"/>
+			</div>
+		</div>
+	</div>
+	</br></br>
+	
+	<div class="row">
+		<button type="button" data-start-process class="btn btn-primary" id="btnSalvar" name="btnSalvar">Salvar Cadastro</button>
+	<!-- 	<button type="button" class="btn btn-primary" id="btnSalvar" name="btnSalvar"
+			onclick="salvarCadastro()">
+			Salvar Cadastro
+		</button> -->
+	</div>
+	
+</div>
+
+        
+        </div>
+    </div>
+</div>
+
+
+    </div>
+
+            </div>
+
+            <!-- Slot 2 -->
+            <div class="editable-slot slotfull layout-1-1" id="slotFull2">
+    <div id="SlotA" slot="true" decorator="false" editableSlot="true" class="  slotint sortable">
+    </div>
+
+
+            </div>
+	<div id="wcm_footer" class="wcm_footer">
+        <div id="wcm_footer_interna_logo">
+
+                    <div class="wcm_alert_img"
+                         onmousemove="$(this).children('.wcm_alert_popup').show();"
+                         onmouseout="$(this).children('.wcm_alert_popup').hide();">
+
+                        <img src="/portal/resources/images/icon_toast_alert.png">
+                        <div class="wcm_alert_popup system-float-box bottom-left" style="display:none">
+                            <div class="wcm_alert_popup_title">Expiração do ambiente.</div>
+                            <div class="wcm_alert_popup_line"></div>
+                            <div class="wcm_alert_popup_msg">Erro ao verificar disponibilidade de atualizações.</div>
+                        </div>
+
+                    </div>
+
+                <span id="ecm-version">
+                    <span onclick="WCMAPI.openAdminNewsFluigVersion(WCMAPI.version.split('-')[0])" class="ecm-data-version">
+                        TOTVS Fluig Plataforma - Lake 1.7.0-210202
+                    </span>
+                    <span class="ecm-data-revision">
+                        514
+                    </span>
+                    - Usuário: Emanuel Ferreira
+                </span>
+
+                <!-- Container use policy -->
+                <div id="SlotUsePolicy" slot="true" class="slotint">
+                        
+
+<div id="_instance_1108_" appCode="usepolicy">
+    <div id="wcm_widget_1108" class="wcm_widget">
+        <div class="wcm_corpo_widget_single">
+
+<div id="use_policy_1108" class="wcm-widget-class super-widget clearfix widget-use-policy widget-use-policy-view" data-params="SocialUsePolicy.instance({alias: ''})">
+	<!-- Modal de visualizar documentos -->
+	<div class="view-document-modal">
+		<iframe width="100%" height="99%" class="iframe-view-document" frameborder="0"></iframe>
+	</div>
+	<a href="#" class="link-use-policy" data-view-use-policy>Política de uso</a>
+</div>
+
+        
+        </div>
+    </div>
+</div>
+
+
+                </div>
+
+        </div>
+    </div>
+
+        </div>
+	</div>
+</div>
+
+<script type="text/javascript">
+WCMAPI.version = "1.7.0-210202";WCMAPI.serverURL = "https://medcininstituto120197.fluig.cloudtotvs.com.br";WCMAPI.uploadURL = "https://medcininstituto120197.fluig.cloudtotvs.com.br/ecm/upload";WCMAPI.contextPath = "/portal";WCMAPI.tenantURI = "/portal/p/1";WCMAPI.tenantPATH = "1";WCMAPI.tenantURL = "https://medcininstituto120197.fluig.cloudtotvs.com.br/portal/p/1";WCMAPI.protectedContextPath = "/portal/p";WCMAPI.serverContextURL = "/portal";WCMAPI.replicationServerEnabled = false;WCMAPI.replicationServerCentralized = false;WCMAPI.colorMenu = "rgb(214, 146, 0)";WCMAPI.colorBackground = "rgb(255, 255, 255)";WCMAPI.imageBackground = "false";WCMAPI.imageLogo = "true";WCMAPI.spaceId = "0";WCMAPI.themeId = "0";WCMAPI.pageId = "147";WCMAPI.pageCode = "page_cadastro_participante";WCMAPI.pageTitle = "Cadastro de Participantes";WCMAPI.pageType = "0";WCMAPI.pageLayout = "0";WCMAPI.parentPageCode = "";WCMAPI.homePageCode = "home";WCMAPI.applicationCode = "fluig";WCMAPI.friendlyURL = "";WCMAPI.locale = "pt_BR";WCMAPI.localeDisplayName = "português (Brasil)";WCMAPI.isEditMode = "false";
+        WCMAPI.isLegacyLMSEnabled = false;
+        WCMAPI.isLegacyAppsEnabled = false;
+
+WCMAPI.timezone = "America/Sao_Paulo";        WCMAPI.fluigPaas = false;
+		WCMAPI.isSAMLEnabled = false;
+WCMAPI.tenantCode = "1";WCMAPI.organizationId = "1";WCMAPI.userId = "9";WCMAPI.userCode = "Emanuel";		if (WCMAPI.userCode == '') {
+WCMAPI.userCode = "Emanuel";		}
+
+WCMAPI.user = "Emanuel Ferreira";
+WCMAPI.userLogin = "Emanuel";WCMAPI.userEmail = "EmanuelOrion992@outlook.com";WCMAPI.userLocationId = "0";WCMAPI.userLocationCode = "";WCMAPI.userLocationUrl = "";WCMAPI.userIsLogged = true;
+    WCMAPI.isFeatureServerEnabled = false;
+	WCMAPI.enabledFeatures = [];
+
+WCMAPI.isMobileAppMode = function() {return false;};
+	if (postLoading.fns.length) {
+		for (var i=0; i < postLoading.fns.length; i++) {
+			postLoading.fns[i]();
+		}
+	}
+
+	postLoading.alreadyRan = true;
+
+	function loadWidgets() {
+		WCMAPI.loadWidgets();
+	}
+
+	loadWidgets();
+	$.ajaxSetup({
+		complete: function() {
+			if ($('.wcm-widget-class').length) {
+				loadWidgets();
+			}
+		}
+	});
+
+</script>
+
+        <!-- Garante que todos os elementos da página foram renderizados -->
+        <script type="text/javascript">
+            $(document).ready(function() {
+                    $("wcm-edit-warning-wrapper").remove();
+
+				if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					$('#favicon').prop('href','/portal/resources/images/white_favicon.ico')
+				}else{					
+					$('#favicon').prop('href','/portal/resources/images/favicon.ico')
+				}
+				
+                $('.wcm-all-content').css('visibility','visible');
+                initTheme();
+            });
+
+        	function initTheme() {
+        		refreshMoreMenu($('.wcm-menu-background').css('background-color'));
+				refreshLuminosityMenu(false, 'wcm-menu-background');
+        		refreshHeaderLuminosityTags(false);
+
+            	$('#wcm_breadcrumbs li a').each(function() {
+                	$(this).attr('href','#');
+                });
+
+            	// Adicionando evento do resize para jqgrid
+            	$(window).unbind('resize', resizeAllGrids);
+            	$(window).bind('resize', resizeAllGrids).resize();
+            };
+
+            function refreshHeaderLuminosityTags(showAnimate){
+            	var rgbLight = 'rgb(255,255,255)';
+	        	var rgbDark = 'rgb(0,0,0)';
+            	var rgbaLight = 'rgba(255,255,255,.4)';
+	        	var rgbaDark = 'rgba(0,0,0,.4)';
+	        	var headerLuminosity = new TAGColour('wcm-header-background').getLuminosity();
+				if(!headerLuminosity){
+					return;
+				}
+		        var tagsLuminosityBorder = $('.wcm-luminosity-border');
+		        var tagsLuminosityBorderRight = $('.wcm-luminosity-border-right');
+		        var tagsLuminosityHeaderColor = $('.wcm-luminosity-header-color');
+		        var tagsLuminosityHeaderBackgroundImage = $('.wcm-luminosity-header-background-image');
+
+				if(headerLuminosity == 'dark'){
+					tagsLuminosityBorder.css('border-color', rgbaLight);
+					tagsLuminosityBorderRight.css('border-right-color', rgbaLight);
+					tagsLuminosityHeaderColor.css('color', rgbLight);
+					refreshLuminosityImages(tagsLuminosityHeaderBackgroundImage, 'light', 'dark');
+				}else{
+					tagsLuminosityBorder.css('border-color', rgbaDark);
+					tagsLuminosityBorderRight.css('border-right-color', rgbaDark);
+					tagsLuminosityHeaderColor.css('color', rgbDark);
+					refreshLuminosityImages(tagsLuminosityHeaderBackgroundImage, 'dark', 'light');
+				}
+            }
+
+            function refreshLuminosityImages(jTag, newLuminosity, oldLuminosity){
+				if(jTag){
+					for(var i = 0; i < jTag.length; i++){
+						var jTagImage = $(jTag[i]);
+						var newUrlImage = jTagImage.css('background-image').replace(oldLuminosity, newLuminosity);
+						jTagImage.css('opacity',0).css('background-image', newUrlImage).css('opacity',1);
+					}
+				}
+            }
+
+            function resizeAllGrids(){
+            	if (grid = $('.ui-jqgrid-btable:visible')) {
+                    grid.each(function(index) {
+                        gridId = $(this).attr('id');
+                        gridParentWidth = $('#gbox_' + gridId).parent().width()-2;
+                        $('#' + gridId).setGridWidth(gridParentWidth);
+                    });
+
+                    $('.ui-jqgrid-pager-clone').each(function(){
+                    	var idClone = $(this).attr('id');
+                    	var idOriginal = idClone.substring(0, idClone.length - 6);
+                    	$(this).width($('#'+idOriginal).width());
+                    });
+                }
+            };
+
+			function refreshLuminosityMenu(showAnimate, tag){
+				showAnimate = showAnimate || false;
+				tag = tag || 'wcm-menu-background';
+
+				var rgbLight = 'rgb(215,215,215)';
+	        	var rgbDark = 'rgb(0,0,0)';
+				var menuLuminosity = new TAGColour(tag).getLuminosity();
+				if(!menuLuminosity){
+					return;
+				}
+				var tagsLuminosityMenuColor = $('.wcm-luminosity-menu-color');
+				var tagsLuminosityHeaderBackgroundImage = $('.wcm-luminosity-menu-background-image');
+
+				if(menuLuminosity == 'dark'){
+					tagsLuminosityMenuColor.css('color', rgbLight);
+					refreshLuminosityImages(tagsLuminosityHeaderBackgroundImage, 'light', 'dark');
+				}else{
+					tagsLuminosityMenuColor.css('color', rgbDark);
+					refreshLuminosityImages(tagsLuminosityHeaderBackgroundImage, 'dark', 'light');
+				}
+			}
+
+            function refreshMoreMenu(colorMenu) {
+            	colorMenu = colorMenu || $('.wcm-menu-background').css('background-color');
+			    var arrayRbg = extractRGBColor(colorMenu);
+			    if(!arrayRbg){
+			    	return;
+			    }
+				var rgbColor = new RGBColour(arrayRbg[0],arrayRbg[1],arrayRbg[2]);
+				var hslColor = rgbColor.getHSL();
+				var endColor = new HSLColour(hslColor.h,hslColor.s,hslColor.l);
+				var startColor = new HSLColour(hslColor.h,hslColor.s,hslColor.l + 4);
+				var shadowColor = new HSLColour(hslColor.h,hslColor.s,hslColor.l - 8);
+
+				if(hslColor.l > 95){
+					shadowColor = new HSLColour(hslColor.h,hslColor.s,hslColor.l - 25);
+				}else if(hslColor.l > 90){
+					shadowColor = new HSLColour(hslColor.h,hslColor.s,hslColor.l - 20);
+				}else if(hslColor.l > 85){
+					shadowColor = new HSLColour(hslColor.h,hslColor.s,hslColor.l - 15);
+				}else if(hslColor.l < 1){
+					startColor = new HSLColour(hslColor.h,hslColor.s,hslColor.l + 9);
+					shadowColor = new HSLColour(hslColor.h,hslColor.s,hslColor.l + 46);
+				}else if(hslColor.l < 5){
+					startColor = new HSLColour(hslColor.h,hslColor.s,hslColor.l + 7);
+					shadowColor = new HSLColour(hslColor.h,hslColor.s,hslColor.l + 20);
+				}
+
+				var jWcmMenuMoreBackground = $('.wcm-menu-more-background');
+
+				jWcmMenuMoreBackground.css('background' , 'linear-gradient(to right,'+ startColor.getCSSHexadecimalRGB() +' 0%,'+ startColor.getCSSHexadecimalRGB() +' 30%,'+ endColor.getCSSHexadecimalRGB() +' 70%,'+ endColor.getCSSHexadecimalRGB() +' 100%)');
+				$('.wcm-menu-more-indicator-background-top').css('border-right-color' , startColor.getCSSHexadecimalRGB());
+				$('.wcm-menu-more-indicator-background-bottom').css('border-top-color' , startColor.getCSSHexadecimalRGB());
+
+				jWcmMenuMoreBackground.css('box-shadow' , '1px 1px 7px 0px ' + shadowColor.getCSSHexadecimalRGB());
+				$('.wcm-menu-more-indicator-top-line').css('box-shadow' , '-1px 0px 4px 0px ' + shadowColor.getCSSHexadecimalRGB());
+				$('.wcm-menu-more-indicator-bottom-line').css('box-shadow' , '2px -2px 4px 0px ' + shadowColor.getCSSHexadecimalRGB());
+
+				var jWcmSubmenuBackground = $('.submenu');
+				jWcmSubmenuBackground.css('background' , 'linear-gradient(to right,'+ startColor.getCSSHexadecimalRGB() +' 0%,'+ startColor.getCSSHexadecimalRGB() +' 30%,'+ endColor.getCSSHexadecimalRGB() +' 70%,'+ endColor.getCSSHexadecimalRGB() +' 100%)');
+				jWcmSubmenuBackground.css('box-shadow' , '1px 1px 7px 0px ' + shadowColor.getCSSHexadecimalRGB());
+            };
+
+            function extractRGBColor(color){
+            	if(color){
+					return color.substring(color.indexOf('(') + 1, color.indexOf(')')).split(',');
+            	}
+            	return null;
+			};
+        </script>
+        <script DEFER="DEFER">
+        		document.getElementById("favicon").href="/portal/resources/images/favicon.ico";
+        </script>
+			<script type="text/javascript">
+				WCMAPI.identifyBrowser();
+			</script>
+
+
+
+				<script type="text/javascript">
+					WCMAPI.isFirstLoginInThisSession();
+				</script>
+
+    <script type="text/javascript">
+        var accountGoogle = "";
+        var accountGoogleFluig = "UA-48421702-1";
+        var domain = 'byyou.com';
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', accountGoogleFluig]);
+        _gaq.push(['_trackPageview']);
+        _gaq.push(['_setDomainName', domain]);
+
+        if (accountGoogle != '' && accountGoogle != accountGoogleFluig) {
+            _gaq.push(['b._setAccount', accountGoogle]);
+            _gaq.push(['b._trackPageview']);
+        }
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www')
+                    + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+        <!--[if lte IE 9]>
+		<script type="text/javascript">
+		    var links = $('link[rel="stylesheet"]'),
+			  urls = [],
+			  coef = 15,
+			  numLists = Math.ceil(links.length / coef),
+			  arrs = [],
+			  currArr;
+
+			//se tiver mais do que 30 estilos, continua
+			if(links.length >= 30) {
+			  links.each(function(idx, link) {
+				urls.push(link.href);
+			});
+
+			links.remove();
+
+			for(var i = 0; i < numLists; i++) {
+				currArr = urls.splice(0, coef);
+				//arrs.push(currArr);
+
+				var style = "<style type='text/css'>";
+				for(var j = 0; j < currArr.length; j++) {
+					style += '@import url("' + currArr[j] + '");\n ';
+				}
+
+				style += '</style>';
+
+				$('head').append(style);
+			  }
+			}
+		</script>
+		<![endif]-->
+        
+	</body>
+</html>

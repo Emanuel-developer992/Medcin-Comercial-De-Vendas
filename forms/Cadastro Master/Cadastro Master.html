@@ -15,6 +15,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </head>
+        <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
 <body>
   <div class="fluig-style-guide">
     <form name="form" role="form">
@@ -110,7 +111,16 @@
                       <div class="panel-body">
                           
                           <!-- 1° Input -->
-                          <!-- id automatico -->
+                        <!-- ID (CP-01) Automatico -->
+                        <div class="form-group col-md-2">
+                            <label for="idCP">ID do Documento</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">ID</div>
+                                <input type="text" id="idCP" name="idCP"  class="form-control form-control-sm mInt" readonly="" style="text-align: center;">
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
 
                           <!-- 2° Input -->
                           <div class="form-group col-md-4">
@@ -178,7 +188,7 @@
 
                           <div class="form-group col-md-3">
                               <label for="pais">Pais</label>
-                              <input name="pais" value="${blur.pais}" type="text" class="form-control" id="pais">
+                              <input name="pais" type="text" class="form-control" id="pais">
                           </div>
                       </div>    
                   </div>
@@ -495,6 +505,16 @@
                           <h3 class="panel-title">Informações Básicas</h3>
                       </div>
                       <div class="panel-body">
+
+                        <!-- 1° Input -->
+                        <!-- ID (PS-01) Automatico -->
+                        <div class="form-group col-md-2">
+                            <label for="idPS">ID do Documento</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">ID</div>
+                                <input type="text" id="idPS" name="idPS" class="form-control form-control-sm mInt" readonly="" style="text-align: center;">
+                            </div>
+                        </div>
                           
                           <!-- 1° Input -->
                           <!-- ID Automatico -->
@@ -632,6 +652,23 @@
                                   <div class="form-field" data-type="tabledetail" data-show-properties="" data-field-name="Table_Combo"></div>
                               </div>
                           </div>
+
+                        <!-- 2° Painel -->
+                        <div class="panel panel-warning">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Instruções</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                <!-- 10° Input -->
+                                <div class="form-group col-md-12">
+                                    <label for="metodologia">Métodologia do Produto ou Serviço</label>
+                                    <textarea name="metodologia" type="text" class="form-control" style="height: 200px;" id="metodologia"></textarea>
+                                </div>
+
+                            </div>
+                        </div>
+
                       </div>
                   </div>
                 </div>
@@ -661,7 +698,14 @@
                     <div class="panel-body">
                                                     
                         <!-- 1° Input -->
-                        <!-- ID (P-01) Automatico -->
+                        <!-- ID (O-01) Automatico -->
+                        <div class="form-group col-md-2">
+                            <label for="idO">ID do Documento</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">ID</div>
+                                <input type="text" id="idO" name="idO"  class="form-control form-control-sm mInt" readonly="" style="text-align: center;">
+                            </div>
+                        </div>
 
                         <!-- 2° Input -->
                         <div class="form-group col-md-5">
@@ -712,28 +756,31 @@
                         <div class="form-group col-md-3">
                             <label for="item">Código do Item</label>
                             <input
-                                type="zoom"
-                                id = "codItem"
-                                name="codItem"
-                                data-zoom="{
-                                    'displayKey':'codP',
-                                    'datasetId':'dscProdutos_Servicos',
-                                    'maximumSelectionLength':'1',
-                                    'placeholder':'Selecione o Item Desejado...',
-                                    'fields':[
-                                        {
-                                        'field':'codP',
-                                        'label':'Código'
-                                        },{
-                                        'field':'descricao',
-                                        'label':'Descrição',
-                                        'standard':'true'
-                                        }
-                                    ]
-                                }"
+                                    type="zoom"
+                                    id = "c7_total"
+                                    name="c7_total"
+                                    data-zoom="{
+                                        'displayKey':'codP',
+                                        'datasetId':'DSCadastroGeral',
+                                        'maximumSelectionLength':'1',
+                                        'placeholder':'Escolha o usuário',
+                                        'fields':[
+                                            {
+                                            'field':'codP',
+                                            'label':'ID'
+                                            },{
+                                            'field':'descricao',
+                                            'label':'Descrição',
+                                            'standard':'true'
+                                            },{
+                                            'field':'specificChar',
+                                            'label':'Características'
+                                            }
+                                        ]
+                                    }"
                                 />
                         </div>
-                    
+
                         <div class="clearfix"></div>
 
                         <!-- 9° Input -->
@@ -765,10 +812,10 @@
 
                         <!-- 13° Input -->
                         <div class="form-group col-md-5">
-                            <label for="rOrc">R$ Total do Oçamento</label>
+                            <label for="tOrcamento">R$ Total do Oçamento</label>
                             <div class="input-group">
                                 <div class="input-group-addon">R$</div>
-                                      <input name="rOrc" type="text" class="form-control" id="rOrc" mask="#.##0,00">
+                                    <input name="tOrcamento" type="text" class="form-control" id="tOrcamento" mask="#.##0,00">
                             </div>
                         </div>
 
@@ -783,12 +830,64 @@
 
                         <!-- 15° Input -->
                         <div class="form-group col-md-4">
-                            <label for="rOrcD">R$ Total do Orçamento c/ Desconto</label>
+                            <label for="orcamentoDesconto">R$ Total do Orçamento c/ Desconto</label>
                             <div class="input-group">
                                 <div class="input-group-addon">R$</div>
-                                      <input name="rOrcD" type="text" class="form-control" id="rOrcD" mask="#.##0,00">
+                                    <input name="orcamentoDesconto" type="text" class="form-control" id="orcamentoDesconto" mask="#.##0,00">
                             </div>
                         </div>
+
+                        <div class="clearfix"></div>
+
+                        <button name="add" id="add" type="button" class="btn btn-success" onclick="pushTable()"><b>Adicionar +</b></button>
+
+                        <div class="clearfix"></div>
+                        <div class="clearfix"></div>
+
+                        <!-- Tabela 1--> 
+                        <div class="table-responsive col-md-12">
+                            <table tablename="tabelaOrcamento" class="table table-striped" id="tabelaOrcamento" noaddbutton="true" nodeletebutton="false">
+                                <thead>
+                                    <tr>
+                                        <th>ID Item</th>
+                                        <th>Descrição do Item</th>
+                                        <th>Valor de Tabela</th>
+                                        <th>Prazo de Execução</th>
+                                        <th>Prazo de Entrega</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><div id="excluir" name="excluir"></div></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                
+                        <!-- Tabela 2-->
+                        <div class="table-responsive col-md-12">
+                            <table tablename="tabelaOrcamento2" class="table table-striped" id="tabelaOrcamento2" noaddbutton="true" nodeletebutton="false">
+                                <thead>
+                                    <tr>
+                                        <th>Total do Orçamento</th>
+                                        <th>Desconto (%)</th>
+                                        <th>Total de Orçamento c/ desconto</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div> 
+
                     </div>
                 </div>
 
@@ -813,15 +912,28 @@
 
                         <!-- 18° Input -->
                         <div class="form-group col-md-3">
-                            <label for="satus">Status</label>
-                            <select name="satus" type="text" class="form-control" id="satus">
-                                <option value="Solicitado">Solicitado</option>
-                                <option value="Negociação">Negociação</option>
-                                <option value="Prospecção">Prospecção</option>
-                                <option value="Cancelado">Cancelado</option>
-                                <option value="Reprovado">Reprovado</option>
-                                <option value="Aprovado">Aprovado</option>
-                            </select>
+                            <label for="statusO">Status</label>
+                            <input
+                                type="zoom"
+                                id = "statusO"
+                                name="statusO"
+                                data-zoom="{
+                                    'displayKey':'status',
+                                    'datasetId':'dsStatusO',
+                                    'maximumSelectionLength':'3',
+                                    'placeholder':'Selecione o status do documento...',
+                                    'fields':[
+                                        {
+                                        'field':'status',
+                                        'label':'Status'
+                                        },{
+                                        'field':'statusDescricao',
+                                        'label':'Descrição',
+                                        'standard':'true'
+                                        }
+                                    ]
+                                }"
+                                />
                         </div>
 
                         <!-- 19° Input -->
@@ -841,8 +953,7 @@
           var dataClient = FLUIGC.calendar('#dataClient');
         </script>
 
-        <script type="text/javascript" src="cepAuto.js"></script>
-        <script type="text/javascript" src="cardsCadastro.js"></script>
+        <script type="text/javascript" src="js/CadastroMaster.js"></script>
 
       </form>
     </div>
