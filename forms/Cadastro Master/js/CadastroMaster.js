@@ -57,7 +57,7 @@ window.onload = function() {
     var linha = dsCadastro.values.length;
 
     var inputCP = document.getElementById("idCP");
-    var inputPS = document.getElementById("idPS");
+    var inputPS = document.getElementById("codP");
     var inputO = document.getElementById("idO");
 
     inputCP.value = "CP-" + (linha + 1);
@@ -70,22 +70,30 @@ window.onload = function() {
 }
 
 
-// Tabela 
+// TABELAS
+
+var idAll;
+var apAll
 
 function pushTable() {
 
     var dados = [];
     var inputId = $("#c7_total").val();
+    var inputAplicacao = $("#estudo").val();
     var inputDescricao = $("#descricaoItem").val();
     var inputValorTab = $("#rItem").val();
     var inputPrazoEx = $("#prazoExe").val();
     var inputPrazoEn = $("#prazoER").val();
+
+    idAll = inputId;
+    apAll = inputAplicacao
 
     var element = document.getElementById('excluir');
     
    
     dados.push("");
     dados.push(inputId);
+    dados.push(inputAplicacao);
     dados.push(inputDescricao);
 	dados.push(inputValorTab);
     dados.push(inputPrazoEx);
@@ -119,6 +127,52 @@ function pushTable() {
 
 }
 
+function pushTable2() {
+
+    var dados = [];
+    var inputTO = $("#tOrcamento").val();
+    var inputDesconto = $("#desconto").val();
+    var inputOD = $("#orcamentoDesconto").val();
+
+    console.log(idAll);
+
+    var element = document.getElementById('excluir');
+    
+   
+    dados.push("");
+    dados.push(idAll);
+    dados.push(apAll);
+    dados.push(inputTO);
+    dados.push(inputDesconto);
+	dados.push(inputOD);
+    
+    dados.push(element.innerHTML = '<button type="button" class="btn btn-danger excluir">Excluir</button>');  
+    
+    var table = document.getElementById("tabelaOrcamento2");
+    
+    var numOfRows = table.rows.length;
+
+    var numOfCols = table.rows[numOfRows-1].cells.length;
+
+    var newRow = table.insertRow(numOfRows);
+
+    for (var i = 0; i < numOfCols; i++) {
+
+        newCell = newRow.insertCell(i);
+
+        newCell.innerHTML = dados[i];
+
+        
+    }
+
+    $("#tOrcamento").val("");
+    $("#desconto").val("");
+	$("#orcamentoDesconto").val("");
+
+    $(".excluir").bind("click", Excluir);
+
+}
+
 function Excluir(){
 
     var par = $(this).parent().parent(); //tr
@@ -126,9 +180,63 @@ function Excluir(){
     par.remove();
 };
 
-
-
 // AUTOMAÇÃO DE DESCONTO
 
+$("#desconto").blur(function() {
+
+    var inputtOcamento = document.getElementById("tOrcamento");
+    var inputdesconto = document.getElementById("desconto");
+    var inputorcamentoDesconto = document.getElementById("orcamentoDesconto");
+
+    var desconto = inputdesconto.value / 100; 
+    var totalDesconto = inputtOcamento.value - (inputtOcamento.value * desconto);
+    var arredondamento = parseFloat(totalDesconto.toFixed(2));
+    inputorcamentoDesconto.value = arredondamento;
+});
+
+$("#tOrcamento").blur(function() {
+
+    var inputtOcamento = document.getElementById("tOrcamento");
+    var inputdesconto = document.getElementById("desconto");
+    var inputorcamentoDesconto = document.getElementById("orcamentoDesconto");
+
+    var desconto = inputdesconto.value / 100; 
+    var totalDesconto = inputtOcamento.value - (inputtOcamento.value * desconto);
+    var arredondamento = parseFloat(totalDesconto.toFixed(2));
+    inputorcamentoDesconto.value = arredondamento;
+});
+
+// AUTO-CAMPO
+
+function AutoCampo() {  
+
+    //Condição de Busca
+    var Zoom = document.getElementById("c7_total");
+    var inputZoom = Zoom.value;
+
+    //Filtro de Busca 
+    var codConstraint = DatasetFactory.createConstraint("codP", inputZoom, inputZoom, ConstraintType.SHOULD);
+    var arrayConstraint = new Array(codConstraint);
+
+    // Busca no Dataset + Condições de Filtro
+    var array = DatasetFactory.getDataset("DSCadastroGeral", null, arrayConstraint, null);
+
+    //Valores para integração ao campos
+    var descricaoArray = array.values[0].descricao;
+    var estudoArray = array.values[0].estudoPS;
+    var rItemArray = array.values[0].pVenda;
+
+    //Integração aos campos
+    $("#descricaoItem").val(descricaoArray);
+    $("#estudo").val(estudoArray);
+    $("#rItem").val(rItemArray);
+    
+    
+    
+}
+
+document.getElementById("divZoom").onblur = function() {
+    alert('blur');
+ }
 
 

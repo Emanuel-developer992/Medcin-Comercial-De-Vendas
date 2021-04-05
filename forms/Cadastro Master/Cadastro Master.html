@@ -509,18 +509,18 @@
                         <!-- 1° Input -->
                         <!-- ID (PS-01) Automatico -->
                         <div class="form-group col-md-2">
-                            <label for="idPS">ID do Documento</label>
+                            <label for="codP">Código do Produto</label>
                             <div class="input-group">
                                 <div class="input-group-addon">ID</div>
-                                <input type="text" id="idPS" name="idPS" class="form-control form-control-sm mInt" readonly="" style="text-align: center;">
+                                <input type="text" id="codP" name="codP" class="form-control form-control-sm mInt" readonly="" style="text-align: center;">
                             </div>
                         </div>
                           
                           <!-- 1° Input -->
                           <!-- ID Automatico -->
                           <div class="form-group col-md-2">
-                              <label for="codP">Código do Produto</label>
-                              <input name="codP" type="text" class="form-control" id="codP">
+                              <label for="estudoPS">Estudo</label>
+                              <input name="estudoPS" type="text" class="form-control" id="estudoPS">
                           </div>
 
                           <div class="clearfix"></div>
@@ -753,21 +753,26 @@
                     <div class="panel-body">
 
                         <!-- 8° Input -->
-                        <div class="form-group col-md-3">
+                        <div id="divZoom" class="form-group col-md-9" tabindex="0" onblur="AutoCampo()">
                             <label for="item">Código do Item</label>
                             <input
                                     type="zoom"
+                                    oninput="AutoCampo()"
                                     id = "c7_total"
                                     name="c7_total"
                                     data-zoom="{
                                         'displayKey':'codP',
                                         'datasetId':'DSCadastroGeral',
                                         'maximumSelectionLength':'1',
-                                        'placeholder':'Escolha o usuário',
+                                        'placeholder':'Selecione o Código do Produto...',
                                         'fields':[
                                             {
                                             'field':'codP',
                                             'label':'ID'
+                                            },{
+                                            'field':'estudoPS',
+                                            'label':'Estudo',
+                                            'standard':'true'
                                             },{
                                             'field':'descricao',
                                             'label':'Descrição',
@@ -781,16 +786,22 @@
                                 />
                         </div>
 
+                        <!-- 9° Input -->
+                        <div class="form-group col-md-3">
+                            <label for="estudo">Estudo</label>
+                            <input name="estudo" type="text" class="form-control" id="estudo">
+                        </div>
+
                         <div class="clearfix"></div>
 
-                        <!-- 9° Input -->
-                        <div class="form-group col-md-5">
+                        <!-- 10° Input -->
+                        <div class="form-group col-md-12">
                             <label for="descricaoItem">Descrição do Item</label>
                             <textarea name="descricaoItem" type="text" class="form-control" id="descricaoItem" style="height: 100px"></textarea>
                         </div>
 
-                        <!-- 10° Input -->
-                        <div class="form-group col-md-5">
+                        <!-- 11° Input -->
+                        <div class="form-group col-md-6">
                             <label for="rItem">R$ do Item</label>
                             <div class="input-group">
                                 <div class="input-group-addon">R$</div>
@@ -798,48 +809,48 @@
                             </div>
                         </div>
 
-                        <!-- 11° Input -->
-                        <div class="form-group col-md-2">
+                        <!-- 12° Input -->
+                        <div class="form-group col-md-3">
                             <label for="prazoExe">Prazo de Execução</label>
                             <input name="prazoExe" type="date" class="form-control" id="prazoExe">
                         </div>
 
-                        <!-- 12° Input -->
+                        <!-- 13° Input -->
                         <div class="form-group col-md-3">
                             <label for="prazoER">Prazo para Entrega do Relatório</label>
                             <input name="prazoER" type="date" class="form-control" id="prazoER">
                         </div>
 
-                        <!-- 13° Input -->
+                        <!-- 14° Input -->
                         <div class="form-group col-md-5">
                             <label for="tOrcamento">R$ Total do Oçamento</label>
                             <div class="input-group">
                                 <div class="input-group-addon">R$</div>
-                                    <input name="tOrcamento" type="text" class="form-control" id="tOrcamento" mask="#.##0,00">
-                            </div>
-                        </div>
-
-                        <!-- 14° Input -->
-                        <div class="form-group col-md-3">
-                            <label for="desconto">% Desconto</label>
-                            <div class="input-group">
-                                <div class="input-group-addon">R$</div>
-                                    <input name="desconto" type="text" class="form-control" id="desconto" mask="#.##0,00">
+                                    <input name="tOrcamento" type="text" class="form-control" id="tOrcamento" mask="###0.00"> 
                             </div>
                         </div>
 
                         <!-- 15° Input -->
+                        <div class="form-group col-md-3">
+                            <label for="desconto">Desconto (%)</label>
+                            <div class="input-group">
+                                <input name="desconto" type="text" class="form-control" id="desconto">
+                                <div class="input-group-addon">%</div>
+                            </div>
+                        </div>
+
+                        <!-- 16° Input -->
                         <div class="form-group col-md-4">
                             <label for="orcamentoDesconto">R$ Total do Orçamento c/ Desconto</label>
                             <div class="input-group">
                                 <div class="input-group-addon">R$</div>
-                                    <input name="orcamentoDesconto" type="text" class="form-control" id="orcamentoDesconto" mask="#.##0,00">
+                                    <input name="orcamentoDesconto" type="text" class="form-control" id="orcamentoDesconto" mask="###0.00">
                             </div>
                         </div>
 
                         <div class="clearfix"></div>
 
-                        <button name="add" id="add" type="button" class="btn btn-success" onclick="pushTable()"><b>Adicionar +</b></button>
+                        <button name="add" id="add" type="button" class="btn btn-success" onclick="pushTable(); pushTable2()"><b>Adicionar +</b></button>
 
                         <div class="clearfix"></div>
                         <div class="clearfix"></div>
@@ -850,6 +861,7 @@
                                 <thead>
                                     <tr>
                                         <th>ID Item</th>
+                                        <th>Estudo</th>
                                         <th>Descrição do Item</th>
                                         <th>Valor de Tabela</th>
                                         <th>Prazo de Execução</th>
@@ -859,6 +871,7 @@
                                 </thead>
                                 <tbody>
                                     <tr>
+                                        <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -875,14 +888,22 @@
                             <table tablename="tabelaOrcamento2" class="table table-striped" id="tabelaOrcamento2" noaddbutton="true" nodeletebutton="false">
                                 <thead>
                                     <tr>
+                                        <th>ID Item</th>
+                                        <th>Estudo</th>
                                         <th>Total do Orçamento</th>
                                         <th>Desconto (%)</th>
-                                        <th>Total de Orçamento c/ desconto</th>
+                                        <th style="width: 40%">Total de Orçamento c/ desconto</th>
+                                        <th>Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><div id="excluir" name="excluir"></div></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -898,19 +919,19 @@
                     </div>
                     <div class="panel-body">
 
-                        <!-- 16° Input -->
+                        <!-- 17° Input -->
                         <div class="form-group col-md-5">
                             <label for="formPag">Forma de Pagamento</label>
                             <input name="formPag" type="text" class="form-control" id="formPag">
                         </div>
 
-                        <!-- 17° Input -->
+                        <!-- 18° Input -->
                         <div class="form-group col-md-3">
                             <label for="infoOrc">Infomações do Orçamento</label>
                             <input name="infoOrc" type="text" class="form-control" id="infoOrc">
                         </div>
 
-                        <!-- 18° Input -->
+                        <!-- 19° Input -->
                         <div class="form-group col-md-3">
                             <label for="statusO">Status</label>
                             <input
@@ -936,7 +957,7 @@
                                 />
                         </div>
 
-                        <!-- 19° Input -->
+                        <!-- 20° Input -->
                         <div class="form-group col-md-5">
                             <label for="regMov">Resgistro de Movimentação</label>
                             <input name="regMov" type="text" class="form-control" id="regMov">
