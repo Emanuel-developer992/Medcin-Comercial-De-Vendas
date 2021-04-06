@@ -98,13 +98,8 @@
                       </div>
                     </div>
 
-                  <div class="alert alert-warning alert-dismissible" role="alert">
-                      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                      <strong>Atenção!</strong> Para dar andamento ao processo preencha corretamente todos os campos.
-                  </div>
-
                   <!-- 1° Painel -->
-                  <div class="panel panel-warning">
+                  <div class="panel panel-primary" style="padding: 0px">
                       <div class="panel-heading">
                           <h3 class="panel-title">Informações Básicas</h3>
                       </div>
@@ -149,7 +144,7 @@
                   </div>
                   
                   <!-- 2° Painel -->
-                  <div class="panel panel-warning">
+                  <div class="panel panel-primary" style="padding: 0px">
                       <div class="panel-heading">
                           <h3 class="panel-title">Endereço e Complemento</h3>
                       </div>
@@ -194,7 +189,7 @@
                   </div>
 
                   <!-- 3° Painel -->
-                  <div class="panel panel-warning">
+                  <div class="panel panel-primary" style="padding: 0px">
                       <div class="panel-heading">
                           <h3 class="panel-title">Contatos</h3>
                       </div>
@@ -216,7 +211,7 @@
                   </div>        
 
                   <!-- 4° Painel -->
-                  <div class="panel panel-warning">
+                  <div class="panel panel-primary" style="padding: 0px">
                       <div class="panel-heading">
                           <h3 class="panel-title">Contato Comercial</h3>
                       </div>
@@ -296,7 +291,7 @@
                   </div>
 
                   <!-- 5° Painel -->
-                  <div class="panel panel-warning">
+                  <div class="panel panel-primary" style="padding: 0px">
                       <div class="panel-heading">
                           <h3 class="panel-title">Contato Financeiro</h3>
                       </div>
@@ -375,7 +370,7 @@
                   </div>
 
                   <!-- 6° Painel -->
-                  <div class="panel panel-warning">
+                  <div class="panel panel-primary" style="padding: 0px">
                       <div class="panel-heading">
                           <h3 class="panel-title">Contato Adicional</h3>
                       </div>
@@ -455,7 +450,7 @@
                   </div>
 
                       <!-- 7° Painel -->
-                  <div class="panel panel-warning">
+                  <div class="panel panel-primary" style="padding: 0px">
                       <div class="panel-heading">
                           <h3 class="panel-title">Complementos</h3>
                       </div>
@@ -494,13 +489,8 @@
                       </div>
                     </div>
 
-                  <div class="alert alert-warning alert-dismissible" role="alert">
-                      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                      <strong>Atenção!</strong> Para dar andamento ao processo preencha corretamente todos os campos.
-                  </div>
-
                   <!-- 1° Painel -->
-                  <div class="panel panel-warning">
+                  <div class="panel panel-primary" style="padding: 0px">
                       <div class="panel-heading">
                           <h3 class="panel-title">Informações Básicas</h3>
                       </div>
@@ -577,7 +567,7 @@
                   </div>
                   
                   <!-- 2° Painel -->
-                  <div class="panel panel-warning">
+                  <div class="panel panel-primary" style="padding: 0px">
                       <div class="panel-heading">
                           <h3 class="panel-title">Adicionar Combo</h3>
                       </div>
@@ -654,7 +644,7 @@
                           </div>
 
                         <!-- 2° Painel -->
-                        <div class="panel panel-warning">
+                        <div class="panel panel-primary" style="padding: 0px">
                             <div class="panel-heading">
                                 <h3 class="panel-title">Instruções</h3>
                             </div>
@@ -685,13 +675,8 @@
                     </div>
                   </div>
 
-                <div class="alert alert-warning alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                    <strong>Atenção!</strong> Para dar andamento ao processo preencha corretamente todos os campos.
-                </div>
-
                 <!-- 1° Painel -->
-                <div class="panel panel-warning">
+                <div class="panel panel-primary" style="padding: 0px">
                     <div class="panel-heading">
                         <h3 class="panel-title">Informações Básicas</h3>
                     </div>
@@ -746,18 +731,17 @@
                 </div>
 
                         <!-- 2° Painel -->
-                <div class="panel panel-warning">
+                <div class="panel panel-primary" style="padding: 0px">
                     <div class="panel-heading">
                         <h3 class="panel-title">Cadastro de Item</h3>
                     </div>
                     <div class="panel-body">
 
                         <!-- 8° Input -->
-                        <div id="divZoom" class="form-group col-md-9" tabindex="0" onblur="AutoCampo()">
+                        <div class="form-group col-md-9">
                             <label for="item">Código do Item</label>
                             <input
                                     type="zoom"
-                                    oninput="AutoCampo()"
                                     id = "c7_total"
                                     name="c7_total"
                                     data-zoom="{
@@ -850,19 +834,19 @@
 
                         <div class="clearfix"></div>
 
-                        <button name="add" id="add" type="button" class="btn btn-success" onclick="pushTable(); pushTable2()"><b>Adicionar +</b></button>
+                        <br>
+                        <br>
 
-                        <div class="clearfix"></div>
-                        <div class="clearfix"></div>
+                        <div class="alert alert-success" role="alert">Após o preenchimento dos dados, clique em adicionar para salver. (Você pode excluir informações caso deseje)</div>
 
                         <!-- Tabela 1--> 
                         <div class="table-responsive col-md-12">
-                            <table tablename="tabelaOrcamento" class="table table-striped" id="tabelaOrcamento" noaddbutton="true" nodeletebutton="false">
+                            <table tablename="tabelaOrcamento" class="table table-bordered" id="tabelaOrcamento" noaddbutton="true" nodeletebutton="false">
                                 <thead>
                                     <tr>
                                         <th>ID Item</th>
                                         <th>Estudo</th>
-                                        <th>Descrição do Item</th>
+                                        <th style="width: 40%">Descrição do Item</th>
                                         <th>Valor de Tabela</th>
                                         <th>Prazo de Execução</th>
                                         <th>Prazo de Entrega</th>
@@ -885,14 +869,14 @@
                 
                         <!-- Tabela 2-->
                         <div class="table-responsive col-md-12">
-                            <table tablename="tabelaOrcamento2" class="table table-striped" id="tabelaOrcamento2" noaddbutton="true" nodeletebutton="false">
+                            <table tablename="tabelaOrcamento2" class="table table-bordered" id="tabelaOrcamento2" noaddbutton="true" nodeletebutton="false">
                                 <thead>
                                     <tr>
                                         <th>ID Item</th>
                                         <th>Estudo</th>
                                         <th>Total do Orçamento</th>
                                         <th>Desconto (%)</th>
-                                        <th style="width: 40%">Total de Orçamento c/ desconto</th>
+                                        <th style="width: 54,5%">Total de Orçamento c/ desconto</th>
                                         <th>Ações</th>
                                     </tr>
                                 </thead>
@@ -909,11 +893,13 @@
                             </table>
                         </div> 
 
+                        <button name="add" id="add" type="button" class="btn btn-success" onclick="pushTable(); pushTable2()"><b>Adicionar +</b></button>
+
                     </div>
                 </div>
 
                     <!-- 3° Painel -->
-                <div class="panel panel-warning">
+                <div class="panel panel-primary" style="padding: 0px">
                     <div class="panel-heading">
                         <h3 class="panel-title">Pagamentos e Documentos</h3>
                     </div>

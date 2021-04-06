@@ -1,5 +1,7 @@
 // API - CEP AUTOMÁTICO
 
+//#region API
+
 $("#cep").blur(function(blur) {
     
     const paisAuto = "Brasil";
@@ -18,7 +20,11 @@ $("#cep").blur(function(blur) {
     })
 });
 
+//#endregion
+
 // AUTOMAÇÃO CARDS DE CADASTRO
+
+//#region Function
 
 function cadastroCP() {
 
@@ -48,7 +54,11 @@ function cadastroO() {
 
 }
 
+//#endregion
+
 // GERADOR DE ID
+
+//#region onload
 
 window.onload = function() {
 
@@ -69,8 +79,11 @@ window.onload = function() {
     
 }
 
+//#endregion
 
 // TABELAS
+
+//#region Funtion
 
 var idAll;
 var apAll
@@ -122,6 +135,7 @@ function pushTable() {
 	$("#rItem").val("");
     $("#prazoExe").val("");
 	$("#prazoER").val("");
+	$("#estudo").val("");
 
     $(".excluir").bind("click", Excluir);
 
@@ -180,7 +194,11 @@ function Excluir(){
     par.remove();
 };
 
+//#endregion
+
 // AUTOMAÇÃO DE DESCONTO
+
+//#region Blurs
 
 $("#desconto").blur(function() {
 
@@ -206,9 +224,13 @@ $("#tOrcamento").blur(function() {
     inputorcamentoDesconto.value = arredondamento;
 });
 
+//#endregion
+
 // AUTO-CAMPO
 
-function AutoCampo() {  
+//#region Focus
+
+$("#estudo").focus(function() {  
 
     //Condição de Busca
     var Zoom = document.getElementById("c7_total");
@@ -233,10 +255,195 @@ function AutoCampo() {
     
     
     
-}
+});
 
-document.getElementById("divZoom").onblur = function() {
-    alert('blur');
- }
+$("#descricaoItem").focus(function() {  
 
+    //Condição de Busca
+    var Zoom = document.getElementById("c7_total");
+    var inputZoom = Zoom.value;
 
+    //Filtro de Busca 
+    var codConstraint = DatasetFactory.createConstraint("codP", inputZoom, inputZoom, ConstraintType.SHOULD);
+    var arrayConstraint = new Array(codConstraint);
+
+    // Busca no Dataset + Condições de Filtro
+    var array = DatasetFactory.getDataset("DSCadastroGeral", null, arrayConstraint, null);
+
+    //Valores para integração ao campos
+    var descricaoArray = array.values[0].descricao;
+    var estudoArray = array.values[0].estudoPS;
+    var rItemArray = array.values[0].pVenda;
+
+    //Integração aos campos
+    $("#descricaoItem").val(descricaoArray);
+    $("#estudo").val(estudoArray);
+    $("#rItem").val(rItemArray);
+    
+    
+    
+});
+
+$("#rItem").focus(function() {  
+
+    //Condição de Busca
+    var Zoom = document.getElementById("c7_total");
+    var inputZoom = Zoom.value;
+
+    //Filtro de Busca 
+    var codConstraint = DatasetFactory.createConstraint("codP", inputZoom, inputZoom, ConstraintType.SHOULD);
+    var arrayConstraint = new Array(codConstraint);
+
+    // Busca no Dataset + Condições de Filtro
+    var array = DatasetFactory.getDataset("DSCadastroGeral", null, arrayConstraint, null);
+
+    //Valores para integração ao campos
+    var descricaoArray = array.values[0].descricao;
+    var estudoArray = array.values[0].estudoPS;
+    var rItemArray = array.values[0].pVenda;
+
+    //Integração aos campos
+    $("#descricaoItem").val(descricaoArray);
+    $("#estudo").val(estudoArray);
+    $("#rItem").val(rItemArray);
+    
+    
+    
+});
+
+$("#prazoExe").focus(function() {  
+
+    //Condição de Busca
+    var Zoom = document.getElementById("c7_total");
+    var inputZoom = Zoom.value;
+
+    //Filtro de Busca 
+    var codConstraint = DatasetFactory.createConstraint("codP", inputZoom, inputZoom, ConstraintType.SHOULD);
+    var arrayConstraint = new Array(codConstraint);
+
+    // Busca no Dataset + Condições de Filtro
+    var array = DatasetFactory.getDataset("DSCadastroGeral", null, arrayConstraint, null);
+
+    //Valores para integração ao campos
+    var descricaoArray = array.values[0].descricao;
+    var estudoArray = array.values[0].estudoPS;
+    var rItemArray = array.values[0].pVenda;
+
+    //Integração aos campos
+    $("#descricaoItem").val(descricaoArray);
+    $("#estudo").val(estudoArray);
+    $("#rItem").val(rItemArray);
+    
+    
+    
+});
+
+$("#prazoER").focus(function() {  
+
+    //Condição de Busca
+    var Zoom = document.getElementById("c7_total");
+    var inputZoom = Zoom.value;
+
+    //Filtro de Busca 
+    var codConstraint = DatasetFactory.createConstraint("codP", inputZoom, inputZoom, ConstraintType.SHOULD);
+    var arrayConstraint = new Array(codConstraint);
+
+    // Busca no Dataset + Condições de Filtro
+    var array = DatasetFactory.getDataset("DSCadastroGeral", null, arrayConstraint, null);
+
+    //Valores para integração ao campos
+    var descricaoArray = array.values[0].descricao;
+    var estudoArray = array.values[0].estudoPS;
+    var rItemArray = array.values[0].pVenda;
+
+    //Integração aos campos
+    $("#descricaoItem").val(descricaoArray);
+    $("#estudo").val(estudoArray);
+    $("#rItem").val(rItemArray);
+    
+    
+    
+});
+
+$("#tOrcamento").focus(function() {  
+
+    //Condição de Busca
+    var Zoom = document.getElementById("c7_total");
+    var inputZoom = Zoom.value;
+
+    //Filtro de Busca 
+    var codConstraint = DatasetFactory.createConstraint("codP", inputZoom, inputZoom, ConstraintType.SHOULD);
+    var arrayConstraint = new Array(codConstraint);
+
+    // Busca no Dataset + Condições de Filtro
+    var array = DatasetFactory.getDataset("DSCadastroGeral", null, arrayConstraint, null);
+
+    //Valores para integração ao campos
+    var descricaoArray = array.values[0].descricao;
+    var estudoArray = array.values[0].estudoPS;
+    var rItemArray = array.values[0].pVenda;
+
+    //Integração aos campos
+    $("#descricaoItem").val(descricaoArray);
+    $("#estudo").val(estudoArray);
+    $("#rItem").val(rItemArray);
+    
+    
+    
+});
+
+$("#desconto").focus(function() {  
+
+    //Condição de Busca
+    var Zoom = document.getElementById("c7_total");
+    var inputZoom = Zoom.value;
+
+    //Filtro de Busca 
+    var codConstraint = DatasetFactory.createConstraint("codP", inputZoom, inputZoom, ConstraintType.SHOULD);
+    var arrayConstraint = new Array(codConstraint);
+
+    // Busca no Dataset + Condições de Filtro
+    var array = DatasetFactory.getDataset("DSCadastroGeral", null, arrayConstraint, null);
+
+    //Valores para integração ao campos
+    var descricaoArray = array.values[0].descricao;
+    var estudoArray = array.values[0].estudoPS;
+    var rItemArray = array.values[0].pVenda;
+
+    //Integração aos campos
+    $("#descricaoItem").val(descricaoArray);
+    $("#estudo").val(estudoArray);
+    $("#rItem").val(rItemArray);
+    
+    
+    
+});
+
+$("#orcamentoDesconto").focus(function() {  
+
+    //Condição de Busca
+    var Zoom = document.getElementById("c7_total");
+    var inputZoom = Zoom.value;
+
+    //Filtro de Busca 
+    var codConstraint = DatasetFactory.createConstraint("codP", inputZoom, inputZoom, ConstraintType.SHOULD);
+    var arrayConstraint = new Array(codConstraint);
+
+    // Busca no Dataset + Condições de Filtro
+    var array = DatasetFactory.getDataset("DSCadastroGeral", null, arrayConstraint, null);
+
+    //Valores para integração ao campos
+    var descricaoArray = array.values[0].descricao;
+    var estudoArray = array.values[0].estudoPS;
+    var rItemArray = array.values[0].pVenda;
+
+    //Integração aos campos
+    $("#descricaoItem").val(descricaoArray);
+    $("#estudo").val(estudoArray);
+    $("#rItem").val(rItemArray);
+    
+    
+    
+});
+
+//#endregion
