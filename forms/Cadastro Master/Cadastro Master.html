@@ -573,75 +573,125 @@
                       </div>
                       <div class="panel-body">
 
-                          <!-- 9° Input -->
-                          <div class="form-input">
-                              <div class="form-group">
-                                  <label>Contato Comercial</label>
-                                  <table tablename="tableCombo" class="table" noaddbutton="true">
-                                      <thead>
-                                          <tr class="tableHeadRow">
-                                              <th class="tableColumn">Código de Kit/Pacote de Itens</th>
-                                              <th class="tableColumn">Itens do Kit/Pacote</th>
-                                              <th class="tableColumn">Descrição</th>
-                                              <th class="tableColumn">Quantidade</th>
-                                              <th class="tableColumn">R$ Valor Total do Item</th>
-                                              <th class="tableColumn">Preço da Venda</th>
-                                              <th class="tableColumn">Preço de Custo</th>
-                                          </tr>
+                        
+                            <div class="form-group col-md-3">
+                                <label for="codKP">Código do Kit/Pacote de Item</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">ID</div>
+                                    <input type="text" id="codKP" name="codKP" class="form-control">
+                                </div>
+                            </div>
+                        
+                    
+                        
+                            <div class="form-group col-md-3">
+                                <label for="itensP">Itens do Pacote</label>
+                                <input type="text" id="intensP" name="intensP" class="form-control">
+                            </div>
+                        
 
-                                      </thead>
-                                      <tbody>
-                                          <tr class="tableBodyRow">
-                                              <td class="fs-v-align-middle">
-                                                  <div class="form-input">
-                                                      <input type="text" name="tablecombo1_1" class="form-control" label="Código de kit/Pacote de Itens">
-                                                  </div>
-                                              </td>
-                                          
-                                              <td class="fs-v-align-middle">
-                                                  <div class="form-input">
-                                                      <input type="text" name="tablecombo2_1" class="form-control" label="Itens do Kit/Pacote">
-                                                  </div>
-                                              </td>
+                        
+                            <div class="form-group col-md-3">
+                                <label for="descricaoKP">Descrição</label>
+                                <input type="text" id="descricaoKP" name="descricaoKP" class="form-control">
+                            </div>
+                        
+                    
+                        
+                            <div class="form-group col-md-3">
+                                <label for="quantKP">Quantidade</label>
+                                <div class="input-group">
+                                    <input type="numbe" id="quantKP" name="quantKP" class="form-control">
+                                    <div class="input-group-addon">UN.</div>
+                                </div>
+                            </div>
+                        
 
-                                              <td class="fs-v-align-middle">
-                                                  <div class="form-input">
-                                                      <input type="text" name="tablecombo3_1" class="form-control" label="Descrição">
-                                                  </div>
-                                              </td>
-                                          
-                                              <td class="fs-v-align-middle">
-                                                  <div class="form-input">
-                                                      <input type="number" name="tablecombo4_1" class="form-control" label="Quantidade">
-                                                  </div>
-                                              </td>
+                        
+                            <div class="form-group col-md-3">
+                                <label for="tvalorKP">R$ Valor total do Item</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">R$</div>
+                                    <input type="text" id="tvalorKP" name="tvalorKP" class="form-control">
+                                </div>
+                            </div>
+                        
+                    
+                        
+                            <div class="form-group col-md-3">
+                                <label for="pVendaKP">Preço de Venda</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">R$</div>
+                                    <input type="text" id="pVendaKP" name="pVendaKP" class="form-control">
+                                </div>
+                            </div>
+                        
+                    
+                    
+                            <div class="form-group col-md-3">
+                                <label for="pCustoKP">Preço de Custo</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">R$</div>
+                                    <input type="text" id="pCustoKP" name="pCustoKP" class="form-control">
+                                </div>
+                            </div>
 
-                                              <td class="fs-v-align-middle">
-                                                  <div class="form-input">
-                                                      <input type="text" name="tablecombo5_1" class="form-control" label="R$ Valor Total do Item">
-                                                  </div>
-                                              </td>
-                                          
-                                              <td class="fs-v-align-middle">
-                                                  <div class="form-input">
-                                                      <input type="text" name="tablecombo6_1" class="form-control" label="Preço da Venda">
-                                                  </div>
-                                              </td>
-                                          
-                                              <td class="fs-v-align-middle">
-                                                  <div class="form-input">
-                                                      <input type="text" name="tablecombo7_1" class="form-control" label="Preço de Custo">
+                            <div class="clearfix"></div>
+                            <br>
+                            <br>
 
-                                                  </div>
-                                              </td>
-                                          </tr>
-                                      </tbody>
-                                  </table>
-                                  
-                                  <button type="button" class="btn btn-primary" onclick="wdkAddChild('tableCombo')">Adicionar</button>
-                                  <div class="form-field" data-type="tabledetail" data-show-properties="" data-field-name="Table_Combo"></div>
-                              </div>
-                          </div>
+                            <div class="alert alert-success" role="alert">Após o preenchimento dos dados, clique em adicionar para salver. (Você pode excluir informações caso deseje)</div>
+
+                            <!-- Tabela 1--> 
+                            <div class="table-responsive col-md-12">
+                                <table tablename="tabelaCadastroPS" class="table table-bordered" id="tabelaCadastroPS" noaddbutton="true" nodeletebutton="false">
+                                    <thead>
+                                        <tr>
+                                            <th>Códgo do Kit/Pacote de Itens</th>
+                                            <th>Itens do Kit/Pacote</th>
+                                            <th>Descrição</th>
+                                            <th>Ações</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td><div id="excluir" name="excluir"></div></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Tabela 2-->
+                            <div class="table-responsive col-md-12">
+                                <table tablename="tabelaCadastroPS2" class="table table-bordered" id="tabelaCadastroPS2" noaddbutton="true" nodeletebutton="false">
+                                    <thead>
+                                        <tr>
+                                            <th>Quantidade</th>
+                                            <th>R$ Valor Total do Item</th>
+                                            <th>Preço de Venda</th>
+                                            <th>Preço de Custo</th>
+                                            <th>Ações</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td><div id="excluir" name="excluir"></div></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div> 
+
+                            <button name="addPS" id="addPS" type="button" class="btn btn-success" onclick="function1()"><b>Adicionar +</b></button>
+
+                        </div>
+                    </div>
 
                         <!-- 2° Painel -->
                         <div class="panel panel-primary" style="padding: 0px">
@@ -658,11 +708,8 @@
 
                             </div>
                         </div>
-
-                      </div>
-                  </div>
+                    </div>
                 </div>
-          </div>
 
           <!--Navegação 3 (Orçamentos)-->
           <div id="orcamento_nav" class="container tab-pane fade" aria-selected="false">
