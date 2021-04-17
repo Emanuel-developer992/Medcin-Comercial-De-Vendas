@@ -1,1015 +1,920 @@
-<html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="/style-guide/css/fluig-style-guide.min.css">
-        <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
-        <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
-        <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
-        <script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js"> charset="uft-8"</script>
+    <html>
+        <head>
+            <link rel="stylesheet" type="text/css" href="/style-guide/css/fluig-style-guide.min.css">
+            <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+            <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+            <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+            <script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js"> charset="uft-8"</script>
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    </head>
-        <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
-<body>
-  <div class="fluig-style-guide">
-    <form name="form" role="form">
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-      <!-- Nav tabs -->
-      <ul class="nav nav-tabs" role="tablist">
-        <li class="nav-item">
-          <a class="nav-link active" data-toggle="tab" href="#cadastro_nav">Cadastro</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#cliente_patrocinador_nav">Cadastro de Cliente/Patrocinador</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#produtos_servicos_nav">Cadastro de Produtos e Serviços</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#orcamento_nav">Cadastro de Orçamentos</a>
-        </li>
-      </ul>
+            <!--Meu CSS -->
+            <link href="css/CadastroMaster.css" rel="stylesheet">
 
-        <div class="tab-content">
+        </head>
+            <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+    <body>
+    <div class="fluig-style-guide">
+        <form name="form" role="form">
 
-          <!--Navegação (Cards de Cadastro)-->
-          <div id="cadastro_nav" class="container tab-pane active" aria-selected="true">
-              <div class="row">
-                <div class="col-md-4">
-                    <div class="card">
-                        <img class="card-img-top" src="image/card cliente.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h3 class="card-title"><b>Cadastro de Cliente/Patrocinador</b></h3>
-                            <p class="card-text">Iniciei um cadastro de cliente/patrocinador através dessa opção. <br> Após selecionar a opção desejada clique em salvar e de andamento ao formulário em questão.</p>
-                            <button name="subject" type="button" class="btn btn-warning" onclick="cadastroCP()" value="Cadastro de Cliente/Patrocinador">Selecionar</button>
-                        </div>
-                    </div>
-                </div>
-            
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+            <a id="cadastro_tabs" class="nav-link nav-title active" data-toggle="tab" href="#cadastro_nav">Cadastro</a>
+            </li>
+            <li class="nav-item">
+            <a id="cliente_patrocinador_tabs" class="nav-link nav-title nav-close" data-toggle="tab" href="#cliente_patrocinador_nav">Cadastro de Cliente/Patrocinador</a>
+            </li>
+            <li class="nav-item">
+            <a id="produtos_servicos_tabs" class="nav-link nav-title nav-close" data-toggle="tab" href="#produtos_servicos_nav">Cadastro de Produtos e Serviços</a>
+            </li>
+            <li class="nav-item">
+            <a id="orcamento_tabs" class="nav-link nav-title nav-close" data-toggle="tab" href="#orcamento_nav">Cadastro de Orçamentos</a>
+            </li>
+        </ul>
 
-            
-                <div class="col-md-4">
-                    <div class="card">
-                        <img class="card-img-top" src="image/card produto.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h3 class="card-title"><b>Cadastro de Produto e Serviços</b></h3>
-                            <p class="card-text">Iniciei um Cadastro de Produto e Serviços através dessa opção. <br> Após selecionar a opção desejada clique em salvar e de andamento ao formulário em questão.</p>
-                            <button name="subject1" type="button" class="btn btn-warning" onclick="cadastroPS()" value="Cadastro de Produtos e Serviços">Selecionar</button>
-                        </div>
-                    </div>
-                </div>
-            
+            <div class="tab-content">
 
-            
-                <div class="col-md-4">
-                    <div class="card">
-                        <img class="card-img-top" src="image/card orçamento.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h3 class="card-title"><b>Cadastro de Orçamento</b><br></h3>
-                            <p class="card-text">Iniciei um Cadastro de Orçamento através dessa opção. <br> Após selecionar a opção desejada clique em salvar e de andamento ao formulário em questão.</p>
-                            <button name="subject2" type="button" class="btn btn-warning" onclick="cadastroO()" value="Cadastro de Orçamentos">Selecionar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            
-                <div class="form-group" data-type="cadastroCard" data-show-properties="" data-field-name="cadastroCard" style="margin-top: 1cm; width: 50%; margin-left: 25%;">
-                  <input type="text" id="cadastroCard" name="cadastroCard"  class="form-control form-control-sm mInt" readonly="" style="text-align: center;">
-                </div>
-              
-
-          </div> 
-
-          <!--Navegação 1 (Cliente/Patrocinador)-->
-          <div id="cliente_patrocinador_nav" class="container tab-pane fade" aria-selected="false">
+            <!--Navegação (Cards de Cadastro)-->
+            <div id="cadastro_nav" class="container tab-pane active" aria-selected="true">
                 <div class="row">
-
-                  <div class="jumbotron jumbotron-fluid">
-                      <div class="container">
-                        <h1 class="display-4">Cliente/Patrocinador</h1>
-                        <p class="lead">Cadastro de cliente ou patrocinador</p>
-                      </div>
-                    </div>
-
-                  <!-- 1° Painel -->
-                  <div class="panel panel-primary" style="padding: 0px">
-                      <div class="panel-heading">
-                          <h3 class="panel-title">Informações Básicas</h3>
-                      </div>
-                      <div class="panel-body">
-                          
-                          <!-- 1° Input -->
-                        <!-- ID (CP-01) Automatico -->
-                        <div class="form-group col-md-2">
-                            <label for="idCP">ID do Documento</label>
-                            <div class="input-group">
-                                <div class="input-group-addon">ID</div>
-                                <input type="text" id="idCP" name="idCP"  class="form-control form-control-sm mInt" readonly="" style="text-align: center;">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img class="card-img-top" src="image/card cliente.png" alt="Card image cap">
+                            <div class="card-body">
+                                <h3 class="card-title"><b>Cadastro de Cliente/Patrocinador</b></h3>
+                                <p class="card-text p-cinza">Iniciei um cadastro de cliente/patrocinador através dessa opção. <br> Após selecionar a opção desejada clique em salvar e de andamento ao formulário em questão.</p>
+                                <button name="subject" type="button" class="btn btn-warning button-medcin" onclick="cadastroCP()" value="Cadastro de Cliente/Patrocinador">Selecionar</button>
                             </div>
                         </div>
+                    </div>
+                
 
-                        <div class="clearfix"></div>
+                
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img class="card-img-top" src="image/card produto.png" alt="Card image cap">
+                            <div class="card-body">
+                                <h3 class="card-title"><b>Cadastro de Produto e Serviços</b></h3>
+                                <p class="card-text p-cinza">Iniciei um Cadastro de Produto e Serviços através dessa opção. <br> Após selecionar a opção desejada clique em salvar e de andamento ao formulário em questão.</p>
+                                <button name="subject1" type="button" class="btn btn-warning button-medcin" onclick="cadastroPS()" value="Cadastro de Produtos e Serviços">Selecionar</button>
+                            </div>
+                        </div>
+                    </div>
+                
 
-                          <!-- 2° Input -->
-                          <div class="form-group col-md-4">
-                              <label for="cnpj">CNPJ</label>
-                              <input name="cnpj" type="text" class="form-control" id="cnpj" mask="00.000.000/0000-00">
-                          </div>
-
-                          <!-- 3° Input -->
-                          <div class="form-group col-md-8">
-                              <label for="companyName">Razão Social</label>
-                              <input name="companyName" type="text" class="form-control" id="companyName">
-                          </div>
-
-                          <!-- 4° Input -->
-                          <div class="form-group col-md-3">
-                              <label for="nomeFantasia">Nome Fantasia</label>
-                              <input name="nomeFantasia" type="text" class="form-control" id="nomeFantasia">
-                          </div>
-
-                          <!-- 5° Input -->
-                          <div class="form-group col-md-3">
-                              <label for="escopo">Escopo do Cliente/Patrocinador</label>
-                              <input name="escopo" type="text" class="form-control" id="escopo">
-                          </div>
-                      </div>
-                  </div>
-                  
-                  <!-- 2° Painel -->
-                  <div class="panel panel-primary" style="padding: 0px">
-                      <div class="panel-heading">
-                          <h3 class="panel-title">Endereço e Complemento</h3>
-                      </div>
-                      <div class="panel-body">
-
-                          <!-- 6° Input (Endereço e Complemento)-->
-                          <div class="form-group col-md-3">
-                              <label for="cep">CEP</label>
-                              <input name="cep" type="text" class="form-control" id="cep" mask="00000-000">
-                          </div>
-
-                          <div class="form-group col-md-3">
-                              <label for="endereco">Endereço</label>
-                              <input name="endereco" type="text" class="form-control" id="endereco">
-                          </div>
-
-                          <div class="form-group col-md-1">
-                              <label for="numero">N°</label>
-                              <input name="numero" type="text" class="form-control" id="numero">
-                          </div>
-
-                          <div class="form-group col-md-4">
-                              <label for="complemento">Complemento</label>
-                              <input name="complemento" type="text" class="form-control" id="complemento">
-                          </div>
-
-                          <div class="form-group col-md-3">
-                              <label for="bairro">Bairro</label>
-                              <input name="bairro" type="text" class="form-control" id="bairro">
-                          </div>
-
-                          <div class="form-group col-md-3">
-                              <label for="estado">Estado</label>
-                              <input name="estado" type="text" class="form-control" id="estado">
-                          </div>
-
-                          <div class="form-group col-md-3">
-                              <label for="pais">Pais</label>
-                              <input name="pais" type="text" class="form-control" id="pais">
-                          </div>
-                      </div>    
-                  </div>
-
-                  <!-- 3° Painel -->
-                  <div class="panel panel-primary" style="padding: 0px">
-                      <div class="panel-heading">
-                          <h3 class="panel-title">Contatos</h3>
-                      </div>
-                      <div class="panel-body">
-
-                          <!-- 7° Input -->
-                          <div class="form-group col-md-3">
-                              <label for="telefone">Telefone</label>
-                              <input name="telefone" type="text" class="form-control" id="telefone" mask="(00) 0000-0000">
-                          </div>
-
-                          <!-- 8° Input -->
-                          <div class="form-group col-md-5">
-                              <label for="email">E-mail</label>
-                              <input name="email" type="email" class="form-control" id="email">
-                          </div>
-
-                      </div>
-                  </div>        
-
-                  <!-- 4° Painel -->
-                  <div class="panel panel-primary" style="padding: 0px">
-                      <div class="panel-heading">
-                          <h3 class="panel-title">Contato Comercial</h3>
-                      </div>
-                      <div class="panel-body">
-
-                          <!-- 9° Input (Contato Comercial)-->
-                          <div class="form-input">
-                              <div class="form-group">
-                                  <label>Contato Comercial</label>
-                                  <table tablename="tabledetailname1" class="table" noaddbutton="true">
-                                      <thead>
-                                          <tr class="tableHeadRow">
-                                              <th class="tableColumn">Nome</th>
-                                              <th class="tableColumn">Departamento</th>
-                                              <th class="tableColumn">(DD)</th>
-                                              <th class="tableColumn">Celular</th>
-                                              <th class="tableColumn">(DD)</th>
-                                              <th class="tableColumn">Telefone</th>
-                                              <th class="tableColumn">E-mail</th>
-                                          </tr>
-
-                                      </thead>
-
-                                      <tbody>
-                                          <tr class="tableBodyRow">
-                                              <td class="fs-v-align-middle">
-                                                  <div class="form-input">
-                                                      <input type="text" name="column1_1" class="form-control" label="Nome">
-                                                  </div>
-                                              </td>
-                                          
-                                              <td class="fs-v-align-middle">
-                                                  <div class="form-input">
-                                                      <input type="text" name="column2_1" class="form-control" label="Departamento">
-                                                  </div>
-                                              </td>
-
-                                              <td class="fs-v-align-middle">
-                                                  <div class="form-input">
-                                                      <input type="text" name="columnDD3_1" class="form-control" label="DD" mask= "00">
-                                                  </div>
-                                              </td>
-                                          
-                                              <td class="fs-v-align-middle">
-                                                  <div class="form-input">
-                                                      <input type="text" name="column3_1" class="form-control" label="Celular" mask="000000000">
-                                                  </div>
-                                              </td>
-
-                                              <td class="fs-v-align-middle">
-                                                  <div class="form-input">
-                                                      <input type="text" name="columnDD4_1" class="form-control" label="DD" mask= "00">
-                                                  </div>
-                                              </td>
-                                          
-                                              <td class="fs-v-align-middle">
-                                                  <div class="form-input">
-                                                      <input type="text" name="column4_1" class="form-control" label="Telefone" mask="00000000">
-                                                  </div>
-                                              </td>
-                                          
-                                              <td class="fs-v-align-middle">
-                                                  <div class="form-input">
-                                                      <input type="text" name="column5_1" class="form-control" label="E-mail">
-
-                                                  </div>
-                                              </td>
-                                          </tr>
-                                      </tbody>
-                                  </table>
-                                  
-                                  <button type="button" class="btn btn-primary" onclick="wdkAddChild('tabledetailname1')">Adicionar</button>
-                                  <div class="form-field" data-type="tabledetail" data-show-properties="" data-field-name="Contato_Comerce"></div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-
-                  <!-- 5° Painel -->
-                  <div class="panel panel-primary" style="padding: 0px">
-                      <div class="panel-heading">
-                          <h3 class="panel-title">Contato Financeiro</h3>
-                      </div>
-                      <div class="panel-body">
-
-                          <!-- 10° Input (Contato Financeiro) -->
-                          <div class="form-input">
-                              <div class="form-group">
-                                  <label>Contato Financeiro</label>
-                                  <table tablename="tabledetailname2" class="table" noaddbutton="true">
-                                      <thead>
-                                          <tr class="tableHeadRow">
-                                              <th class="tableColumn">Nome</th>
-                                              <th class="tableColumn">Departamento</th>
-                                              <th class="tableColumn">(DD)</th>
-                                              <th class="tableColumn">Celular</th>
-                                              <th class="tableColumn">(DD)</th>
-                                              <th class="tableColumn">Telefone</th>
-                                              <th class="tableColumn">E-mail</th>
-                                          </tr>
-                                      </thead>
-
-                                      <tbody>
-                                          <tr class="tableBodyRow">
-                                              <td class="fs-v-align-middle">
-                                                  <div class="form-input">
-                                                      <input type="text" name="column1_2" class="form-control" label="Nome">
-                                                  </div>
-                                              </td>
-                                          
-                                              <td class="fs-v-align-middle">
-                                                  <div class="form-input">
-                                                      <input type="text" name="column2_2" class="form-control" label="Departamento">
-                                                  </div>
-                                              </td>
-
-                                              <td class="fs-v-align-middle">
-                                                  <div class="form-input">
-                                                      <input type="text" name="columnDD3_2" class="form-control" label="DD" mask= "00">
-                                                  </div>
-                                              </td>
-                                          
-                                              <td class="fs-v-align-middle">
-                                                  <div class="form-input">
-                                                      <input type="text" name="column3_2" class="form-control" label="Celular" mask="000000000">
-                                                  </div>
-                                              </td>
-                                          
-                                              <td class="fs-v-align-middle">
-                                                  <div class="form-input">
-                                                      <input type="text" name="columnDD4_2" class="form-control" label="DD" mask= "00">
-                                                  </div>
-                                              </td>
-
-                                              <td class="fs-v-align-middle">
-                                                  <div class="form-input">
-                                                      <input type="text" name="column4_2" class="form-control" label="Telefone" mask="00000000">
-                                                  </div>
-                                              </td>
-
-                                              <td class="fs-v-align-middle">
-                                                  <div class="form-input">
-                                                      <input type="text" name="column5_2" class="form-control" label="E-mail">
-                                                  </div>
-                                              </td>
-
-                                          </tr>
-                                      </tbody>
-                                  </table>
-
-                                  <button type="button" class="btn btn-primary" onclick="wdkAddChild('tabledetailname2')">Adicionar</button>
-                                  <div class="form-field" data-type="combo" data-show-properties="" data-field-name="Contato_Finance"></div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-
-                  <!-- 6° Painel -->
-                  <div class="panel panel-primary" style="padding: 0px">
-                      <div class="panel-heading">
-                          <h3 class="panel-title">Contato Adicional</h3>
-                      </div>
-                      <div class="panel-body">
-                  
-                          <!-- 11° Input (Contato Adicional) -->
-                          <div class="form-input">
-                              <div class="form-group">
-                                  <label>Contato Adicional</label>
-                                  <table tablename="tabledetailname3" class="table" noaddbutton="true">
-                                      <thead>
-                                          <tr class="tableHeadRow">
-                                              <th class="tableColumn">Nome</th>
-                                              <th class="tableColumn">Departamento</th>
-                                              <th class="tableColumn">(DD)</th>
-                                              <th class="tableColumn">Celular</th>
-                                              <th class="tableColumn">(DD)</th>
-                                              <th class="tableColumn">Telefone</th>
-                                              <th class="tableColumn">E-mail</th>
-                                          </tr>
-
-                                      </thead>
-                                      
-                                      <tbody>
-                                          <tr class="tableBodyRow">
-                                              <td class="fs-v-align-middle">
-                                                  <div class="form-input">
-                                                      <input type="text" name="column1_3" class="form-control" label="Nome">
-                                                  </div>
-                                              </td>
-                                          
-                                              <td class="fs-v-align-middle">
-                                                  <div class="form-input">
-                                                      <input type="text" name="column2_3" class="form-control" label="Departamento">
-                                                  </div>
-                                              </td>
-
-                                              <td class="fs-v-align-middle">
-                                                  <div class="form-input">
-                                                      <input type="text" name="columnDD3_3" class="form-control" label="DD" mask= "00">
-                                                  </div>
-                                              </td>
-                                          
-                                              <td class="fs-v-align-middle">
-                                                  <div class="form-input">
-                                                      <input type="text" name="column3_3" class="form-control" label="Celular" mask="000000000">
-                                                  </div>
-                                              </td>
-
-                                              <td class="fs-v-align-middle">
-                                                  <div class="form-input">
-                                                      <input type="text" name="column4DD_3" class="form-control" label="DD" mask= "00">
-                                                  </div>
-                                              </td>
-                                          
-                                              <td class="fs-v-align-middle">
-                                                  <div class="form-input">
-                                                      <input type="text" name="column4_3" class="form-control" label="Telefone" mask="00000000">
-                                                  </div>
-                                              </td>
-
-                                              <td class="fs-v-align-middle">
-                                                  <div class="form-input">
-                                                      <input type="text" name="column5_3" class="form-control" label="E-mail">
-                                                  </div>
-                                              </td>
-
-                                          </tr>
-                                      </tbody>
-                                  </table>
-
-                                  <button type="button" class="btn btn-primary" onclick="wdkAddChild('tabledetailname3')">Adicionar</button>
-                                  <div class="form-field" data-type="combo" data-show-properties="" data-field-name="Contato_Add"></div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-
-                      <!-- 7° Painel -->
-                  <div class="panel panel-primary" style="padding: 0px">
-                      <div class="panel-heading">
-                          <h3 class="panel-title">Complementos</h3>
-                      </div>
-                      <div class="panel-body">
-
-                          <!-- 12° Input (Ativo?) -->
-                          <div class="form-group col-md-3">
-                              <label for="ativo">Status</label>
-                              <input name="ativo" type="text" class="form-control" id="ativo">
-                          </div>
-
-                          <!-- 13° Input -->
-                          <div class="form-group col-md-3">
-                              <label for="indiceF">Índice Financeiro</label>
-                              <input name="indiceF" type="text" class="form-control" id="indiceF">
-                          </div>
-
-                          <!-- 14° Input -->
-                          <div class="form-group col-md-3">
-                              <label for="dataClient">Cliente desde</label>
-                              <input name="dataClient" type="date" class="form-control" id="dataClient">
-                          </div>
-                  </div>
+                
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img class="card-img-top" src="image/card orçamento.png" alt="Card image cap">
+                            <div class="card-body">
+                                <h3 class="card-title"><b>Cadastro de Orçamento</b><br></h3>
+                                <p class="card-text p-cinza">Iniciei um Cadastro de Orçamento através dessa opção. <br> Após selecionar a opção desejada clique em salvar e de andamento ao formulário em questão.</p>
+                                <button name="subject2" type="button" class="btn btn-warning button-medcin" onclick="cadastroO()" value="Cadastro de Orçamentos">Selecionar</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-          </div>       
-
-          <!--Navegação 2 (Produtos e Serviços)-->
-          <div id="produtos_servicos_nav" class="container tab-pane fade" aria-selected="false">
-              <div class="row">
-
-                  <div class="jumbotron jumbotron-fluid">
-                      <div class="container">
-                        <h1 class="display-4">Produtos e Serviços</h1>
-                        <p class="lead">Cadastro de produtos e serviços (Unitários e Combo)</p>
-                      </div>
+                
+                
+                    <div class="form-group" data-type="cadastroCard" data-show-properties="" data-field-name="cadastroCard" style="margin-top: 1cm; width: 50%; margin-left: 25%;">
+                    <input type="hidden" id="cadastroCard" name="cadastroCard"  class="form-control form-control-sm mInt" readonly="" style="text-align: center;">
                     </div>
+                
 
-                  <!-- 1° Painel -->
-                  <div class="panel panel-primary" style="padding: 0px">
-                      <div class="panel-heading">
-                          <h3 class="panel-title">Informações Básicas</h3>
-                      </div>
-                      <div class="panel-body">
+            </div> 
 
-                        <!-- 1° Input -->
-                        <!-- ID (PS-01) Automatico -->
-                        <div class="form-group col-md-2">
-                            <label for="codP">Código do Produto</label>
-                            <div class="input-group">
-                                <div class="input-group-addon">ID</div>
-                                <input type="text" id="codP" name="codP" class="form-control form-control-sm mInt" readonly="" style="text-align: center;">
+            <!--Navegação 1 (Cliente/Patrocinador)-->
+            <div id="cliente_patrocinador_nav" class="container tab-pane" aria-selected="false">
+                    <div class="row">
+
+                    <div class="jumbotron jumbotron-fluid">
+                        <div class="container">
+                            <h1 class="display-4 j-medcin-p">Cliente/Patrocinador</h1>
+                            <p class="lead j-medcin-h1">Cadastro de cliente ou patrocinador</p>
+                            <button type="button" class="btn btn-default button-medcin" onclick="backCP()"><i class="fluigicon fluigicon-chevron-left icon-xs" style="color: white;"></i> Voltar</button>
+                        </div>
+                        </div>
+
+                    <!-- 1° Painel -->
+                    <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
+                        <div class="panel-heading painel-medcin">
+                            <h3 class="panel-title">Informações Básicas</h3>
+                        </div>
+                        <div class="panel-body">
+                            
+                            <!-- 1° Input -->
+                            <!-- ID (CP-01) Automatico -->
+                            <div class="form-group col-md-2">
+                                <label for="idCP">ID do Documento</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon painel-medcin">ID</div>
+                                    <input type="text" id="idCP" name="idCP"  class="form-control form-control-sm mInt" readonly="" style="text-align: center;">
+                                </div>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                            <!-- 2° Input -->
+                            <div class="form-group col-md-4">
+                                <label for="cnpj">CNPJ</label>
+                                <input name="cnpj" type="text" class="form-control" id="cnpj" mask="00.000.000/0000-00" placeholder="00.000.000/0000-00">
+                            </div>
+
+                            <!-- 3° Input -->
+                            <div class="form-group col-md-4">
+                                <label for="companyName">Razão Social</label>
+                                <input name="companyName" type="text" class="form-control" id="companyName" placeholder="Razão Social...">
+                            </div>
+
+                            <!-- 4° Input -->
+                            <div class="form-group col-md-4">
+                                <label for="nomeFantasia">Nome Fantasia</label>
+                                <input name="nomeFantasia" type="text" class="form-control" id="nomeFantasia" placeholder="Nome fantasia...">
+                            </div>
+
+                            <!-- 5° Input -->
+                            <div class="form-group col-md-12">
+                                <label for="escopo">Escopo do Cliente/Patrocinador</label>
+                                <input name="escopo" type="text" class="form-control" id="escopo" placeholder="Escopo...">
                             </div>
                         </div>
-                          
-                          <!-- 1° Input -->
-                          <!-- ID Automatico -->
-                          <div class="form-group col-md-2">
-                              <label for="estudoPS">Estudo</label>
-                              <input name="estudoPS" type="text" class="form-control" id="estudoPS">
-                          </div>
+                    </div>
+                    
+                    <!-- 2° Painel -->
+                    <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
+                        <div class="panel-heading painel-medcin">
+                            <h3 class="panel-title">Endereço e Complemento</h3>
+                        </div>
+                        <div class="panel-body">
 
-                          <div class="clearfix"></div>
-
-                          <!-- 2° Input -->
-                          <div class="form-group col-md-4">
-                              <label for="descricao">Descrição</label>
-                              <textarea name="descricao" type="text" class="form-control" id="descricao" style="height: 100px"></textarea>
-                          </div>
-
-                          <!-- 3° Input -->
-                          <div class="form-group col-md-4">
-                              <label for="specificChar">Características Específicas</label>
-                              <textarea name="specificChar" type="text" class="form-control" id="specificChar" style="height: 100px"></textarea>
-                          </div>
-
-                          <!-- 4° Input -->
-                          <div class="form-group col-md-4">
-                              <label for="descricaoEn">Descrição em Inglês</label>
-                              <textarea name="descricaoEn" type="text" class="form-control" id="descricaoEn" style="height: 100px"></textarea>
-                          </div>
-
-                          <!-- 5° Input -->
-                          <div class="form-group col-md-3">
-                              <label for="controlEstoq">Controle de Estoque</label>
-                              <input name="controlEstoq" type="text" class="form-control" id="controlEstoq">
-                          </div>
-
-                          <!-- 6° Input -->
-                          <div class="form-group col-md-3">
-                              <label for="pVenda">Preço de Venda (Médio)</label>
-                              <div class="input-group">
-                                  <div class="input-group-addon">R$</div>
-                                  <input name="pVenda" type="text" class="form-control" id="pVenda" mask="R$ #.##0,00">
-                              </div>  
-                          </div>
-
-                          <!-- 7° Input -->
-                          <div class="form-group col-md-3">
-                              <label for="pCusto">Preço de Custo (Mínimo)</label>
-                              <div class="input-group">
-                                  <div class="input-group-addon">R$</div>
-                                  <input name="pCusto" type="text" class="form-control" id="pCusto" mask="R$ #.##0,00">
-                              </div>
-                          </div>
-
-                          <!-- 8° Input -->
-                          <div class="form-group col-md-3">
-                              <label for="fornecedores">Fornecedores</label>
-                              <input name="fornecedores" type="text" class="form-control" id="fornecedores">
-                          </div>
-
-                      </div>
-                  </div>
-                  
-                  <!-- 2° Painel -->
-                  <div class="panel panel-primary" style="padding: 0px">
-                      <div class="panel-heading">
-                          <h3 class="panel-title">Adicionar Combo</h3>
-                      </div>
-                      <div class="panel-body">
-
-                        
+                            <!-- 6° Input (Endereço e Complemento)-->
                             <div class="form-group col-md-3">
-                                <label for="codKP">Código do Kit/Pacote de Item</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon">ID</div>
-                                    <input type="text" id="codKP" name="codKP" class="form-control">
+                                <label for="cep">CEP</label>
+                                <input name="cep" type="text" class="form-control" id="cep" mask="00000-000" placeholder="CEP Ex.:00000-000...">
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                            <div class="form-group col-md-6">
+                                <label for="endereco">Endereço</label>
+                                <input name="endereco" type="text" class="form-control" id="endereco" placeholder="Rua/Avenida/Rodovia...">
+                            </div>
+
+                            <div class="form-group col-md-1">
+                                <label for="numero">N°</label>
+                                <input name="numero" type="text" class="form-control" id="numero" placeholder="Nº00...">
+                            </div>
+
+                            <div class="form-group col-md-5">
+                                <label for="complemento">Complemento</label>
+                                <input name="complemento" type="text" class="form-control" id="complemento" placeholder="Ponto de referência...">
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="bairro">Bairro</label>
+                                <input name="bairro" type="text" class="form-control" id="bairro" placeholder="Bairro...">
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="estado">Estado</label>
+                                <input name="estado" type="text" class="form-control" id="estado" placeholder="Estado...">
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="pais">País</label>
+                                <input name="pais" type="text" class="form-control" id="pais" placeholder="País...">
+                            </div>
+                        </div>    
+                    </div>
+
+                    <!-- 3° Painel -->
+                    <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
+                        <div class="panel-heading painel-medcin">
+                            <h3 class="panel-title">Contatos</h3>
+                        </div>
+                        <div class="panel-body">
+
+                            <!-- 7° Input -->
+                            <div class="form-group col-md-3">
+                                <label for="telefone">Telefone</label>
+                                <input name="telefone" type="text" class="form-control" id="telefone" mask="(00) 0000-0000" placeholder="Telefone Corporativo...">
+                            </div>
+
+                            <!-- 8° Input -->
+                            <div class="form-group col-md-5">
+                                <label for="email">E-mail</label>
+                                <input name="email" type="email" class="form-control" id="email" placeholder="E-mail Corporativo...">
+                            </div>
+
+                        </div>
+                    </div>        
+
+                    <!-- 4° Painel -->
+                    <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
+                        <div class="panel-heading painel-medcin">
+                            <h3 class="panel-title">Contato Comercial</h3>
+                        </div>
+                        <div class="panel-body">
+
+                            <!-- 9° Input (Contato Comercial)-->
+                            
+                                <div class="form-group col-md-5">
+                                    <label>Nome</label>
+                                    <input type="text" id="nomeAdd1" name="nomeAdd1" class="form-control" placeholder="Nome...">
                                 </div>
+                            
+                                <div class="form-group col-md-7">
+                                    <label>Departamento</label>
+                                    <input type="text" id="departamentoAdd1" name="departamentoAdd1" class="form-control" placeholder="Departamento...">
+                                </div>                    
+                            
+                                <div class="form-group col-md-4">
+                                    <label>Celular</label>
+                                    <input type="text" id="celularAdd1" name="celularAdd1" class="form-control" mask="(00)00000-0000" placeholder="Celular...">
+                                </div>                    
+                            
+                                <div class="form-group col-md-4">
+                                    <label>Telefone</label>
+                                    <input type="text" id="telefoneAdd1" name="telefoneAdd1" class="form-control" mask="(00)0000-0000" placeholder="Telefone...">
+                                </div>
+                        
+                            
+                                <div class="form-group col-md-4">
+                                    <label>E-mail</label>
+                                    <input type="text" id="emailAdd1" name="emailAdd1" class="form-control" placeholder="E-mail...">
+                                </div>
+
+                                <div class="clearfix"></div>
+                                <br>
+                                <br>
+
+                                <div class="d-grid gap-2 col-6 mx-auto">
+                                    <button name="add1" id="add1" type="button" class="btn btn-success button-medcin" onclick="pushAdd1()"><b>Adicionar +</b></button>
+                                    <p class="p-cinza">Você pode adicionar varios contatos, clique em adicionar para salvar na tabela, você também pode remover-los.</p>
+                                </div>
+                                
+                        </div>
+                    </div>
+
+                     <!-- Tabela 1-->
+
+                    <div class="title-medcin">
+                        <h1>Contatos Comercial</h1>
+                    </div>                      
+                    <div class="table-responsive col-md-12">
+                        <table tablename="tabelaAddComercial" class="table table-sm" id="tabelaAddComercial" noaddbutton="true" nodeletebutton="true">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Departamento</th>
+                                    <th>Celular</th>
+                                    <th>Telefone</th>
+                                    <th>E-mail</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><div id="excluir" name="excluir"></div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- 5° Painel -->
+                    <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
+                        <div class="panel-heading painel-medcin">
+                            <h3 class="panel-title">Contato Financeiro</h3>
+                        </div>
+                        <div class="panel-body">
+
+                            <!-- 10° Input (Contato Financeiro) -->
+                            <div class="form-group col-md-5">
+                                <label>Nome</label>
+                                <input type="text" id="nomeAdd2" name="nomeAdd2" class="form-control" placeholder="Nome...">
                             </div>
                         
+                            <div class="form-group col-md-7">
+                                <label>Departamento</label>
+                                <input type="text" id="departamentoAdd2" name="departamentoAdd2" class="form-control" placeholder="Departamento...">
+                            </div>                    
+                        
+                            <div class="form-group col-md-4">
+                                <label>Celular</label>
+                                <input type="text" id="celularAdd2" name="celularAdd2" class="form-control" mask="(00)00000-0000" placeholder="Celular..."> 
+                            </div>                    
+                        
+                            <div class="form-group col-md-4">
+                                <label>Telefone</label>
+                                <input type="text" id="telefoneAdd2" name="telefoneAdd2" class="form-control" mask="(00)0000-0000" placeholder="Telefone...">
+                            </div>
                     
                         
-                            <div class="form-group col-md-3">
-                                <label for="itensP">Itens do Pacote</label>
-                                <input type="text" id="intensP" name="intensP" class="form-control">
-                            </div>
-                        
-
-                        
-                            <div class="form-group col-md-3">
-                                <label for="descricaoKP">Descrição</label>
-                                <input type="text" id="descricaoKP" name="descricaoKP" class="form-control">
-                            </div>
-                        
-                    
-                        
-                            <div class="form-group col-md-3">
-                                <label for="quantKP">Quantidade</label>
-                                <div class="input-group">
-                                    <input type="numbe" id="quantKP" name="quantKP" class="form-control">
-                                    <div class="input-group-addon">UN.</div>
-                                </div>
-                            </div>
-                        
-
-                        
-                            <div class="form-group col-md-3">
-                                <label for="tvalorKP">R$ Valor total do Item</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon">R$</div>
-                                    <input type="text" id="tvalorKP" name="tvalorKP" class="form-control">
-                                </div>
-                            </div>
-                        
-                    
-                        
-                            <div class="form-group col-md-3">
-                                <label for="pVendaKP">Preço de Venda</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon">R$</div>
-                                    <input type="text" id="pVendaKP" name="pVendaKP" class="form-control">
-                                </div>
-                            </div>
-                        
-                    
-                    
-                            <div class="form-group col-md-3">
-                                <label for="pCustoKP">Preço de Custo</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon">R$</div>
-                                    <input type="text" id="pCustoKP" name="pCustoKP" class="form-control">
-                                </div>
+                            <div class="form-group col-md-4">
+                                <label>E-mail</label>
+                                <input type="text" id="emailAdd2" name="emailAdd2" class="form-control" placeholder="E-mail...">
                             </div>
 
                             <div class="clearfix"></div>
                             <br>
                             <br>
 
-                            <div class="alert alert-success" role="alert">Após o preenchimento dos dados, clique em adicionar para salver. (Você pode excluir informações caso deseje)</div>
-
-                            <!-- Tabela 1--> 
-                            <div class="table-responsive col-md-12">
-                                <table tablename="tabelaCadastroPS" class="table table-bordered" id="tabelaCadastroPS" noaddbutton="true" nodeletebutton="false">
-                                    <thead>
-                                        <tr>
-                                            <th>Códgo do Kit/Pacote de Itens</th>
-                                            <th>Itens do Kit/Pacote</th>
-                                            <th>Descrição</th>
-                                            <th>Ações</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td><div id="excluir" name="excluir"></div></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div class="d-grid gap-2 col-6 mx-auto">
+                                <button name="add2" id="add2" type="button" class="btn btn-success button-medcin" onclick="pushAdd2()"><b>Adicionar +</b></button>
+                                <p class="p-cinza">Você pode adicionar varios contatos, clique em adicionar para salvar na tabela, você também pode remover-los.</p>
                             </div>
-
-                            <!-- Tabela 2-->
-                            <div class="table-responsive col-md-12">
-                                <table tablename="tabelaCadastroPS2" class="table table-bordered" id="tabelaCadastroPS2" noaddbutton="true" nodeletebutton="false">
-                                    <thead>
-                                        <tr>
-                                            <th>Quantidade</th>
-                                            <th>R$ Valor Total do Item</th>
-                                            <th>Preço de Venda</th>
-                                            <th>Preço de Custo</th>
-                                            <th>Ações</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td><div id="excluir" name="excluir"></div></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div> 
-
-                            <button name="addPS" id="addPS" type="button" class="btn btn-success" onclick="function1()"><b>Adicionar +</b></button>
 
                         </div>
                     </div>
 
-                        <!-- 2° Painel -->
-                        <div class="panel panel-primary" style="padding: 0px">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Instruções</h3>
-                            </div>
-                            <div class="panel-body">
+                    <!-- Tabela 2-->
+                    <div class="title-medcin">
+                        <h1>Contatos Financeiros</h1>
+                    </div> 
+                    <div class="table-responsive col-md-12">
+                        <table tablename="tabelaAddFinanceiro" class="table table-sm" id="tabelaAddFinanceiro" noaddbutton="true" nodeletebutton="true">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Departamento</th>
+                                    <th>Celular</th>
+                                    <th>Telefone</th>
+                                    <th>E-mail</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><div id="excluir" name="excluir"></div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div> 
 
-                                <!-- 10° Input -->
-                                <div class="form-group col-md-12">
-                                    <label for="metodologia">Métodologia do Produto ou Serviço</label>
-                                    <textarea name="metodologia" type="text" class="form-control" style="height: 200px;" id="metodologia"></textarea>
+                    <!-- 6° Painel -->
+                    <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
+                        <div class="panel-heading painel-medcin">
+                            <h3 class="panel-title">Contato Adicional</h3>
+                        </div>
+                        <div class="panel-body">
+                    
+                            <!-- 11° Input (Contato Adicional) -->
+                            <div class="form-group col-md-5">
+                                <label>Nome</label>
+                                <input type="text" id="nomeAdd3" name="nomeAdd3" class="form-control" placeholder="Nome...">
+                            </div>
+                        
+                            <div class="form-group col-md-7">
+                                <label>Departamento</label>
+                                <input type="text" id="departamentoAdd3" name="departamentoAdd3" class="form-control" placeholder="Departamento...">
+                            </div>                    
+                        
+                            <div class="form-group col-md-4">
+                                <label>Celular</label>
+                                <input type="text" id="celularAdd3" name="celularAdd3" class="form-control" mask="(00)00000-0000" placeholder="Celular...">
+                            </div>                    
+                        
+                            <div class="form-group col-md-4">
+                                <label>Telefone</label>
+                                <input type="text" id="telefoneAdd3" name="telefoneAdd3" class="form-control" mask="(00)0000-0000" placeholder="Telefone...">
+                            </div>
+                    
+                        
+                            <div class="form-group col-md-4">
+                                <label>E-mail</label>
+                                <input type="text" id="emailAdd3" name="emailAdd3" class="form-control" placeholder="E-mail...">
+                            </div>
+
+                            <div class="clearfix"></div>
+                            <br>
+                            <br>
+
+                            <div class="d-grid gap-2 col-6 mx-auto">
+                                <button name="add3" id="add3" type="button" class="btn btn-success button-medcin" onclick="pushAdd3()"><b>Adicionar +</b></button>
+                                <p class="p-cinza">Você pode adicionar varios contatos, clique em adicionar para salvar na tabela, você também pode remover-los.</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                     <!-- Tabela 3-->
+                    <div class="title-medcin">
+                        <h1>Contatos Adicionais</h1>
+                    </div> 
+                     <div class="table-responsive col-md-12">
+                        <table tablename="tabelaAddAdicional" class="table table-sm" id="tabelaAddAdicional" noaddbutton="true" nodeletebutton="true">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Departamento</th>
+                                    <th>Celular</th>
+                                    <th>Telefone</th>
+                                    <th>E-mail</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><div id="excluir" name="excluir"></div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- 7° Painel -->
+                    <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
+                        <div class="panel-heading painel-medcin">
+                            <h3 class="panel-title">Complementos</h3>
+                        </div>
+                        <div class="panel-body">
+
+                            <!-- 12° Input (Ativo?) -->
+                            <div class="form-group col-md-3">
+                                <label for="ativo">Status</label>
+                                <input name="ativo" type="text" class="form-control" id="ativo" placeholder="Status...">
+                            </div>
+
+                            <!-- 13° Input -->
+                            <div class="form-group col-md-3">
+                                <label for="indiceF">Índice Financeiro</label>
+                                <input name="indiceF" type="text" class="form-control" id="indiceF" placeholder="Índice financeiro...">
+                            </div>
+
+                            <!-- 14° Input -->
+                            <div class="form-group col-md-3">
+                                <label for="dataClient">Cliente desde</label>
+                                <input name="dataClient" type="date" class="form-control" id="dataClient">
+                            </div>
+                    </div>
+                    </div>
+                </div>
+            </div>       
+
+            <!--Navegação 2 (Produtos e Serviços)-->
+            <div id="produtos_servicos_nav" class="container tab-pane" aria-selected="false">
+                <div class="row">
+
+                    <div class="jumbotron jumbotron-fluid">
+                        <div class="container">
+                            <h1 class="display-4 j-medcin-p">Produtos e Serviços</h1>
+                            <p class="lead j-medcin-h1">Cadastro de produtos e serviços (Unitários e Combo)</p>
+                            <button type="button" class="btn btn-default button-medcin" onclick="backPS()"><i class="fluigicon fluigicon-chevron-left icon-xs" style="color: white;"></i> Voltar</button>
+                        </div>
+                        </div>
+
+                    <!-- 1° Painel -->
+                    <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
+                        <div class="panel-heading painel-medcin">
+                            <h3 class="panel-title">Informações Básicas</h3>
+                        </div>
+                        <div class="panel-body">
+
+                            <!-- 1° Input -->
+                            <!-- ID (PS-01) Automatico -->
+                            <div class="form-group col-md-2">
+                                <label for="codP">Código do Produto</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon painel-medcin">ID</div>
+                                    <input type="text" id="codP" name="codP" class="form-control form-control-sm mInt" readonly="" style="text-align: center;">
                                 </div>
+                            </div>
+                            
+                            <!-- 1° Input -->
+                            <!-- ID Automatico -->
+                            <div class="form-group col-md-2">
+                                <label for="estudoPS">Estudo</label>
+                                <input name="estudoPS" type="text" class="form-control" id="estudoPS" placeholder="Estudo do produto...">
+                            </div>
 
+                            <div class="clearfix"></div>
+
+                            <!-- 2° Input -->
+                            <div class="form-group col-md-12">
+                                <label for="descricao"><h2>Descrição</h2></label>
+                                <p class="p-cinza">Discorra a descrição do produto a ser cadastrado</p>
+                                <textarea name="descricao" type="text" class="form-control" id="descricao"></textarea>
+                            </div>
+
+                            <!-- 3° Input -->
+                            <div class="form-group col-md-12">
+                                <label for="specificChar"><h2>Características Específicas</h2></label>
+                                <p class="p-cinza">Relate a caracteristicas específicas desse produto</p>
+                                <textarea name="specificChar" type="text" class="form-control" id="specificChar"></textarea>
+                            </div>
+
+                            <!-- 4° Input -->
+                            <div class="form-group col-md-12">
+                                <label for="descricaoEn"><h2>Descrição em Inglês</h2></label>
+                                <p class="p-cinza">Escreva a descrição do produto em inglês</p>
+                                <textarea name="descricaoEn" type="text" class="form-control" id="descricaoEn"></textarea>
+                            </div>
+
+                            <!-- 5° Input -->
+                            <div class="form-group col-md-3">
+                                <label for="controlEstoq">Controle de Estoque</label>
+                                <select name="controlEstoq" type="text" class="form-control" id="controlEstoq">
+                                    <option value="Sim">Sim</option>
+                                    <option value="Não">Não</option>
+                                </select>
+                            </div>
+
+                            <!-- 6° Input -->
+                            <div class="form-group col-md-3">
+                                <label for="pVenda">Preço de Venda (Médio)</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon painel-medcin">R$</div>
+                                    <input name="pVenda" type="text" class="form-control" id="pVenda" mask="R$ #.##0,00" placeholder="Média do preço do produto...">
+                                </div>  
+                            </div>
+
+                            <!-- 7° Input -->
+                            <div class="form-group col-md-3">
+                                <label for="pCusto">Preço de Custo (Mínimo)</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon painel-medcin">R$</div>
+                                    <input name="pCusto" type="text" class="form-control" id="pCusto" mask="R$ #.##0,00" placeholder="Menor valor do produto..">
+                                </div>
+                            </div>
+
+                            <!-- 8° Input -->
+                            <div class="form-group col-md-3">
+                                <label for="fornecedores">Fornecedores</label>
+                                <input name="fornecedores" type="text" class="form-control" id="fornecedores" placeholder="Fornecedor">
+                            </div>
+
+                        </div>
+                    </div>
+
+                            <!-- 2° Painel -->
+                            <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
+                                <div class="panel-heading painel-medcin">
+                                    <h3 class="panel-title">Instruções</h3>
+                                </div>
+                                <div class="panel-body">
+
+                                    <!-- 10° Input -->
+                                    <div class="form-group col-md-12">
+                                        <label for="metodologia">Métodologia do Produto ou Serviço</label>
+                                        <p class="p-cinza">Detalhe toda a métodologia desse produto ou serviço para integração no relatório final...</p>
+                                        <textarea name="metodologia" type="text" class="form-control" style="height: 200px;" id="metodologia"></textarea>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-          <!--Navegação 3 (Orçamentos)-->
-          <div id="orcamento_nav" class="container tab-pane fade" aria-selected="false">
-            <div class="row">
+            <!--Navegação 3 (Orçamentos)-->
+            <div id="orcamento_nav" class="container tab-pane" aria-selected="false">
+                <div class="row">
 
-                <div class="jumbotron jumbotron-fluid">
-                    <div class="container">
-                      <h1 class="display-4">Orçamentos</h1>
-                      <p class="lead">Cadastro de orçamentos</p>
+                    <div class="jumbotron jumbotron-fluid">
+                        <div class="container">
+                        <h1 class="display-4 j-medcin-p">Orçamentos</h1>
+                        <p class="lead j-medcin-h1">Cadastro de orçamentos</p>
+                        <button type="button" class="btn btn-default button-medcin" onclick="backO()"><i class="fluigicon fluigicon-chevron-left icon-xs" style="color: white;"></i> Voltar</button>
+                        </div>
                     </div>
-                  </div>
 
-                <!-- 1° Painel -->
-                <div class="panel panel-primary" style="padding: 0px">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Informações Básicas</h3>
-                    </div>
-                    <div class="panel-body">
-                                                    
-                        <!-- 1° Input -->
-                        <!-- ID (O-01) Automatico -->
-                        <div class="form-group col-md-2">
-                            <label for="idO">ID do Documento</label>
-                            <div class="input-group">
-                                <div class="input-group-addon">ID</div>
-                                <input type="text" id="idO" name="idO"  class="form-control form-control-sm mInt" readonly="" style="text-align: center;">
+                    <!-- 1° Painel -->
+                    <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
+                        <div class="panel-heading painel-medcin">
+                            <h3 class="panel-title">Informações Básicas</h3>
+                        </div>
+                        <div class="panel-body">
+                                                        
+                            <!-- 1° Input -->
+                            <!-- ID (O-01) Automatico -->
+                            <div class="form-group col-md-2">
+                                <label for="idO">ID do Documento</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon painel-medcin">ID</div>
+                                    <input type="text" id="idO" name="idO"  class="form-control form-control-sm mInt" readonly="" style="text-align: center;">
+                                </div>
+                            </div>
+
+                            <!-- 2° Input -->
+                            <div class="form-group col-md-5">
+                                <label for="codClientP">Código do Cliente/Patrocinador</label>
+                                <input name="codClientP" type="number" class="form-control" id="codClientP" placeholder="Insira o código do cliento patrocinador...">
+                            </div>
+
+                            <!-- 3° Input -->
+                            <div class="form-group col-md-5">
+                                <label for="client">Cliente/Patrocinador</label>
+                                <input name="client" type="text" class="form-control" id="client" placeholder="Cliente/Patrocinador...">
+                            </div>
+
+                            <!-- 4° Input -->
+                            <div class="form-group col-md-2">
+                                <label for="dataCadastro">Data da Cadastro</label>
+                                <input name="dataCadastro" type="date" class="form-control" id="dataCadastro">
+                            </div>
+
+                            <!-- 5° Input -->
+                            <div class="form-group col-md-4">
+                                <label for="solicitante">Nome do Solicitante</label>
+                                <input name="solicitante" type="text" class="form-control" id="solicitante" placeholder="Nome do solicitante...">
+                            </div>
+
+                            <!-- 6° Input -->
+                            <div class="form-group col-md-3">
+                                <label for="revisao">Revisão</label>
+                                <input name="revisao" type="number" class="form-control" id="revisao" placeholder="Revisão...">
+                            </div>
+
+                            <!-- 7° Input -->
+                            <div class="form-group col-md-2">
+                                <label for="dateRevisao">Data da Revisão</label>
+                                <input name="dateRevisao" type="date" class="form-control" id="dateRevisao">
                             </div>
                         </div>
+                    </div>
 
-                        <!-- 2° Input -->
-                        <div class="form-group col-md-5">
-                            <label for="codClientP">Código do Cliente/Patrocinador</label>
-                            <input name="codClientP" type="number" class="form-control" id="codClientP">
+                    <!-- 2° Painel -->
+                    <div class="panel panel-primary painel-medcin-div1" style="padding: 0px;">
+                        <div class="panel-heading painel-medcin">
+                            <h3 class="panel-title">Cadastro de Item</h3>
                         </div>
+                        <div class="panel-body">
 
-                        <!-- 3° Input -->
-                        <div class="form-group col-md-5">
-                            <label for="client">Cliente/Patrocinador</label>
-                            <input name="client" type="text" class="form-control" id="client">
-                        </div>
+                            <!-- 8° Input -->
+                            <div class="form-group col-md-9">
+                                <label for="item">Código do Item</label>
+                                <p class="p-cinza">Selecione o item desejado para trazer as informções automaticamentes.</p>
+                                <input
+                                        type="zoom"
+                                        placeholder="Selecione o item desejado..."
+                                        id = "c7_total"
+                                        name="c7_total"
+                                        data-zoom="{
+                                            'displayKey':'codP',
+                                            'datasetId':'DSCadastroGeral',
+                                            'maximumSelectionLength':'1',
+                                            'placeholder':'Selecione o Código do Produto...',
+                                            'fields':[
+                                                {
+                                                'field':'codP',
+                                                'label':'ID'
+                                                },{
+                                                'field':'estudoPS',
+                                                'label':'Estudo',
+                                                'standard':'true'
+                                                },{
+                                                'field':'descricao',
+                                                'label':'Descrição',
+                                                'standard':'true'
+                                                },{
+                                                'field':'specificChar',
+                                                'label':'Características'
+                                                }
+                                            ]
+                                        }"
+                                    />
+                            </div>
 
-                        <!-- 4° Input -->
-                        <div class="form-group col-md-2">
-                            <label for="dataCadastro">Data da Cadastro</label>
-                            <input name="dataCadastro" type="date" class="form-control" id="dataCadastro">
-                        </div>
+                            <!-- 9° Input -->
+                            <div class="form-group col-md-3">
+                                <label for="estudo">Estudo</label>
+                                <p class="p-cinza">Estudo do item.</p>
+                                <input name="estudo" type="text" class="form-control" id="estudo" placeholder="Estudo aplicado...">
+                            </div>
 
-                        <!-- 5° Input -->
-                        <div class="form-group col-md-4">
-                            <label for="solicitante">Nome do Solicitante</label>
-                            <input name="solicitante" type="text" class="form-control" id="solicitante">
-                        </div>
+                            <div class="clearfix"></div>
 
-                        <!-- 6° Input -->
-                        <div class="form-group col-md-3">
-                            <label for="revisao">Revisão</label>
-                            <input name="revisao" type="number" class="form-control" id="revisao">
-                        </div>
+                            <!-- 10° Input -->
+                            <div class="form-group col-md-12">
+                                <label for="descricaoItem">Descrição do Item</label>
+                                <p class="p-cinza">Descrição preenchida automaticamento após a seleção do item.</p>
+                                <textarea name="descricaoItem" type="text" class="form-control" id="descricaoItem"></textarea>
+                            </div>
 
-                        <!-- 7° Input -->
-                        <div class="form-group col-md-2">
-                            <label for="dateRevisao">Data da Revisão</label>
-                            <input name="dateRevisao" type="date" class="form-control" id="dateRevisao">
+                            <!-- 11° Input -->
+                            <div class="form-group col-md-6">
+                                <label for="rItem">R$ do Item</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon painel-medcin">R$</div>
+                                    <input name="rItem" type="text" class="form-control" id="rItem" mask="#.##0,00" placeholder="Valor padrão do item solicitado...">
+                                </div>
+                            </div>
+
+                            <!-- 12° Input -->
+                            <div class="form-group col-md-3">
+                                <label for="prazoExe">Prazo de Execução</label>
+                                <input name="prazoExe" type="date" class="form-control" id="prazoExe">
+                            </div>
+
+                            <!-- 13° Input -->
+                            <div class="form-group col-md-3">
+                                <label for="prazoER">Prazo para Entrega do Relatório</label>
+                                <input name="prazoER" type="date" class="form-control" id="prazoER">
+                            </div>
+
+                            <!-- 14° Input -->
+                            <div class="form-group col-md-6">
+                                <label for="tOrcamento">R$ Total do Oçamento</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon painel-medcin">R$</div>
+                                        <input name="tOrcamento" type="text" class="form-control" id="tOrcamento" mask="###0.00" placeholder="Orçamento proposto..."> 
+                                </div>
+                            </div>
+
+                            <!-- 15° Input -->
+                            <div class="form-group col-md-3">
+                                <label for="desconto">Desconto (%)</label>
+                                <div class="input-group">
+                                    <input name="desconto" type="text" class="form-control" id="desconto" placeholder="Desconto aplicado...">
+                                    <div class="input-group-addon painel-medcin">%</div>
+                                </div>
+                            </div>
+
+                            <!-- 16° Input -->
+                            <div class="form-group col-md-3">
+                                <label for="orcamentoDesconto">R$ Total do Orçamento c/ Desconto</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon painel-medcin">R$</div>
+                                        <input name="orcamentoDesconto" type="text" class="form-control" id="orcamentoDesconto" mask="###0.00" placeholder="Valor do orçamento final...">
+                                </div>
+                            </div>
+
+                            <div class="clearfix"></div>
+                            <br>
+
+                            <div class="d-grid gap-2 col-6 mx-auto">
+                                <button name="add" id="add" type="button" class="btn btn-success button-medcin" onclick="pushTable(); pushTable2();"><b>Adicionar +</b></button>
+                                <p class="p-cinza">Você pode adicionar varios contatos, clique em adicionar para salvar na tabela, você também pode remover-los.</p>
+                            </div>
+
                         </div>
                     </div>
-                </div>
 
-                        <!-- 2° Painel -->
-                <div class="panel panel-primary" style="padding: 0px">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Cadastro de Item</h3>
+                    <div class="clearfix"></div>
+                    <br>
+                    <br>
+
+                    <div class="title-medcin">
+                        <h1>Orçamento</h1>
                     </div>
-                    <div class="panel-body">
+                    
+                    <div class="clearfix"></div>
+                    <br>
 
-                        <!-- 8° Input -->
-                        <div class="form-group col-md-9">
-                            <label for="item">Código do Item</label>
-                            <input
+                    <!-- Tabela 1--> 
+                    <div class="table-responsive col-md-12" >
+                        <table tablename="tabelaOrcamento" class="table table-sm" id="tabelaOrcamento" noaddbutton="true" nodeletebutton="true">
+                            <thead>
+                                <tr>
+                                    <th style="width: 9%">ID Item</th>
+                                    <th>Estudo</th>
+                                    <th>R$ Tabela</th>
+                                    <th>Desconto (%)</th>
+                                    <th>R$ com Desconto</th>
+                                    <th style="width: 16%">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="text" name="tb1_c7_total" class="invisible-input" readonly></input></td>
+                                    <td><input type="text" name="tb_estudo" class="invisible-input" readonly></input></td>
+                                    <td><input type="text" name="tb_rItem" class="invisible-input" readonly></input></td>
+                                    <td><input type="text" name="tb_desconto" class="invisible-input" readonly></input></td>
+                                    <td><input type="text" name="tb_orcamentoDesconto" class="invisible-input" readonly></input></td>
+                                    <td><button type="button" class="btn btn-danger excluir">Excluir</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <br>
+                    <br>
+
+                    <div class="title-medcin">
+                        <h1>Dados Técnicos</h1>
+                    </div>
+                    
+                    <div class="clearfix"></div>
+                    <br>
+            
+                    <!-- Tabela 2-->
+                    <div class="table-responsive col-md-12">
+                        <table tablename="tabelaOrcamento2" class="table table-sm" id="tabelaOrcamento2" noaddbutton="true" nodeletebutton="true">
+                            <thead>
+                                <tr>
+                                    <th style="width: 9%">ID Item</th>
+                                    <th style="width: 40%">Descrição</th>
+                                    <th>Prazo de Execução</th>
+                                    <th>Prazo de Entrega</th>
+                                    <th>Orçamento</th>
+                                    <th style="width: 16%">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="text" name="tb2_c7_total" class="invisible-input" readonly></input></td>
+                                    <td><textarea type="text" name="tb_descricaoItem" class="invisible-input descricao-input" readonly></textarea></td>
+                                    <td><input type="text" name="tb_prazoExe" class="invisible-input" readonly></input></td>
+                                    <td><input type="text" name="tb_prazoER" class="invisible-input" readonly></input></td>
+                                    <td><input type="text" name="tb_tOrcamento" class="invisible-input" readonly></input></td>
+                                    <td><button type="button" class="btn btn-danger excluir">Excluir</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                    <div class="clearfix"></div>
+                    <br>
+                    <br>
+                        <!-- 3° Painel -->
+                    <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
+                        <div class="panel-heading painel-medcin">
+                            <h3 class="panel-title">Pagamentos e Documentos</h3>
+                        </div>
+                        <div class="panel-body">
+
+                            <!-- 17° Input -->
+                            <div class="form-group col-md-4">
+                                <label for="formPag">Forma de Pagamento</label>
+                                <input name="formPag" type="text" class="form-control" id="formPag" placeholder="Qual a forma de pagamento...?">
+                            </div>
+
+                            <!-- 18° Input -->
+                            <div class="form-group col-md-4">
+                                <label for="infoOrc">Infomações do Orçamento</label>
+                                <input name="infoOrc" type="text" class="form-control" id="infoOrc" placeholder="Informação do Orçamento...">
+                            </div>
+
+                            <!-- 19° Input -->
+                            <div class="form-group col-md-4">
+                                <label for="regMov">Resgistro de Movimentação</label>
+                                <input name="regMov" type="text" class="form-control" id="regMov" placeholder="Registro de Movimentação..."> 
+                            </div>
+
+                            <!-- 20° Input -->
+                            <div class="form-group col-md-12">
+                                <label for="statusO">Status</label>
+                                <p class="p-cinza">Selecione o status para dar andamento no fluxo.</p>
+                                <input
                                     type="zoom"
-                                    id = "c7_total"
-                                    name="c7_total"
-                                    data-zoom="{
-                                        'displayKey':'codP',
-                                        'datasetId':'DSCadastroGeral',
-                                        'maximumSelectionLength':'1',
-                                        'placeholder':'Selecione o Código do Produto...',
+                                    id = "statusO"
+                                    name="statusO"
+                                    data-zoom="{ 
+                                        'displayKey':'status',
+                                        'datasetId':'dsStatusO',
+                                        'maximumSelectionLength':'3',
+                                        'placeholder':'Selecione o status do documento...',
                                         'fields':[
                                             {
-                                            'field':'codP',
-                                            'label':'ID'
+                                            'field':'status',
+                                            'label':'Status'
                                             },{
-                                            'field':'estudoPS',
-                                            'label':'Estudo',
-                                            'standard':'true'
-                                            },{
-                                            'field':'descricao',
+                                            'field':'statusDescricao',
                                             'label':'Descrição',
                                             'standard':'true'
-                                            },{
-                                            'field':'specificChar',
-                                            'label':'Características'
                                             }
                                         ]
                                     }"
-                                />
-                        </div>
-
-                        <!-- 9° Input -->
-                        <div class="form-group col-md-3">
-                            <label for="estudo">Estudo</label>
-                            <input name="estudo" type="text" class="form-control" id="estudo">
-                        </div>
-
-                        <div class="clearfix"></div>
-
-                        <!-- 10° Input -->
-                        <div class="form-group col-md-12">
-                            <label for="descricaoItem">Descrição do Item</label>
-                            <textarea name="descricaoItem" type="text" class="form-control" id="descricaoItem" style="height: 100px"></textarea>
-                        </div>
-
-                        <!-- 11° Input -->
-                        <div class="form-group col-md-6">
-                            <label for="rItem">R$ do Item</label>
-                            <div class="input-group">
-                                <div class="input-group-addon">R$</div>
-                                <input name="rItem" type="text" class="form-control" id="rItem" mask="#.##0,00">
+                                    />
                             </div>
-                        </div>
 
-                        <!-- 12° Input -->
-                        <div class="form-group col-md-3">
-                            <label for="prazoExe">Prazo de Execução</label>
-                            <input name="prazoExe" type="date" class="form-control" id="prazoExe">
-                        </div>
-
-                        <!-- 13° Input -->
-                        <div class="form-group col-md-3">
-                            <label for="prazoER">Prazo para Entrega do Relatório</label>
-                            <input name="prazoER" type="date" class="form-control" id="prazoER">
-                        </div>
-
-                        <!-- 14° Input -->
-                        <div class="form-group col-md-5">
-                            <label for="tOrcamento">R$ Total do Oçamento</label>
-                            <div class="input-group">
-                                <div class="input-group-addon">R$</div>
-                                    <input name="tOrcamento" type="text" class="form-control" id="tOrcamento" mask="###0.00"> 
-                            </div>
-                        </div>
-
-                        <!-- 15° Input -->
-                        <div class="form-group col-md-3">
-                            <label for="desconto">Desconto (%)</label>
-                            <div class="input-group">
-                                <input name="desconto" type="text" class="form-control" id="desconto">
-                                <div class="input-group-addon">%</div>
-                            </div>
-                        </div>
-
-                        <!-- 16° Input -->
-                        <div class="form-group col-md-4">
-                            <label for="orcamentoDesconto">R$ Total do Orçamento c/ Desconto</label>
-                            <div class="input-group">
-                                <div class="input-group-addon">R$</div>
-                                    <input name="orcamentoDesconto" type="text" class="form-control" id="orcamentoDesconto" mask="###0.00">
-                            </div>
-                        </div>
-
-                        <div class="clearfix"></div>
-
-                        <br>
-                        <br>
-
-                        <div class="alert alert-success" role="alert">Após o preenchimento dos dados, clique em adicionar para salver. (Você pode excluir informações caso deseje)</div>
-
-                        <!-- Tabela 1--> 
-                        <div class="table-responsive col-md-12">
-                            <table tablename="tabelaOrcamento" class="table table-bordered" id="tabelaOrcamento" noaddbutton="true" nodeletebutton="false">
-                                <thead>
-                                    <tr>
-                                        <th>ID Item</th>
-                                        <th>Estudo</th>
-                                        <th style="width: 40%">Descrição do Item</th>
-                                        <th>Valor de Tabela</th>
-                                        <th>Prazo de Execução</th>
-                                        <th>Prazo de Entrega</th>
-                                        <th>Ações</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td><div id="excluir" name="excluir"></div></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                
-                        <!-- Tabela 2-->
-                        <div class="table-responsive col-md-12">
-                            <table tablename="tabelaOrcamento2" class="table table-bordered" id="tabelaOrcamento2" noaddbutton="true" nodeletebutton="false">
-                                <thead>
-                                    <tr>
-                                        <th>ID Item</th>
-                                        <th>Estudo</th>
-                                        <th>Total do Orçamento</th>
-                                        <th>Desconto (%)</th>
-                                        <th style="width: 54,5%">Total de Orçamento c/ desconto</th>
-                                        <th>Ações</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td><div id="excluir" name="excluir"></div></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div> 
-
-                        <button name="add" id="add" type="button" class="btn btn-success" onclick="pushTable(); pushTable2()"><b>Adicionar +</b></button>
-
-                    </div>
-                </div>
-
-                    <!-- 3° Painel -->
-                <div class="panel panel-primary" style="padding: 0px">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Pagamentos e Documentos</h3>
-                    </div>
-                    <div class="panel-body">
-
-                        <!-- 17° Input -->
-                        <div class="form-group col-md-5">
-                            <label for="formPag">Forma de Pagamento</label>
-                            <input name="formPag" type="text" class="form-control" id="formPag">
-                        </div>
-
-                        <!-- 18° Input -->
-                        <div class="form-group col-md-3">
-                            <label for="infoOrc">Infomações do Orçamento</label>
-                            <input name="infoOrc" type="text" class="form-control" id="infoOrc">
-                        </div>
-
-                        <!-- 19° Input -->
-                        <div class="form-group col-md-3">
-                            <label for="statusO">Status</label>
-                            <input
-                                type="zoom"
-                                id = "statusO"
-                                name="statusO"
-                                data-zoom="{
-                                    'displayKey':'status',
-                                    'datasetId':'dsStatusO',
-                                    'maximumSelectionLength':'3',
-                                    'placeholder':'Selecione o status do documento...',
-                                    'fields':[
-                                        {
-                                        'field':'status',
-                                        'label':'Status'
-                                        },{
-                                        'field':'statusDescricao',
-                                        'label':'Descrição',
-                                        'standard':'true'
-                                        }
-                                    ]
-                                }"
-                                />
-                        </div>
-
-                        <!-- 20° Input -->
-                        <div class="form-group col-md-5">
-                            <label for="regMov">Resgistro de Movimentação</label>
-                            <input name="regMov" type="text" class="form-control" id="regMov">
                         </div>
                     </div>
-                </div>
-            </div>                 
-          </div>
+                </div>                 
+            </div>
 
+            </div>
+
+            <!-- Meu Script -->
+            <script type="text/javascript">
+            var dataClient = FLUIGC.calendar('#dataClient');
+            </script>
+
+            <script type="text/javascript" src="js/CadastroMaster.js"></script>
+
+        </form>
         </div>
-
-        <!-- Script -->
-        <script type="text/javascript">
-          var dataClient = FLUIGC.calendar('#dataClient');
-        </script>
-
-        <script type="text/javascript" src="js/CadastroMaster.js"></script>
-
-      </form>
-    </div>
-  </body>
-</html>
+    </body>
+    </html>
