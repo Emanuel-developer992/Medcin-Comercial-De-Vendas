@@ -50,7 +50,7 @@
                             <img class="card-img-top" src="image/card cliente.png" alt="Card image cap">
                             <div class="card-body">
                                 <h3 class="card-title"><b>Cadastro de Cliente/Patrocinador</b></h3>
-                                <p class="card-text p-cinza">Iniciei um cadastro de cliente/patrocinador através dessa opção. <br> Após selecionar a opção desejada clique em salvar e de andamento ao formulário em questão.</p>
+                                <p class="card-text p-cinza">Inicie um Cadastro de Cliente/Patrocinador através dessa opção. <br> Após selecionar a opção desejada clique em salvar e dê andamento ao formulário em questão.</p>
                                 <button name="subject" type="button" class="btn btn-warning button-medcin" onclick="cadastroCP()" value="Cadastro de Cliente/Patrocinador">Selecionar</button>
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                             <img class="card-img-top" src="image/card produto.png" alt="Card image cap">
                             <div class="card-body">
                                 <h3 class="card-title"><b>Cadastro de Produto e Serviços</b></h3>
-                                <p class="card-text p-cinza">Iniciei um Cadastro de Produto e Serviços através dessa opção. <br> Após selecionar a opção desejada clique em salvar e de andamento ao formulário em questão.</p>
+                                <p class="card-text p-cinza">Inicie um Cadastro de Produto e Serviços através dessa opção. <br> Após selecionar a opção desejada clique em salvar e dê andamento ao formulário em questão.</p>
                                 <button name="subject1" type="button" class="btn btn-warning button-medcin" onclick="cadastroPS()" value="Cadastro de Produtos e Serviços">Selecionar</button>
                             </div>
                         </div>
@@ -76,7 +76,7 @@
                             <img class="card-img-top" src="image/card orçamento.png" alt="Card image cap">
                             <div class="card-body">
                                 <h3 class="card-title"><b>Cadastro de Orçamento</b><br></h3>
-                                <p class="card-text p-cinza">Iniciei um Cadastro de Orçamento através dessa opção. <br> Após selecionar a opção desejada clique em salvar e de andamento ao formulário em questão.</p>
+                                <p class="card-text p-cinza">Inicie um Cadastro de Orçamento através dessa opção. <br> Após selecionar a opção desejada clique em salvar e dê andamento ao formulário em questão.</p>
                                 <button name="subject2" type="button" class="btn btn-warning button-medcin" onclick="cadastroO()" value="Cadastro de Orçamentos">Selecionar</button>
                             </div>
                         </div>
@@ -121,7 +121,7 @@
                             </div>
 
                             <div class="clearfix"></div>
-
+                           
                             <!-- 2° Input -->
                             <div class="form-group col-md-4">
                                 <label for="cnpj">CNPJ</label>
@@ -258,7 +258,7 @@
 
                                 <div class="d-grid gap-2 col-6 mx-auto">
                                     <button name="add1" id="add1" type="button" class="btn btn-success button-medcin" onclick="pushAdd1()"><b>Adicionar +</b></button>
-                                    <p class="p-cinza">Você pode adicionar varios contatos, clique em adicionar para salvar na tabela, você também pode remover-los.</p>
+                                    <p class="p-cinza">Você pode adicionar vários contatos, clique em adicionar para salvar na tabela, você também pode removê-los.</p>
                                 </div>
                                 
                         </div>
@@ -283,12 +283,12 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td><div id="excluir" name="excluir"></div></td>
+                                    <td><input type="text" name="tb_nomeAdd1" class="invisible-input" readonly></input></td>
+                                    <td><input type="text" name="tb_departamentoAdd1" class="invisible-input" readonly></input></td>
+                                    <td><input type="text" name="tb_celularAdd1" class="invisible-input" readonly></input></td>
+                                    <td><input type="text" name="tb_telefoneAdd1" class="invisible-input" readonly></input></td>
+                                    <td><input type="text" name="tb_emailAdd1" class="invisible-input" readonly></input></td>
+                                    <td><button type="button" class="btn btn-danger excluir">Excluir</button></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -334,7 +334,7 @@
 
                             <div class="d-grid gap-2 col-6 mx-auto">
                                 <button name="add2" id="add2" type="button" class="btn btn-success button-medcin" onclick="pushAdd2()"><b>Adicionar +</b></button>
-                                <p class="p-cinza">Você pode adicionar varios contatos, clique em adicionar para salvar na tabela, você também pode remover-los.</p>
+                                <p class="p-cinza">Você pode adicionar vários contatos, clique em adicionar para salvar na tabela, você também pode removê-los.</p>
                             </div>
 
                         </div>
@@ -358,12 +358,12 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td><div id="excluir" name="excluir"></div></td>
+                                    <td><input type="text" name="tb_nomeAdd2" class="invisible-input" readonly></input></td>
+                                    <td><input type="text" name="tb_departamentoAdd2" class="invisible-input" readonly></input></td>
+                                    <td><input type="text" name="tb_celularAdd2" class="invisible-input" readonly></input></td>
+                                    <td><input type="text" name="tb_telefoneAdd2" class="invisible-input" readonly></input></td>
+                                    <td><input type="text" name="tb_emailAdd2" class="invisible-input" readonly></input></td>
+                                    <td><button type="button" class="btn btn-danger excluir">Excluir</button></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -409,7 +409,7 @@
 
                             <div class="d-grid gap-2 col-6 mx-auto">
                                 <button name="add3" id="add3" type="button" class="btn btn-success button-medcin" onclick="pushAdd3()"><b>Adicionar +</b></button>
-                                <p class="p-cinza">Você pode adicionar varios contatos, clique em adicionar para salvar na tabela, você também pode remover-los.</p>
+                                <p class="p-cinza">Você pode adicionar vários contatos, clique em adicionar para salvar na tabela, você também pode removê-los.</p>
                             </div>
 
                         </div>
@@ -433,12 +433,12 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td><div id="excluir" name="excluir"></div></td>
+                                    <td><input type="text" name="tb_nomeAdd3" class="invisible-input" readonly></input></td>
+                                    <td><input type="text" name="tb_departamentoAdd3" class="invisible-input" readonly></input></td>
+                                    <td><input type="text" name="tb_celularAdd3" class="invisible-input" readonly></input></td>
+                                    <td><input type="text" name="tb_telefoneAdd3" class="invisible-input" readonly></input></td>
+                                    <td><input type="text" name="tb_emailAdd3" class="invisible-input" readonly></input></td>
+                                    <td><button type="button" class="btn btn-danger excluir">Excluir</button></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -521,7 +521,7 @@
                             <!-- 3° Input -->
                             <div class="form-group col-md-12">
                                 <label for="specificChar"><h2>Características Específicas</h2></label>
-                                <p class="p-cinza">Relate a caracteristicas específicas desse produto</p>
+                                <p class="p-cinza">Relate as caracteristicas específicas desse produto</p>
                                 <textarea name="specificChar" type="text" class="form-control" id="specificChar"></textarea>
                             </div>
 
@@ -616,6 +616,8 @@
                                 </div>
                             </div>
 
+                            <div class="clearfix"></div>
+
                             <!-- 2° Input -->
                             <div class="form-group col-md-5">
                                 <label for="codClientP">Código do Cliente/Patrocinador</label>
@@ -664,7 +666,7 @@
                             <!-- 8° Input -->
                             <div class="form-group col-md-9">
                                 <label for="item">Código do Item</label>
-                                <p class="p-cinza">Selecione o item desejado para trazer as informções automaticamentes.</p>
+                                <p class="p-cinza">Selecione o item desejado para trazer as informções automaticamente.</p>
                                 <input
                                         type="zoom"
                                         placeholder="Selecione o item desejado..."
@@ -708,7 +710,7 @@
                             <!-- 10° Input -->
                             <div class="form-group col-md-12">
                                 <label for="descricaoItem">Descrição do Item</label>
-                                <p class="p-cinza">Descrição preenchida automaticamento após a seleção do item.</p>
+                                <p class="p-cinza">Descrição preenchida automaticamente após a seleção do item.</p>
                                 <textarea name="descricaoItem" type="text" class="form-control" id="descricaoItem"></textarea>
                             </div>
 
@@ -733,9 +735,11 @@
                                 <input name="prazoER" type="date" class="form-control" id="prazoER">
                             </div>
 
+                            <div class="clearfix"></div>
+
                             <!-- 14° Input -->
                             <div class="form-group col-md-6">
-                                <label for="tOrcamento">R$ Total do Oçamento</label>
+                                <label for="tOrcamento">R$ Total do Orçamento</label>
                                 <div class="input-group">
                                     <div class="input-group-addon painel-medcin">R$</div>
                                         <input name="tOrcamento" type="text" class="form-control" id="tOrcamento" mask="###0.00" placeholder="Orçamento proposto..."> 
@@ -765,7 +769,7 @@
 
                             <div class="d-grid gap-2 col-6 mx-auto">
                                 <button name="add" id="add" type="button" class="btn btn-success button-medcin" onclick="pushTable(); pushTable2();"><b>Adicionar +</b></button>
-                                <p class="p-cinza">Você pode adicionar varios contatos, clique em adicionar para salvar na tabela, você também pode remover-los.</p>
+                                <p class="p-cinza">Você pode adicionar vários contatos, clique em adicionar para salvar na tabela, você também pode removê-los.</p>
                             </div>
 
                         </div>
@@ -869,7 +873,7 @@
 
                             <!-- 19° Input -->
                             <div class="form-group col-md-4">
-                                <label for="regMov">Resgistro de Movimentação</label>
+                                <label for="regMov">Registro de Movimentação</label>
                                 <input name="regMov" type="text" class="form-control" id="regMov" placeholder="Registro de Movimentação..."> 
                             </div>
 

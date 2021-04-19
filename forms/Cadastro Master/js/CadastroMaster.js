@@ -144,7 +144,12 @@ window.onload = function() {
 //#region Funtion
 
 var idClick = 0;
+var ClickAdd1 = 0;
+var ClickAdd2 = 0;
+var ClickAdd3 = 0;
 var idAll;
+
+//#region Orçamento
 
 function pushTable() {
 
@@ -172,6 +177,9 @@ function pushTable() {
 	$("#rItem").val("");
     $("#desconto").val("");
 	$("#orcamentoDesconto").val("");
+
+    setTimeout(function(){$("#descricaoItem").val("")}, 120);
+   
 	
     $(".excluir").bind("click", Excluir);
 
@@ -202,126 +210,27 @@ function pushTable2() {
 
 };
 
-function pushKP() {
+//#endregion
 
-    var dados = [];
-    var inputcodKP = $("#codKP").val();
-    var inputintensP = $("#itensP").val();
-    var inputdesKP = $("#descricaoKP").val();
-
-    var element = document.getElementById('excluir');
-   
-    dados.push("");
-    dados.push(inputcodKP);
-    dados.push(inputintensP);
-    dados.push(inputdesKP);
-    dados.push(element.innerHTML = '<button type="button" class="btn btn-danger excluir">Excluir</button>');  
-    
-    var table = document.getElementById("tabelaCadastroPS");
-    
-    var numOfRows = table.rows.length;
-
-    var numOfCols = table.rows[numOfRows-1].cells.length;
-
-    var newRow = table.insertRow(numOfRows);
-
-    for (var i = 0; i < numOfCols; i++) {
-
-        newCell = newRow.insertCell(i);
-
-        newCell.innerHTML = dados[i];
-
-        
-    }
-
-    $("#codKP").val("");
-    $("#itensP").val("");
-	$("#descricaoKP").val("");
-
-    $(".excluir").bind("click", Excluir);
-
-};
-
-function pushKP2() {
-
-    var dados = [];
-    var inputquantKP = $("#quantKP").val();
-    var inputtvalorKP = $("#tvalorKP").val();
-    var inputpVendaKP = $("#pVendaKP").val();
-    var inputpCustoKP = $("#pCustoKP").val();
-
-    var element = document.getElementById('excluir');
-    
-   
-    dados.push("");
-    dados.push(inputquantKP);
-    dados.push(inputtvalorKP);
-    dados.push(inputpVendaKP);
-    dados.push(inputpCustoKP);    
-    dados.push(element.innerHTML = '<button type="button" class="btn btn-danger excluir">Excluir</button>');  
-    
-    var table = document.getElementById("tabelaCadastroPS2");
-    
-    var numOfRows = table.rows.length;
-
-    var numOfCols = table.rows[numOfRows-1].cells.length;
-
-    var newRow = table.insertRow(numOfRows);
-
-    for (var i = 0; i < numOfCols; i++) {
-
-        newCell = newRow.insertCell(i);
-
-        newCell.innerHTML = dados[i];
-
-        
-    }
-
-    $("#quantKP").val("");
-    $("#tvalorKP").val("");
-	$("#pVendaKP").val("");
-	$("#pCustoKP").val("");
-
-    $(".excluir").bind("click", Excluir);
-
-};
+//#region Cliente/Patrocinador
 
 function pushAdd1() {
 
-    var dados = [];
+    wdkAddChild('tabelaAddComercial');
+
+    ClickAdd1++; 
+
     var inputnomeAdd1 = $("#nomeAdd1").val();
     var inputdepartamentoAdd1 = $("#departamentoAdd1").val();
     var inputcelularAdd1 = $("#celularAdd1").val();
     var inputtelefoneAdd1 = $("#telefoneAdd1").val();
     var inputemailAdd1 = $("#emailAdd1").val();
 
-    var element = document.getElementById('excluir');
-    
-   
-    dados.push("");
-    dados.push(inputnomeAdd1);
-    dados.push(inputdepartamentoAdd1);
-    dados.push(inputcelularAdd1);
-    dados.push(inputtelefoneAdd1);    
-    dados.push(inputemailAdd1);    
-    dados.push(element.innerHTML = '<button type="button" class="btn btn-danger excluir">Excluir</button>');  
-    
-    var table = document.getElementById("tabelaAddComercial");
-    
-    var numOfRows = table.rows.length;
-
-    var numOfCols = table.rows[numOfRows-1].cells.length;
-
-    var newRow = table.insertRow(numOfRows);
-
-    for (var i = 0; i < numOfCols; i++) {
-
-        newCell = newRow.insertCell(i);
-
-        newCell.innerHTML = dados[i];
-
-        
-    }
+    $("#tb_nomeAdd1___"+ClickAdd1).val(inputnomeAdd1);
+    $("#tb_departamentoAdd1___"+ClickAdd1).val(inputdepartamentoAdd1);
+    $("#tb_celularAdd1___"+ClickAdd1).val(inputcelularAdd1);
+    $("#tb_telefoneAdd1___"+ClickAdd1).val(inputtelefoneAdd1);
+    $("#tb_emailAdd1___"+ClickAdd1).val(inputemailAdd1);
 
     $("#nomeAdd1").val("");
     $("#departamentoAdd1").val("");
@@ -335,40 +244,21 @@ function pushAdd1() {
 
 function pushAdd2() {
 
-    var dados = [];
-    var inputnomeAdd1 = $("#nomeAdd2").val();
-    var inputdepartamentoAdd1 = $("#departamentoAdd2").val();
-    var inputcelularAdd1 = $("#celularAdd2").val();
-    var inputtelefoneAdd1 = $("#telefoneAdd2").val();
-    var inputemailAdd1 = $("#emailAdd2").val();
+    wdkAddChild('tabelaAddFinanceiro');
 
-    var element = document.getElementById('excluir');
-    
-   
-    dados.push("");
-    dados.push(inputnomeAdd1);
-    dados.push(inputdepartamentoAdd1);
-    dados.push(inputcelularAdd1);
-    dados.push(inputtelefoneAdd1);    
-    dados.push(inputemailAdd1);    
-    dados.push(element.innerHTML = '<button type="button" class="btn btn-danger excluir">Excluir</button>');  
-    
-    var table = document.getElementById("tabelaAddFinanceiro");
-    
-    var numOfRows = table.rows.length;
+    ClickAdd2++; 
 
-    var numOfCols = table.rows[numOfRows-1].cells.length;
+    var inputnomeAdd2 = $("#nomeAdd2").val();
+    var inputdepartamentoAdd2 = $("#departamentoAdd2").val();
+    var inputcelularAdd2 = $("#celularAdd2").val();
+    var inputtelefoneAdd2 = $("#telefoneAdd2").val();
+    var inputemailAdd2 = $("#emailAdd2").val();
 
-    var newRow = table.insertRow(numOfRows);
-
-    for (var i = 0; i < numOfCols; i++) {
-
-        newCell = newRow.insertCell(i);
-
-        newCell.innerHTML = dados[i];
-
-        
-    }
+    $("#tb_nomeAdd2___"+ClickAdd2).val(inputnomeAdd2);
+    $("#tb_departamentoAdd2___"+ClickAdd2).val(inputdepartamentoAdd2);
+    $("#tb_celularAdd2___"+ClickAdd2).val(inputcelularAdd2);
+    $("#tb_telefoneAdd2___"+ClickAdd2).val(inputtelefoneAdd2);
+    $("#tb_emailAdd2___"+ClickAdd2).val(inputemailAdd2);
 
     $("#nomeAdd2").val("");
     $("#departamentoAdd2").val("");
@@ -382,40 +272,23 @@ function pushAdd2() {
 
 function pushAdd3() {
 
-    var dados = [];
-    var inputnomeAdd1 = $("#nomeAdd3").val();
-    var inputdepartamentoAdd1 = $("#departamentoAdd3").val();
-    var inputcelularAdd1 = $("#celularAdd3").val();
-    var inputtelefoneAdd1 = $("#telefoneAdd3").val();
-    var inputemailAdd1 = $("#emailAdd3").val();
+    wdkAddChild('tabelaAddAdicional');
 
-    var element = document.getElementById('excluir');
-    
+    ClickAdd3++; 
    
-    dados.push("");
-    dados.push(inputnomeAdd1);
-    dados.push(inputdepartamentoAdd1);
-    dados.push(inputcelularAdd1);
-    dados.push(inputtelefoneAdd1);    
-    dados.push(inputemailAdd1);    
-    dados.push(element.innerHTML = '<button type="button" class="btn btn-danger excluir">Excluir</button>');  
-    
-    var table = document.getElementById("tabelaAddAdicional");
-    
-    var numOfRows = table.rows.length;
-
-    var numOfCols = table.rows[numOfRows-1].cells.length;
-
-    var newRow = table.insertRow(numOfRows);
-
-    for (var i = 0; i < numOfCols; i++) {
-
-        newCell = newRow.insertCell(i);
-
-        newCell.innerHTML = dados[i];
+    var inputnomeAdd3 = $("#nomeAdd3").val();
+    var inputdepartamentoAdd3 = $("#departamentoAdd3").val();
+    var inputcelularAdd3 = $("#celularAdd3").val();
+    var inputtelefoneAdd3= $("#telefoneAdd3").val();
+    var inputemailAdd3 = $("#emailAdd3").val();
 
         
-    }
+    $("#tb_nomeAdd3___"+ClickAdd3).val(inputnomeAdd3);
+    $("#tb_departamentoAdd3___"+ClickAdd3).val(inputdepartamentoAdd3);
+    $("#tb_celularAdd3___"+ClickAdd3).val(inputcelularAdd3);
+    $("#tb_telefoneAdd3___"+ClickAdd3).val(inputtelefoneAdd3);
+    $("#tb_emailAdd3___"+ClickAdd3).val(inputemailAdd3);
+    
 
     $("#nomeAdd3").val("");
     $("#departamentoAdd3").val("");
@@ -426,6 +299,8 @@ function pushAdd3() {
     $(".excluir").bind("click", Excluir);
 
 };
+
+//#endregion
 
 function Excluir(){
 
