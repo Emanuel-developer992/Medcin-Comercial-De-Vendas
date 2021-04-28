@@ -60,5 +60,27 @@
  .relatorio-div {
     width: 100% !important;
     height: 3508px !important;
+    background-color: white;
    
  }
+
+ .filtro-medcin {
+
+    background-color: #dcdcdc;
+    border-radius: 7px;
+
+}
+.text-filter {
+    color: #e5883f !important;
+    font-weight: bolder;
+}
+
+.button-filter {
+
+    color: white !important;
+    background-color: #e5883f !important;
+    border-color: #e5883f !important;
+    margin-left: 1080px;
+    margin-bottom: 10px;
+}
+

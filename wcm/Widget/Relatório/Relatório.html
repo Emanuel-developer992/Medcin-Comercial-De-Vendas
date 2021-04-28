@@ -1,5 +1,8 @@
 <div id="MyWidget_${instanceId}" class="super-widget wcm-widget-class fluig-style-guide" data-params="MyWidget.instance()">
     <link href="css/Relatório.css" rel="stylesheet">
+    <link href="css/houver.css" rel="stylesheet">
+    <script type="text/javascript" src="/fluighub/assets/js/fluighub.js"></script>
+    <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
     
 
     <!-- Nav tabs -->
@@ -16,15 +19,209 @@
 
         <!-- Relatório de Participantes -->
         <div id="cadastro_cliente_nav" class="container tab-pane active" aria-selected="true">
-           
 
-            <button id="print" class="btn btn-success" onclick="printDiv('relatorio_a4')">Imprimir</button>
+            <div class="row filtro-medcin">
+            
+                <br>
+
+                <!-- 1º Input -->
+                <div class="form-group col-md-12">
+                    <label>Nome</label>
+                    <input type="text" id="filter_nome" name="filter_nome" class="form-control" placeholder="Nome..." value=""> 
+                </div>
+
+                <div class="clearfix"></div>
+
+                <!-- 2º Input -->
+                <div class="form-group col-md-2">
+                    <label>Idade</label>
+                    <input type="text" id="filter_idade" name="filter_idade" class="form-control" placeholder="Idade..." value="">
+                </div>
+
+                <!-- 3º Input -->
+                <div class="form-group col-md-5">
+                    <label>CPF</label>
+                    <input type="text" id="filter_cpf" name="filter_cpf" class="form-control" placeholder="CPF..." mask="000.000.000-00" value="">
+                </div>
+
+                <!-- 4º Input -->
+                <div class="form-group col-md-5">
+                    <label>RG</label>
+                    <input type="text" id="filter_rg" name="filter_rg" class="form-control" placeholder="RG..." mask="00.000.000-0" value="">
+                </div>
+
+                 <!-- 5º Input -->
+                 <div class="form-group col-md-5">
+                    <label>CEP</label>
+                    <input type="text" id="filter_cep" name="filter_cep" class="form-control" placeholder="CEP..." mask="00000-000" value="">
+                </div>
+
+                 <!--6º Input -->
+                 <div class="form-group col-md-3">
+                    <label>Sexo</label>
+                    <select id="filter_sexo" name="filter_sexo" class="form-control">
+                        <option value="">Sexo...</option>
+                        <option value="F">Feminino</option>
+                        <option value="M">Masculino</option>
+                    </select>
+                </div>
+
+                <div class="clearfix"></div>
+                <hr style="color: white;">
+                <br>
+
+                <!--7º Input -->
+                <div class="form-group col-md-3">
+                    <label>Fototipo</label>
+                    <select id="filter_fototipo" name="filter_fototipo" class="form-control">
+                        <option value="">Fototipo...</option>
+                        <option value="Fototipo I ou II">Fototipo I ou II</option>
+                        <option value="Fototipo III ou IV">Fototipo III ou IV</option>
+                        <option value="Fototipo acima de IV">Fototipo acima de IV</option>
+                    </select>
+                </div>
+
+                <!--8º Input -->
+                <div class="form-group col-md-3">
+                    <label>Sensibilidade da Pele</label>
+                    <select id="filter_sensibilidade" name="filter_sensibilidade" class="form-control">
+                        <option value="">Sensibilidade da pele...</option>
+                        <option value="Pele Sensível">Pele Sensível</option>
+                        <option value="Pele normal">Pele normal</option>
+                    </select>
+                </div>
+
+                <!--9º Input -->
+                <div class="form-group col-md-2">
+                    <label>Classe Social</label>
+                    <select id="filter_classe" name="filter_classe" class="form-control">
+                        <option value="">Classe Social...</option>
+                        <option value="D-E">D-E</option>
+                        <option value="C-2">C-2</option>
+                        <option value="C-1">C-1</option>
+                        <option value="B-2">B-2</option>
+                        <option value="B-1">B-1</option>
+                        <option value="A">A</option>
+                    </select>
+                </div>
+            
+                <div class="clearfix"></div>
+
+                <div class="form-group col-md-8"></div>
+                <div class="form-group col-md-1">
+                    <button id="filtrar" class="btn btn-success button-filter" onclick="filter_participantes()"><i class="fluigicon fluigicon-filter icon-xs" style="color: white;"></i> Filtrar</button>
+                </div>
+
+                <div class="form-group col-md-1">
+                    <button id="filtrar" class="btn btn-danger" onclick="filter_clear()"> Limpar</button>
+                </div>
+
+                <div class="form-group col-md-1">
+                    <button id="filtrar" class="btn btn-info" onclick="filter_all()"> Pesquisar tudo</button>
+                </div>
+                
+            </div>
+            
+            <br>
+            <br>           
+
+            <button id="print" class="btn btn-success" onclick="printDiv('relatorio_a4')">Imprimir Relatório</button>
 
             <div id="relatorio_a4" class="relatorio-div">
                 <img src="https://github.com/Emanuel-developer992/imagens/blob/main/header-participantes.png?raw=true" style="width: 1080px;">
-            </div>
+                
+                <div class="cleafix"></div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>                
 
-           
+                <!--Linha 1-->
+                <div style="width: 1080px;">
+                    
+                    <div class="hoverzoom col-md-4" style="display: inline;">
+                        <img src="https://github.com/Emanuel-developer992/imagens/blob/main/responsavel-select4.png?raw=true" style="width: 313px; height: 273px;" onclick="funcaotal()">
+                    </div>
+                
+                    <div class="hoverzoom col-md-4" style="display: inline;">
+                        <img src="https://github.com/Emanuel-developer992/imagens/blob/main/cadastro-select2.png?raw=true" style="width: 313px; height: 273px;" onclick="funcaotal()">
+                    </div>
+                
+                    <div class="hoverzoom col-md-4" style="display: inline;">
+                        <img src="https://github.com/Emanuel-developer992/imagens/blob/main/localidade-select4.png?raw=true" style="width: 313px; height: 273px;" onclick="funcaotal()">
+                    </div>
+
+                </div>
+                
+                <br>
+                <br>
+
+                <!--Linha 2-->
+                <div style="width: 1080px;">
+                    
+                    <div class="hoverzoom col-md-4" style="display: inline; padding-top: 10px;">
+                        <img src="https://github.com/Emanuel-developer992/imagens/blob/main/rede-social-select.png?raw=true" style="width: 313px; height: 273px;" onclick="funcaotal()">
+                    </div>
+                
+                    <div class="hoverzoom col-md-4" style="display: inline; padding-top: 10px;">
+                        <img src="https://github.com/Emanuel-developer992/imagens/blob/main/fototipo-select.png?raw=true" style="width: 313px; height: 273px;" onclick="funcaotal()">
+                    </div>
+                
+                    <div class="hoverzoom col-md-4" style="display: inline; padding-top: 10px;">
+                        <img src="https://github.com/Emanuel-developer992/imagens/blob/main/sensibilidade-select.png?raw=true" style="width: 313px; height: 273px;" onclick="funcaotal()">
+                    </div>
+
+                </div>
+                
+                <br>
+                <br>
+
+                <!--Linha 3-->
+                <div style="width: 1080px;">
+                    
+                    <div class="hoverzoom col-md-4" style="display: inline; padding-top: 10px;">
+                        <img src="https://github.com/Emanuel-developer992/imagens/blob/main/perfilrosto-select4.png?raw=true" style="width: 313px; height: 273px;" onclick="funcaotal()">
+                    </div>
+                
+                    <div class="hoverzoom col-md-4" style="display: inline; padding-top: 10px;">
+                        <img src="https://github.com/Emanuel-developer992/imagens/blob/main/perfilcabelo-select4.png?raw=true" style="width: 313px; height: 273px;" onclick="funcaotal()">
+                    </div>
+                
+                    <div class="hoverzoom col-md-4" style="display: inline; padding-top: 10px;">
+                        <img src="https://github.com/Emanuel-developer992/imagens/blob/main/corporal-select.png?raw=true" style="width: 313px; height: 273px;" onclick="funcaotal()">
+                    </div>
+
+                </div>
+                
+                <br>
+                <br>
+
+                <!--Linha 4-->
+                <div style="width: 1080px;">
+                    
+                    <div class="hoverzoom col-md-4" style="display: inline; padding-top: 10px;">
+                        <img src="https://github.com/Emanuel-developer992/imagens/blob/main/saude-select.png?raw=true" style="width: 313px; height: 273px;" onclick="funcaotal()">
+                    </div>
+
+                </div>
+              
+                <br>
+                <br>
+
+                <div class="table-responsive" style="width: 1080px;">
+                    <table tablename="tb_relatorio" id="tb_relatorio" noaddbutton="true" nodeletebutton="true" class="table table-hover">
+                        <thead>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
 
         <!-- Relatório de cadastro Comercial -->
