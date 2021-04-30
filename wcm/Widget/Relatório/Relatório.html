@@ -38,25 +38,7 @@
                     <input type="text" id="filter_idade" name="filter_idade" class="form-control" placeholder="Idade..." value="">
                 </div>
 
-                <!-- 3º Input -->
-                <div class="form-group col-md-5">
-                    <label>CPF</label>
-                    <input type="text" id="filter_cpf" name="filter_cpf" class="form-control" placeholder="CPF..." mask="000.000.000-00" value="">
-                </div>
-
-                <!-- 4º Input -->
-                <div class="form-group col-md-5">
-                    <label>RG</label>
-                    <input type="text" id="filter_rg" name="filter_rg" class="form-control" placeholder="RG..." mask="00.000.000-0" value="">
-                </div>
-
-                 <!-- 5º Input -->
-                 <div class="form-group col-md-5">
-                    <label>CEP</label>
-                    <input type="text" id="filter_cep" name="filter_cep" class="form-control" placeholder="CEP..." mask="00000-000" value="">
-                </div>
-
-                 <!--6º Input -->
+                 <!--3º Input -->
                  <div class="form-group col-md-3">
                     <label>Sexo</label>
                     <select id="filter_sexo" name="filter_sexo" class="form-control">
@@ -70,7 +52,17 @@
                 <hr style="color: white;">
                 <br>
 
-                <!--7º Input -->
+                 <!--7º Input -->
+                 <div class="form-group col-md-3">
+                    <label>Sensibilidade da Pele</label>
+                    <select id="filter_sensibilidade" name="filter_sensibilidade" class="form-control">
+                        <option value="">Sensibilidade da pele...</option>
+                        <option value="Pele Sensível">Pele Sensível</option>
+                        <option value="Pele normal">Pele normal</option>
+                    </select>
+                </div>
+
+                <!--8º Input -->
                 <div class="form-group col-md-3">
                     <label>Fototipo</label>
                     <select id="filter_fototipo" name="filter_fototipo" class="form-control">
@@ -81,27 +73,106 @@
                     </select>
                 </div>
 
-                <!--8º Input -->
-                <div class="form-group col-md-3">
-                    <label>Sensibilidade da Pele</label>
-                    <select id="filter_sensibilidade" name="filter_sensibilidade" class="form-control">
-                        <option value="">Sensibilidade da pele...</option>
-                        <option value="Pele Sensível">Pele Sensível</option>
-                        <option value="Pele normal">Pele normal</option>
+                <!--9º Input -->
+                <div class="form-group col-md-2">
+                    <label>Espinhas</label>
+                    <select id="filter_espinhas" name="filter_espinhas" class="form-control">
+                        <option value="">Espinhas...</option>
+                        <option value="1">"Sempre tenho espinha no rosto"</option>
+                        <option value="2">"As vezes, sem motivo aparente"</option>
+                        <option value="3">"Somente próximo ao ciclo menstrual"</option>
+                        <option value="4">"Não tenho espinhas"</option>
                     </select>
                 </div>
 
-                <!--9º Input -->
+                <!--10º Input -->
                 <div class="form-group col-md-2">
-                    <label>Classe Social</label>
-                    <select id="filter_classe" name="filter_classe" class="form-control">
-                        <option value="">Classe Social...</option>
-                        <option value="D-E">D-E</option>
-                        <option value="C-2">C-2</option>
-                        <option value="C-1">C-1</option>
-                        <option value="B-2">B-2</option>
-                        <option value="B-1">B-1</option>
-                        <option value="A">A</option>
+                    <label>Pele do Rosto</label>
+                    <select id="filter_rosto" name="filter_rosto" class="form-control">
+                        <option value="">Pele do rosto...</option>
+                        <option value="1">"Hidratada"</option>
+                        <option value="2">"Ressecada"</option>
+                        <option value="3">"Mista, oleosidade somente na testa nariz e queixo"</option>
+                        <option value="4">"Oleosa"</option>
+                        <option value="5">"Normal</option>
+                    </select>
+                </div>
+
+                <!--11º Input -->
+                <div class="form-group col-md-2">
+                    <label>Tipo de Cabelo</label>
+                    <select id="filter_cabelo" name="filter_cabelo" class="form-control">
+                        <option value="">Tipo de cabelo...</option>
+                        <option value="1">"Liso"</option>
+                        <option value="2">"Ondulado"</option>
+                        <option value="3">"Enrolado"</option>
+                        <option value="4">"Crespo"</option>
+                    </select>
+                </div>
+
+                <!--12º Input -->
+                <div class="form-group col-md-2">
+                    <label>Caspas</label>
+                    <select id="filter_caspas" name="filter_caspas" class="form-control">
+                        <option value="">Caspas...</option>
+                        <option value="1">"Tenho muitas caspas"</option>
+                        <option value="2">"Tenho quantidade normal de caspas"</option>
+                        <option value="3">"Não tenho caspas"</option>
+                    </select>
+                </div>
+
+                <!--13º Input -->
+                <div class="form-group col-md-2">
+                    <label>Pele do Corpo</label>
+                    <select id="filter_corpo" name="filter_corpo" class="form-control">
+                        <option value="">Pele do corpo...</option>
+                        <option value="1">"Hidratada"</option>
+                        <option value="2">"Ressecada"</option>
+                        <option value="3">"Normal</option>
+                    </select>
+                </div>
+
+                <!--14º Input -->
+                <div class="form-group col-md-2">
+                    <label>Transpiração</label>
+                    <select id="filter_transpiracao" name="filter_transpiracao" class="form-control">
+                        <option value="">Pele do transpiração...</option>
+                        <option value="1">"Excessiva, suo muito"</option>
+                        <option value="2">"Normal"</option>
+                        <option value="3">"Não suo, dificilmente transpiro"</option>
+                    </select>
+                </div>
+
+                <!--15º Input -->
+                <div class="form-group col-md-2">
+                    <label>Histórico Alergico</label>
+                    <select id="filter_alergia" name="filter_alergia" class="form-control">
+                        <option value="">Histórico alergico...</option>
+                        <option value="1">"Sim, com frequência"</option>
+                        <option value="2">"Às vezes"</option>
+                        <option value="3">"Não"</option>
+                    </select>
+                </div>
+
+                <!--16º Input -->
+                <div class="form-group col-md-2">
+                    <label>Disponibilidade na Medcin</label>
+                    <select id="filter_disponibilidade" name="filter_disponibilidade" class="form-control">
+                        <option value="">Disponibilidade...</option>
+                        <option value="1">"Entre 1 e 2 horas no máximo"</option>
+                        <option value="2">"Até 4 horas"</option>
+                        <option value="3">"Até 6 horas"</option>
+                        <option value="4">"Mais de 6 horas"</option>
+                    </select>
+                </div>
+
+                <!--17º Input -->
+                <div class="form-group col-md-2">
+                    <label>Fumante</label>
+                    <select id="filter_fumante" name="filter_fumante" class="form-control">
+                        <option value="">Fumante...</option>
+                        <option value="S">Sim</option>
+                        <option value="N">Não</option>
                     </select>
                 </div>
             
@@ -109,7 +180,7 @@
 
                 <div class="form-group col-md-8"></div>
                 <div class="form-group col-md-1">
-                    <button id="filtrar" class="btn btn-success button-filter" onclick="filter_participantes()"><i class="fluigicon fluigicon-filter icon-xs" style="color: white;"></i> Filtrar</button>
+                    <button id="filtrar" class="btn btn-success button-filter" onclick="filtrar()"><i class="fluigicon fluigicon-filter icon-xs" style="color: white;"></i> Filtrar</button>
                 </div>
 
                 <div class="form-group col-md-1">
@@ -145,15 +216,15 @@
                 <div style="width: 1080px;">
                     
                     <div class="hoverzoom col-md-4" style="display: inline;">
-                        <img src="https://github.com/Emanuel-developer992/imagens/blob/main/responsavel-select4.png?raw=true" style="width: 313px; height: 273px;" onclick="funcaotal()">
+                        <img src="https://github.com/Emanuel-developer992/imagens/blob/main/responsavel-select4.png?raw=true" style="width: 313px; height: 273px;" onclick="filter_responsavel()">
                     </div>
                 
                     <div class="hoverzoom col-md-4" style="display: inline;">
-                        <img src="https://github.com/Emanuel-developer992/imagens/blob/main/cadastro-select2.png?raw=true" style="width: 313px; height: 273px;" onclick="funcaotal()">
+                        <img src="https://github.com/Emanuel-developer992/imagens/blob/main/cadastro-select2.png?raw=true" style="width: 313px; height: 273px;" onclick="filter_cadastro()">
                     </div>
                 
                     <div class="hoverzoom col-md-4" style="display: inline;">
-                        <img src="https://github.com/Emanuel-developer992/imagens/blob/main/localidade-select4.png?raw=true" style="width: 313px; height: 273px;" onclick="funcaotal()">
+                        <img src="https://github.com/Emanuel-developer992/imagens/blob/main/localidade-select4.png?raw=true" style="width: 313px; height: 273px;" onclick="filter_localidade()">
                     </div>
 
                 </div>
@@ -165,15 +236,15 @@
                 <div style="width: 1080px;">
                     
                     <div class="hoverzoom col-md-4" style="display: inline; padding-top: 10px;">
-                        <img src="https://github.com/Emanuel-developer992/imagens/blob/main/rede-social-select.png?raw=true" style="width: 313px; height: 273px;" onclick="funcaotal()">
+                        <img src="https://github.com/Emanuel-developer992/imagens/blob/main/rede-social-select.png?raw=true" style="width: 313px; height: 273px;" onclick="filter_social()">
                     </div>
                 
                     <div class="hoverzoom col-md-4" style="display: inline; padding-top: 10px;">
-                        <img src="https://github.com/Emanuel-developer992/imagens/blob/main/fototipo-select.png?raw=true" style="width: 313px; height: 273px;" onclick="funcaotal()">
+                        <img src="https://github.com/Emanuel-developer992/imagens/blob/main/fototipo-select.png?raw=true" style="width: 313px; height: 273px;" onclick="filter_fototipo()">
                     </div>
                 
                     <div class="hoverzoom col-md-4" style="display: inline; padding-top: 10px;">
-                        <img src="https://github.com/Emanuel-developer992/imagens/blob/main/sensibilidade-select.png?raw=true" style="width: 313px; height: 273px;" onclick="funcaotal()">
+                        <img src="https://github.com/Emanuel-developer992/imagens/blob/main/sensibilidade-select.png?raw=true" style="width: 313px; height: 273px;" onclick="filter_sensibilidade()">
                     </div>
 
                 </div>
@@ -185,15 +256,15 @@
                 <div style="width: 1080px;">
                     
                     <div class="hoverzoom col-md-4" style="display: inline; padding-top: 10px;">
-                        <img src="https://github.com/Emanuel-developer992/imagens/blob/main/perfilrosto-select4.png?raw=true" style="width: 313px; height: 273px;" onclick="funcaotal()">
+                        <img src="https://github.com/Emanuel-developer992/imagens/blob/main/perfilrosto-select4.png?raw=true" style="width: 313px; height: 273px;" onclick="filter_rosto()">
                     </div>
                 
                     <div class="hoverzoom col-md-4" style="display: inline; padding-top: 10px;">
-                        <img src="https://github.com/Emanuel-developer992/imagens/blob/main/perfilcabelo-select4.png?raw=true" style="width: 313px; height: 273px;" onclick="funcaotal()">
+                        <img src="https://github.com/Emanuel-developer992/imagens/blob/main/perfilcabelo-select4.png?raw=true" style="width: 313px; height: 273px;" onclick="filter_cabelo()">
                     </div>
                 
                     <div class="hoverzoom col-md-4" style="display: inline; padding-top: 10px;">
-                        <img src="https://github.com/Emanuel-developer992/imagens/blob/main/corporal-select.png?raw=true" style="width: 313px; height: 273px;" onclick="funcaotal()">
+                        <img src="https://github.com/Emanuel-developer992/imagens/blob/main/corporal-select.png?raw=true" style="width: 313px; height: 273px;" onclick="filter_corpo()">
                     </div>
 
                 </div>
@@ -205,7 +276,7 @@
                 <div style="width: 1080px;">
                     
                     <div class="hoverzoom col-md-4" style="display: inline; padding-top: 10px;">
-                        <img src="https://github.com/Emanuel-developer992/imagens/blob/main/saude-select.png?raw=true" style="width: 313px; height: 273px;" onclick="funcaotal()">
+                        <img src="https://github.com/Emanuel-developer992/imagens/blob/main/saude-select.png?raw=true" style="width: 313px; height: 273px;" onclick="filter_saude()">
                     </div>
 
                 </div>
