@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/style-guide/css/fluig-style-guide.min.css">
+            <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+            <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+            <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+            <script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js"> charset="uft-8"</script>
+
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+            <!--Meu CSS -->
+            <link href="css/CadastroFornecedor.css" rel="stylesheet">
+
+</head>
+
+<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+
+<body>
+    <div class="fluig-style-guide">
+        <form name="form" role="form">
+
+            <div class="row">
+
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h1 class="display-4 j-medcin-p">Fornecedor</h1>
+                        <p class="lead j-medcin-h1">Cadastro de Fornecedores</p>
+                    </div>
+                    </div>
+
+                <!-- 1° Painel -->
+                <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
+                    <div class="panel-heading painel-medcin">
+                        <h3 class="panel-title">Informações Básicas</h3>
+                    </div>
+                    <div class="panel-body">
+                        
+                        <!-- 1° Input -->
+                        <!-- ID (CP-01) Automatico -->
+                        <div class="form-group col-md-2">
+                            <label for="idCP">ID do Documento</label>
+                            <div class="input-group">
+                                <div class="input-group-addon painel-medcin">ID</div>
+                                <input type="text" id="idCP" name="idCP"  class="form-control form-control-sm mInt" readonly="" style="text-align: center;">
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+                       
+                        <!-- 2° Input -->
+                        <div class="form-group col-md-4">
+                            <label for="cnpj">CNPJ</label>
+                            <input name="cnpj" type="text" class="form-control" id="cnpj" mask="00.000.000/0000-00" placeholder="00.000.000/0000-00">
+                        </div>
+
+                        <!-- 3° Input -->
+                        <div class="form-group col-md-4">
+                            <label for="companyName">Razão Social</label>
+                            <input name="companyName" type="text" class="form-control" id="companyName" placeholder="Razão Social...">
+                        </div>
+
+                        <!-- 4° Input -->
+                        <div class="form-group col-md-4">
+                            <label for="nomeFantasia">Nome Fantasia</label>
+                            <input name="nomeFantasia" type="text" class="form-control" id="nomeFantasia" placeholder="Nome fantasia...">
+                        </div>
+
+                        <!-- 5° Input -->
+                        <div class="form-group col-md-12">
+                            <label for="escopo">Escopo do Cliente/Patrocinador</label>
+                            <input name="escopo" type="text" class="form-control" id="escopo" placeholder="Escopo...">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 2° Painel -->
+                <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
+                    <div class="panel-heading painel-medcin">
+                        <h3 class="panel-title">Endereço e Complemento</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <!-- 6° Input (Endereço e Complemento)-->
+                        <div class="form-group col-md-3">
+                            <label for="cep">CEP</label>
+                            <input name="cep" type="text" class="form-control" id="cep" mask="00000-000" placeholder="CEP Ex.:00000-000...">
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="form-group col-md-6">
+                            <label for="endereco">Endereço</label>
+                            <input name="endereco" type="text" class="form-control" id="endereco" placeholder="Rua/Avenida/Rodovia...">
+                        </div>
+
+                        <div class="form-group col-md-1">
+                            <label for="numero">N°</label>
+                            <input name="numero" type="text" class="form-control" id="numero" placeholder="Nº00...">
+                        </div>
+
+                        <div class="form-group col-md-5">
+                            <label for="complemento">Complemento</label>
+                            <input name="complemento" type="text" class="form-control" id="complemento" placeholder="Ponto de referência...">
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label for="bairro">Bairro</label>
+                            <input name="bairro" type="text" class="form-control" id="bairro" placeholder="Bairro...">
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label for="estado">Estado</label>
+                            <input name="estado" type="text" class="form-control" id="estado" placeholder="Estado...">
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label for="pais">País</label>
+                            <input name="pais" type="text" class="form-control" id="pais" placeholder="País...">
+                        </div>
+                    </div>    
+                </div>
+
+                <!-- 3° Painel -->
+                <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
+                    <div class="panel-heading painel-medcin">
+                        <h3 class="panel-title">Contatos</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <!-- 7° Input -->
+                        <div class="form-group col-md-3">
+                            <label for="telefone">Telefone</label>
+                            <input name="telefone" type="text" class="form-control" id="telefone" mask="(00) 0000-0000" placeholder="Telefone Corporativo...">
+                        </div>
+
+                        <!-- 8° Input -->
+                        <div class="form-group col-md-5">
+                            <label for="email">E-mail</label>
+                            <input name="email" type="email" class="form-control" id="email" placeholder="E-mail Corporativo...">
+                        </div>
+
+                    </div>
+                </div>
+                
+                <!-- 4° Painel -->
+                <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
+                    <div class="panel-heading painel-medcin">
+                        <h3 class="panel-title">Contato Comercial</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <!-- 9° Input (Contato Comercial)-->
+                        
+                            <div class="form-group col-md-5">
+                                <label>Nome</label>
+                                <input type="text" id="nomeAdd1" name="nomeAdd1" class="form-control" placeholder="Nome...">
+                            </div>
+                        
+                            <div class="form-group col-md-7">
+                                <label>Departamento</label>
+                                <input type="text" id="departamentoAdd1" name="departamentoAdd1" class="form-control" placeholder="Departamento...">
+                            </div>                    
+                        
+                            <div class="form-group col-md-4">
+                                <label>Celular</label>
+                                <input type="text" id="celularAdd1" name="celularAdd1" class="form-control" mask="(00)00000-0000" placeholder="Celular...">
+                            </div>                    
+                        
+                            <div class="form-group col-md-4">
+                                <label>Telefone</label>
+                                <input type="text" id="telefoneAdd1" name="telefoneAdd1" class="form-control" mask="(00)0000-0000" placeholder="Telefone...">
+                            </div>
+                    
+                        
+                            <div class="form-group col-md-4">
+                                <label>E-mail</label>
+                                <input type="text" id="emailAdd1" name="emailAdd1" class="form-control" placeholder="E-mail...">
+                            </div>
+
+                            <div class="clearfix"></div>
+                            <br>
+                            <br>
+
+                            <div class="d-grid gap-2 col-6 mx-auto">
+                                <button name="add1" id="add1" type="button" class="btn btn-success button-medcin" onclick="pushAdd1()"><b>Adicionar +</b></button>
+                                <p class="p-cinza">Você pode adicionar vários contatos, clique em adicionar para salvar na tabela, você também pode removê-los.</p>
+                            </div>
+                            
+                    </div>
+                </div>
+
+                <!-- Tabela 1-->
+
+                <div class="title-medcin">
+                    <h1>Contatos Comercial</h1>
+                </div>                      
+                <div class="table-responsive col-md-12">
+                    <table tablename="tabelaAddComercial" class="table table-sm" id="tabelaAddComercial" noaddbutton="true" nodeletebutton="true">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Departamento</th>
+                                <th>Celular</th>
+                                <th>Telefone</th>
+                                <th>E-mail</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" name="tb_nomeAdd1" class="invisible-input" readonly></input></td>
+                                <td><input type="text" name="tb_departamentoAdd1" class="invisible-input" readonly></input></td>
+                                <td><input type="text" name="tb_celularAdd1" class="invisible-input" readonly></input></td>
+                                <td><input type="text" name="tb_telefoneAdd1" class="invisible-input" readonly></input></td>
+                                <td><input type="text" name="tb_emailAdd1" class="invisible-input" readonly></input></td>
+                                <td><button type="button" class="btn btn-danger excluir">Excluir</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 5° Painel -->
+                <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
+                    <div class="panel-heading painel-medcin">
+                        <h3 class="panel-title">Observações Adicionais</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="form-group col-md-12">
+                            <label>Observação</label>
+                            <p>Preencha com as observações...</p>
+                            <textarea type="text" id="observacao" name="observacao" class="form-control"></textarea>
+                        </div>
+
+                        <div class="form-group col-md-5">
+                            <label>Responsável</label>
+                            <input type="text" id="resp_fornecedor" name="resp_fornecedor" class="form-control">
+                        </div>
+
+                        <div class="form-group col-md-2">
+                            <label>Data</label>
+                            <input type="date" id="date_fornecedor" name="date_fornecedor" class="form-control">
+                        </div>
+                    
+                    </div>
+                </div>
+
+                <!-- 5° Painel -->
+                <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
+                    <div class="panel-heading painel-medcin">
+                        <h3 class="panel-title">Aprovação Qualidade</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="form-group col-md-12">
+                            <label>Norma</label>
+                            <p>Slecione a norma...</p>
+                            <select type="text" id="observacao" name="observacao" class="form-control">
+                                <option value="ISO 9001">ISO 9001</option>
+                                <option value="ISO 14001">ISO 14001</option>
+                                <option value="ISO 45001">ISO 45001</option>
+                                <option value="ISO/IEC 17025">ISO/IEC 17025</option>
+                                <option value="BPL">BPL</option>
+                                <option value="Outras">Outras</option>
+                                <option value="Qualificação Medcin">Qualificação Medcin</option>
+                            </select>
+                        </div>
+
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                            <button name="add1" id="add1" type="button" class="btn btn-success button-medcin" onclick="push()"><b>Adicionar +</b></button>
+                            <p class="p-cinza">Você pode adicionar uma ou mais normas, clique em adicionar para salvar na tabela, você também pode removê-los. Você deve anexar evidência.</p>
+                        </div>
+
+                        <!-- Tabela 1-->
+                        <div class="title-medcin">
+                            <h1>Normas Selecionadas</h1>
+                        </div>                      
+                        <div class="table-responsive col-md-12">
+                            <table tablename="tb_normas" class="table table-sm" id="tb_normas" noaddbutton="true" nodeletebutton="true">
+                                <thead>
+                                    <tr>
+                                        <th>Norma</th>
+                                        <th>Anexo</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input type="text" name="tb_norma" class="invisible-input" readonly></input></td>
+                                        <td>
+
+                                            <div class="form-group">
+                                                <label for="input_file">Evidência</label>
+                                                <input type="file" id="input_file">
+                                                <p class="help-block">Envie a evidência da norma selecionada.</p>
+                                            </div>
+
+                                        </td>
+                                        <td><button type="button" class="btn btn-danger excluir">Excluir</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="form-group col-md-5">
+                            <label>Aprovado?</label>
+                            <select type="text" id="aprovado" name="aprovado" class="form-control">
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-5">
+                            <label>Resposável pela Aprovação</label>
+                            <input type="text" id="resp_aprovacao" name="resp_aprovacao" class="form-control">
+                        </div>
+
+                        <div class="form-group col-md-5">
+                            <label>Data da Aprovação</label>
+                            <input type="date" id="date_aprovacao" name="date_aprovacao" class="form-control">
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+        </form>
+    </div>
+</body>
+</html>
