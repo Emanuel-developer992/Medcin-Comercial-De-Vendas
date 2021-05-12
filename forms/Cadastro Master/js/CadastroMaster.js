@@ -39,8 +39,8 @@ function cadastroCP() {
     $("#cliente_patrocinador_nav").addClass("active");
     $("#cliente_patrocinador_tabs").removeClass("nav-close");
     $("#cadastro_tabs").addClass("nav-close");
-   
-       
+
+    
 
 };
 function cadastroPS() {
@@ -174,13 +174,13 @@ function pushTable() {
     
     $("#c7_total").val("");
     $("#estudo").val("");
-	$("#rItem").val("");
+    $("#rItem").val("");
     $("#desconto").val("");
-	$("#orcamentoDesconto").val("");
+    $("#orcamentoDesconto").val("");
 
     setTimeout(function(){$("#descricaoItem").val("")}, 120);
-   
-	
+
+    
     $(".excluir").bind("click", Excluir);
 
 };
@@ -193,7 +193,7 @@ function pushTable2() {
     var inputExe = $("#prazoExe").val();
     var inputER = $("#prazoER").val();
     var inputorcamento = $("#tOrcamento").val();    
-   
+
     $("#tb2_c7_total___"+idClick).val(idAll);
     $("#tb_descricaoItem___"+idClick).val(inputdescricao);
     $("#tb_prazoExe___"+idClick).val(inputExe);
@@ -234,9 +234,9 @@ function pushAdd1() {
 
     $("#nomeAdd1").val("");
     $("#departamentoAdd1").val("");
-	$("#celularAdd1").val("");
-	$("#telefoneAdd1").val("");
-	$("#emailAdd1").val("");
+    $("#celularAdd1").val("");
+    $("#telefoneAdd1").val("");
+    $("#emailAdd1").val("");
 
     $(".excluir").bind("click", Excluir);
 
@@ -262,9 +262,9 @@ function pushAdd2() {
 
     $("#nomeAdd2").val("");
     $("#departamentoAdd2").val("");
-	$("#celularAdd2").val("");
-	$("#telefoneAdd2").val("");
-	$("#emailAdd2").val("");
+    $("#celularAdd2").val("");
+    $("#telefoneAdd2").val("");
+    $("#emailAdd2").val("");
 
     $(".excluir").bind("click", Excluir);
 
@@ -275,7 +275,7 @@ function pushAdd3() {
     wdkAddChild('tabelaAddAdicional');
 
     ClickAdd3++; 
-   
+
     var inputnomeAdd3 = $("#nomeAdd3").val();
     var inputdepartamentoAdd3 = $("#departamentoAdd3").val();
     var inputcelularAdd3 = $("#celularAdd3").val();
@@ -292,9 +292,9 @@ function pushAdd3() {
 
     $("#nomeAdd3").val("");
     $("#departamentoAdd3").val("");
-	$("#celularAdd3").val("");
-	$("#telefoneAdd3").val("");
-	$("#emailAdd3").val("");
+    $("#celularAdd3").val("");
+    $("#telefoneAdd3").val("");
+    $("#emailAdd3").val("");
 
     $(".excluir").bind("click", Excluir);
 
@@ -344,6 +344,8 @@ $("#tOrcamento").blur(function() {
 // AUTO-CAMPO
 
 //#region Focus
+
+//Zoom C7_total
 
 $("#estudo").focus(function() {  
 
@@ -555,6 +557,60 @@ $("#orcamentoDesconto").focus(function() {
     
 });
 
+// Zoom codClientP
 
+$("#client").focus(function() {
+
+    //Condição de Busca
+    var zoom = document.getElementById("codClientP");
+    var zoomValue = zoom.value;
+
+    //Filtro de Busca 
+    var codConstraint = DatasetFactory.createConstraint("idCP", zoomValue, zoomValue, ConstraintType.SHOULD);
+    var arrayConstraint = new Array(codConstraint);
+
+    // Busca no Dataset + Condições de Filtro
+    var array = DatasetFactory.getDataset("DSCadastroGeral", null, arrayConstraint, null);
+
+    //Valores para integração ao campos
+    var fantasia = array.values[0].companyName
+
+    $("#client").val(fantasia);
+
+});
 
 //#endregion
+
+//REVISÃO DE DOCUMENTO E DATA
+var arrayRevisao = [];
+
+function clickTest() {
+
+    //Tratamento de data
+    var data = new Date();
+    
+    var dia = data.getDate();     // 1-31
+    var mes = data.getMonth();    // 0-11 (zero=janeiro)
+    var ano = data.getFullYear(); // 4 dígitos
+
+    var date_comp = (dia + "/" + (mes + 1) + "/" + ano);
+    arrayRevisao.push(date_comp);
+
+    //Registro das informações	
+    var arrayLength = arrayRevisao.length;
+	
+	var date_cadastro = arrayRevisao[0];
+    var revisao = arrayLength;
+    var dateRevisao = arrayLength[revisao]
+
+    console.log(date_cadastro);
+    console.log(revisao);
+    console.log(dateRevisao);
+
+
+  
+    
+
+};
+
+

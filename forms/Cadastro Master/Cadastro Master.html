@@ -600,6 +600,7 @@
                         <h1 class="display-4 j-medcin-p">Orçamentos</h1>
                         <p class="lead j-medcin-h1">Cadastro de orçamentos</p>
                         <button type="button" class="btn btn-default button-medcin" onclick="backO()"><i class="fluigicon fluigicon-chevron-left icon-xs" style="color: white;"></i> Voltar</button>
+                        <button type="button" class="btn btn-default button-medcin" onclick="clickTest()"><i class="fluigicon fluigicon-chevron-left icon-xs" style="color: white;"></i> TESTE</button>
                         </div>
                     </div>
 
@@ -625,37 +626,64 @@
                             <!-- 2° Input -->
                             <div class="form-group col-md-5">
                                 <label for="codClientP">Código do Cliente/Patrocinador</label>
-                                <input name="codClientP" type="number" class="form-control" id="codClientP" placeholder="Insira o código do cliento patrocinador...">
+                                <p class="p-cinza">Selecione o cliente/patrocinador desejado.</p>
+                                <input
+                                        type="zoom"
+                                        id = "codClientP"
+                                        name="codClientP"
+                                        data-zoom="{
+                                            'displayKey':'idCP',
+                                            'datasetId':'DSCadastroGeral',
+                                            'maximumSelectionLength':'1',
+                                            'placeholder':'Selecione o Código...',
+                                            'fields':[
+                                                {
+                                                'field':'idCP',
+                                                'label':'ID'
+                                                },{
+                                                'field':'nomeFantasia',
+                                                'label':'Cliente/Patrocinador',
+                                                'standard':'true'
+                                                },{
+                                                'field':'cnpj',
+                                                'label':'CNPJ',
+                                                'standard':'true'
+                                                }
+                                            ]
+                                        }"
+                                    />
                             </div>
 
                             <!-- 3° Input -->
-                            <div class="form-group col-md-5">
+                            <div class="form-group col-md-4">
                                 <label for="client">Cliente/Patrocinador</label>
-                                <input name="client" type="text" class="form-control" id="client" placeholder="Cliente/Patrocinador...">
+                                <p class="p-cinza">Esse é o nome fantasia do Clinete/Patrocinador</p>
+                                <input name="client" type="text" class="form-control" id="client" placeholder="Cliente/Patrocinador">
                             </div>
 
                             <!-- 4° Input -->
-                            <div class="form-group col-md-2">
-                                <label for="dataCadastro">Data da Cadastro</label>
-                                <input name="dataCadastro" type="date" class="form-control" id="dataCadastro">
+                            <div class="form-group col-md-3">
+                                <label for="dataCadastro">Data do Cadastro</label>
+                                <p class="p-cinza">Data de início do cadastro</p>
+                                <input name="dataCadastro" type="text" class="form-control" id="dataCadastro" readonly>
                             </div>
 
                             <!-- 5° Input -->
                             <div class="form-group col-md-4">
                                 <label for="solicitante">Nome do Solicitante</label>
-                                <input name="solicitante" type="text" class="form-control" id="solicitante" placeholder="Nome do solicitante...">
+                                <input name="solicitante" type="text" class="form-control" id="solicitante" placeholder="Nome do solicitante">
                             </div>
 
                             <!-- 6° Input -->
                             <div class="form-group col-md-3">
                                 <label for="revisao">Revisão</label>
-                                <input name="revisao" type="number" class="form-control" id="revisao" placeholder="Revisão...">
+                                <input name="revisao" type="number" class="form-control" id="revisao" placeholder="Revisão" readonly>
                             </div>
 
                             <!-- 7° Input -->
                             <div class="form-group col-md-2">
                                 <label for="dateRevisao">Data da Revisão</label>
-                                <input name="dateRevisao" type="date" class="form-control" id="dateRevisao">
+                                <input name="dateRevisao" type="text" class="form-control" id="dateRevisao" readonly>
                             </div>
                         </div>
                     </div>
@@ -706,7 +734,7 @@
                             <div class="form-group col-md-3">
                                 <label for="estudo">Estudo</label>
                                 <p class="p-cinza">Estudo do item.</p>
-                                <input name="estudo" type="text" class="form-control" id="estudo" placeholder="Estudo aplicado...">
+                                <input name="estudo" type="text" class="form-control" id="estudo" placeholder="Estudo aplicado">
                             </div>
 
                             <div class="clearfix"></div>
@@ -723,7 +751,7 @@
                                 <label for="rItem">R$ do Item</label>
                                 <div class="input-group">
                                     <div class="input-group-addon painel-medcin">R$</div>
-                                    <input name="rItem" type="text" class="form-control" id="rItem" mask="#.##0,00" placeholder="Valor padrão do item solicitado...">
+                                    <input name="rItem" type="text" class="form-control" id="rItem" mask="#.##0,00" placeholder="Valor padrão do item solicitado">
                                 </div>
                             </div>
 
@@ -746,7 +774,7 @@
                                 <label for="tOrcamento">R$ Total do Orçamento</label>
                                 <div class="input-group">
                                     <div class="input-group-addon painel-medcin">R$</div>
-                                        <input name="tOrcamento" type="text" class="form-control" id="tOrcamento" mask="###0.00" placeholder="Orçamento proposto..."> 
+                                        <input name="tOrcamento" type="text" class="form-control" id="tOrcamento" mask="###0.00" placeholder="Orçamento proposto"> 
                                 </div>
                             </div>
 
@@ -754,7 +782,7 @@
                             <div class="form-group col-md-3">
                                 <label for="desconto">Desconto (%)</label>
                                 <div class="input-group">
-                                    <input name="desconto" type="text" class="form-control" id="desconto" placeholder="Desconto aplicado...">
+                                    <input name="desconto" type="text" class="form-control" id="desconto" placeholder="Desconto aplicado">
                                     <div class="input-group-addon painel-medcin">%</div>
                                 </div>
                             </div>
@@ -764,7 +792,7 @@
                                 <label for="orcamentoDesconto">R$ Total do Orçamento c/ Desconto</label>
                                 <div class="input-group">
                                     <div class="input-group-addon painel-medcin">R$</div>
-                                        <input name="orcamentoDesconto" type="text" class="form-control" id="orcamentoDesconto" mask="###0.00" placeholder="Valor do orçamento final...">
+                                        <input name="orcamentoDesconto" type="text" class="form-control" id="orcamentoDesconto" mask="###0.00" placeholder="Valor do orçamento final">
                                 </div>
                             </div>
 
