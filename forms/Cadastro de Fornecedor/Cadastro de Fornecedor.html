@@ -37,7 +37,7 @@
                     </div>
 
                 <!-- 1° Painel -->
-                <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
+                <div class="panel panel-primary painel-medcin-div1">
                     <div class="panel-heading painel-medcin">
                         <h3 class="panel-title">Informações Básicas</h3>
                     </div>
@@ -82,7 +82,7 @@
                 </div>
                 
                 <!-- 2° Painel -->
-                <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
+                <div class="panel panel-primary painel-medcin-div1" >
                     <div class="panel-heading painel-medcin">
                         <h3 class="panel-title">Endereço e Complemento</h3>
                     </div>
@@ -129,7 +129,7 @@
                 </div>
 
                 <!-- 3° Painel -->
-                <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
+                <div class="panel panel-primary painel-medcin-div1" >
                     <div class="panel-heading painel-medcin">
                         <h3 class="panel-title">Contatos</h3>
                     </div>
@@ -151,7 +151,7 @@
                 </div>
                 
                 <!-- 4° Painel -->
-                <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
+                <div class="panel panel-primary painel-medcin-div1" >
                     <div class="panel-heading painel-medcin">
                         <h3 class="panel-title">Contato Comercial</h3>
                     </div>
@@ -159,76 +159,76 @@
 
                         <!-- 9° Input (Contato Comercial)-->
                         
-                            <div class="form-group col-md-5">
-                                <label>Nome</label>
-                                <input type="text" id="nomeAdd1" name="nomeAdd1" class="form-control" placeholder="Nome...">
-                            </div>
-                        
-                            <div class="form-group col-md-7">
-                                <label>Departamento</label>
-                                <input type="text" id="departamentoAdd1" name="departamentoAdd1" class="form-control" placeholder="Departamento...">
-                            </div>                    
-                        
-                            <div class="form-group col-md-4">
-                                <label>Celular</label>
-                                <input type="text" id="celularAdd1" name="celularAdd1" class="form-control" mask="(00)00000-0000" placeholder="Celular...">
-                            </div>                    
-                        
-                            <div class="form-group col-md-4">
-                                <label>Telefone</label>
-                                <input type="text" id="telefoneAdd1" name="telefoneAdd1" class="form-control" mask="(00)0000-0000" placeholder="Telefone...">
-                            </div>
+                        <div class="form-group col-md-5">
+                            <label>Nome</label>
+                            <input type="text" id="nomeAdd1" name="nomeAdd1" class="form-control" placeholder="Nome...">
+                        </div>
                     
-                        
-                            <div class="form-group col-md-4">
-                                <label>E-mail</label>
-                                <input type="text" id="emailAdd1" name="emailAdd1" class="form-control" placeholder="E-mail...">
-                            </div>
+                        <div class="form-group col-md-7">
+                            <label>Departamento</label>
+                            <input type="text" id="departamentoAdd1" name="departamentoAdd1" class="form-control" placeholder="Departamento...">
+                        </div>                    
+                    
+                        <div class="form-group col-md-4">
+                            <label>Celular</label>
+                            <input type="text" id="celularAdd1" name="celularAdd1" class="form-control" mask="(00)00000-0000" placeholder="Celular...">
+                        </div>                    
+                    
+                        <div class="form-group col-md-4">
+                            <label>Telefone</label>
+                            <input type="text" id="telefoneAdd1" name="telefoneAdd1" class="form-control" mask="(00)0000-0000" placeholder="Telefone...">
+                        </div>
+                
+                    
+                        <div class="form-group col-md-4">
+                            <label>E-mail</label>
+                            <input type="text" id="emailAdd1" name="emailAdd1" class="form-control" placeholder="E-mail...">
+                        </div>
 
-                            <div class="clearfix"></div>
-                            <br>
-                            <br>
+                        <div class="clearfix"></div>
+                        <br>
+                        <br>
 
-                            <div class="d-grid gap-2 col-6 mx-auto">
-                                <button name="add1" id="add1" type="button" class="btn btn-success button-medcin" onclick="pushAdd1()"><b>Adicionar +</b></button>
-                                <p class="p-cinza">Você pode adicionar vários contatos, clique em adicionar para salvar na tabela, você também pode removê-los.</p>
-                            </div>
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                            <button name="add1" id="add1" type="button" class="btn btn-success button-medcin" onclick="pushAdd1()"><b>Adicionar +</b></button>
+                            <p class="p-cinza">Você pode adicionar vários contatos, clique em adicionar para salvar na tabela, você também pode removê-los.</p>
+                        </div>
+
+                        <!-- Tabela 1-->
+
+                        <div class="title-medcin">
+                            <h1>Contatos Comercial</h1>
+                        </div>                      
+                        <div class="table-responsive col-md-12">
+                            <table tablename="tb_contato" class="table table-sm" id="tb_contato" noaddbutton="true" nodeletebutton="true">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Departamento</th>
+                                        <th>Celular</th>
+                                        <th>Telefone</th>
+                                        <th>E-mail</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input type="text" name="tb_nomeAdd1" class="invisible-input" readonly></input></td>
+                                        <td><input type="text" name="tb_departamentoAdd1" class="invisible-input" readonly></input></td>
+                                        <td><input type="text" name="tb_celularAdd1" class="invisible-input" readonly></input></td>
+                                        <td><input type="text" name="tb_telefoneAdd1" class="invisible-input" readonly></input></td>
+                                        <td><input type="text" name="tb_emailAdd1" class="invisible-input" readonly></input></td>
+                                        <td><button type="button" class="btn btn-danger excluir">Excluir</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                             
                     </div>
                 </div>
 
-                <!-- Tabela 1-->
-
-                <div class="title-medcin">
-                    <h1>Contatos Comercial</h1>
-                </div>                      
-                <div class="table-responsive col-md-12">
-                    <table tablename="tabelaAddComercial" class="table table-sm" id="tabelaAddComercial" noaddbutton="true" nodeletebutton="true">
-                        <thead>
-                            <tr>
-                                <th>Nome</th>
-                                <th>Departamento</th>
-                                <th>Celular</th>
-                                <th>Telefone</th>
-                                <th>E-mail</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><input type="text" name="tb_nomeAdd1" class="invisible-input" readonly></input></td>
-                                <td><input type="text" name="tb_departamentoAdd1" class="invisible-input" readonly></input></td>
-                                <td><input type="text" name="tb_celularAdd1" class="invisible-input" readonly></input></td>
-                                <td><input type="text" name="tb_telefoneAdd1" class="invisible-input" readonly></input></td>
-                                <td><input type="text" name="tb_emailAdd1" class="invisible-input" readonly></input></td>
-                                <td><button type="button" class="btn btn-danger excluir">Excluir</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
                 <!-- 5° Painel -->
-                <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
+                <div class="panel panel-primary painel-medcin-div1" >
                     <div class="panel-heading painel-medcin">
                         <h3 class="panel-title">Observações Adicionais</h3>
                     </div>
@@ -254,7 +254,7 @@
                 </div>
 
                 <!-- 5° Painel -->
-                <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
+                <div class="panel panel-primary painel-medcin-div1" >
                     <div class="panel-heading painel-medcin">
                         <h3 class="panel-title">Aprovação Qualidade</h3>
                     </div>
@@ -263,7 +263,7 @@
                         <div class="form-group col-md-12">
                             <label>Norma</label>
                             <p>Slecione a norma...</p>
-                            <select type="text" id="observacao" name="observacao" class="form-control">
+                            <select type="text" id="normas_select" name="normas_select" class="form-control">
                                 <option value="ISO 9001">ISO 9001</option>
                                 <option value="ISO 14001">ISO 14001</option>
                                 <option value="ISO 45001">ISO 45001</option>
@@ -275,7 +275,7 @@
                         </div>
 
                         <div class="d-grid gap-2 col-6 mx-auto">
-                            <button name="add1" id="add1" type="button" class="btn btn-success button-medcin" onclick="push()"><b>Adicionar +</b></button>
+                            <button name="add2" id="add2" type="button" class="btn btn-success button-medcin" onclick="pushAdd2()"><b>Adicionar +</b></button>
                             <p class="p-cinza">Você pode adicionar uma ou mais normas, clique em adicionar para salvar na tabela, você também pode removê-los. Você deve anexar evidência.</p>
                         </div>
 
@@ -299,7 +299,7 @@
 
                                             <div class="form-group">
                                                 <label for="input_file">Evidência</label>
-                                                <input type="file" id="input_file">
+                                                <input name="input_file" type="file" id="input_file">
                                                 <p class="help-block">Envie a evidência da norma selecionada.</p>
                                             </div>
 
@@ -331,7 +331,10 @@
 
                     </div>
                 </div>
+            </div>
 
+            <!-- Meu Script -->    
+            <script type="text/javascript" src="js/CadastroFornecedor.js"></script>
 
         </form>
     </div>

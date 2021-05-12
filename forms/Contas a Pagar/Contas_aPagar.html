@@ -30,374 +30,392 @@
         <form name="form" role="form">
             <div class="row">
 
-                <!-- 1° Input -->
-                <!-- ID (SC-0001) Automatico -->
-                <div class="form-group col-md-2">
-                    <label>Número Solicitação de Compra</label>
-                    <div class="input-group">
-                        <div class="input-group-addon button-medcin">ID</div>
-                        <input type="text" id="idSeq" name="idSeq"  class="form-control form-control-sm mInt" readonly="" style="text-align: center;" value="SC-0001">
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h1 class="display-4 j-medcin-p">Contas a Pagar</h1>
+                        <p class="lead j-medcin-h1">Lançamentos de conta a pagar</p>
                     </div>
-                </div>
+                    </div>
+
+                <!-- 1° Painel -->
+                <div class="panel panel-primary painel-medcin-div1">
+                    <div class="panel-heading painel-medcin">
+                        <h3 class="panel-title">Informações Básicas</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <!-- 1° Input -->
+                        <!-- ID (SC-0001) Automatico -->
+                        <div class="form-group col-md-2">
+                            <label>Número Solicitação de Compra</label>
+                            <div class="input-group">
+                                <div class="input-group-addon button-medcin">ID</div>
+                                <input type="text" id="idSeq" name="idSeq"  class="form-control form-control-sm mInt" readonly="" style="text-align: center;" value="SC-0001">
+                            </div>
+                        </div>
+
+                            <div class="clearfix"></div>
+
+                        <!-- 2° Input -->
+                        <div class="form-group col-md-2">
+                            <label>Data da Solicitação</label>
+                            <input name="date_solicitation" type="date" class="form-control" id="date_solicitation">
+                        </div>
+
+                        <!-- 3° Input -->
+                        <div class="form-group col-md-2">
+                            <label>Prazo de Encerramento</label>
+                            <input name="deadline" type="date" class="form-control" id="deadline">
+                        </div>
+
+                        <!-- 4° Input -->
+                        <div class="form-group col-md-8">
+                            <label>Solicitante</label>
+                            <input name="requester" type="text" class="form-control" id="requester" placeholder="Solicitante...">
+                        </div>
+
+                    </div>           
+
+                    <br>
+
+                    <div class="col-md-12">
+                        <h1 style="color: #e5883f; margin-left: 40%;">ADICIONAR ITEM</h1> 
+                    </div>
 
                     <div class="clearfix"></div>
+                    <br>
 
-                <!-- 2° Input -->
-                <div class="form-group col-md-2">
-                    <label>Data da Solicitação</label>
-                    <input name="date_solicitation" type="date" class="form-control" id="date_solicitation">
-                </div>
+                    <!-- Tabela 1--> 
+                    <div class="table-responsive col-md-12 medcin-contas">
 
-                <!-- 3° Input -->
-                <div class="form-group col-md-2">
-                    <label>Prazo de Encerramento</label>
-                    <input name="deadline" type="date" class="form-control" id="deadline">
-                </div>
+                        <br>
+                        <button type="button" class="btn btn-primary button-medcin" style="color: white;" id="button" onclick="pushAdd()"><i class="fluigicon fluigicon-plus-circle icon-xs"></i> Adicionar</button>
+                        <div class="clearfix"></div>
+                        <br>
 
-                <!-- 4° Input -->
-                <div class="form-group col-md-8">
-                    <label>Solicitante</label>
-                    <input name="requester" type="text" class="form-control" id="requester" placeholder="Solicitante...">
-                </div>
+                        <table tablename="tb_addItem" class="table medcin-contas" id="tb_addItem" noaddbutton="true" nodeletebutton="true">
+                            <thead>
+                                <tr>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="row">
 
-            </div>           
+                                            <!--Row 1-->
+                                            <div class="form-group col-md-3">
+                                                <label>Item</label>
+                                                <p>Código de identificação do item</p>
+                                                <input type="text" name="tb_item" id="tb_item" class="form-control" style="height: 35px;">
+                                            </div>
+                                
+                                            <!--Row 2-->
+                                            <div class="form-group col-md-8">
+                                                <label>Descrição</label>
+                                                <p>Descrição do Item. Busca automática.</p>
+                                                <div class="input-group">
+                                                    <input type="text" name="tb_descricao" class="form-control" style="height: 35px;">
+                                                    <div class="input-group-btn"><button type="button" class="btn btn-info button-medcin" onclick="modal_add()" style="height: 35px;"><i class="fluigicon fluigicon-search icon-sm"></i>
+                                                    </button></div>
+                                                </div>
+                                            </div>
 
-            <br>
-            <div class="col-md-4"></div>
+                                             <!--Row 3-->
+                                             <div class="form-group col-md-3">
+                                                <label>Fornecedor</label>                                        
+                                                <input type="text" name="tb_fornecedor" id="tb_fornecedor" class="form-control">
+                                            </div>
 
-            <div class="col-md-5">
-                <h1 style="color: #e5883f">ADICIONAR ITEM</h1> 
-            </div>
+                                            <!--Row 4-->
+                                            <div class="form-group col-md-1">
+                                                <label>Quantidade</label>
+                                                <input name="tb_qtd" type="number" class="form-control" id="tb_qtd" placeholder="Qtd.:">
+                                            </div>
 
-            <div class="clearfix"></div>
-            <br>
+                                            <!--Row 5-->
+                                            <div class="form-group col-md-2">
+                                                <label>Unidade de Medida</label>
+                                                <select name="tb_unit" type="text" class="form-control" id="tb_unit">
+                                                    <option value="Unidade">Unidade</option>
+                                                    <option value="Kg">Kg</option>
+                                                    <option value="g">g</option>
+                                                    <option value="Metros">Metros</option>
+                                                    <option value="Litros">Litros</option>
+                                                    <option value="ml">ml</option>
+                                                </select>
+                                            </div>
 
-            <!-- Tabela 1--> 
-            <div class="table-responsive medcin-contas col-md-12">
+                                            <!-- Row 6-->
+                                            <div class="form-group col-md-2">
+                                                <label>Valor Unitário</label>
+                                                <input name="tb_money" type="text" class="form-control" id="tb_money" placeholder="R$ 0,00">
+                                            </div>
 
-                <br>
-
-                <button type="button" class="btn btn-primary button-medcin" id="button" onclick="wdkAddChild('tb_addItem')">Adicionar</button>
-                <div class="clearfix"></div>
-                <br>
-
-                <table tablename="tb_addItem" class="table medcin-contas" id="tb_addItem" noaddbutton="true" nodeletebutton="true">
-                    <thead>
-                        <tr>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-
-                                <div class="row">
-
-                                    <!--Row 1-->
-                                    <div class="form-group col-md-3">
-                                        <label>Item</label>
-                                        <p>Código de identificação do item</p>
-                                        <input type="text" name="tb_item" id="tb_item" class="form-control" style="height: 35px;">
-                                    </div>
-                        
-                                    <!--Row 2-->
-                                    <div class="form-group col-md-8">
-                                        <label>Descrição</label>
-                                        <p>Descrição do Item. Busca automática.</p>
-                                        <div class="input-group">
-                                            <input type="text" name="tb_descricao" class="form-control" style="height: 35px;">
-                                            <div class="input-group-btn"><button type="button" class="btn btn-info button-medcin" onclick="modal_add()" style="height: 35px;"><i class="fluigicon fluigicon-search icon-sm"></i>
-                                            </button></div>
+                                            <!--Row 7-->
+                                            <div class="form-group col-md-2">
+                                                <label>Valor Total do Item</label>
+                                                <input name="tb_money_final" type="text" class="form-control" id="tb_money_final" placeholder="R$ 0,00">
+                                            </div>
                                         </div>
-                                    </div>
+                                    </td>
 
-                                    <div class="clearfix"></div>
+                                    <td>
+                                        <button type="button" class="btn btn-danger excluir" style="border-radius: 40px; color: white;"><i class="fluigicon fluigicon-remove-sign icon-sm"></i></button>
+                                    </td>
 
-                                    <!--Row 3-->
-                                    <div class="form-group col-md-3">
-                                        <label>Fornecedor</label>                                        
-                                        <input type="text" name="tb_fornecedor" id="tb_fornecedor" class="form-control">
-                                    </div>
+                                </tr>
 
-                                    <!--Row 4-->
-                                    <div class="form-group col-md-1">
-                                        <label>Quantidade</label>
-                                        <input name="tb_qtd" type="number" class="form-control" id="tb_qtd" placeholder="Qtd.:">
-                                    </div>
-                                
-                                    <!--Row 5-->
-                                    <div class="form-group col-md-2">
-                                        <label>Unidade de Medida</label>
-                                        <select name="tb_unit" type="text" class="form-control" id="tb_unit">
-                                            <option value="Unidade">Unidade</option>
-                                            <option value="Kg">Kg</option>
-                                            <option value="g">g</option>
-                                            <option value="Metros">Metros</option>
-                                            <option value="Litros">Litros</option>
-                                            <option value="ml">ml</option>
-                                        </select>
-                                    </div>
-                                
-                                    <!-- Row 6-->
-                                    <div class="form-group col-md-2">
-                                        <label>Valor Unitário</label>
-                                        <input name="tb_money" type="text" class="form-control" id="tb_money" placeholder="R$ 0,00">
-                                    </div>
-                                
-                                    <!--Row 7-->
-                                    <div class="form-group col-md-2">
-                                        <label>Valor Total do Item</label>
-                                        <input name="tb_money_final" type="text" class="form-control" id="tb_money_final" placeholder="R$ 0,00">
-                                    </div>
-
-                                    <div class="form-group col-md-2">
-    
-                                        <div class="clearfix"></div>
-                                        <button type="button" class="btn btn-danger" onclick="Excluir()" style="width: 80px; height: 32px; margin-top: 26px;">Excluir</button>
-                                    </div>
-
-                                    <hr>
-
-                                </div>
-                            </td>
-
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="clearfix"></div>
-            <br>
-            <br>
-
-            <div class="row">
-
-                <!-- 5º Input-->
-                <div class="form-group col-md-3">
-                    <label>Valor Total da Solicitação</label>
-                    <input name="money_all" type="text" class="form-control" id="money_all" placeholder="R$ 0,00">
-                </div>
-
-                 <!-- 6º Input-->
-                 <div class="form-group col-md-3">
-                    <label>Cotações Anexadas?</label>
-                    <input name="price" type="text" class="form-control" id="price" placeholder="Cotação Anexada...">
-                </div>
-
-            </div>
-
-            <hr>
-
-            <div class="clearfix"></div>
-            <br>
-            <br>
-            
-
-            <!-- Nav tabs -->
-            <ul class="nav nav-tabs" role="tablist">
-                <li class="nav-item">
-                <a id="aprovacao_gerente_tabs" class="nav-link active" data-toggle="tab" href="#aprovacao_gerente_nav"><i class="fluigicon fluigicon-handshake icon-xs"></i> Aprovação Nível Gerente</a>
-                </li>
-                <li class="nav-item">
-                <a id="aprovacao_financeiro_tabs" class="nav-link" data-toggle="tab" href="#aprovacao_financeiro_nav"><i class="fluigicon fluigicon-money icon-xs"></i> Aprovação Nível Financeiro</a>
-                </li>
-                <li class="nav-item">
-                <a id="recebimento_tabs" class="nav-link" data-toggle="tab" href="#recebimento_nav"><i class="fluigicon fluigicon-user-search icon-xs"></i> Inspeção de Recebimento</a>
-                </li>
-            </ul>
-
-            <div class="tab-content">
-
-            <!--Navegação (1)-->
-            <div id="aprovacao_gerente_nav" class="container tab-pane active" aria-selected="true">
-                <div class="row">                          
-        
-                    <!--Row 1-->
-                    <div class="form-group col-md-7">
-                        <label>Observações da Solicitação</label>
-                        <p>Faça uma breve observação da solicitação de compra.</p>
-                        <textarea type="text" name="tobs" id="tobs" class="form-control"></textarea>
-                    </div>
-        
-                    <!--Row 2-->
-                    <div class="form-group col-md-2">
-                        <label>Data</label>
-                        <p>Prazo de pagamento.</p>
-                        <input type="date" name="tdate" id="tdate" class="form-control">
+                            </tbody>
+                        </table>
                     </div>
 
-                    <!--Row 3-->
-                    <div class="form-group col-md-2">
-                        <label>R$</label>
-                        <p>Prazo de pagamento.</p>                                        
-                        <input type="text" name="tpayment" id="tpayment" class="form-control" placeholder="R$ 0,00">
-                    </div>
-                      
-                </div>
+                    <div class="clearfix"></div>
+                    <br>
+                    <br>
 
-                <div class="clearfix"></div>
-                <br>
-                <br>
-
-                <div class="row">
-
-                    <div class="form-group col-md-2">
-                        <label>Aprovado?</label>                                        
-                        <select type="text" name="aprovacao_gerente" id="aprovacao_gerente" class="form-control">
-                            <option value="Sim">Sim</option>
-                            <option value="Não">Não</option>
-                        </select>
+                    <!-- 5º Input-->
+                    <div class="form-group col-md-3">
+                        <label>Valor Total da Solicitação</label>
+                        <input name="money_all" type="text" class="form-control" id="money_all" placeholder="R$ 0,00">
                     </div>
 
-                    <div class="form-group col-md-5">
-                        <label>Responsável pela Aprovação</label>                                        
-                        <input type="text" name="aprovacao_responsavel_gerente" id="aprovacao_responsavel_gerente" class="form-control">
+                    <!-- 6º Input-->
+                    <div class="form-group col-md-3">
+                        <label>Cotações Anexadas?</label>
+                        <input name="price" type="text" class="form-control" id="price" placeholder="Cotação Anexada...">
                     </div>
 
-                    <div class="form-group col-md-2">
-                        <label>Data da Aprovação</label>                                        
-                        <input type="date" name="aprovacao_data_gerente" id="aprovacao_data_gerente" class="form-control">
-                    </div>
-
-                </div>
-
-            </div>
-
-             <!--Navegação (2)-->
-             <div id="aprovacao_financeiro_nav" class="container tab-pane" aria-selected="true">
-
-                <div class="row">
-
-                    <div class="form-group col-md-2">
-                        <label>Aprovado?</label>                                        
-                        <select type="text" name="aprovacao_finan" id="aprovacao_finan" class="form-control">
-                            <option value="Sim">Sim</option>
-                            <option value="Não">Não</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group col-md-5">
-                        <label>Responsável pela Aprovação</label>                                        
-                        <input type="text" name="aprovacao_resp_finan" id="aprovacao_resp_finan" class="form-control">
-                    </div>
-
-                    <div class="form-group col-md-2">
-                        <label>Data da Aprovação</label>                                        
-                        <input type="date" name="aprovacao_data_finan" id="aprovacao_data_finan" class="form-control">
-                    </div>
-
-                </div>
-
-            </div>
-
-             <!--Navegação (3)-->
-             <div id="recebimento_nav" class="container tab-pane" aria-selected="true">
-
-                <!-- Tabela 1--> 
-                <div class="table-responsive col-md-12" >
-                    <table tablename="tb_inspecao" class="table table-sm" id="tb_inspecao" noaddbutton="true" nodeletebutton="true">
-                        <thead>
-                            <tr>
-                                <th>Item</th>
-                                <th>Descrição do Item</th>
-                                <th>Fornecedor</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Item X</td>
-                                <td>Descrição do item...</td>
-                                <td>Fornecedor y</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <br>
-                <br>
-
-                <div class="form-group col-md-4">
-                    <label>Quantidade?</label>                                        
-                    <select type="text" name="quantidade_insp" id="quantidade_insp" class="form-control">
-                    <option value="Satisfaz">Satisfaz</option>
-                    <option value="Não Satisfaz">Não Satisfaz</option>
-                    </select>
-                </div>
-
-                <div class="form-group col-md-4">
-                    <label>Qualidade?</label>                                        
-                    <input type="text" name="qualidade_insp" id="qualidade_insp" class="form-control">
-                </div>
-
-                <div class="form-group col-md-4">
-                    <label>Prazo?</label>                                        
-                    <input type="date" name="prazo_insp" id="prazo_insp" class="form-control">
-                </div>
-
-                <div class="form-group col-md-5">
-                    <label>Estado da solicitação</label>   
-                    <p>Todos os itens foram recebidos conforme Solicitado?</p>                                     
-                    <select type="text" name="estado_solict" id="estado_solict" class="form-control">
-                        <option value="Sim">Sim</option>
-                        <option value="Não">Não</option>
-                    </select>
-                </div>
-
-                <div class="clearfix"></div>
-
-                <div class="form-group col-md-5">
-                    <label>Responsável pela Aprovação</label>                                        
-                    <input type="text" name="aprovacao_resp_inspecao" id="aprovacao_resp_inspecao" class="form-control" readonly>
-                </div>
-
-                <div class="form-group col-md-2">
-                    <label>Data da Aprovação</label>                                        
-                    <input type="date" name="aprovacao_data_insp" id="aprovacao_data_insp" class="form-control" readonly>
-                </div>
-
-                <div class="clearfix"></div>
-
-                <div class="form-group col-md-12">
-                    <label>Justificativa</label>
-                    <p>Incluir obsservações e histórico da solicitação</p>                                     
-                    <textarea type="text" name="justificativa_insp" id="justificativa_insp" class="form-control"></textarea>
-                </div>
-
-
-                 
-
-            </div>
+                    <div class="clearfix"></div>
+                    <br>
+                    <br>
                 
-            <!--Modal-->
-            <div class="modal" id="modal_zoom" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                        <a id="aprovacao_gerente_tabs" class="nav-link active" data-toggle="tab" href="#aprovacao_gerente_nav"><i class="fluigicon fluigicon-handshake icon-xs"></i> Aprovação Nível Gerente</a>
+                        </li>
+                        <li class="nav-item">
+                        <a id="aprovacao_financeiro_tabs" class="nav-link" data-toggle="tab" href="#aprovacao_financeiro_nav"><i class="fluigicon fluigicon-money icon-xs"></i> Aprovação Nível Financeiro</a>
+                        </li>
+                        <li class="nav-item">
+                        <a id="recebimento_tabs" class="nav-link" data-toggle="tab" href="#recebimento_nav"><i class="fluigicon fluigicon-user-search icon-xs"></i> Inspeção de Recebimento</a>
+                        </li>
+                    </ul>
 
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-                            <button type="button" class="close" onclick="modal_close()" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
+                    <div class="tab-content">
+
+                    <!--Navegação (1)-->
+                    <div id="aprovacao_gerente_nav" class="container tab-pane active" aria-selected="true">
+                        <div class="row">                          
+                
+                            <!--Row 1-->
+                            <div class="form-group col-md-7">
+                                <label>Observações da Solicitação</label>
+                                <p>Faça uma breve observação da solicitação de compra.</p>
+                                <textarea type="text" name="tobs" id="tobs" class="form-control"></textarea>
+                            </div>
+                
+                            <!--Row 2-->
+                            <div class="form-group col-md-2">
+                                <label>Data</label>
+                                <p>Prazo de pagamento.</p>
+                                <input type="date" name="tdate" id="tdate" class="form-control">
+                            </div>
+
+                            <!--Row 3-->
+                            <div class="form-group col-md-2">
+                                <label>R$</label>
+                                <p>Prazo de pagamento.</p>                                        
+                                <input type="text" name="tpayment" id="tpayment" class="form-control" placeholder="R$ 0,00">
+                            </div>
+                            
                         </div>
 
-                        <div class="modal-body">
-                            <form>
-                            <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Recipient:</label>
-                                <input name="teste1" type="text" class="form-control" id="recipient-name">
-                            </div>
-                            <div class="form-group">
-                                <label for="message-text" class="col-form-label">Message:</label>
-                                <textarea name="teste2" class="form-control" id="message-text"></textarea>
-                            </div>
-                            </form>
-                        </div>
+                        <div class="clearfix"></div>
+                        <br>
+                        <br>
 
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" onclick="modal_close()">Close</button>
-                            <button type="button" class="btn btn-primary">Send message</button>
+                        <div class="row">
+
+                            <div class="form-group col-md-2">
+                                <label>Aprovado?</label>                                        
+                                <select type="text" name="aprovacao_gerente" id="aprovacao_gerente" class="form-control">
+                                    <option value="Sim">Sim</option>
+                                    <option value="Não">Não</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-5">
+                                <label>Responsável pela Aprovação</label>                                        
+                                <input type="text" name="aprovacao_responsavel_gerente" id="aprovacao_responsavel_gerente" class="form-control">
+                            </div>
+
+                            <div class="form-group col-md-2">
+                                <label>Data da Aprovação</label>                                        
+                                <input type="date" name="aprovacao_data_gerente" id="aprovacao_data_gerente" class="form-control">
+                            </div>
+
                         </div>
 
                     </div>
+
+                    <!--Navegação (2)-->
+                    <div id="aprovacao_financeiro_nav" class="container tab-pane" aria-selected="true">
+
+                        <div class="row">
+
+                            <div class="form-group col-md-2">
+                                <label>Aprovado?</label>                                        
+                                <select type="text" name="aprovacao_finan" id="aprovacao_finan" class="form-control">
+                                    <option value="Sim">Sim</option>
+                                    <option value="Não">Não</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-5">
+                                <label>Responsável pela Aprovação</label>                                        
+                                <input type="text" name="aprovacao_resp_finan" id="aprovacao_resp_finan" class="form-control">
+                            </div>
+
+                            <div class="form-group col-md-2">
+                                <label>Data da Aprovação</label>                                        
+                                <input type="date" name="aprovacao_data_finan" id="aprovacao_data_finan" class="form-control">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!--Navegação (3)-->
+                    <div id="recebimento_nav" class="container tab-pane" aria-selected="true">
+
+                        <!-- Tabela 1--> 
+                        <div class="table-responsive col-md-12" >
+                            <table tablename="tb_inspecao" class="table table-sm" id="tb_inspecao" noaddbutton="true" nodeletebutton="true">
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Descrição do Item</th>
+                                        <th>Fornecedor</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Item X</td>
+                                        <td>Descrição do item...</td>
+                                        <td>Fornecedor y</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <br>
+                        <br>
+
+                        <div class="form-group col-md-4">
+                            <label>Quantidade?</label>                                        
+                            <select type="text" name="quantidade_insp" id="quantidade_insp" class="form-control">
+                            <option value="Satisfaz">Satisfaz</option>
+                            <option value="Não Satisfaz">Não Satisfaz</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label>Qualidade?</label>                                        
+                            <input type="text" name="qualidade_insp" id="qualidade_insp" class="form-control">
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label>Prazo?</label>                                        
+                            <input type="date" name="prazo_insp" id="prazo_insp" class="form-control">
+                        </div>
+
+                        <div class="form-group col-md-5">
+                            <label>Estado da solicitação</label>   
+                            <p>Todos os itens foram recebidos conforme Solicitado?</p>                                     
+                            <select type="text" name="estado_solict" id="estado_solict" class="form-control">
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                            </select>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="form-group col-md-5">
+                            <label>Responsável pela Aprovação</label>                                        
+                            <input type="text" name="aprovacao_resp_inspecao" id="aprovacao_resp_inspecao" class="form-control" readonly>
+                        </div>
+
+                        <div class="form-group col-md-2">
+                            <label>Data da Aprovação</label>                                        
+                            <input type="date" name="aprovacao_data_insp" id="aprovacao_data_insp" class="form-control" readonly>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="form-group col-md-12">
+                            <label>Justificativa</label>
+                            <p>Incluir obsservações e histórico da solicitação</p>                                     
+                            <textarea type="text" name="justificativa_insp" id="justificativa_insp" class="form-control"></textarea>
+                        </div>
+
+
+                        
+
+                    </div>
+                        
+                    <!--Modal-->
+                    <div class="modal" id="modal_zoom" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Buscar</h5>
+                                    <i type="submit" onclick="modal_close()" class="fluigicon fluigicon-remove icon-xs"></i>
+                                </div>
+
+                                <div class="modal-body">
+                                    <form>
+
+                                        <div class="form-group col-md-6">
+                                            <label>Buscar</label>
+                                            <div class="input-group">
+                                                <div class="input-group-btn"><button class="btn btn-info button-medcin" type="submit" id="buscar_button"><i class="fluigicon fluigicon-search icon-xs"></i></button></div>
+                                                <input name="buscar" type="text" class="form-control" id="buscar" placeholder="Buscar...">
+                                            </div>
+                                        </div>
+
+                                        <!-- Tabela 2-->                     
+                                        <div class="table-responsive col-md-12">
+                                            <table tablename="tb_busca" class="table table-hover" id="tb_busca" noaddbutton="true" nodeletebutton="true">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Item<i class="fluigicon fluigicon-pointer-down icon-xs"></i></th>
+                                                        <th>Descrição<i class="fluigicon fluigicon-pointer-down icon-xs"></i></th>
+                                                        <th>Fornecedor<i class="fluigicon fluigicon-pointer-down icon-xs"></i></th>
+                                                        <th>Custo<i class="fluigicon fluigicon-pointer-down icon-xs"></i></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" onclick="modal_close()">Fechar</button>
+                                    <button type="button" class="btn btn-primary button-medcin">Selecionar</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 

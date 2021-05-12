@@ -92,6 +92,9 @@
 /*Painel da Medcin (div 1)*/
 .painel-medcin-div1 {
     border-color: #e5883f !important;
+    padding: 0px;
+    width: 90%;
+    margin-left: 2cm;
 }
 
 /*Painel da Medcin (div 2)*/
@@ -118,12 +121,13 @@
 
 }
 
-.medcin-contas {
-    background-color: #fff2e7;
-    border-radius: 5px;
-}
-
 .modal-action {
     display: block;
+}
+
+.medcin-contas {
+
+    background-color: #e8e8e8;
+
 }
 

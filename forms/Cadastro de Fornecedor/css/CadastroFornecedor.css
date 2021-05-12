@@ -32,6 +32,9 @@
 /*Painel da Medcin (div 1)*/
 .painel-medcin-div1 {
     border-color: #e5883f !important;
+    padding: 0px;
+    width: 90%;
+    margin-left: 2cm;
 }
 
 /*Painel da Medcin (div 2)*/
