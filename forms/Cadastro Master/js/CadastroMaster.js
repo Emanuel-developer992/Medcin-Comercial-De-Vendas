@@ -1,3 +1,15 @@
+// Window para onload da página 
+
+window.onload = function() {
+
+    idSeq();
+    revisaoDate();
+    maskMoney();
+    maskPercent();
+
+
+};
+
 // API - CEP AUTOMÁTICO
 
 //#region API
@@ -116,9 +128,8 @@ function backO() {
 
 // GERADOR DE ID
 
-//#region onload
-
-window.onload = function() {
+//#region onloa
+function idSeq() {
 
     var dsCadastro = DatasetFactory.getDataset("DSCadastroGeral", null, null, null);
 
@@ -337,6 +348,26 @@ $("#tOrcamento").blur(function() {
     var totalDesconto = inputtOcamento.value - (inputtOcamento.value * desconto);
     var arredondamento = parseFloat(totalDesconto.toFixed(2));
     inputorcamentoDesconto.value = arredondamento;
+
+    var value1 = inputtOcamento.value;
+    var value2 = inputdesconto.value;
+
+    var offmask1 = value1.replace(".","");
+    var offmask2 = offmask1.replace(",",".");
+
+    var offmask3 = value2.replace(".","");
+    var offmask4 = offmask3.replace(",",".");
+    
+
+    console.log(offmask2);
+    console.log(offmask4);
+    console.log(inputorcamentoDesconto.value);
+    console.log("-------------");
+    console.log(offmask1);
+    console.log(offmask3);
+
+
+
 });
 
 //#endregion
@@ -584,7 +615,7 @@ $("#client").focus(function() {
 //REVISÃO DE DOCUMENTO E DATA
 var arrayRevisao = [];
 
-function clickTest() {
+function revisaoDate() {
 
     //Tratamento de data
     var data = new Date();
@@ -600,8 +631,12 @@ function clickTest() {
     var arrayLength = arrayRevisao.length;
 	
 	var date_cadastro = arrayRevisao[0];
-    var revisao = arrayLength;
-    var dateRevisao = arrayLength[revisao]
+    var revisao = arrayLength - 1;
+    var dateRevisao = arrayRevisao[revisao]
+
+    $("#dataCadastro").val(date_cadastro);
+    $("#revisao").val(revisao);
+    $("#dateRevisao").val(dateRevisao);
 
     console.log(date_cadastro);
     console.log(revisao);
@@ -613,4 +648,23 @@ function clickTest() {
 
 };
 
+//MÁSCARAS
 
+function maskMoney() {
+
+    var tOrcamento = $("#tOrcamento");
+    tOrcamento.mask('#.##0.00#.##0,00', {reverse: true});
+
+    var rItem = $("#rItem");
+    rItem.mask('#.##0.00#.##0,00', {reverse: true});
+
+    var orcamentoDesconto = $("#orcamentoDesconto");
+    orcamentoDesconto.mask('#.##0.00#.##0,00', {reverse: true});
+}
+
+function maskPercent() {
+
+    var desconto = $("#desconto");
+    desconto.mask('000,00', {reverse: true});
+
+}
