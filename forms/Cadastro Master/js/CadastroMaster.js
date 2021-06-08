@@ -6,6 +6,17 @@ window.onload = function() {
     revisaoDate();
     maskMoney();
     maskPercent();
+    aprovacao();
+
+    console.log("--------");
+    console.log(getFormMode());
+    console.log(getMobile());
+    console.log(getWKNumState());
+    console.log(getWKUser());
+    console.log(getWKNumProces());
+    console.log(getWKUserLocale());
+    console.log(getWKCardId());
+    console.log("--------");
 
 
 };
@@ -48,13 +59,10 @@ function cadastroCP() {
     $("#cadastro_tabs").removeClass("active");
     $("#cadastro_nav").removeClass("active");
     $("#cliente_patrocinador_tabs").addClass("active");
-    $("#cliente_patrocinador_nav").addClass("active");
-    $("#cliente_patrocinador_tabs").removeClass("nav-close");
-    $("#cadastro_tabs").addClass("nav-close");
-
-    
+    $("#cliente_patrocinador_nav").addClass("active");    
 
 };
+
 function cadastroPS() {
 
     const produtosS = "Cadastro de Produtos e Serviços";
@@ -66,11 +74,9 @@ function cadastroPS() {
     $("#cadastro_nav").removeClass("active");
     $("#produtos_servicos_tabs").addClass("active");
     $("#produtos_servicos_nav").addClass("active");
-    $("#produtos_servicos_tabs").removeClass("nav-close");
-    $("#cadastro_tabs").addClass("nav-close");
-
 
 };
+
 function cadastroO() {
 
     const orcamento = "Cadastro de Orçamento";
@@ -82,8 +88,6 @@ function cadastroO() {
     $("#cadastro_nav").removeClass("active");
     $("#orcamento_tabs").addClass("active");
     $("#orcamento_nav").addClass("active");
-    $("#orcamento_tabs").removeClass("nav-close");
-    $("#cadastro_tabs").addClass("nav-close");
 
 };
 
@@ -128,7 +132,7 @@ function backO() {
 
 // GERADOR DE ID
 
-//#region onloa
+//#region onload
 function idSeq() {
 
     var dsCadastro = DatasetFactory.getDataset("DSCadastroGeral", null, null, null);
@@ -222,6 +226,35 @@ function pushTable2() {
 };
 
 //#endregion
+
+//Produtos e Serviços
+var clickItem = 0;
+
+function pushItem() {
+
+    clickItem++;
+
+    // -------------- Add Coluna ----------------------------------------------
+    wdkAddChild('tb_subitem');
+
+    // -------------- Add Estudo Automático -----------------------------------
+    var estudo = $("#estudoPS").val();
+    $("#tb_responsavel___" + clickItem).val(estudo);
+    console.log(estudo);
+
+     // -------------- Número de Linhas + Número do Subitem -------------------
+    var rowCount = $('#tb_subitem tr').length;
+    var n = rowCount - 2;
+    $("#tb_n___" + clickItem).val(n)
+
+    // --------------- Código do Documento ------------------------------------
+    var cod_doc = $("#codP").val();
+    $("#tb_doc___" + clickItem).val(cod_doc);
+
+    // --------------- Evento de Excluir Linha --------------------------------
+    $(".excluir").bind("click", Excluir);
+
+}
 
 //#region Cliente/Patrocinador
 
@@ -328,46 +361,53 @@ function Excluir(){
 
 $("#desconto").blur(function() {
 
-    var inputtOcamento = document.getElementById("tOrcamento");
+    var inputOrcamento = document.getElementById("tOrcamento");
     var inputdesconto = document.getElementById("desconto");
     var inputorcamentoDesconto = document.getElementById("orcamentoDesconto");
 
-    var desconto = inputdesconto.value / 100; 
-    var totalDesconto = inputtOcamento.value - (inputtOcamento.value * desconto);
+    var maskOffOcamento = inputOrcamento.value;
+    var maskOffdesconto = inputdesconto.value;
+
+    var offmask1 = maskOffOcamento.replace(".","");
+    var offmaskF1 = offmask1.replace(",",".");
+
+    var offmask2 = maskOffdesconto.replace(".","");
+    var offmaskF2 = offmask2.replace(",",".");
+
+    var desconto = offmaskF2 / 100; 
+    var totalDesconto = offmaskF1 - (offmaskF1 * desconto);
     var arredondamento = parseFloat(totalDesconto.toFixed(2));
-    inputorcamentoDesconto.value = arredondamento;
+    inputorcamentoDesconto.value = arredondamento + "";
+
+    console.log(totalDesconto);
+    console.log(arredondamento);
+    console.log(arredondamento + "");
+
+
+    maskMoney();
 });
 
 $("#tOrcamento").blur(function() {
 
-    var inputtOcamento = document.getElementById("tOrcamento");
+    var inputOrcamento = document.getElementById("tOrcamento");
     var inputdesconto = document.getElementById("desconto");
     var inputorcamentoDesconto = document.getElementById("orcamentoDesconto");
 
-    var desconto = inputdesconto.value / 100; 
-    var totalDesconto = inputtOcamento.value - (inputtOcamento.value * desconto);
+    var maskOffOcamento = inputOrcamento.value;
+    var maskOffdesconto = inputdesconto.value;
+
+    var offmask1 = maskOffOcamento.replace(".","");
+    var offmaskF1 = offmask1.replace(",",".");
+
+    var offmask2 = maskOffdesconto.replace(".","");
+    var offmaskF2 = offmask2.replace(",",".");
+
+    var desconto = offmaskF2 / 100; 
+    var totalDesconto = offmaskF1 - (offmaskF1 * desconto);
     var arredondamento = parseFloat(totalDesconto.toFixed(2));
-    inputorcamentoDesconto.value = arredondamento;
+    inputorcamentoDesconto.value = arredondamento + "";
 
-    var value1 = inputtOcamento.value;
-    var value2 = inputdesconto.value;
-
-    var offmask1 = value1.replace(".","");
-    var offmask2 = offmask1.replace(",",".");
-
-    var offmask3 = value2.replace(".","");
-    var offmask4 = offmask3.replace(",",".");
-    
-
-    console.log(offmask2);
-    console.log(offmask4);
-    console.log(inputorcamentoDesconto.value);
-    console.log("-------------");
-    console.log(offmask1);
-    console.log(offmask3);
-
-
-
+    maskMoney();
 });
 
 //#endregion
@@ -378,7 +418,10 @@ $("#tOrcamento").blur(function() {
 
 //Zoom C7_total
 
-$("#estudo").focus(function() {  
+$("#estudo").focus(function() {
+    
+    //Busca Subitens
+    pushSub_i();
 
     //Condição de Busca
     var Zoom = document.getElementById("c7_total");
@@ -407,6 +450,9 @@ $("#estudo").focus(function() {
 
 $("#descricaoItem").focus(function() {  
 
+    //Busca Subitens
+    pushSub_i();
+
     //Condição de Busca
     var Zoom = document.getElementById("c7_total");
     var inputZoom = Zoom.value     
@@ -427,6 +473,9 @@ $("#descricaoItem").focus(function() {
 });
 
 $("#rItem").focus(function() {  
+
+    //Busca Subitens
+    pushSub_i();
 
     //Condição de Busca
     var Zoom = document.getElementById("c7_total");
@@ -455,6 +504,9 @@ $("#rItem").focus(function() {
 
 $("#prazoExe").focus(function() {  
 
+    //Busca Subitens
+    pushSub_i();
+
     //Condição de Busca
     var Zoom = document.getElementById("c7_total");
     var inputZoom = Zoom.value;
@@ -481,6 +533,9 @@ $("#prazoExe").focus(function() {
 });
 
 $("#prazoER").focus(function() {  
+
+    //Busca Subitens
+    pushSub_i();
 
     //Condição de Busca
     var Zoom = document.getElementById("c7_total");
@@ -509,6 +564,9 @@ $("#prazoER").focus(function() {
 
 $("#tOrcamento").focus(function() {  
 
+    //Busca Subitens
+    pushSub_i();
+
     //Condição de Busca
     var Zoom = document.getElementById("c7_total");
     var inputZoom = Zoom.value;
@@ -536,6 +594,9 @@ $("#tOrcamento").focus(function() {
 
 $("#desconto").focus(function() {  
 
+    //Busca Subitens
+    pushSub_i();
+
     //Condição de Busca
     var Zoom = document.getElementById("c7_total");
     var inputZoom = Zoom.value;
@@ -562,6 +623,9 @@ $("#desconto").focus(function() {
 });
 
 $("#orcamentoDesconto").focus(function() {  
+
+    //Busca Subitens
+    pushSub_i();
 
     //Condição de Busca
     var Zoom = document.getElementById("c7_total");
@@ -660,11 +724,272 @@ function maskMoney() {
 
     var orcamentoDesconto = $("#orcamentoDesconto");
     orcamentoDesconto.mask('#.##0.00#.##0,00', {reverse: true});
-}
+};
 
 function maskPercent() {
 
     var desconto = $("#desconto");
     desconto.mask('000,00', {reverse: true});
+
+};
+
+//Busca e inserção de Subitens
+var times = 0;
+var rowPrevious = 0;
+
+function pushSub_i() {  
+
+    //Condição de Busca
+    var tb_name = "tb_subitem";
+    var tbdoc = document.getElementById('c7_total').value;
+
+    //Filtro de Busca 
+    var tbConstraint = DatasetFactory.createConstraint("tablename", tb_name, tb_name, ConstraintType.MUST);
+    var docConstraint = DatasetFactory.createConstraint("tb_doc", tbdoc, tbdoc, ConstraintType.MUST);
+    var arrayConstraint = new Array(tbConstraint, docConstraint);
+
+    // Busca no Dataset + Condições de Filtro
+    var array = DatasetFactory.getDataset("DSCadastroGeral", null, arrayConstraint, null);
+
+    var nRow = array.values.length;
+
+    var rowCount = ($('#tb_sub_I tr').length) - 2;
+
+    console.log(rowCount);
+
+    if (tbdoc != "") {
+
+        if (rowCount == 0) {
+
+
+            for (var i = 0; i < nRow; i++) {
+
+                eventFire(document.getElementById('add_sub'), 'click');
+
+                var doc = array.values[i].tb_doc;
+                var n = array.values[i].tb_n;
+                var descricao = array.values[i].tb_descricao;
+                var responsavel  = array.values[i].tb_responsavel;
+
+                var rowInject = rowPrevious + (i + 1);
+
+                $("#tb_doc_I___" + rowInject).val(doc);
+                $("#tb_n_I___" + rowInject).val(n);
+                $("#tb_descricao_I___" + rowInject).val(descricao);
+                $("#tb_responsavel_I___" + rowInject).val(responsavel);
+
+            }
+
+            if (rowPrevious == 0) {
+                rowPrevious = nRow;
+            }
+            else if (rowPrevious > 0) {
+                rowPrevious = rowPrevious + nRow;
+            }
+
+            
+        }
+    }
+
+    $(".excluir").bind("click", Excluir);
+};
+
+function eventFire(el, etype){
+    if (el.fireEvent) {
+      el.fireEvent('on' + etype);
+    } else {
+      var evObj = document.createEvent('Events');
+      evObj.initEvent(etype, true, false);
+      el.dispatchEvent(evObj);
+    }
+};
+
+function push_sItens() {
+
+    var table = $('#tb_sub_I td input');
+
+    var n_input = table - 4;
+
+    var rows = n_input / 4;
+
+    for (var i = 0; i < rows; i++) {
+
+        var state = (i / rows) * n_input;
+        
+        table[state].defaultValue;
+        table[state + 1].defaultValue;
+        table[state + 2].defaultValue;
+        table[state + 3].defaultValue;
+
+        push ("input1___" + i)
+        push ("input2___" + i)
+        push ("input3___" + i)
+        push ("input4___" + i)
+
+    }
+
+    console.log(table);
+    console.log(table.length);
+
+};
+
+//NAVEGAÇÃO PELO FLUXO
+function aprovacao() {
+
+    var nProcesso = getWKNumState();
+
+    if (nProcesso == 14) {
+        cadastroCP();
+
+        //Todos os campos do formulário de cadastro de Cliente/Patrocinador apenas para vizualização.
+        //#region 
+        $('#cnpj').prop('readonly', true);
+        $('#companyName').prop('readonly', true);
+        $('#nomeFantasia').prop('readonly', true);
+        $('#escopo').prop('readonly', true);
+        $('#cep').prop('readonly', true);
+        $('#endereco').prop('readonly', true);
+        $('#numero').prop('readonly', true);
+        $('#complemento').prop('readonly', true);
+        $('#bairro').prop('readonly', true);
+        $('#estado').prop('readonly', true);
+        $('#pais').prop('readonly', true);
+        $('#telefone').prop('readonly', true);
+        $('#email').prop('readonly', true);
+        $('#nomeAdd1').prop('readonly', true);
+        $('#departamentoAdd1').prop('readonly', true);
+        $('#celularAdd1').prop('readonly', true);
+        $('#telefoneAdd1').prop('readonly', true);
+        $('#emailAdd1').prop('readonly', true);
+        $('#nomeAdd2').prop('readonly', true);
+        $('#departamentoAdd2').prop('readonly', true);
+        $('#celularAdd2').prop('readonly', true);
+        $('#telefoneAdd2').prop('readonly', true);
+        $('#emailAdd2').prop('readonly', true);
+        $('#nomeAdd3').prop('readonly', true);
+        $('#departamentoAdd3').prop('readonly', true);
+        $('#celularAdd3').prop('readonly', true);
+        $('#telefoneAdd3').prop('readonly', true);
+        $('#emailAdd3').prop('readonly', true);
+        $('#ativo').prop('readonly', true);
+        $('#indiceF').prop('readonly', true);
+        $('#dataClient').prop('readonly', true);
+        $('#exit_CP').prop('disabled', true);
+        $('#add1').prop('disabled', true);
+        $('#add2').prop('disabled', true);
+        $('#add3').prop('disabled', true);
+        //#endregion
+   
+        //Inoperando botões das tabelas
+        var nButtonAdd1 = excluirAdd1.length;
+        var nButtonAdd2 = excluirAdd2.length;
+        var nButtonAdd3 = excluirAdd3.length;
+
+        for (var i = 0; i < nButtonAdd1; i++) {
+            excluirAdd1[i].disabled = true;
+        }
+
+        for (var ii = 0; ii < nButtonAdd2; ii++) {
+            excluirAdd2[ii].disabled = true;
+        }
+
+        for (var iii = 0; iii < nButtonAdd3; iii++) {
+            excluirAdd3[iii].disabled = true;
+        }
+
+
+    }
+
+    if (nProcesso == 13) {
+        cadastroPS();
+
+        //Todos os campos do formulário de cadastro de Produtos e Serviços apenas para vizualização.
+        //#region 
+        $('#estudoPS').prop('readonly', true);
+        $('#grupo_item').prop('readonly', true);
+        $('#descricao').prop('readonly', true);
+        $('#specificChar').prop('readonly', true);
+        $('#descricaoEn').prop('readonly', true);
+        $('#controlEstoq').attr("disabled", true);
+        $('#pVenda').prop('readonly', true);
+        $('#pCusto').prop('readonly', true);
+        $('#fornecedores').prop('readonly', true);
+        $('#metodologia').prop('readonly', true);
+        $('#exit_PS').prop('disabled', true);
+        $('#add_subitem').prop('disabled', true);
+        //#endregion
+
+        var nButton = excluirSubitem.length;
+        var nRow = nButton - 1;
+
+        for (var i = 0; i < nButton; i++) {
+
+            excluirSubitem[i].disabled = true;
+
+        }
+
+        for (var n = 1; n <= nRow; n++) {
+
+            $("#tb_descricao___" + n).prop('readonly', true);
+            $("#tb_responsavel___" + n).prop('readonly', true);
+
+        }
+
+
+    }
+    
+    if (nProcesso == 34 || nProcesso == 23 || nProcesso == 15) {
+        cadastroO();
+
+        //Todos os campos do formulário de cadastro de Orçamento apenas para vizualização.
+        //#region 
+        $('#client').prop('readonly', true);
+        $('#solicitante').prop('readonly', true);
+        $('#estudo').prop('readonly', true);
+        $('#descricaoItem').prop('readonly', true);
+        $('#rItem').prop('readonly', true);
+        $('#prazoExe').prop('readonly', true);
+        $('#prazoER').prop('readonly', true);
+        $('#tOrcamento').prop('readonly', true);
+        $('#desconto').prop('readonly', true);
+        $('#orcamentoDesconto').prop('readonly', true);
+        $('#formPag').prop('readonly', true);
+        $('#infoOrc').prop('readonly', true);
+        $('#regMov').prop('readonly', true);
+        $('#add').prop('disabled', true);
+        $('#exit_O').prop('disabled', true);
+        
+        $("#zoom1").addClass("readonly-css");
+        $("#zoom2").addClass("readonly-css");
+        //#endregion
+
+        var subButton = excluirSubitemO.length;
+        var RowSub = subButton - 1;
+        var nButton1 = excluirOrcamento.length; 
+        var nButton2 = excluirDados.length;
+        
+        for (var s = 0; s < subButton; s++) {
+            excluirSubitemO[s].disabled = true;
+            
+        }
+
+        for (var r = 1; r <= RowSub; r++) {
+            $("#tb_descricao_I___" + r ).prop('readonly', true);
+            $("#tb_responsavel_I___" + r).prop('readonly', true);
+            
+
+        }
+
+        for (var i = 0; i < nButton1; i++) {
+            excluirOrcamento[i].disabled = true;
+           
+        }
+
+        for (var n = 0; n < nButton2; n++) {
+            excluirDados[n].disabled = true;
+            
+        }
+
+    }
 
 }

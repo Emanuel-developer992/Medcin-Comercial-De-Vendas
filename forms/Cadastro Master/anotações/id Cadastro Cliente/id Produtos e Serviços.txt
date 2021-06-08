@@ -1,0 +1,12 @@
+estudoPS
+grupo_item
+descricao
+specificChar
+descricaoEn
+controlEstroq
+pVenda
+pCusto
+fornecedores
+metodologia
+exit_PS
+add_subitem

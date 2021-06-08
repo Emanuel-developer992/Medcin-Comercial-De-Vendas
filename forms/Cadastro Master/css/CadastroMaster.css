@@ -44,7 +44,7 @@
 /*Inputs invisíveis*/
 .invisible-input {
     border-color: transparent !important;
-    background-color: white !important;
+    background-color: transparent !important;
     
 }
 
@@ -55,6 +55,12 @@
 
 .title-medcin {
     text-align: center;
+
+}
+
+.readonly-css {
+
+    pointer-events: none;
 
 }
 
