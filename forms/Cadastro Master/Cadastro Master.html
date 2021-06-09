@@ -217,7 +217,7 @@
                     </div>        
 
                     <!-- 4° Painel -->
-                    <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
+                    <div id="panel4_CP" class="panel panel-primary painel-medcin-div1" style="padding: 0px">
                         <div class="panel-heading painel-medcin">
                             <h3 class="panel-title">Contato Comercial</h3>
                         </div>
@@ -294,7 +294,7 @@
                     </div>
 
                     <!-- 5° Painel -->
-                    <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
+                    <div id="panel5_CP" class="panel panel-primary painel-medcin-div1" style="padding: 0px">
                         <div class="panel-heading painel-medcin">
                             <h3 class="panel-title">Contato Financeiro</h3>
                         </div>
@@ -369,7 +369,7 @@
                     </div> 
 
                     <!-- 6° Painel -->
-                    <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
+                    <div id="panel6_CP" class="panel panel-primary painel-medcin-div1" style="padding: 0px">
                         <div class="panel-heading painel-medcin">
                             <h3 class="panel-title">Contato Adicional</h3>
                         </div>
@@ -578,6 +578,10 @@
                         </div>
                         <div class="panel-body">
 
+                            <div class="clearfix"></div>
+
+                            <br>
+
                             <div class="d-grid gap-2 col-8 mx-auto">
                                 <button class="btn button-medcin" id="add_subitem" onclick="pushItem();">Novo Sub-Item <i class="fluigicon fluigicon-plus icon-sm"></i></button>
                             </div>
@@ -717,13 +721,13 @@
                             <!-- 7° Input -->
                             <div class="form-group col-md-2">
                                 <label for="dateRevisao">Data da Revisão</label>
-                                <input name="dateRevisao" type="text" class="form-control" id="dateRevisao" readonly>
+                                <input name="dateRevisao" type="text" class="form-control" id="dateRevisao" value="-1" readonly>
                             </div>
                         </div>
                     </div>
 
                     <!-- 2° Painel -->
-                    <div class="panel panel-primary painel-medcin-div1" style="padding: 0px;">
+                    <div id="panel2_O" class="panel panel-primary painel-medcin-div1" style="padding: 0px;">
                         <div class="panel-heading painel-medcin">
                             <h3 class="panel-title">Cadastro de Item</h3>
                         </div>
@@ -798,7 +802,7 @@
                                             <td style="width: 6%;"><input id="tb_n_I" name="tb_n_I" type="text" style="width: 100%;" class="invisible-input" readonly value="1"></input></td>
                                             <td><input type="text" id="tb_descricao_I" name="tb_descricao_I" class="form-control" placeholder="Descrição do Sub-Item" value="descrição..."></input></td>
                                             <td><input type="text" id="tb_responsavel_I" name="tb_responsavel_I" class="form-control" placeholder="Responsável/Estudo do item" value="FPS"></input></td>
-                                            <td><button type="button" id="excluirSubitemO" name="excluirSubitemO" class="btn btn-danger excluir">Excluir</button></td>
+                                            <td><button type="button" id="excluirSubitemOR" name="excluirSubitemOR" class="btn btn-danger excluir nav-close">Excluir</button></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -864,13 +868,13 @@
                             <br>
 
                             <div class="d-grid gap-2 col-6 mx-auto">
-                                <button name="add" id="add" type="button" class="btn btn-success button-medcin" onclick="pushTable(); pushTable2();"><b>Adicionar +</b></button>
+                                <button name="add" id="add" type="button" class="btn btn-success button-medcin" onclick="pushTable(); pushTable2(); push_sItens();"><b>Adicionar +</b></button>
                                 <p class="p-cinza">Você pode adicionar vários contatos, clique em adicionar para salvar na tabela, você também pode removê-los.</p>
                             </div>
 
-                            <div class="d-grid gap-2 col-6 mx-auto">
-                                <button name="test_sub" id="test_sub" type="button" class="btn btn-success button-medcin" onclick="push_sItens();"><b>TESTE</b></button>
-                            </div>
+                          
+                            <button id="add_sub_h" style="display: none;" onclick="wdkAddChild('tb_sub_R');"></button>
+                           
 
                         </div>
                     </div>
@@ -945,14 +949,19 @@
                             <thead>
                                 <tr>
                                     <th style="width: 9%">ID Item</th>
-                                    <th>Código do Subitem</th>
+                                    <th>Nº Subitem</th>
                                     <th>Descrição</th>
                                     <th>Responsável/Estudo do Item</th>
-                                    <th style="width: 16%">Ações</th>
+                                    <th>Ação</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td><input id="tb_doc_h" name="tb_doc_h" type="text" style="width: 100%;" class="invisible-input" readonly></input></td>
+                                    <td style="width: 6%;"><input id="tb_n_h" name="tb_n_h" type="text" style="width: 100%;" class="invisible-input" readonly></input></td>
+                                    <td><input type="text" id="tb_descricao_h" name="tb_descricao_h" class="invisible-input" readonly></input></td>
+                                    <td><input type="text" id="tb_responsavel_h" name="tb_responsavel_h" class="invisible-input" readonly></input></td>
+                                    <td><button type="button" id="excluirSubitemO" name="excluirSubitemO" class="btn btn-danger excluir">Excluir</button></td>
                                 </tr>
                             </tbody>
                         </table>

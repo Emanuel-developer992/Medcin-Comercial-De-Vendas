@@ -8,7 +8,7 @@ window.onload = function() {
     maskPercent();
     aprovacao();
 
-    console.log("--------");
+    console.log("<<<<<<<<<<<");
     console.log(getFormMode());
     console.log(getMobile());
     console.log(getWKNumState());
@@ -16,7 +16,7 @@ window.onload = function() {
     console.log(getWKNumProces());
     console.log(getWKUserLocale());
     console.log(getWKCardId());
-    console.log("--------");
+    console.log(">>>>>>>>>>");
 
 
 };
@@ -677,38 +677,48 @@ $("#client").focus(function() {
 //#endregion
 
 //REVISÃO DE DOCUMENTO E DATA
-var arrayRevisao = [];
-
 function revisaoDate() {
 
     //Tratamento de data
     var data = new Date();
+
+    var nProcesso = getWKNumState();
     
     var dia = data.getDate();     // 1-31
     var mes = data.getMonth();    // 0-11 (zero=janeiro)
     var ano = data.getFullYear(); // 4 dígitos
 
-    var date_comp = (dia + "/" + (mes + 1) + "/" + ano);
-    arrayRevisao.push(date_comp);
+    if ((mes + 1) <= 9) {
+
+        if (dia <= 9) {
+            var date_comp = ('0' + dia + "/" + '0' + (mes + 1) + "/" + ano);
+        }
+
+        else {
+            var date_comp = (dia + "/" + '0' + (mes + 1) + "/" + ano);
+        }
+    }
+
+    else if (dia <= 9) {
+        var date_comp = ('0' + dia + "/" + (mes + 1) + "/" + ano);
+    }
+
+    else {
+        var date_comp = (dia + "/" + (mes + 1) + "/" + ano);
+    }
 
     //Registro das informações	
-    var arrayLength = arrayRevisao.length;
-	
-	var date_cadastro = arrayRevisao[0];
-    var revisao = arrayLength - 1;
-    var dateRevisao = arrayRevisao[revisao]
 
-    $("#dataCadastro").val(date_cadastro);
-    $("#revisao").val(revisao);
-    $("#dateRevisao").val(dateRevisao);
+    var revAnterior =  parseInt($("#dateRevisao").val());
 
-    console.log(date_cadastro);
-    console.log(revisao);
-    console.log(dateRevisao);
+    if (nProcesso == 0) {
 
+        $("#dataCadastro").val(date_comp);
 
-  
-    
+    }
+
+    $("#revisao").val(revAnterior + 1);
+    $("#dateRevisao").val(date_comp); 
 
 };
 
@@ -804,32 +814,44 @@ function eventFire(el, etype){
     }
 };
 
+var cliqueValid = 0;
+
 function push_sItens() {
 
     var table = $('#tb_sub_I td input');
 
-    var n_input = table - 4;
+    var n_input = table.length - 4;
 
     var rows = n_input / 4;
 
+    console.log(table);
+
     for (var i = 0; i < rows; i++) {
 
-        var state = (i / rows) * n_input;
+        eventFire(document.getElementById('add_sub_h'), 'click');
+
+        var state = ((i / rows) * n_input) + 4;
+        var variavel = cliqueValid * 4;
         
-        table[state].defaultValue;
-        table[state + 1].defaultValue;
-        table[state + 2].defaultValue;
-        table[state + 3].defaultValue;
+        var column1 = table[state].value;
+        var column2 = table[state + 1].value;
+        var column3 = table[state + 2].value;
+        var column4 = table[state + 3].value;
 
-        push ("input1___" + i)
-        push ("input2___" + i)
-        push ("input3___" + i)
-        push ("input4___" + i)
+        var nVariavel = (i + 1) + variavel;
 
+        $("#tb_doc_h___" + nVariavel).val(column1);
+        $("#tb_n_h___" + nVariavel).val(column2);
+        $("#tb_descricao_h___" + nVariavel).val(column3);
+        $("#tb_responsavel_h___" + nVariavel).val(column4);
+
+        eventFire(document.getElementById('excluirSubitemOR___' + nVariavel), 'click');
+    
     }
 
-    console.log(table);
-    console.log(table.length);
+    cliqueValid++;
+
+    $(".excluir").bind("click", Excluir);
 
 };
 
@@ -838,7 +860,11 @@ function aprovacao() {
 
     var nProcesso = getWKNumState();
 
-    if (nProcesso == 14) {
+    var statusCard = $("#cadastroCard").val();
+    console.log('>>>>>><<<<<');
+    console.log(statusCard);
+
+    if (nProcesso == 14 || statusCard == "Cadastro de Cliente/Patrocinador") {
         cadastroCP();
 
         //Todos os campos do formulário de cadastro de Cliente/Patrocinador apenas para vizualização.
@@ -885,6 +911,10 @@ function aprovacao() {
         var nButtonAdd2 = excluirAdd2.length;
         var nButtonAdd3 = excluirAdd3.length;
 
+        $("#panel4_CP").addClass('nav-close');
+        $("#panel5_CP").addClass('nav-close');
+        $("#panel6_CP").addClass('nav-close');
+
         for (var i = 0; i < nButtonAdd1; i++) {
             excluirAdd1[i].disabled = true;
         }
@@ -897,99 +927,103 @@ function aprovacao() {
             excluirAdd3[iii].disabled = true;
         }
 
-
     }
 
-    if (nProcesso == 13) {
+    if (nProcesso == 13 || statusCard == "Cadastro de Produtos e Serviços") {
+
         cadastroPS();
 
-        //Todos os campos do formulário de cadastro de Produtos e Serviços apenas para vizualização.
-        //#region 
-        $('#estudoPS').prop('readonly', true);
-        $('#grupo_item').prop('readonly', true);
-        $('#descricao').prop('readonly', true);
-        $('#specificChar').prop('readonly', true);
-        $('#descricaoEn').prop('readonly', true);
-        $('#controlEstoq').attr("disabled", true);
-        $('#pVenda').prop('readonly', true);
-        $('#pCusto').prop('readonly', true);
-        $('#fornecedores').prop('readonly', true);
-        $('#metodologia').prop('readonly', true);
-        $('#exit_PS').prop('disabled', true);
-        $('#add_subitem').prop('disabled', true);
-        //#endregion
+        if (nProcesso == 13) {
+            //Todos os campos do formulário de cadastro de Produtos e Serviços apenas para vizualização.
+            //#region 
+            $('#estudoPS').prop('readonly', true);
+            $('#grupo_item').prop('readonly', true);
+            $('#descricao').prop('readonly', true);
+            $('#specificChar').prop('readonly', true);
+            $('#descricaoEn').prop('readonly', true);
+            $('#controlEstoq').attr("disabled", true);
+            $('#pVenda').prop('readonly', true);
+            $('#pCusto').prop('readonly', true);
+            $('#fornecedores').prop('readonly', true);
+            $('#metodologia').prop('readonly', true);
+            $('#exit_PS').prop('disabled', true);
+            $('#add_subitem').prop('disabled', true);
+            //#endregion
 
-        var nButton = excluirSubitem.length;
-        var nRow = nButton - 1;
+            var nButton = excluirSubitem.length;
+            var nRow = nButton - 1;
 
-        for (var i = 0; i < nButton; i++) {
+            for (var i = 0; i < nButton; i++) {
 
-            excluirSubitem[i].disabled = true;
+                excluirSubitem[i].disabled = true;
 
+            }
+
+            for (var n = 1; n <= nRow; n++) {
+
+                $("#tb_descricao___" + n).prop('readonly', true);
+                $("#tb_responsavel___" + n).prop('readonly', true);
+
+            }
         }
-
-        for (var n = 1; n <= nRow; n++) {
-
-            $("#tb_descricao___" + n).prop('readonly', true);
-            $("#tb_responsavel___" + n).prop('readonly', true);
-
-        }
-
-
     }
     
-    if (nProcesso == 34 || nProcesso == 23 || nProcesso == 15) {
+    if (nProcesso == 34 || nProcesso == 23 || nProcesso == 15 || statusCard == "Cadastro de Orçamento") {
         cadastroO();
 
-        //Todos os campos do formulário de cadastro de Orçamento apenas para vizualização.
-        //#region 
-        $('#client').prop('readonly', true);
-        $('#solicitante').prop('readonly', true);
-        $('#estudo').prop('readonly', true);
-        $('#descricaoItem').prop('readonly', true);
-        $('#rItem').prop('readonly', true);
-        $('#prazoExe').prop('readonly', true);
-        $('#prazoER').prop('readonly', true);
-        $('#tOrcamento').prop('readonly', true);
-        $('#desconto').prop('readonly', true);
-        $('#orcamentoDesconto').prop('readonly', true);
-        $('#formPag').prop('readonly', true);
-        $('#infoOrc').prop('readonly', true);
-        $('#regMov').prop('readonly', true);
-        $('#add').prop('disabled', true);
-        $('#exit_O').prop('disabled', true);
-        
-        $("#zoom1").addClass("readonly-css");
-        $("#zoom2").addClass("readonly-css");
-        //#endregion
+        if (nProcesso == 34 || nProcesso == 23 || nProcesso == 15) {
 
-        var subButton = excluirSubitemO.length;
-        var RowSub = subButton - 1;
-        var nButton1 = excluirOrcamento.length; 
-        var nButton2 = excluirDados.length;
-        
-        for (var s = 0; s < subButton; s++) {
-            excluirSubitemO[s].disabled = true;
+            //Todos os campos do formulário de cadastro de Orçamento apenas para vizualização.
+            //#region 
+            $('#client').prop('readonly', true);
+            $('#solicitante').prop('readonly', true);
+            $('#estudo').prop('readonly', true);
+            $('#descricaoItem').prop('readonly', true);
+            $('#rItem').prop('readonly', true);
+            $('#prazoExe').prop('readonly', true);
+            $('#prazoER').prop('readonly', true);
+            $('#tOrcamento').prop('readonly', true);
+            $('#desconto').prop('readonly', true);
+            $('#orcamentoDesconto').prop('readonly', true);
+            $('#formPag').prop('readonly', true);
+            $('#infoOrc').prop('readonly', true);
+            $('#regMov').prop('readonly', true);
+            $('#add').prop('disabled', true);
+            $('#exit_O').prop('disabled', true);
             
-        }
+            $("#zoom1").addClass("readonly-css");
+            $("#zoom2").addClass("readonly-css");
+            //#endregion
 
-        for (var r = 1; r <= RowSub; r++) {
-            $("#tb_descricao_I___" + r ).prop('readonly', true);
-            $("#tb_responsavel_I___" + r).prop('readonly', true);
+            var subButton = excluirSubitemO.length;
+            var RowSub = subButton - 1;
+            var nButton1 = excluirOrcamento.length; 
+            var nButton2 = excluirDados.length;
+
+            $("#panel2_O").addClass('nav-close');
             
+            for (var s = 0; s < subButton; s++) {
+                excluirSubitemO[s].disabled = true;
+                
+            }
 
-        }
+            for (var r = 1; r <= RowSub; r++) {
+                $("#tb_descricao_I___" + r ).prop('readonly', true);
+                $("#tb_responsavel_I___" + r).prop('readonly', true);
+                
 
-        for (var i = 0; i < nButton1; i++) {
-            excluirOrcamento[i].disabled = true;
-           
-        }
+            }
 
-        for (var n = 0; n < nButton2; n++) {
-            excluirDados[n].disabled = true;
+            for (var i = 0; i < nButton1; i++) {
+                excluirOrcamento[i].disabled = true;
             
-        }
+            }
 
+            for (var n = 0; n < nButton2; n++) {
+                excluirDados[n].disabled = true;
+                
+            }
+        }        
     }
 
 }
