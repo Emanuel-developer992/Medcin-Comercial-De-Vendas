@@ -1,3 +1,16 @@
+//EXECUTAR AO CARREGAR A PÁGINA
+window.onload = function() {
+
+    navegation();
+    getUser();
+    getUser2();
+    maskInput();
+    hoje('date_fornecedor');
+    hoje('date_aprovacao');
+    
+};
+
+//INSERÇÃO DE TABELAS
 var ClickAdd1 = 0;
 var ClickAdd2 = 0;
 
@@ -53,3 +66,168 @@ function Excluir(){
 
     par.remove();
 };
+
+//NAVEGAÇÃO ENTRE ATIVIDADES DO PROCESSO
+function navegation() {
+
+    var atividade = getWKNumState();
+
+    if (atividade == 0) {
+
+        $('#panel5').addClass('nav-close');
+        id();
+
+    }
+
+    if (atividade == 2) {
+
+        $('#cnpj').prop('readonly', true);
+        $('#companyName').prop('readonly', true);
+        $('#nomeFantasia').prop('readonly', true);
+        $('#escopo').prop('readonly', true);
+        $('#cep').prop('readonly', true);
+        $('#endereco').prop('readonly', true);
+        $('#numero').prop('readonly', true);
+        $('#complemento').prop('readonly', true);
+        $('#bairro').prop('readonly', true);
+        $('#estado').prop('readonly', true);
+        $('#pais').prop('readonly', true);
+        $('#telefone').prop('readonly', true);
+        $('#email').prop('readonly', true);
+        $('#nomeAdd1').prop('readonly', true);
+        $('#departamentoAdd1').prop('readonly', true);
+        $('#celularAdd1').prop('readonly', true);
+        $('#telefoneAdd1').prop('readonly', true);
+        $('#emailAdd1').prop('readonly', true);
+        $('#observacao').prop('readonly', true);
+        $('#resp_fornecedor').prop('readonly', true);
+        $('#date_fornecedor').prop('readonly', true);
+        $('#normas_select').prop('readonly', true);
+        $('#aprovado').prop('readonly', true);
+
+        $('#add1').prop('disabled', true);
+
+        var countBtn = ex_button.length;
+        for (var i = 0; i < countBtn; i++) {
+
+            ex_button[i].disabled = true;
+
+        }
+        
+        
+
+    }
+
+};
+
+//Gerador de ID
+
+function id() {
+
+    var dsCadastro = DatasetFactory.getDataset("DSFormulariodeCadastrodeFornecedor", null, null, null);
+
+    var linha = dsCadastro.values.length;
+
+    var inputCP = document.getElementById("idCP");
+
+    inputCP.value = "F-" + (linha + 1);
+    
+};
+
+//CEP Automático
+$("#cep").blur(function() {
+        
+    const paisAuto = "Brasil";
+    const cadastroCEP = document.getElementById("pais");
+
+    cadastroCEP.value = paisAuto;
+
+    $.getJSON("//viacep.com.br/ws/"+ $("#cep").val() +"/json/", function(dados){ 
+        
+        $("#endereco").val(dados.logradouro);
+        $("#bairro").val(dados.bairro);
+        $("#estado").val(dados.localidade);
+        
+    })
+});
+
+function getUser() {
+ 
+    //Condição de Busca
+    var user = getWKUser();
+
+    //Filtro de Busca 
+    var userConstraint = DatasetFactory.createConstraint("colleaguePK.colleagueId", user, user, ConstraintType.MUST);
+
+    var arrayConstraint = new Array(userConstraint);
+
+    // Busca no Dataset + Condições de Filtro
+    var array = DatasetFactory.getDataset("colleague", null, arrayConstraint, null);
+
+    var responsavel = array.values[0].colleagueName    
+    
+    $("#resp_fornecedor").val(responsavel);
+
+
+};
+
+function getUser2() {
+ 
+    //Condição de Busca
+    var user = getWKUser();
+
+    //Filtro de Busca 
+    var userConstraint = DatasetFactory.createConstraint("colleaguePK.colleagueId", user, user, ConstraintType.MUST);
+
+    var arrayConstraint = new Array(userConstraint);
+
+    // Busca no Dataset + Condições de Filtro
+    var array = DatasetFactory.getDataset("colleague", null, arrayConstraint, null);
+
+    var responsavel = array.values[0].colleagueName    
+    
+    
+    $("#resp_aprovacao").val(responsavel);
+
+
+};
+
+function maskInput() {
+
+    //CEP
+    var cep = $('#cep');
+    cep.mask('00000-000', {reverse: true});
+
+};
+
+//DATA DE HOJE
+function hoje(id) {
+
+    // Obtém a data/hora atual
+	var data = new Date();
+	
+    // Guarda cada pedaço em uma variável
+    var dia = data.getDate();           // 1-31
+    var mes = data.getMonth();          // 0-11 (zero=janeiro)
+    var ano4 = data.getFullYear();      // 4 dígitos
+    
+    // Formata a data e a hora (note o mês + 1)
+
+    if(mes > 9) {
+        if (dia > 9) {
+            var str_data = dia + '/' + (mes+1) + '/' + ano4;
+        }
+        var str_data = '0' + dia + '/' + (mes+1) + '/' + ano4;
+    }
+    else if (dia < 9) {
+        var str_data = '0' + dia + '/' + '0' + (mes+1) + '/' + ano4;
+    }
+    else {
+        var str_data = dia + '/' + '0' + (mes+1) + '/' + ano4;
+    }
+
+    $('#'+id).val(str_data);
+    return str_data;
+
+};
+    

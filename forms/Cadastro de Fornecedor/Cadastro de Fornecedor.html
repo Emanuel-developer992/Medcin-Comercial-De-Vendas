@@ -24,319 +24,341 @@
 <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
 
 <body>
-    <div class="fluig-style-guide">
-        <form name="form" role="form">
 
-            <div class="row">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+        <a class="nav-link nav-close active" data-toggle="tab" href="#cadastro_fornecedor_nav">Cadastro de Fornecedor</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link nav-close" data-toggle="tab" href="#breve_nav"></a>
+        </li>
+    </ul>
 
-                <div class="jumbotron jumbotron-fluid">
-                    <div class="container">
-                        <h1 class="display-4 j-medcin-p">Fornecedor</h1>
-                        <p class="lead j-medcin-h1">Cadastro de Fornecedores</p>
-                    </div>
-                    </div>
+    <div class="tab-content">
 
-                <!-- 1° Painel -->
-                <div class="panel panel-primary painel-medcin-div1">
-                    <div class="panel-heading painel-medcin">
-                        <h3 class="panel-title">Informações Básicas</h3>
-                    </div>
-                    <div class="panel-body">
+        <!-- Cadastro de Fornecedor -->
+        <div id="cadastro_fornecedor_nav" class="container tab-pane active" aria-selected="true">
+
+            <div class="fluig-style-guide">
+                <form name="form" role="form">
+
+                    <div class="row">
+
+                        <div class="jumbotron jumbotron-fluid" style="border-radius: 8px; margin-top: 4px;">
+                            <div class="container">
+                                <h1 class="display-4 j-medcin-p">Fornecedor</h1>
+                                <p class="lead j-medcin-h1">Cadastro de Fornecedores</p>
+                            </div>
+                            </div>
+
+                        <!-- 1° Painel -->
+                        <div class="panel panel-primary painel-medcin-div1">
+                            <div class="panel-heading painel-medcin">
+                                <h3 class="panel-title">Informações Básicas</h3>
+                            </div>
+                            <div class="panel-body">
+                                
+                                <!-- 1° Input -->
+                                <!-- ID (CP-01) Automatico -->
+                                <div class="form-group col-md-2">
+                                    <label for="idCP">ID do Documento</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon painel-medcin">ID</div>
+                                        <input type="text" id="idCP" name="idCP"  class="form-control form-control-sm mInt" readonly="" style="text-align: center;">
+                                    </div>
+                                </div>
+
+                                <div class="clearfix"></div>
+                            
+                                <!-- 2° Input -->
+                                <div class="form-group col-md-4">
+                                    <label for="cnpj">CNPJ</label>
+                                    <input name="cnpj" type="text" class="form-control" id="cnpj" mask="00.000.000/0000-00" placeholder="00.000.000/0000-00">
+                                </div>
+
+                                <!-- 3° Input -->
+                                <div class="form-group col-md-4">
+                                    <label for="companyName">Razão Social</label>
+                                    <input name="companyName" type="text" class="form-control" id="companyName" placeholder="Razão Social">
+                                </div>
+
+                                <!-- 4° Input -->
+                                <div class="form-group col-md-4">
+                                    <label for="nomeFantasia">Nome Fantasia</label>
+                                    <input name="nomeFantasia" type="text" class="form-control" id="nomeFantasia" placeholder="Nome fantasia">
+                                </div>
+
+                                <!-- 5° Input -->
+                                <div class="form-group col-md-12">
+                                    <label for="escopo">Escopo do Cliente/Patrocinador</label>
+                                    <input name="escopo" type="text" class="form-control" id="escopo" placeholder="Escopo">
+                                </div>
+                            </div>
+                        </div>
                         
-                        <!-- 1° Input -->
-                        <!-- ID (CP-01) Automatico -->
-                        <div class="form-group col-md-2">
-                            <label for="idCP">ID do Documento</label>
-                            <div class="input-group">
-                                <div class="input-group-addon painel-medcin">ID</div>
-                                <input type="text" id="idCP" name="idCP"  class="form-control form-control-sm mInt" readonly="" style="text-align: center;">
+                        <!-- 2° Painel -->
+                        <div class="panel panel-primary painel-medcin-div1" >
+                            <div class="panel-heading painel-medcin">
+                                <h3 class="panel-title">Endereço e Complemento</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                <!-- 6° Input (Endereço e Complemento)-->
+                                <div class="form-group col-md-3">
+                                    <label for="cep">CEP</label>
+                                    <input name="cep" type="text" class="form-control" id="cep"  placeholder="00000-000">
+                                </div>
+
+                                <div class="clearfix"></div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="endereco">Endereço</label>
+                                    <input name="endereco" type="text" class="form-control" id="endereco" placeholder="Rua/Avenida/Rodovia">
+                                </div>
+
+                                <div class="form-group col-md-1">
+                                    <label for="numero">N°</label>
+                                    <input name="numero" type="text" class="form-control" id="numero" placeholder="Nº0">
+                                </div>
+
+                                <div class="form-group col-md-5">
+                                    <label for="complemento">Complemento</label>
+                                    <input name="complemento" type="text" class="form-control" id="complemento" placeholder="Ponto de referência">
+                                </div>
+
+                                <div class="form-group col-md-4">
+                                    <label for="bairro">Bairro</label>
+                                    <input name="bairro" type="text" class="form-control" id="bairro" placeholder="Bairro">
+                                </div>
+
+                                <div class="form-group col-md-4">
+                                    <label for="estado">Estado</label>
+                                    <input name="estado" type="text" class="form-control" id="estado" placeholder="Estado">
+                                </div>
+
+                                <div class="form-group col-md-4">
+                                    <label for="pais">País</label>
+                                    <input name="pais" type="text" class="form-control" id="pais" placeholder="País">
+                                </div>
+                            </div>    
+                        </div>
+
+                        <!-- 3° Painel -->
+                        <div class="panel panel-primary painel-medcin-div1" >
+                            <div class="panel-heading painel-medcin">
+                                <h3 class="panel-title">Contatos</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                <!-- 7° Input -->
+                                <div class="form-group col-md-3">
+                                    <label for="telefone">Telefone</label>
+                                    <input name="telefone" type="text" class="form-control" id="telefone" mask="(00) 0000-0000" placeholder="Telefone Corporativo">
+                                </div>
+
+                                <!-- 8° Input -->
+                                <div class="form-group col-md-5">
+                                    <label for="email">E-mail</label>
+                                    <input name="email" type="email" class="form-control" id="email" placeholder="E-mail Corporativo">
+                                </div>
+
+                            </div>
+                        </div>
+                        
+                        <!-- 4° Painel -->
+                        <div class="panel panel-primary painel-medcin-div1" >
+                            <div class="panel-heading painel-medcin">
+                                <h3 class="panel-title">Contato Comercial</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                <!-- 9° Input (Contato Comercial)-->
+                                
+                                <div class="form-group col-md-5">
+                                    <label>Nome</label>
+                                    <input type="text" id="nomeAdd1" name="nomeAdd1" class="form-control" placeholder="Nome">
+                                </div>
+                            
+                                <div class="form-group col-md-7">
+                                    <label>Departamento</label>
+                                    <input type="text" id="departamentoAdd1" name="departamentoAdd1" class="form-control" placeholder="Departamento">
+                                </div>                    
+                            
+                                <div class="form-group col-md-4">
+                                    <label>Celular</label>
+                                    <input type="text" id="celularAdd1" name="celularAdd1" class="form-control" mask="(00)00000-0000" placeholder="Celular">
+                                </div>                    
+                            
+                                <div class="form-group col-md-4">
+                                    <label>Telefone</label>
+                                    <input type="text" id="telefoneAdd1" name="telefoneAdd1" class="form-control" mask="(00)0000-0000" placeholder="Telefone">
+                                </div>
+                        
+                            
+                                <div class="form-group col-md-4">
+                                    <label>E-mail</label>
+                                    <input type="text" id="emailAdd1" name="emailAdd1" class="form-control" placeholder="E-mail">
+                                </div>
+
+                                <div class="clearfix"></div>
+                                <br>
+                                <br>
+
+                                <div class="d-grid gap-2 col-6 mx-auto">
+                                    <button name="add1" id="add1" type="button" class="btn btn-success button-medcin" onclick="pushAdd1()"><b>Adicionar +</b></button>
+                                    <p class="p-cinza">Você pode adicionar vários contatos, clique em adicionar para salvar na tabela, você também pode removê-los.</p>
+                                </div>
+
+                                <!-- Tabela 1-->
+
+                                <div class="title-medcin">
+                                    <h1>Contatos Comercial</h1>
+                                </div>                      
+                                <div class="table-responsive col-md-12">
+                                    <table tablename="tb_contato" class="table table-sm" id="tb_contato" noaddbutton="true" nodeletebutton="true">
+                                        <thead>
+                                            <tr>
+                                                <th>Nome</th>
+                                                <th>Departamento</th>
+                                                <th>Celular</th>
+                                                <th>Telefone</th>
+                                                <th>E-mail</th>
+                                                <th>Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><input type="text" id="tb_nomeAdd1" name="tb_nomeAdd1" class="invisible-input" readonly></input></td>
+                                                <td><input type="text" id="tb_departamentoAdd1" name="tb_departamentoAdd1" class="invisible-input" readonly></input></td>
+                                                <td><input type="text" id="tb_celularAdd1" name="tb_celularAdd1" class="invisible-input" readonly></input></td>
+                                                <td><input type="text" id="tb_telefoneAdd1" name="tb_telefoneAdd1" class="invisible-input" readonly></input></td>
+                                                <td><input type="text" id="tb_emailAdd1" name="tb_emailAdd1" class="invisible-input" readonly></input></td>
+                                                <td><button type="button" id="ex_button" name="ex_button" class="btn btn-danger excluir">Excluir</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                    
                             </div>
                         </div>
 
-                        <div class="clearfix"></div>
-                       
-                        <!-- 2° Input -->
-                        <div class="form-group col-md-4">
-                            <label for="cnpj">CNPJ</label>
-                            <input name="cnpj" type="text" class="form-control" id="cnpj" mask="00.000.000/0000-00" placeholder="00.000.000/0000-00">
-                        </div>
+                        <!-- 5° Painel -->
+                        <div class="panel panel-primary painel-medcin-div1" >
+                            <div class="panel-heading painel-medcin">
+                                <h3 class="panel-title">Observações Adicionais</h3>
+                            </div>
+                            <div class="panel-body">
 
-                        <!-- 3° Input -->
-                        <div class="form-group col-md-4">
-                            <label for="companyName">Razão Social</label>
-                            <input name="companyName" type="text" class="form-control" id="companyName" placeholder="Razão Social...">
-                        </div>
+                                <div class="form-group col-md-12">
+                                    <label>Observação</label>
+                                    <p>Preencha nesse campo suas observações...</p>
+                                    <textarea type="text" id="observacao" name="observacao" class="form-control"></textarea>
+                                </div>
 
-                        <!-- 4° Input -->
-                        <div class="form-group col-md-4">
-                            <label for="nomeFantasia">Nome Fantasia</label>
-                            <input name="nomeFantasia" type="text" class="form-control" id="nomeFantasia" placeholder="Nome fantasia...">
-                        </div>
+                                <div class="form-group col-md-5">
+                                    <label>Responsável</label>
+                                    <input type="text" id="resp_fornecedor" name="resp_fornecedor" class="form-control" readonly>
+                                </div>
 
-                        <!-- 5° Input -->
-                        <div class="form-group col-md-12">
-                            <label for="escopo">Escopo do Cliente/Patrocinador</label>
-                            <input name="escopo" type="text" class="form-control" id="escopo" placeholder="Escopo...">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 2° Painel -->
-                <div class="panel panel-primary painel-medcin-div1" >
-                    <div class="panel-heading painel-medcin">
-                        <h3 class="panel-title">Endereço e Complemento</h3>
-                    </div>
-                    <div class="panel-body">
-
-                        <!-- 6° Input (Endereço e Complemento)-->
-                        <div class="form-group col-md-3">
-                            <label for="cep">CEP</label>
-                            <input name="cep" type="text" class="form-control" id="cep" mask="00000-000" placeholder="CEP Ex.:00000-000...">
-                        </div>
-
-                        <div class="clearfix"></div>
-
-                        <div class="form-group col-md-6">
-                            <label for="endereco">Endereço</label>
-                            <input name="endereco" type="text" class="form-control" id="endereco" placeholder="Rua/Avenida/Rodovia...">
-                        </div>
-
-                        <div class="form-group col-md-1">
-                            <label for="numero">N°</label>
-                            <input name="numero" type="text" class="form-control" id="numero" placeholder="Nº00...">
-                        </div>
-
-                        <div class="form-group col-md-5">
-                            <label for="complemento">Complemento</label>
-                            <input name="complemento" type="text" class="form-control" id="complemento" placeholder="Ponto de referência...">
-                        </div>
-
-                        <div class="form-group col-md-4">
-                            <label for="bairro">Bairro</label>
-                            <input name="bairro" type="text" class="form-control" id="bairro" placeholder="Bairro...">
-                        </div>
-
-                        <div class="form-group col-md-4">
-                            <label for="estado">Estado</label>
-                            <input name="estado" type="text" class="form-control" id="estado" placeholder="Estado...">
-                        </div>
-
-                        <div class="form-group col-md-4">
-                            <label for="pais">País</label>
-                            <input name="pais" type="text" class="form-control" id="pais" placeholder="País...">
-                        </div>
-                    </div>    
-                </div>
-
-                <!-- 3° Painel -->
-                <div class="panel panel-primary painel-medcin-div1" >
-                    <div class="panel-heading painel-medcin">
-                        <h3 class="panel-title">Contatos</h3>
-                    </div>
-                    <div class="panel-body">
-
-                        <!-- 7° Input -->
-                        <div class="form-group col-md-3">
-                            <label for="telefone">Telefone</label>
-                            <input name="telefone" type="text" class="form-control" id="telefone" mask="(00) 0000-0000" placeholder="Telefone Corporativo...">
-                        </div>
-
-                        <!-- 8° Input -->
-                        <div class="form-group col-md-5">
-                            <label for="email">E-mail</label>
-                            <input name="email" type="email" class="form-control" id="email" placeholder="E-mail Corporativo...">
-                        </div>
-
-                    </div>
-                </div>
-                
-                <!-- 4° Painel -->
-                <div class="panel panel-primary painel-medcin-div1" >
-                    <div class="panel-heading painel-medcin">
-                        <h3 class="panel-title">Contato Comercial</h3>
-                    </div>
-                    <div class="panel-body">
-
-                        <!-- 9° Input (Contato Comercial)-->
-                        
-                        <div class="form-group col-md-5">
-                            <label>Nome</label>
-                            <input type="text" id="nomeAdd1" name="nomeAdd1" class="form-control" placeholder="Nome...">
-                        </div>
-                    
-                        <div class="form-group col-md-7">
-                            <label>Departamento</label>
-                            <input type="text" id="departamentoAdd1" name="departamentoAdd1" class="form-control" placeholder="Departamento...">
-                        </div>                    
-                    
-                        <div class="form-group col-md-4">
-                            <label>Celular</label>
-                            <input type="text" id="celularAdd1" name="celularAdd1" class="form-control" mask="(00)00000-0000" placeholder="Celular...">
-                        </div>                    
-                    
-                        <div class="form-group col-md-4">
-                            <label>Telefone</label>
-                            <input type="text" id="telefoneAdd1" name="telefoneAdd1" class="form-control" mask="(00)0000-0000" placeholder="Telefone...">
-                        </div>
-                
-                    
-                        <div class="form-group col-md-4">
-                            <label>E-mail</label>
-                            <input type="text" id="emailAdd1" name="emailAdd1" class="form-control" placeholder="E-mail...">
-                        </div>
-
-                        <div class="clearfix"></div>
-                        <br>
-                        <br>
-
-                        <div class="d-grid gap-2 col-6 mx-auto">
-                            <button name="add1" id="add1" type="button" class="btn btn-success button-medcin" onclick="pushAdd1()"><b>Adicionar +</b></button>
-                            <p class="p-cinza">Você pode adicionar vários contatos, clique em adicionar para salvar na tabela, você também pode removê-los.</p>
-                        </div>
-
-                        <!-- Tabela 1-->
-
-                        <div class="title-medcin">
-                            <h1>Contatos Comercial</h1>
-                        </div>                      
-                        <div class="table-responsive col-md-12">
-                            <table tablename="tb_contato" class="table table-sm" id="tb_contato" noaddbutton="true" nodeletebutton="true">
-                                <thead>
-                                    <tr>
-                                        <th>Nome</th>
-                                        <th>Departamento</th>
-                                        <th>Celular</th>
-                                        <th>Telefone</th>
-                                        <th>E-mail</th>
-                                        <th>Ações</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><input type="text" name="tb_nomeAdd1" class="invisible-input" readonly></input></td>
-                                        <td><input type="text" name="tb_departamentoAdd1" class="invisible-input" readonly></input></td>
-                                        <td><input type="text" name="tb_celularAdd1" class="invisible-input" readonly></input></td>
-                                        <td><input type="text" name="tb_telefoneAdd1" class="invisible-input" readonly></input></td>
-                                        <td><input type="text" name="tb_emailAdd1" class="invisible-input" readonly></input></td>
-                                        <td><button type="button" class="btn btn-danger excluir">Excluir</button></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                                <div class="form-group col-md-3">
+                                    <label>Data</label>
+                                    <input type="text" id="date_fornecedor" name="date_fornecedor" class="form-control" readonly>
+                                </div>
                             
+                            </div>
+                        </div>
+
+                        <!-- 5° Painel -->
+                        <div id="panel5" class="panel panel-primary painel-medcin-div1" >
+                            <div class="panel-heading painel-medcin">
+                                <h3 class="panel-title">Aprovação Qualidade</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                <div id="div_select_1" class="form-group col-md-12">
+                                    <label>Norma</label>
+                                    <p>Selecione a norma...</p>
+                                    <select type="text" id="normas_select" name="normas_select" class="form-control">
+                                        <option value="">Selecione...</option>
+                                        <option value="ISO 9001">ISO 9001</option>
+                                        <option value="ISO 14001">ISO 14001</option>
+                                        <option value="ISO 45001">ISO 45001</option>
+                                        <option value="ISO/IEC 17025">ISO/IEC 17025</option>
+                                        <option value="BPL">BPL</option>
+                                        <option value="Outras">Outras</option>
+                                        <option value="Qualificação Medcin">Qualificação Medcin</option>
+                                    </select>
+                                </div>
+
+                                <div class="d-grid gap-2 col-6 mx-auto">
+                                    <button name="add2" id="add2" type="button" class="btn btn-success button-medcin" onclick="pushAdd2()"><b>Adicionar +</b></button>
+                                    <p class="p-cinza">Você pode adicionar uma ou mais normas, clique em adicionar para salvar na tabela, você também pode removê-los. Você deve anexar evidência.</p>
+                                </div>
+
+                                <!-- Tabela 1-->
+                                <div class="title-medcin">
+                                    <h1>Normas Selecionadas</h1>
+                                </div>                      
+                                <div class="table-responsive col-md-12">
+                                    <table tablename="tb_normas" class="table table-sm" id="tb_normas" noaddbutton="true" nodeletebutton="true">
+                                        <thead>
+                                            <tr>
+                                                <th>Norma</th>
+                                                <th>Anexo</th>
+                                                <th>Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><input type="text" name="tb_norma" class="invisible-input" readonly></input></td>
+                                                <td>
+
+                                                    <div class="form-group">
+                                                        <label for="input_file">Evidência</label>
+                                                        <input name="input_file" type="file" id="input_file">
+                                                        <p class="help-block">Envie a evidência da norma selecionada.</p>
+                                                    </div>
+
+                                                </td>
+                                                <td><button type="button" class="btn btn-danger excluir">Excluir</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div id="div_select_2" class="form-group col-md-5">
+                                    <label>Aprovado?</label>
+                                    <select type="text" id="aprovado" name="aprovado" class="form-control">
+                                        <option value="">Selecione...</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-5">
+                                    <label>Resposável pela Aprovação</label>
+                                    <input type="text" id="resp_aprovacao" name="resp_aprovacao" class="form-control" readonly>
+                                </div>
+
+                                <div class="form-group col-md-5">
+                                    <label>Data da Aprovação</label>
+                                    <input type="date" id="date_aprovacao" name="date_aprovacao" class="form-control" readonly>
+                                </div>
+
+
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <!-- 5° Painel -->
-                <div class="panel panel-primary painel-medcin-div1" >
-                    <div class="panel-heading painel-medcin">
-                        <h3 class="panel-title">Observações Adicionais</h3>
-                    </div>
-                    <div class="panel-body">
+                    <!-- Meu Script -->    
+                    <script type="text/javascript" src="js/CadastroFornecedor.js"></script>
 
-                        <div class="form-group col-md-12">
-                            <label>Observação</label>
-                            <p>Preencha com as observações...</p>
-                            <textarea type="text" id="observacao" name="observacao" class="form-control"></textarea>
-                        </div>
-
-                        <div class="form-group col-md-5">
-                            <label>Responsável</label>
-                            <input type="text" id="resp_fornecedor" name="resp_fornecedor" class="form-control">
-                        </div>
-
-                        <div class="form-group col-md-2">
-                            <label>Data</label>
-                            <input type="date" id="date_fornecedor" name="date_fornecedor" class="form-control">
-                        </div>
-                    
-                    </div>
-                </div>
-
-                <!-- 5° Painel -->
-                <div class="panel panel-primary painel-medcin-div1" >
-                    <div class="panel-heading painel-medcin">
-                        <h3 class="panel-title">Aprovação Qualidade</h3>
-                    </div>
-                    <div class="panel-body">
-
-                        <div class="form-group col-md-12">
-                            <label>Norma</label>
-                            <p>Slecione a norma...</p>
-                            <select type="text" id="normas_select" name="normas_select" class="form-control">
-                                <option value="ISO 9001">ISO 9001</option>
-                                <option value="ISO 14001">ISO 14001</option>
-                                <option value="ISO 45001">ISO 45001</option>
-                                <option value="ISO/IEC 17025">ISO/IEC 17025</option>
-                                <option value="BPL">BPL</option>
-                                <option value="Outras">Outras</option>
-                                <option value="Qualificação Medcin">Qualificação Medcin</option>
-                            </select>
-                        </div>
-
-                        <div class="d-grid gap-2 col-6 mx-auto">
-                            <button name="add2" id="add2" type="button" class="btn btn-success button-medcin" onclick="pushAdd2()"><b>Adicionar +</b></button>
-                            <p class="p-cinza">Você pode adicionar uma ou mais normas, clique em adicionar para salvar na tabela, você também pode removê-los. Você deve anexar evidência.</p>
-                        </div>
-
-                        <!-- Tabela 1-->
-                        <div class="title-medcin">
-                            <h1>Normas Selecionadas</h1>
-                        </div>                      
-                        <div class="table-responsive col-md-12">
-                            <table tablename="tb_normas" class="table table-sm" id="tb_normas" noaddbutton="true" nodeletebutton="true">
-                                <thead>
-                                    <tr>
-                                        <th>Norma</th>
-                                        <th>Anexo</th>
-                                        <th>Ações</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><input type="text" name="tb_norma" class="invisible-input" readonly></input></td>
-                                        <td>
-
-                                            <div class="form-group">
-                                                <label for="input_file">Evidência</label>
-                                                <input name="input_file" type="file" id="input_file">
-                                                <p class="help-block">Envie a evidência da norma selecionada.</p>
-                                            </div>
-
-                                        </td>
-                                        <td><button type="button" class="btn btn-danger excluir">Excluir</button></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class="form-group col-md-5">
-                            <label>Aprovado?</label>
-                            <select type="text" id="aprovado" name="aprovado" class="form-control">
-                                <option value="Sim">Sim</option>
-                                <option value="Não">Não</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group col-md-5">
-                            <label>Resposável pela Aprovação</label>
-                            <input type="text" id="resp_aprovacao" name="resp_aprovacao" class="form-control">
-                        </div>
-
-                        <div class="form-group col-md-5">
-                            <label>Data da Aprovação</label>
-                            <input type="date" id="date_aprovacao" name="date_aprovacao" class="form-control">
-                        </div>
-
-
-                    </div>
-                </div>
+                </form>
             </div>
 
-            <!-- Meu Script -->    
-            <script type="text/javascript" src="js/CadastroFornecedor.js"></script>
+        </div>
 
-        </form>
     </div>
 </body>
 </html>

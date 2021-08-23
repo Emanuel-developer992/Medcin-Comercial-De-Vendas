@@ -2,23 +2,13 @@
 
 window.onload = function() {
 
-    idSeq();
     revisaoDate();
     maskMoney();
     maskPercent();
     aprovacao();
+    descontoAuto()
 
-    console.log("<<<<<<<<<<<");
-    console.log(getFormMode());
-    console.log(getMobile());
-    console.log(getWKNumState());
-    console.log(getWKUser());
-    console.log(getWKNumProces());
-    console.log(getWKUserLocale());
-    console.log(getWKCardId());
-    console.log(">>>>>>>>>>");
-
-
+    usuario('solicitante');
 };
 
 // API - CEP AUTOMÁTICO
@@ -36,7 +26,7 @@ $("#cep").blur(function(blur) {
         
         $("#endereco").val(dados.logradouro);
         $("#bairro").val(dados.bairro);
-        $("#estado").val(dados.localidade);
+        $("#estado").val(dados.localidade);2
         
         
         
@@ -147,7 +137,7 @@ function idSeq() {
     
     inputPS.value = "PS-" + (linha + 1);
     
-    inputO.value = "O-" + (linha + 1);
+    inputO.value = "ORC-" + (linha + 1);
     
     
 };
@@ -155,7 +145,6 @@ function idSeq() {
 //#endregion
 
 // TABELAS
-
 //#region Funtion
 
 var idClick = 0;
@@ -163,6 +152,7 @@ var ClickAdd1 = 0;
 var ClickAdd2 = 0;
 var ClickAdd3 = 0;
 var idAll;
+var idOAll;
 
 //#region Orçamento
 
@@ -173,15 +163,17 @@ function pushTable() {
     wdkAddChild('tabelaOrcamento');
 
     var inputId = $("#c7_total").val();
+    var inputIdO = $("#idO").val();
     var inputAplicacao = $("#estudo").val();
     var inputValorTab = $("#rItem").val();
     var inputdesconto = $("#desconto").val();
     var inputorcamentoDesconto = $("#orcamentoDesconto").val();
 
     idAll = inputId;
-    console.log(idClick);
+    idOAll = inputIdO;
 
     $("#tb1_c7_total___"+idClick).val(inputId);
+    $("#tb1_orc___"+idClick).val(inputIdO);
     $("#tb_estudo___"+idClick).val(inputAplicacao);
     $("#tb_rItem___"+idClick).val(inputValorTab);
     $("#tb_desconto___"+idClick).val(inputdesconto);
@@ -207,12 +199,27 @@ function pushTable2() {
     var inputdescricao = $("#descricaoItem").val();
     var inputExe = $("#prazoExe").val();
     var inputER = $("#prazoER").val();
-    var inputorcamento = $("#tOrcamento").val();    
+    var inputorcamento = $("#tOrcamento").val();
+    
+    //PrazoExe
+    var dia_closure = inputExe.substring(8, 12);
+    var mes_closure = inputExe.substring(5, 7);
+    var ano_closure = inputExe.substring(0, 4);
+
+    var date_closure = dia_closure + "/" + mes_closure + "/" + ano_closure;
+
+    //PrazoER
+    var dia_closure2 = inputER.substring(8, 12);
+    var mes_closure2 = inputER.substring(5, 7);
+    var ano_closure2 = inputER.substring(0, 4);
+
+    var date_closure2 = dia_closure2 + "/" + mes_closure2 + "/" + ano_closure2;
 
     $("#tb2_c7_total___"+idClick).val(idAll);
+    $("#tb3_orc___"+idClick).val(idOAll);
     $("#tb_descricaoItem___"+idClick).val(inputdescricao);
-    $("#tb_prazoExe___"+idClick).val(inputExe);
-    $("#tb_prazoER___"+idClick).val(inputER);
+    $("#tb_prazoExe___"+idClick).val(date_closure);
+    $("#tb_prazoER___"+idClick).val(date_closure2);
     $("#tb_tOrcamento___"+idClick).val(inputorcamento);
     
 
@@ -240,7 +247,6 @@ function pushItem() {
     // -------------- Add Estudo Automático -----------------------------------
     var estudo = $("#estudoPS").val();
     $("#tb_responsavel___" + clickItem).val(estudo);
-    console.log(estudo);
 
      // -------------- Número de Linhas + Número do Subitem -------------------
     var rowCount = $('#tb_subitem tr').length;
@@ -359,56 +365,55 @@ function Excluir(){
 
 //#region Blurs
 
-$("#desconto").blur(function() {
+function descontoAuto() {
 
-    var inputOrcamento = document.getElementById("tOrcamento");
-    var inputdesconto = document.getElementById("desconto");
-    var inputorcamentoDesconto = document.getElementById("orcamentoDesconto");
+    document.getElementById("tOrcamento").onchange = function() {
+        
+        var orcamento = $('#tOrcamento').val();
+        
+        var orcamentoT1 = orcamento.replace(".", "");
+        var orcamentoT2 = orcamentoT1.replace(",", ".");
 
-    var maskOffOcamento = inputOrcamento.value;
-    var maskOffdesconto = inputdesconto.value;
+        var desconto = $('#desconto').val();
+        
+        if (desconto != "") {
 
-    var offmask1 = maskOffOcamento.replace(".","");
-    var offmaskF1 = offmask1.replace(",",".");
+            var descontoT1 = desconto.replace(".", "");
+            var descontoT2 = descontoT1.replace(",", ".");
 
-    var offmask2 = maskOffdesconto.replace(".","");
-    var offmaskF2 = offmask2.replace(",",".");
+            $('#orcamentoDesconto').val(((orcamentoT2 - (orcamentoT2 * (descontoT2/100))).toFixed(2)).replace(".", ","));
+        
+        }
+        else {
+    
+            $('#orcamentoDesconto').val(orcamentoT2.replace(".", ","));
+        }  
+    }
 
-    var desconto = offmaskF2 / 100; 
-    var totalDesconto = offmaskF1 - (offmaskF1 * desconto);
-    var arredondamento = parseFloat(totalDesconto.toFixed(2));
-    inputorcamentoDesconto.value = arredondamento + "";
+    document.getElementById("desconto").onchange = function() {
 
-    console.log(totalDesconto);
-    console.log(arredondamento);
-    console.log(arredondamento + "");
+        var orcamento = $('#tOrcamento').val();
+        
+        var orcamentoT1 = orcamento.replace(".", "");
+        var orcamentoT2 = orcamentoT1.replace(",", ".");
 
+        var desconto = $('#desconto').val();
+        
+        if (desconto != "") {
 
-    maskMoney();
-});
+            var descontoT1 = desconto.replace(".", "");
+            var descontoT2 = descontoT1.replace(",", ".");
 
-$("#tOrcamento").blur(function() {
+            $('#orcamentoDesconto').val(((orcamentoT2 - (orcamentoT2 * (descontoT2/100))).toFixed(2)).replace(".", ","));
+        
+        }
+        else {
+    
+            $('#orcamentoDesconto').val(orcamentoT2.replace(".", ","));
+        }  
+    }
 
-    var inputOrcamento = document.getElementById("tOrcamento");
-    var inputdesconto = document.getElementById("desconto");
-    var inputorcamentoDesconto = document.getElementById("orcamentoDesconto");
-
-    var maskOffOcamento = inputOrcamento.value;
-    var maskOffdesconto = inputdesconto.value;
-
-    var offmask1 = maskOffOcamento.replace(".","");
-    var offmaskF1 = offmask1.replace(",",".");
-
-    var offmask2 = maskOffdesconto.replace(".","");
-    var offmaskF2 = offmask2.replace(",",".");
-
-    var desconto = offmaskF2 / 100; 
-    var totalDesconto = offmaskF1 - (offmaskF1 * desconto);
-    var arredondamento = parseFloat(totalDesconto.toFixed(2));
-    inputorcamentoDesconto.value = arredondamento + "";
-
-    maskMoney();
-});
+};
 
 //#endregion
 
@@ -417,262 +422,63 @@ $("#tOrcamento").blur(function() {
 //#region Focus
 
 //Zoom C7_total
+ 
+$(document).on('change', "#c7_total",
+    function zoomProdutoServico() {
 
-$("#estudo").focus(function() {
-    
-    //Busca Subitens
-    pushSub_i();
+        //Busca Subitens
+        pushSub_i();
 
-    //Condição de Busca
-    var Zoom = document.getElementById("c7_total");
-    var inputZoom = Zoom.value;
+        //Condição de Busca
+        var Zoom = document.getElementById("c7_total");
+        var inputZoom = Zoom.value     
+        //Filtro de Busca 
+        var codConstraint = DatasetFactory.createConstraint("codP", inputZoom, inputZoom, ConstraintType.SHOULD);
+        var arrayConstraint = new Array(codConstraint)     
+        // Busca no Dataset + Condições de Filtro
+        var array = DatasetFactory.getDataset("DSCadastroGeral", null, arrayConstraint, null)      
+        //Valores para integração ao campos
+        var descricaoArray = array.values[0].descricao;
+        var estudoArray = array.values[0].estudoPS;
+        var rItemArray = array.values[0].pVenda    
+        //Integração aos campos
+        $("#descricaoItem").val(descricaoArray);
+        $("#estudo").val(estudoArray);
+        $("#rItem").val(rItemArray);
 
-    //Filtro de Busca 
-    var codConstraint = DatasetFactory.createConstraint("codP", inputZoom, inputZoom, ConstraintType.SHOULD);
-    var arrayConstraint = new Array(codConstraint);
+        console.log('>>>>');
+        console.log(descricaoArray);
+        console.log(estudoArray);
+        console.log(rItemArray);
+        console.log(array);
+        console.log('<<<<');
 
-    // Busca no Dataset + Condições de Filtro
-    var array = DatasetFactory.getDataset("DSCadastroGeral", null, arrayConstraint, null);
+        
 
-    //Valores para integração ao campos
-    var descricaoArray = array.values[0].descricao;
-    var estudoArray = array.values[0].estudoPS;
-    var rItemArray = array.values[0].pVenda;
-
-    //Integração aos campos
-    $("#descricaoItem").val(descricaoArray);
-    $("#estudo").val(estudoArray);
-    $("#rItem").val(rItemArray);
-    
-    
-    
-});
-
-$("#descricaoItem").focus(function() {  
-
-    //Busca Subitens
-    pushSub_i();
-
-    //Condição de Busca
-    var Zoom = document.getElementById("c7_total");
-    var inputZoom = Zoom.value     
-    //Filtro de Busca 
-    var codConstraint = DatasetFactory.createConstraint("codP", inputZoom, inputZoom, ConstraintType.SHOULD);
-    var arrayConstraint = new Array(codConstraint)     
-    // Busca no Dataset + Condições de Filtro
-    var array = DatasetFactory.getDataset("DSCadastroGeral", null, arrayConstraint, null)      
-    //Valores para integração ao campos
-    var descricaoArray = array.values[0].descricao;
-    var estudoArray = array.values[0].estudoPS;
-    var rItemArray = array.values[0].pVenda    
-    //Integração aos campos
-    $("#descricaoItem").val(descricaoArray);
-    $("#estudo").val(estudoArray);
-    $("#rItem").val(rItemArray);
-    
-});
-
-$("#rItem").focus(function() {  
-
-    //Busca Subitens
-    pushSub_i();
-
-    //Condição de Busca
-    var Zoom = document.getElementById("c7_total");
-    var inputZoom = Zoom.value;
-
-    //Filtro de Busca 
-    var codConstraint = DatasetFactory.createConstraint("codP", inputZoom, inputZoom, ConstraintType.SHOULD);
-    var arrayConstraint = new Array(codConstraint);
-
-    // Busca no Dataset + Condições de Filtro
-    var array = DatasetFactory.getDataset("DSCadastroGeral", null, arrayConstraint, null);
-
-    //Valores para integração ao campos
-    var descricaoArray = array.values[0].descricao;
-    var estudoArray = array.values[0].estudoPS;
-    var rItemArray = array.values[0].pVenda;
-
-    //Integração aos campos
-    $("#descricaoItem").val(descricaoArray);
-    $("#estudo").val(estudoArray);
-    $("#rItem").val(rItemArray);
-    
-    
-    
-});
-
-$("#prazoExe").focus(function() {  
-
-    //Busca Subitens
-    pushSub_i();
-
-    //Condição de Busca
-    var Zoom = document.getElementById("c7_total");
-    var inputZoom = Zoom.value;
-
-    //Filtro de Busca 
-    var codConstraint = DatasetFactory.createConstraint("codP", inputZoom, inputZoom, ConstraintType.SHOULD);
-    var arrayConstraint = new Array(codConstraint);
-
-    // Busca no Dataset + Condições de Filtro
-    var array = DatasetFactory.getDataset("DSCadastroGeral", null, arrayConstraint, null);
-
-    //Valores para integração ao campos
-    var descricaoArray = array.values[0].descricao;
-    var estudoArray = array.values[0].estudoPS;
-    var rItemArray = array.values[0].pVenda;
-
-    //Integração aos campos
-    $("#descricaoItem").val(descricaoArray);
-    $("#estudo").val(estudoArray);
-    $("#rItem").val(rItemArray);
-    
-    
-    
-});
-
-$("#prazoER").focus(function() {  
-
-    //Busca Subitens
-    pushSub_i();
-
-    //Condição de Busca
-    var Zoom = document.getElementById("c7_total");
-    var inputZoom = Zoom.value;
-
-    //Filtro de Busca 
-    var codConstraint = DatasetFactory.createConstraint("codP", inputZoom, inputZoom, ConstraintType.SHOULD);
-    var arrayConstraint = new Array(codConstraint);
-
-    // Busca no Dataset + Condições de Filtro
-    var array = DatasetFactory.getDataset("DSCadastroGeral", null, arrayConstraint, null);
-
-    //Valores para integração ao campos
-    var descricaoArray = array.values[0].descricao;
-    var estudoArray = array.values[0].estudoPS;
-    var rItemArray = array.values[0].pVenda;
-
-    //Integração aos campos
-    $("#descricaoItem").val(descricaoArray);
-    $("#estudo").val(estudoArray);
-    $("#rItem").val(rItemArray);
-    
-    
-    
-});
-
-$("#tOrcamento").focus(function() {  
-
-    //Busca Subitens
-    pushSub_i();
-
-    //Condição de Busca
-    var Zoom = document.getElementById("c7_total");
-    var inputZoom = Zoom.value;
-
-    //Filtro de Busca 
-    var codConstraint = DatasetFactory.createConstraint("codP", inputZoom, inputZoom, ConstraintType.SHOULD);
-    var arrayConstraint = new Array(codConstraint);
-
-    // Busca no Dataset + Condições de Filtro
-    var array = DatasetFactory.getDataset("DSCadastroGeral", null, arrayConstraint, null);
-
-    //Valores para integração ao campos
-    var descricaoArray = array.values[0].descricao;
-    var estudoArray = array.values[0].estudoPS;
-    var rItemArray = array.values[0].pVenda;
-
-    //Integração aos campos
-    $("#descricaoItem").val(descricaoArray);
-    $("#estudo").val(estudoArray);
-    $("#rItem").val(rItemArray);
-    
-    
-    
-});
-
-$("#desconto").focus(function() {  
-
-    //Busca Subitens
-    pushSub_i();
-
-    //Condição de Busca
-    var Zoom = document.getElementById("c7_total");
-    var inputZoom = Zoom.value;
-
-    //Filtro de Busca 
-    var codConstraint = DatasetFactory.createConstraint("codP", inputZoom, inputZoom, ConstraintType.SHOULD);
-    var arrayConstraint = new Array(codConstraint);
-
-    // Busca no Dataset + Condições de Filtro
-    var array = DatasetFactory.getDataset("DSCadastroGeral", null, arrayConstraint, null);
-
-    //Valores para integração ao campos
-    var descricaoArray = array.values[0].descricao;
-    var estudoArray = array.values[0].estudoPS;
-    var rItemArray = array.values[0].pVenda;
-
-    //Integração aos campos
-    $("#descricaoItem").val(descricaoArray);
-    $("#estudo").val(estudoArray);
-    $("#rItem").val(rItemArray);
-    
-    
-    
-});
-
-$("#orcamentoDesconto").focus(function() {  
-
-    //Busca Subitens
-    pushSub_i();
-
-    //Condição de Busca
-    var Zoom = document.getElementById("c7_total");
-    var inputZoom = Zoom.value;
-
-    //Filtro de Busca 
-    var codConstraint = DatasetFactory.createConstraint("codP", inputZoom, inputZoom, ConstraintType.SHOULD);
-    var arrayConstraint = new Array(codConstraint);
-
-    // Busca no Dataset + Condições de Filtro
-    var array = DatasetFactory.getDataset("DSCadastroGeral", null, arrayConstraint, null);
-
-    //Valores para integração ao campos
-    var descricaoArray = array.values[0].descricao;
-    var estudoArray = array.values[0].estudoPS;
-    var rItemArray = array.values[0].pVenda;
-
-    //Integração aos campos
-    $("#descricaoItem").val(descricaoArray);
-    $("#estudo").val(estudoArray);
-    $("#rItem").val(rItemArray);
-    
-    
-    
-});
+    });
 
 // Zoom codClientP
 
-$("#client").focus(function() {
+$(document).on('change', "#codClientP",
+    function inputValueIsNull() {
 
-    //Condição de Busca
-    var zoom = document.getElementById("codClientP");
-    var zoomValue = zoom.value;
+       //Condição de Busca
+        var zoom = document.getElementById("codClientP");
+        var zoomValue = zoom.value;
 
-    //Filtro de Busca 
-    var codConstraint = DatasetFactory.createConstraint("idCP", zoomValue, zoomValue, ConstraintType.SHOULD);
-    var arrayConstraint = new Array(codConstraint);
+        //Filtro de Busca 
+        var codConstraint = DatasetFactory.createConstraint("idCP", zoomValue, zoomValue, ConstraintType.SHOULD);
+        var arrayConstraint = new Array(codConstraint);
 
-    // Busca no Dataset + Condições de Filtro
-    var array = DatasetFactory.getDataset("DSCadastroGeral", null, arrayConstraint, null);
+        // Busca no Dataset + Condições de Filtro
+        var array = DatasetFactory.getDataset("DSCadastroGeral", null, arrayConstraint, null);
 
-    //Valores para integração ao campos
-    var fantasia = array.values[0].companyName
+        //Valores para integração ao campos
+        var fantasia = array.values[0].nomeFantasia
 
-    $("#client").val(fantasia);
+        $("#client").val(fantasia);
 
-});
+    });
 
 //#endregion
 
@@ -726,6 +532,7 @@ function revisaoDate() {
 
 function maskMoney() {
 
+    //Dinheiro
     var tOrcamento = $("#tOrcamento");
     tOrcamento.mask('#.##0.00#.##0,00', {reverse: true});
 
@@ -734,6 +541,17 @@ function maskMoney() {
 
     var orcamentoDesconto = $("#orcamentoDesconto");
     orcamentoDesconto.mask('#.##0.00#.##0,00', {reverse: true});
+
+    var pVenda = $('#pVenda');
+    pVenda.mask('#.##0.00#.##0,00', {reverse: true});
+
+    var pCusto = $('#pCusto');
+    pCusto.mask('#.##0.00#.##0,00', {reverse: true});
+
+    //CEP
+    var cep = $('#cep');
+    cep.mask('00000-000', {reverse: true});
+
 };
 
 function maskPercent() {
@@ -765,7 +583,6 @@ function pushSub_i() {
 
     var rowCount = ($('#tb_sub_I tr').length) - 2;
 
-    console.log(rowCount);
 
     if (tbdoc != "") {
 
@@ -824,8 +641,6 @@ function push_sItens() {
 
     var rows = n_input / 4;
 
-    console.log(table);
-
     for (var i = 0; i < rows; i++) {
 
         eventFire(document.getElementById('add_sub_h'), 'click');
@@ -841,6 +656,7 @@ function push_sItens() {
         var nVariavel = (i + 1) + variavel;
 
         $("#tb_doc_h___" + nVariavel).val(column1);
+        $("#tb2_orc___" + nVariavel).val(idOAll);
         $("#tb_n_h___" + nVariavel).val(column2);
         $("#tb_descricao_h___" + nVariavel).val(column3);
         $("#tb_responsavel_h___" + nVariavel).val(column4);
@@ -861,8 +677,13 @@ function aprovacao() {
     var nProcesso = getWKNumState();
 
     var statusCard = $("#cadastroCard").val();
-    console.log('>>>>>><<<<<');
-    console.log(statusCard);
+
+    if (nProcesso == 0) {
+
+        groups();
+        safety();
+        idSeq();
+    }
 
     if (nProcesso == 14 || statusCard == "Cadastro de Cliente/Patrocinador") {
         cadastroCP();
@@ -948,6 +769,8 @@ function aprovacao() {
             $('#metodologia').prop('readonly', true);
             $('#exit_PS').prop('disabled', true);
             $('#add_subitem').prop('disabled', true);
+
+            $('#div_select1').addClass('readonly-css')
             //#endregion
 
             var nButton = excluirSubitem.length;
@@ -1027,3 +850,63 @@ function aprovacao() {
     }
 
 }
+
+
+//LISTA DE GRUPOS
+function groups() {     
+
+    var dataset = DatasetFactory.getDataset("group", null, null, null);
+
+    var count = dataset.values.length;
+
+    $("#grupo_item").append('<option value="">Selecione...</option>');
+
+    for(var i = 0; i < count; i++) {
+
+        var opt = dataset.values[i]["groupPK.groupId"];
+
+        $("#grupo_item").append('<option value=' + opt + '>' + opt + '</option>');
+    }
+}
+
+function safety() {
+
+    // Obtém a data/hora atual
+    var data = new Date();
+
+    var dia = data.getDate();           // 1-31
+    var mes = data.getMonth();          // 0-11 (zero=janeiro)
+    var ano4 = data.getFullYear();      // 4 dígitos
+
+    var str_data = dia + '/' + (mes+1) + '/' + ano4;
+
+    $('#safety2').val(str_data);
+
+    $('#safety').val(getWKUser());
+
+}
+
+
+//USUÁRIO RESPONSÁVEL
+function usuario(id) {
+
+    var user = getWKUser();
+
+    var c1 = DatasetFactory.createConstraint("login", user, user, ConstraintType.MUST);
+
+    var constraints = new Array(c1);
+
+    var dataset = DatasetFactory.getDataset("colleague", null, constraints, null);
+
+    $('#'+id).val(dataset.values[0].colleagueName);
+     
+        
+};
+
+function teste() {
+
+    var valor = $('#tOrcamento').val();
+
+    console.log(valor);
+
+};

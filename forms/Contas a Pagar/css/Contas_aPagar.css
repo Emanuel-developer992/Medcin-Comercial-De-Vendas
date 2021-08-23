@@ -73,61 +73,22 @@
     border-color: #e5883f !important;
 }
 
-/*Paragrafo na cor cinza*/
-.p-cinza {
-    color: #a9a9a9;
-}
-
-/*Jubotrom da Medcin (paragrafo)*/
-.j-medcin-p {
-    color: #e5883f !important;
-
-}
-
-/*Jubotrom da Medcin (titulo h1)*/
-.j-medcin-h1 {
-    color: #898989 !important;
-}
-
-/*Painel da Medcin (div 1)*/
-.painel-medcin-div1 {
-    border-color: #e5883f !important;
-    padding: 0px;
-    width: 90%;
-    margin-left: 2cm;
-}
-
-/*Painel da Medcin (div 2)*/
-.painel-medcin {
-    background-color: #e5883f !important;
-    border-color: #e5883f !important;
-    color: white !important;
-}
-
-/*Inputs invisíveis*/
-.invisible-input {
-    border-color: transparent !important;
-    background-color: white !important;
-    
-}
-
-.descricao-input {
-    height: 100px !important;
-    width: 280px !important;
-}
-
-.title-medcin {
-    text-align: center;
-
-}
-
 .modal-action {
     display: block;
 }
 
 .medcin-contas {
 
-    background-color: #e8e8e8;
+    width: 98% !important;
+    margin: 10px !important;
 
 }
 
+.table-color {
+    
+    background-color: #e8e8e8;
+}
+
+.off {
+    pointer-events: none;
+}
