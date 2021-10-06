@@ -9,6 +9,9 @@ window.onload = function() {
     descontoAuto()
 
     usuario('solicitante');
+
+    validarDoc();
+    motherSon();
 };
 
 // API - CEP AUTOMÁTICO
@@ -910,3 +913,192 @@ function teste() {
     console.log(valor);
 
 };
+
+function btnCpf() {
+
+    $('#div_cpf').removeClass();
+    $('#div_cnpj').removeClass();
+    
+    $('#div_cpf').addClass('form-group col-md-6');
+    $('#div_cnpj').addClass('form-group col-md-6 nav-close');
+    
+
+};
+
+function btnCnpj() {
+
+    $('#div_cpf').removeClass();
+    $('#div_cnpj').removeClass();
+    
+    $('#div_cpf').addClass('form-group col-md-6 nav-close');
+    $('#div_cnpj').addClass('form-group col-md-6');
+
+};
+
+function validarDoc(cnpj, cpf) {
+
+    var valid = 0;
+    var dataset = DatasetFactory.getDataset("DSCadastroGeral", null, null, null);
+
+    for (var i = 0; i < dataset.values.length; i++) {
+        if (dataset.values[i].cnpj == cnpj) {
+            valid++;
+        }
+        else if (dataset.values[i].cpf == cpf) {
+            valid++;
+        }
+    }
+
+    console.log(dataset);
+
+    return valid;
+};
+
+$(document).on('change', "#cnpj",
+    function validCnpj() {
+       
+        var inputCnpj = $('#cnpj').val();
+        
+        var valid = validarDoc(inputCnpj, 0);
+
+        if (valid > 0) {
+            $('#cnpj').removeClass();
+            $('#p_cnpj').removeClass('nav-close');
+            $('#label_cnpj').removeClass();
+
+            $('#cnpj').addClass('form-control doc-error');
+            $('#label_cnpj').addClass('doc-error');
+        }
+        else {
+
+            $('#cnpj').removeClass();
+            $('#label_cnpj').removeClass(); 
+
+            $('#p_cnpj').addClass('nav-close');
+            $('#cnpj').addClass('form-control');
+
+        }
+    }
+);
+
+$(document).on('change', "#cpf",
+    function validCpf() {
+       
+        var inputCpf = $('#cpf').val();
+        
+        var valid = validarDoc(0, inputCpf);
+
+        if (valid > 0) {
+            $('#cpf').removeClass();
+            $('#p_cpf').removeClass('nav-close');
+            $('#label_cpf').removeClass();
+
+            $('#cpf').addClass('form-control doc-error');
+            $('#label_cpf').addClass('doc-error');
+        }
+        else {
+
+            $('#cpf').removeClass();
+            $('#label_cpf').removeClass(); 
+
+            $('#p_cpf').addClass('nav-close');
+            $('#cpf').addClass('form-control');
+
+        }
+    }
+);
+
+function motherSon() {
+
+
+    var dataset = DatasetFactory.getDataset("DSCadastroGeral", null, null, null); 
+
+    for (var i = 0; i < dataset.values.length; i++) {
+
+        var array = dataset.values[i].codP.split('');
+
+        if (array[4] == '-') {
+        }
+        else if (array[5] == '-') {
+        }
+        else if (array[6] == '-') {
+        }
+        else {
+
+            $('#pertence').append($('<option>', {
+
+                value: dataset.values[i].codP,
+                text: dataset.values[i].codP
+            }));
+        }
+        
+    }   
+}
+
+$(document).on('change', "#pertence",
+    function idSon() {
+       
+        var input = $('#pertence').val();
+        var nIdSeq = 0;
+
+        var dataset = DatasetFactory.getDataset("DSCadastroGeral", null, null, null); 
+
+        for (var i = 0; i < dataset.values.length; i++) {
+
+            var array = dataset.values[i].codP.split('');
+
+            console.log('...');
+            console.log(array);
+            console.log('...');
+
+            if (dataset.values[i].codP.length > 4) {
+                if (array[4] == '-') {
+                    var idDataset = dataset.values[i].codP.substring(0, 4);
+                }
+                else if (array[5] == '-') {
+                    var idDataset = dataset.values[i].codP.substring(0, 5);
+                }
+                else if (array[6] == '-') {
+                    var idDataset = dataset.values[i].codP.substring(0, 6);
+                }
+                else {
+                    var idDataset = dataset.values[i].codP;
+                }
+            }
+            
+            else {
+                var idDataset = dataset.values[i].codP;
+            }
+
+            console.log('>>>');
+            console.log(idDataset);
+            console.log('>>>');
+
+            if (idDataset == input) {
+                nIdSeq++;
+            }
+
+        }
+
+        $('#codP').val(input+'-'+nIdSeq);
+
+    });
+
+
+$(document).on('change', "#compl",
+    function pS() {
+
+        var input = $('#compl').val();
+
+        if (input == 'Sim') {
+            $('#div_perc').removeClass();
+            $('#div_perc').addClass('form-group col-md-6');
+
+        }
+        else {
+            $('#div_perc').removeClass();
+            $('#div_perc').addClass('form-group col-md-6 nav-close');
+        }
+        
+    }
+);

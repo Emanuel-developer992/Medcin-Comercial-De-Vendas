@@ -120,21 +120,44 @@
                             </div>
 
                             <div class="clearfix"></div>
-                           
-                            <!-- 2° Input -->
-                            <div class="form-group col-md-4">
-                                <label for="cnpj">CNPJ</label>
-                                <input name="cnpj" type="text" class="form-control" id="cnpj" mask="00.000.000/0000-00" placeholder="00.000.000/0000-00">
+
+                            <div class="col-md-4">
+                            <label>Selecione:</label>
                             </div>
 
+                            <div class="clearfix"></div>
+
+                            <div class="btn-group col-md-4">
+                                <button type="button" class="btn painel-medcin" onclick="btnCpf();">CPF</button>
+                                <button type="button" class="btn painel-medcin" onclick="btnCnpj();">CNPJ</button>
+                            </div>
+
+                            <div class="clearfix"></div>
+                            <br>
+                           
+                            <!-- 2° Input -->
+                            <div id="div_cnpj" class="form-group col-md-6 nav-close">
+                                <label id="label_cnpj" for="cnpj">CNPJ</label>
+                                <input name="cnpj" type="text" class="form-control" id="cnpj" mask="00.000.000/0000-00" placeholder="00.000.000/0000-00">
+                                <p id="p_cnpj" class="doc-error nav-close">Esse CNPJ já foi registrado</p>
+                            </div>
+
+                            <div id="div_cpf" class="form-group col-md-6 nav-close">
+                                <label id="label_cpf" for="cpf">CPF</label>
+                                <input name="cpf" type="text" class="form-control" id="cpf" mask="000.000.000-00" placeholder="000.000.000-00">
+                                <p id="p_cpf" class="doc-error nav-close">Esse CPF já foi registrado</p>
+                            </div>
+
+                            <div class="clearfix"></div>
+
                             <!-- 3° Input -->
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-6">
                                 <label for="companyName">Razão Social</label>
                                 <input name="companyName" type="text" class="form-control" id="companyName" placeholder="Razão Social">
                             </div>
 
                             <!-- 4° Input -->
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-6">
                                 <label for="nomeFantasia">Nome Fantasia</label>
                                 <input name="nomeFantasia" type="text" class="form-control" id="nomeFantasia" placeholder="Nome fantasia">
                             </div>
@@ -499,6 +522,8 @@
                                     <input type="text" id="codP" name="codP" class="form-control form-control-sm mInt" readonly="" style="text-align: center;">
                                 </div>
                             </div>
+
+                            <div class="clearfix"></div>
                             
                             <!-- 1° Input -->
                             <div class="form-group col-md-3">
@@ -507,9 +532,47 @@
                             </div>
 
                             <!-- Input -->
-                            <div id="div_select1" class="form-group col-md-2">
+                            <div id="div_select1" class="form-group col-md-3">
                                 <label for="grupo_item">Grupo do Item</label>
                                 <select name="grupo_item" type="text" class="form-control" id="grupo_item"></select>
+                            </div>
+
+                            <!-- Input -->
+                            <div class="form-group col-md-3">
+                                <label for="p_s">Produto ou Serviço?</label>
+                                <select name="p_s" type="text" class="form-control" id="p_s">
+                                    <option value="">Selecione...</option>
+                                    <option value="Produto">Produto</option>
+                                    <option value="Serviço">Serviço</option>
+                                </select>
+                            </div>
+
+                            <!-- Input -->
+                            <div class="form-group col-md-3">
+                                <label for="buy_sell">Compra e Venda?</label>
+                                <select name="buy_sell" type="text" class="form-control" id="buy_sell">
+                                    <option value="">Selecione...</option>
+                                    <option value="Compra">Compra</option>
+                                    <option value="Compra e Venda">Compra e Venda</option>
+                                </select>
+                            </div>
+
+                            <!-- Input -->
+                            <div class="form-group col-md-6">
+                                <label for="compl">Complemento?</label>
+                                <select name="compl" type="text" class="form-control" id="compl">
+                                    <option value="">Selecione...</option>
+                                    <option value="Sim">Sim</option>
+                                    <option value="Não">Não</option>
+                                </select>
+                            </div>
+
+                            <!-- Input -->
+                            <div id="div_perc" class="form-group col-md-6 nav-close">
+                                <label for="pertence">P/S Pertencente</label>
+                                <select name="pertence" type="text" class="form-control" id="pertence">
+                                    <option value="">Selecione...</option>
+                                </select>
                             </div>
 
                             <div class="clearfix"></div>
@@ -547,7 +610,7 @@
 
                             <!-- 6° Input -->
                             <div class="form-group col-md-3">
-                                <label for="pVenda">Preço de Venda (Médio)</label>
+                                <label for="pVenda">Preço Médio</label>
                                 <div class="input-group">
                                     <div class="input-group-addon painel-medcin">R$</div>
                                     <input name="pVenda" type="text" class="form-control" id="pVenda" placeholder="Média do preço do produto...">
@@ -556,7 +619,7 @@
 
                             <!-- 7° Input -->
                             <div class="form-group col-md-3">
-                                <label for="pCusto">Preço de Custo (Mínimo)</label>
+                                <label for="pCusto">Preço Mínimo</label>
                                 <div class="input-group">
                                     <div class="input-group-addon painel-medcin">R$</div>
                                     <input name="pCusto" type="text" class="form-control" id="pCusto" placeholder="Menor valor do produto..">
