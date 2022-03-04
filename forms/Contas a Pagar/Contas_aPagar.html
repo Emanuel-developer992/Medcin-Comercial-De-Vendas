@@ -60,13 +60,19 @@
 
                             <!-- 1° Input -->
                             <!-- ID (SC-0001) Automatico -->
-                            <div class="form-group col-md-2">
+                            <div class="form-group col-md-4 ">
                                 <label>Número Solicitação de Compra</label>
                                 <div class="input-group">
                                     <div class="input-group-addon button-medcin">ID</div>
                                     <input type="text" id="idSeq" name="idSeq"  class="form-control form-control-sm mInt" readonly="" style="text-align: center;">
                                 </div>
                             </div>
+
+                             <!-- 3° Input -->
+                             <div class="form-group col-md-4 nav-close">
+                                <label>Cod. data do documento</label>
+                                <input name="develop_date" id="develop_date" type="text" class="form-control" placeholder="Solicitante" readonly>
+                            </div>                            
 
                                 <div class="clearfix"></div>
 
@@ -90,19 +96,36 @@
 
                         </div>           
 
+                        <div class="clearfix"></div>
                         <br>
+                        <hr>
 
-                        <div class="col-md-12">
-                            <h1 style="color: #e5883f;">Adicione Novo Itens</h1>
+                        <div class="row" style="margin-left: 25%;">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img class="card-img-top" src="image/card adicionar.png" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h3 class="card-title"><b>Adicionar Novo Item</b></h3>
+                                        <p class="card-text p-cinza">Adicione um novo item para gerar uma solicitação de compra.</p>
+                                        <button id="button_add" name="button_add" type="button" class="btn btn-primary button-medcin" style="color: white;" id="button" onclick="pushAdd()"><i class="fluigicon fluigicon-plus-circle icon-xs"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img class="card-img-top" src="image/card produto.png" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h3 class="card-title"><b>Cadastrar Item Novo</b></h3>
+                                        <p class="card-text p-cinza">Caso não haja o item desejado cadastre um novo item.</p>
+                                        <a class="btn button-medcin novaAba" href="https://medcininstituto120196.fluig.cloudtotvs.com.br/portal/p/1/pageworkflowview?processID=Cadastro_Master" target="_blank">Cadastrar</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                         
+
                         <!-- Tabela 1--> 
                         <div id="div_table" class="table-responsive col-md-12 medcin-contas">
-
-                            <br>
-                            <button id="button_add" name="button_add" type="button" class="btn btn-primary button-medcin" style="color: white;" id="button" onclick="pushAdd()"><i class="fluigicon fluigicon-plus-circle icon-xs"></i></button>
-                            <div class="clearfix"></div>
-                            <br>
 
                             <table tablename="tb_addItem" class="table medcin-contas" id="tb_addItem" noaddbutton="true" nodeletebutton="true">
                                 <thead>
@@ -124,7 +147,7 @@
                                                         name="tb_item"
                                                         data-zoom="{
                                                             'displayKey':'codP',
-                                                            'datasetId':'DSCadastroGeral',
+                                                            'datasetId':'DSFormulariodeCadastrodeProdutoseServicos',
                                                             'maximumSelectionLength':'1',
                                                             'placeholder':'Escolha o Item...',
                                                             'fields':[
@@ -226,16 +249,6 @@
                             </div>
                         </div>
 
-                        <!-- 6º Input-->
-                        <div id="div_cotacao" class="form-group col-md-3">
-                            <label>Cotações Anexadas?</label>
-                            <select name="price" class="form-control" id="price">
-                                <option value="">Selecione...</option>
-                                <option value="Sim">Sim</option>
-                                <option value="Não">Não</option>
-                            </select>
-                        </div>
-
                         <div class="clearfix"></div>
                         <br>
                         <br>
@@ -308,6 +321,15 @@
                                 <div class="form-group col-md-2">
                                     <label>Data da Aprovação</label>                                        
                                     <input type="text" name="aprovacao_data_gerente" id="aprovacao_data_gerente" class="form-control" style="text-align: center;" readonly>
+                                </div>
+
+                                <div id="div_cotacao" class="form-group col-md-2">
+                                    <label>Cotações?</label>
+                                    <select name="price" class="form-control" id="price">
+                                        <option value="">Selecione...</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
                                 </div>
 
                             </div>
@@ -405,6 +427,12 @@
                                     <label>Justificativa</label>
                                     <p>Incluir obsservações e histórico da solicitação</p>                                     
                                     <textarea type="text" name="justificativa_insp" id="justificativa_insp" class="form-control"></textarea>
+                                </div>
+                                <!-- Input -->
+                                <div class="clearfix"></div>
+                                <div class="form-group col-md-4 nav-close">
+                                    <label for="descForm">Descrição do Docuemento</label>
+                                    <input name="descForm" type="text" class="form-control" id="descForm">
                                 </div>
                             </div>
 

@@ -3,8 +3,9 @@ window.onload = function() {
     maskMoney();
     userS();
     navegation();
-    teste();   
-
+    descFormId();
+    developDate();
+    
 }
 
 //ABRIR E FECHAR MODAL DE BUSCA
@@ -50,7 +51,7 @@ function Excluir(){
 function IDseq() {
 
 
-    var dataset = DatasetFactory.getDataset("DSFormulariodeContasaPagar", null, null, null);
+    var dataset = DatasetFactory.getDataset("DSFormulariodeSolicitacaodeCompras", null, null, null);
 
     var rowCount = dataset.values.length;
 
@@ -99,23 +100,18 @@ function today(id) {
 	
     // Guarda cada pedaço em uma variável
     var dia = data.getDate();           // 1-31
-    var mes = data.getMonth();          // 0-11 (zero=janeiro)
+    var mes = data.getMonth()+1;          // 0-11 (zero=janeiro)
     var ano4 = data.getFullYear();      // 4 dígitos
     
     // Formata a data e a hora (note o mês + 1)
 
-    if(mes > 9) {
-        if (dia > 9) {
-            var str_data = dia + '/' + (mes+1) + '/' + ano4;
-        }
-        var str_data = '0' + dia + '/' + (mes+1) + '/' + ano4;
+    if (dia < 10) {
+        dia = "0"+dia;
     }
-    else if (dia < 9) {
-        var str_data = '0' + dia + '/' + '0' + (mes+1) + '/' + ano4;
+    if (mes < 10) {
+        mes = "0"+mes;
     }
-    else {
-        var str_data = dia + '/' + '0' + (mes+1) + '/' + ano4;
-    }
+    var str_data = dia+'/'+mes+'/'+ano4;
 
     hj = str_data;
     $('#'+id).val(str_data);
@@ -156,7 +152,6 @@ function navegation() {
         $("#div_table").addClass('table-color');
         //Desabilita dados preenchidos inicialmente
         $("#div_table").addClass('off');
-        $("#div_cotacao").addClass('off');
         $('#button_add').prop('disabled', true);
 
         $('#money_all').prop('readonly', true);
@@ -181,6 +176,24 @@ function navegation() {
 
         financeiroR();
 
+    }
+    else if (nState == 29) {
+        $("#div_table").addClass('table-color');
+        //Desabilita dados preenchidos inicialmente
+        $("#div_table").addClass('off');
+        $('#button_add').prop('disabled', true);
+
+        $('#money_all').prop('readonly', true);
+        $('#price').prop('readonly', true);
+
+        //Exibir informações do gerente
+        $('#aprovacao_gerente_tabs').removeClass('nav-close');
+        $('#aprovacao_gerente_nav').removeClass('nav-close');
+
+        $('#tobs').prop('readonly', true);
+        $('#tdate').prop('readonly', true);
+        $('#tpayment').prop('readonly', true);
+        $('#div_aprovacao').addClass('off');
     }
     else if (nState == 5) {
 
@@ -419,7 +432,7 @@ function datasetItem() {
 
         var constraint = new Array(c1);
 
-        var array = DatasetFactory.getDataset("DSCadastroGeral", null, constraint, null);
+        var array = DatasetFactory.getDataset("DSFormulariodeCadastrodeProdutoseServicos", null, constraint, null);
 
         $('#tb_descricao___'+ i).val(array.values[0].descricao);
         $('#tb_fornecedor___'+ i).val(array.values[0].fornecedores);
@@ -433,4 +446,29 @@ function datasetItem() {
         }
     }
 
+}
+
+function descFormId() {
+    
+    var name = $('#idSeq').val();
+    var id = $('#requester').val();
+    var dataset = DatasetFactory.getDataset("processAttachment", null, null, null);
+    var nRow = dataset.values.length;
+
+    var nProcess = dataset.values[nRow-1]['processAttachmentPK.processInstanceId'];
+
+    $('#descForm').val(nProcess+1+' - '+name+' - '+id);
+    
+}
+
+function developDate() {
+    var data = $('#date_solicitation').val();
+
+    var dia = data.substring(0,2);
+    var mes = data.substring(3,5);
+    var ano = data.substring(6,10);
+
+    data = ano.toString()+mes.toString()+dia.toString();
+
+    $('#develop_date').val(data);
 }

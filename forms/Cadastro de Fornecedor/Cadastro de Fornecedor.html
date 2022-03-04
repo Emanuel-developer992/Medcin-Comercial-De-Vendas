@@ -73,25 +73,25 @@
                             
                                 <!-- 2° Input -->
                                 <div class="form-group col-md-4">
-                                    <label for="cnpj">CNPJ</label>
+                                    <label for="cnpj">CNPJ<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
                                     <input name="cnpj" type="text" class="form-control" id="cnpj" mask="00.000.000/0000-00" placeholder="00.000.000/0000-00">
                                 </div>
 
                                 <!-- 3° Input -->
                                 <div class="form-group col-md-4">
-                                    <label for="companyName">Razão Social</label>
+                                    <label for="companyName">Razão Social<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
                                     <input name="companyName" type="text" class="form-control" id="companyName" placeholder="Razão Social">
                                 </div>
 
                                 <!-- 4° Input -->
                                 <div class="form-group col-md-4">
-                                    <label for="nomeFantasia">Nome Fantasia</label>
+                                    <label for="nomeFantasia">Nome Fantasia<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
                                     <input name="nomeFantasia" type="text" class="form-control" id="nomeFantasia" placeholder="Nome fantasia">
                                 </div>
 
                                 <!-- 5° Input -->
                                 <div class="form-group col-md-12">
-                                    <label for="escopo">Escopo do Cliente/Patrocinador</label>
+                                    <label for="escopo">Escopo do Cliente/Patrocinador<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
                                     <input name="escopo" type="text" class="form-control" id="escopo" placeholder="Escopo">
                                 </div>
                             </div>
@@ -106,39 +106,39 @@
 
                                 <!-- 6° Input (Endereço e Complemento)-->
                                 <div class="form-group col-md-3">
-                                    <label for="cep">CEP</label>
+                                    <label for="cep">CEP<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
                                     <input name="cep" type="text" class="form-control" id="cep"  placeholder="00000-000">
                                 </div>
 
                                 <div class="clearfix"></div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="endereco">Endereço</label>
+                                    <label for="endereco">Endereço<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
                                     <input name="endereco" type="text" class="form-control" id="endereco" placeholder="Rua/Avenida/Rodovia">
                                 </div>
 
                                 <div class="form-group col-md-1">
-                                    <label for="numero">N°</label>
+                                    <label for="numero">N°<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
                                     <input name="numero" type="text" class="form-control" id="numero" placeholder="Nº0">
                                 </div>
 
                                 <div class="form-group col-md-5">
-                                    <label for="complemento">Complemento</label>
+                                    <label for="complemento">Complemento<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
                                     <input name="complemento" type="text" class="form-control" id="complemento" placeholder="Ponto de referência">
                                 </div>
 
                                 <div class="form-group col-md-4">
-                                    <label for="bairro">Bairro</label>
+                                    <label for="bairro">Bairro<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
                                     <input name="bairro" type="text" class="form-control" id="bairro" placeholder="Bairro">
                                 </div>
 
                                 <div class="form-group col-md-4">
-                                    <label for="estado">Estado</label>
+                                    <label for="estado">Estado<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
                                     <input name="estado" type="text" class="form-control" id="estado" placeholder="Estado">
                                 </div>
 
                                 <div class="form-group col-md-4">
-                                    <label for="pais">País</label>
+                                    <label for="pais">País<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
                                     <input name="pais" type="text" class="form-control" id="pais" placeholder="País">
                                 </div>
                             </div>    
@@ -153,13 +153,13 @@
 
                                 <!-- 7° Input -->
                                 <div class="form-group col-md-3">
-                                    <label for="telefone">Telefone</label>
+                                    <label for="telefone">Telefone<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
                                     <input name="telefone" type="text" class="form-control" id="telefone" mask="(00) 0000-0000" placeholder="Telefone Corporativo">
                                 </div>
 
                                 <!-- 8° Input -->
                                 <div class="form-group col-md-5">
-                                    <label for="email">E-mail</label>
+                                    <label for="email">E-mail<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
                                     <input name="email" type="email" class="form-control" id="email" placeholder="E-mail Corporativo">
                                 </div>
 
@@ -251,18 +251,29 @@
                             <div class="panel-body">
 
                                 <div class="form-group col-md-12">
-                                    <label>Observação</label>
+                                    <label>Observação<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
                                     <p>Preencha nesse campo suas observações...</p>
                                     <textarea type="text" id="observacao" name="observacao" class="form-control"></textarea>
                                 </div>
 
+                                <div class="form-group col-md-4">
+                                    <label>Classificação Fiscal<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
+                                    <select type="text" id="class_fiscal" name="class_fiscal" class="form-control">
+                                        <option value="">Selecione...</option>
+                                        <option value="Simples">Simples</option>
+                                        <option value="Presumido">Presumido</option>
+                                        <option value="Real">Real</option>
+                                        <option value="COMEX">COMEX</option>
+                                    </select>
+                                </div>
+
                                 <div class="form-group col-md-5">
-                                    <label>Responsável</label>
+                                    <label>Responsável<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
                                     <input type="text" id="resp_fornecedor" name="resp_fornecedor" class="form-control" readonly>
                                 </div>
 
                                 <div class="form-group col-md-3">
-                                    <label>Data</label>
+                                    <label>Data<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
                                     <input type="text" id="date_fornecedor" name="date_fornecedor" class="form-control" readonly>
                                 </div>
                             
@@ -277,7 +288,7 @@
                             <div class="panel-body">
 
                                 <div id="div_select_1" class="form-group col-md-12">
-                                    <label>Norma</label>
+                                    <label>Norma<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
                                     <p>Selecione a norma...</p>
                                     <select type="text" id="normas_select" name="normas_select" class="form-control">
                                         <option value="">Selecione...</option>
@@ -315,7 +326,7 @@
                                                 <td>
 
                                                     <div class="form-group">
-                                                        <label for="input_file">Evidência</label>
+                                                        <label for="input_file">Evidência<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
                                                         <input name="input_file" type="file" id="input_file">
                                                         <p class="help-block">Envie a evidência da norma selecionada.</p>
                                                     </div>
@@ -328,7 +339,7 @@
                                 </div>
 
                                 <div id="div_select_2" class="form-group col-md-5">
-                                    <label>Aprovado?</label>
+                                    <label>Aprovado?<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
                                     <select type="text" id="aprovado" name="aprovado" class="form-control">
                                         <option value="">Selecione...</option>
                                         <option value="Sim">Sim</option>
@@ -337,15 +348,21 @@
                                 </div>
 
                                 <div class="form-group col-md-5">
-                                    <label>Resposável pela Aprovação</label>
+                                    <label>Resposável pela Aprovação<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
                                     <input type="text" id="resp_aprovacao" name="resp_aprovacao" class="form-control" readonly>
                                 </div>
 
-                                <div class="form-group col-md-5">
-                                    <label>Data da Aprovação</label>
+                                <div class="form-group col-md-3">
+                                    <label>Data da Aprovação<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
                                     <input type="date" id="date_aprovacao" name="date_aprovacao" class="form-control" readonly>
                                 </div>
 
+                                <!-- Input -->
+                                <div class="clearfix"></div>
+                                <div class="form-group col-md-4 nav-close">
+                                    <label for="descForm">Descrição do Docuemento</label>
+                                    <input name="descForm" type="text" class="form-control" id="descForm">
+                                </div>
 
                             </div>
                         </div>

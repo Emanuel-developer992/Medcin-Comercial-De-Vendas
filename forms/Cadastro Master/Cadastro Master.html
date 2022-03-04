@@ -14,6 +14,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs" crossorigin="anonymous"></script>
 
         <!--Meu CSS -->
         <link href="css/CadastroMaster.css" rel="stylesheet">
@@ -27,933 +28,814 @@
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item">
-            <a id="cadastro_tabs" class="nav-link nav-title active nav-close " data-toggle="tab" href="#cadastro_nav">Cadastro</a>
+                <a id="orcamento_tabs" class="nav-link nav-title nav-close" data-toggle="tab" href="#orcamento_nav">Cadastro de Orçamentos</a>
             </li>
             <li class="nav-item">
-            <a id="cliente_patrocinador_tabs" class="nav-link nav-title nav-close" data-toggle="tab" href="#cliente_patrocinador_nav">Cadastro de Cliente/Patrocinador</a>
-            </li>
-            <li class="nav-item">
-            <a id="produtos_servicos_tabs" class="nav-link nav-title nav-close" data-toggle="tab" href="#produtos_servicos_nav">Cadastro de Produtos e Serviços</a>
-            </li>
-            <li class="nav-item">
-            <a id="orcamento_tabs" class="nav-link nav-title nav-close" data-toggle="tab" href="#orcamento_nav">Cadastro de Orçamentos</a>
+                <a id="relatorio_tabs" class="nav-link nav-title nav-close" data-toggle="tab" href="#relatorio_nav">Prévia</a>
             </li>
         </ul>
 
+        <div id="validCpf" class="alert alert-danger nav-close" role="alert">CPF inválido</div>
+        <div id="validCnpj" class="alert alert-danger nav-close" role="alert">CNPJ inválido</div>
+        <div id="anexDoc" class="alert alert-info nav-close" role="alert">Por favor anexe o documento na opção de Anexos no canto superior direito</div>
+
             <div class="tab-content">
 
-            <!--Navegação (Cards de Cadastro)-->
-            <div id="cadastro_nav" class="container tab-pane active" aria-selected="true">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img class="card-img-top" src="image/card cliente.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h3 class="card-title"><b>Cadastro de Cliente/Patrocinador</b></h3>
-                                <p class="card-text p-cinza">Inicie um Cadastro de Cliente/Patrocinador através dessa opção. <br> Após selecionar a opção desejada clique em salvar e dê andamento ao formulário em questão.</p>
-                                <button name="subject" type="button" class="btn btn-warning button-medcin" onclick="cadastroCP()" value="Cadastro de Cliente/Patrocinador">Selecionar</button>
-                            </div>
-                        </div>
-                    </div>
-                
-
-                
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img class="card-img-top" src="image/card produto.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h3 class="card-title"><b>Cadastro de Produto e Serviços</b></h3>
-                                <p class="card-text p-cinza">Inicie um Cadastro de Produto e Serviços através dessa opção. <br> Após selecionar a opção desejada clique em salvar e dê andamento ao formulário em questão.</p>
-                                <button name="subject1" type="button" class="btn btn-warning button-medcin" onclick="cadastroPS()" value="Cadastro de Produtos e Serviços">Selecionar</button>
-                            </div>
-                        </div>
-                    </div>
-                
-
-                
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img class="card-img-top" src="image/card orçamento.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h3 class="card-title"><b>Cadastro de Orçamento</b><br></h3>
-                                <p class="card-text p-cinza">Inicie um Cadastro de Orçamento através dessa opção. <br> Após selecionar a opção desejada clique em salvar e dê andamento ao formulário em questão.</p>
-                                <button name="subject2" type="button" class="btn btn-warning button-medcin" onclick="cadastroO()" value="Cadastro de Orçamentos">Selecionar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                    <div class="form-group" data-type="cadastroCard" data-show-properties="" data-field-name="cadastroCard" style="margin-top: 1cm; width: 50%; margin-left: 25%;">
-                    <input type="hidden" id="cadastroCard" name="cadastroCard"  class="form-control form-control-sm mInt" readonly="" style="text-align: center;">
-                    </div>      
-                    
-            </div> 
-
-            <!--Navegação 1 (Cliente/Patrocinador)-->
-            <div id="cliente_patrocinador_nav" class="container tab-pane" aria-selected="false">
+                <!--Navegação 3 (Orçamentos)-->
+                <div id="orcamento_nav" class="container tab-pane active" aria-selected="true">
                     <div class="row">
 
-                    <div class="jumbotron jumbotron-fluid">
-                        <div class="container">
-                            <h1 class="display-4 j-medcin-p">Cliente/Patrocinador</h1>
-                            <p class="lead j-medcin-h1">Cadastro de cliente ou patrocinador</p>
-                            <button type="button" id="exit_CP" class="btn btn-default button-medcin" onclick="backCP()"><i class="fluigicon fluigicon-chevron-left icon-xs" style="color: white;"></i> Voltar</button>
-                        </div>
+                        <div class="jumbotron jumbotron-fluid">
+                            <div class="container">
+                            <h1 class="display-4 j-medcin-p">Orçamentos</h1>
+                            <p class="lead j-medcin-h1">Cadastro de orçamentos</p>
+                            </div>
                         </div>
 
-                    <!-- 1° Painel -->
-                    <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
-                        <div class="panel-heading painel-medcin">
-                            <h3 class="panel-title">Informações Básicas</h3>
-                        </div>
-                        <div class="panel-body">
-                            
-                            <!-- 1° Input -->
-                            <!-- ID (CP-01) Automatico -->
-                            <div class="form-group col-md-2">
-                                <label for="idCP">ID do Documento</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon painel-medcin">ID</div>
-                                    <input type="text" id="idCP" name="idCP"  class="form-control form-control-sm mInt" readonly="" style="text-align: center;">
+                        <!-- 1° Painel -->
+                        <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
+                            <div class="panel-heading painel-medcin">
+                                <h3 class="panel-title">Informações Básicas</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                <div class="row col-lg-12">
+                                    
+                                    <div class="row col-lg-6 div-column1">
+                                                            
+                                        <!-- 1° Input -->
+                                        <!-- ID (O-01) Automatico -->
+                                        <div class="form-group col-md-4">
+                                            <label for="idO">ID do Documento</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon painel-medcin">ID</div>
+                                                <input type="text" id="idO" name="idO"  class="form-control form-control-sm mInt" readonly="" style="text-align: center;">
+                                            </div>
+                                        </div>
+
+                                        <div class="clearfix"></div>
+
+                                        <!-- 2° Input -->
+                                        <div id="zoom1" class="form-group col-md-12">
+                                            <label for="codClientP">Código do Cliente/Patrocinador<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
+                                            <input
+                                                    type="zoom"
+                                                    id = "codClientP"
+                                                    name="codClientP"
+                                                    data-zoom="{
+                                                        'displayKey':'idCP',
+                                                        'datasetId':'DSFormulariodeCadastrodeCliente-Patrocinador',
+                                                        'maximumSelectionLength':'1',
+                                                        'placeholder':'Selecione o Código...',
+                                                        'fields':[
+                                                            {
+                                                            'field':'idCP',
+                                                            'label':'ID'
+                                                            },{
+                                                            'field':'nomeFantasia',
+                                                            'label':'Cliente/Patrocinador',
+                                                            'standard':'true'
+                                                            },{
+                                                            'field':'cnpj',
+                                                            'label':'CNPJ',
+                                                            'standard':'true'
+                                                            }
+                                                        ]
+                                                    }"
+                                                />
+                                        </div>
+
+                                        <!-- Input -->
+                                        <div class="form-group col-md-12">
+                                            <label for="contPag">Contrato de Pagamento<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
+                                            <select name="contPag" type="text" class="form-control" id="contPag">
+                                                <option value="0">Selecione...</option>
+                                                <option value="1">Sim</option>
+                                                <option value="2">Não</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- 3° Input -->
+                                        <div class="form-group col-md-12">
+                                            <label for="client">Cliente/Patrocinador<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
+                                            <input name="client" type="text" class="form-control" id="client" placeholder="Cliente/Patrocinador" readonly>
+                                        </div>
+
+                                        <!-- 4° Input -->
+                                        <div class="form-group col-md-12">
+                                            <label for="revisao">Revisão</label>
+                                            <input name="revisao" type="number" class="form-control" id="revisao" placeholder="Revisão" readonly>
+                                        </div>
+
+                                        <!-- 5° Input -->
+                                        <div class="form-group col-md-12">
+                                            <label for="solicitante">Responsável pelo Cadastro</label>
+                                            <input name="solicitante" type="text" class="form-control" id="solicitante" readonly>
+                                        </div>
+
+                                        <!-- 6° Input -->
+                                        <div class="form-group col-md-12">
+                                            <label for="dataCadastro">Data do Cadastro</label>
+                                            <input name="dataCadastro" type="text" class="form-control" id="dataCadastro" readonly>
+                                        </div>
+
+                                        <!-- 7° Input -->
+                                        <div class="form-group col-md-12">
+                                            <label for="dateRevisao">Data da Revisão</label>
+                                            <input name="dateRevisao" type="text" class="form-control" id="dateRevisao" value="-1" readonly>
+                                        </div>
+
+                                    </div>
+                                        
+                                    <div class="row col-lg-6 div-column2">
+
+                                        <div>
+                                            <h1>Registro do Solicitante</h1>
+                                        </div>
+
+                                        <!-- Input -->
+                                        <div class="form-group col-md-12">
+                                            <label for="name_solic">Nome<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
+                                            <input name="name_solic" type="text" class="form-control" id="name_solic" placeholder="Nome do Solicitante">
+                                        </div>
+
+                                        <!-- Input -->
+                                        <div class="form-group col-md-12">
+                                            <label for="tel_solic">Telefone<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
+                                            <input name="tel_solic" type="text" class="form-control" id="tel_solic" placeholder="Telefone do Solicitante" mask='(00) 00000-0000'>
+                                        </div>
+
+                                        <!-- Input -->
+                                        <div class="form-group col-md-12">
+                                            <label for="email_solic">E-mail<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
+                                            <input name="email_solic" type="text" class="form-control" id="email_solic" placeholder="E-mail do Solicitante">
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <hr>
+                                        </div>
+
+                                        <!-- Input -->
+                                        <div class="form-group col-md-12">
+                                            <label for="dados_cont">Dados do Contato<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
+                                            <p class="p-cinza">Pedido de Compra do Cliente</p>
+                                            <textarea name="dados_cont" type="text" class="form-control" id="dados_cont"></textarea>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="clearfix"></div>
-
-                            <div class="col-md-4">
-                            <label>Selecione:</label>
-                            </div>
-
-                            <div class="clearfix"></div>
-
-                            <div class="btn-group col-md-4">
-                                <button type="button" class="btn painel-medcin" onclick="btnCpf();">CPF</button>
-                                <button type="button" class="btn painel-medcin" onclick="btnCnpj();">CNPJ</button>
-                            </div>
-
-                            <div class="clearfix"></div>
-                            <br>
-                           
-                            <!-- 2° Input -->
-                            <div id="div_cnpj" class="form-group col-md-6 nav-close">
-                                <label id="label_cnpj" for="cnpj">CNPJ</label>
-                                <input name="cnpj" type="text" class="form-control" id="cnpj" mask="00.000.000/0000-00" placeholder="00.000.000/0000-00">
-                                <p id="p_cnpj" class="doc-error nav-close">Esse CNPJ já foi registrado</p>
-                            </div>
-
-                            <div id="div_cpf" class="form-group col-md-6 nav-close">
-                                <label id="label_cpf" for="cpf">CPF</label>
-                                <input name="cpf" type="text" class="form-control" id="cpf" mask="000.000.000-00" placeholder="000.000.000-00">
-                                <p id="p_cpf" class="doc-error nav-close">Esse CPF já foi registrado</p>
-                            </div>
-
-                            <div class="clearfix"></div>
-
-                            <!-- 3° Input -->
-                            <div class="form-group col-md-6">
-                                <label for="companyName">Razão Social</label>
-                                <input name="companyName" type="text" class="form-control" id="companyName" placeholder="Razão Social">
-                            </div>
-
-                            <!-- 4° Input -->
-                            <div class="form-group col-md-6">
-                                <label for="nomeFantasia">Nome Fantasia</label>
-                                <input name="nomeFantasia" type="text" class="form-control" id="nomeFantasia" placeholder="Nome fantasia">
-                            </div>
-
-                            <!-- 5° Input -->
-                            <div class="form-group col-md-12">
-                                <label for="escopo">Escopo do Cliente/Patrocinador</label>
-                                <input name="escopo" type="text" class="form-control" id="escopo" placeholder="Escopo">
                             </div>
                         </div>
-                    </div>
-                    
-                    <!-- 2° Painel -->
-                    <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
-                        <div class="panel-heading painel-medcin">
-                            <h3 class="panel-title">Endereço e Complemento</h3>
-                        </div>
-                        <div class="panel-body">
 
-                            <!-- 6° Input (Endereço e Complemento)-->
-                            <div class="form-group col-md-3">
-                                <label for="cep">CEP</label>
-                                <input name="cep" type="text" class="form-control" id="cep" placeholder="00000-000">
+                        <!-- 2° Painel -->
+                        <div id="panel2_O" class="panel panel-primary painel-medcin-div1" style="padding: 0px;">
+                            <div class="panel-heading painel-medcin">
+                                <h3 class="panel-title">Cadastro de Item</h3>
                             </div>
+                            <div class="panel-body">
 
-                            <div class="clearfix"></div>
-
-                            <div class="form-group col-md-6">
-                                <label for="endereco">Endereço</label>
-                                <input name="endereco" type="text" class="form-control" id="endereco" placeholder="Rua/Avenida/Rodovia">
-                            </div>
-
-                            <div class="form-group col-md-2">
-                                <label for="numero">N°</label>
-                                <input name="numero" type="text" class="form-control" id="numero" placeholder="Nº00...">
-                            </div>
-
-                            <div class="form-group col-md-4">
-                                <label for="complemento">Complemento</label>
-                                <input name="complemento" type="text" class="form-control" id="complemento" placeholder="Ponto de referência">
-                            </div>
-
-                            <div class="form-group col-md-4">
-                                <label for="bairro">Bairro</label>
-                                <input name="bairro" type="text" class="form-control" id="bairro" placeholder="Bairro">
-                            </div>
-
-                            <div class="form-group col-md-4">
-                                <label for="estado">Estado</label>
-                                <input name="estado" type="text" class="form-control" id="estado" placeholder="Estado">
-                            </div>
-
-                            <div class="form-group col-md-4">
-                                <label for="pais">País</label>
-                                <input name="pais" type="text" class="form-control" id="pais" placeholder="País">
-                            </div>
-                        </div>    
-                    </div>
-
-                    <!-- 3° Painel -->
-                    <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
-                        <div class="panel-heading painel-medcin">
-                            <h3 class="panel-title">Contatos</h3>
-                        </div>
-                        <div class="panel-body">
-
-                            <!-- 7° Input -->
-                            <div class="form-group col-md-3">
-                                <label for="telefone">Telefone</label>
-                                <input name="telefone" type="text" class="form-control" id="telefone" mask="(00) 0000-0000" placeholder="Telefone Corporativo">
-                            </div>
-
-                            <!-- 8° Input -->
-                            <div class="form-group col-md-5">
-                                <label for="email">E-mail</label>
-                                <input name="email" type="email" class="form-control" id="email" placeholder="E-mail Corporativo">
-                            </div>
-
-                        </div>
-                    </div>        
-
-                    <!-- 4° Painel -->
-                    <div id="panel4_CP" class="panel panel-primary painel-medcin-div1" style="padding: 0px">
-                        <div class="panel-heading painel-medcin">
-                            <h3 class="panel-title">Contato Comercial</h3>
-                        </div>
-                        <div class="panel-body">
-
-                            <!-- 9° Input (Contato Comercial)-->
-                            
-                                <div class="form-group col-md-5">
-                                    <label>Nome</label>
-                                    <input type="text" id="nomeAdd1" name="nomeAdd1" class="form-control" placeholder="Nome">
+                                <!-- 8° Input -->
+                                <div id="zoom2" class="form-group col-md-9">
+                                    <label for="item">Código do Item</label>
+                                    <input
+                                            type="zoom"
+                                            placeholder="Selecione o item desejado..."
+                                            id = "c7_total"
+                                            name="c7_total"
+                                            data-zoom="{
+                                                'displayKey':'codP',
+                                                'datasetId':'DSFormulariodeCadastrodeProdutoseServicos',
+                                                'maximumSelectionLength':'1',
+                                                'placeholder':'Selecione o Código do Produto...',
+                                                'fields':[
+                                                    {
+                                                    'field':'codP',
+                                                    'label':'ID'
+                                                    },{
+                                                    'field':'estudoPS',
+                                                    'label':'Estudo',
+                                                    'standard':'true'
+                                                    },{
+                                                    'field':'descricao',
+                                                    'label':'Descrição',
+                                                    'standard':'true'
+                                                    },{
+                                                    'field':'specificChar',
+                                                    'label':'Características'
+                                                    }
+                                                ]
+                                            }"
+                                        />
                                 </div>
-                            
-                                <div class="form-group col-md-7">
-                                    <label>Departamento</label>
-                                    <input type="text" id="departamentoAdd1" name="departamentoAdd1" class="form-control" placeholder="Departamento">
-                                </div>                    
-                            
-                                <div class="form-group col-md-4">
-                                    <label>Celular</label>
-                                    <input type="text" id="celularAdd1" name="celularAdd1" class="form-control" mask="(00)00000-0000" placeholder="Celular">
-                                </div>                    
-                            
-                                <div class="form-group col-md-4">
-                                    <label>Telefone</label>
-                                    <input type="text" id="telefoneAdd1" name="telefoneAdd1" class="form-control" mask="(00)0000-0000" placeholder="Telefone">
+
+                                <!-- 9° Input -->
+                                <div class="form-group col-md-3">
+                                    <label for="estudo">Estudo</label>
+                                    <input name="estudo" type="text" class="form-control" id="estudo" placeholder="Estudo aplicado">
                                 </div>
-                        
-                            
-                                <div class="form-group col-md-4">
-                                    <label>E-mail</label>
-                                    <input type="text" id="emailAdd1" name="emailAdd1" class="form-control" placeholder="E-mail">
+
+                                <div class="clearfix"></div>
+
+                                <!-- 10° Input -->
+                                <div class="form-group col-md-12">
+                                    <label for="descricaoItem">Descrição do Item</label>
+                                    <textarea name="descricaoItem" type="text" class="form-control" id="descricaoItem"></textarea>
                                 </div>
+
+                                <!-- Tabela --> 
+                                <div class="col-md-12">
+                                <h2>Subitens</h2>
+                                <p class="p-cinza">Será listado todos os subitem que fazem parte do produto/serviço selecionado.</p>
+                                </div>
+
+                                <div class="table-responsive col-md-12" >
+                                    <table tablename="tb_sub_I" class="table table-hover" id="tb_sub_I" noaddbutton="true" nodeletebutton="true">
+                                        <thead>
+                                            <tr>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><input id="tb_doc_I" name="tb_doc_I" type="text" style="width: 100%;" class="invisible-input" readonly value="PS-20"></input></td>
+                                                <td style="width: 6%;"><input id="tb_n_I" name="tb_n_I" type="text" style="width: 100%;" class="invisible-input" readonly value="1"></input></td>
+                                                <td><input type="text" id="tb_descricao_I" name="tb_descricao_I" class="form-control" placeholder="Descrição do Sub-Item" value="descrição..."></input></td>
+                                                <td><input type="text" id="tb_responsavel_I" name="tb_responsavel_I" class="form-control" placeholder="Responsável/Estudo do item" value="FPS"></input></td>
+                                                <td><button type="button" id="excluirSubitemOR" name="excluirSubitemOR" class="btn btn-danger excluir nav-close">Excluir</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <button id="add_sub" style="display: none;" onclick="wdkAddChild('tb_sub_I');"></button>
 
                                 <div class="clearfix"></div>
                                 <br>
                                 <br>
 
+                                <!-- 11° Input -->
+                                <div class="form-group col-md-3">
+                                    <label for="rItem">Valor de Referência<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon painel-medcin">R$</div>
+                                        <input name="rItem" type="text" class="form-control" id="rItem" placeholder="Valor padrão do item solicitado" readonly>
+                                    </div>
+                                </div>
+
+                                <!-- 14° Input -->
+                                <div class="form-group col-md-3">
+                                    <label for="tOrcamento">R$ Total do Orçamento<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon painel-medcin">R$</div>
+                                            <input name="tOrcamento" type="text" class="form-control" id="tOrcamento" placeholder="Orçamento proposto"> 
+                                    </div>
+                                </div>
+
+                                <!-- 15° Input -->
+                                <div class="form-group col-md-3">
+                                    <label for="desconto">Desconto (%)<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
+                                    <div class="input-group">
+                                        <input name="desconto" type="text" class="form-control" id="desconto" placeholder="Desconto aplicado">
+                                        <div class="input-group-addon painel-medcin">%</div>
+                                    </div>
+                                </div>
+
+                                <!-- 16° Input -->
+                                <div class="form-group col-md-3">
+                                    <label for="orcamentoDesconto">R$ Total c/ Desconto<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon painel-medcin">R$</div>
+                                            <input name="orcamentoDesconto" type="text" class="form-control" id="orcamentoDesconto" placeholder="Valor do orçamento final" readonly>
+                                    </div>
+                                </div>
+
+                                <!-- 12° Input -->
+                                <div class="form-group col-md-6">
+                                    <label for="prazoExe">Finalização do Estudo</label>
+                                    <input name="prazoExe" type="date" class="form-control" id="prazoExe">
+                                </div>
+
+                                <!-- 13° Input -->
+                                <div class="form-group col-md-6">
+                                    <label for="prazoER">Prazo para Entrega do Relatório</label>
+                                    <input name="prazoER" type="date" class="form-control" id="prazoER">
+                                </div>
+
+                                <div class="clearfix"></div>
+                                <br>
+
                                 <div class="d-grid gap-2 col-6 mx-auto">
-                                    <button name="add1" id="add1" type="button" class="btn btn-success button-medcin" onclick="pushAdd1()"><b>Adicionar +</b></button>
+                                    <button name="add" id="add" type="button" class="btn btn-success button-medcin" onclick="salvar();"><b>Adicionar +</b></button>
                                     <p class="p-cinza">Você pode adicionar vários contatos, clique em adicionar para salvar na tabela, você também pode removê-los.</p>
                                 </div>
-                                
+
+                            
+                                <button id="add_sub_h" style="display: none;" onclick="wdkAddChild('tb_sub_R');"></button>
+                            
+
+                            </div>
                         </div>
+
+                <div class="clearfix"></div>
+                <br>
+                <br>
+
+                <!-- TB 3 Painel -->
+                <div class="panel panel-primary painel-medcin-div1" style="padding: 0px;">
+                    <div class="panel-heading painel-medcin">
+                        <h3 class="panel-title">Dados Técnicos</h3>
                     </div>
+                    <div class="panel-body">
 
-                    <!-- Tabela 1-->
-
-                    <div class="title-medcin">
-                        <h1>Contatos Comercial</h1>
-                    </div>                      
-                    <div class="table-responsive col-md-12">
-                        <table tablename="tabelaAddComercial" class="table table-sm" id="tabelaAddComercial" noaddbutton="true" nodeletebutton="true">
-                            <thead>
-                                <tr>
-                                    <th>Nome</th>
-                                    <th>Departamento</th>
-                                    <th>Celular</th>
-                                    <th>Telefone</th>
-                                    <th>E-mail</th>
-                                    <th>Ações</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input type="text" id="tb_nomeAdd1" name="tb_nomeAdd1" class="invisible-input" readonly></input></td>
-                                    <td><input type="text" id="tb_departamentoAdd1" name="tb_departamentoAdd1" class="invisible-input" readonly></input></td>
-                                    <td><input type="text" id="tb_celularAdd1" name="tb_celularAdd1" class="invisible-input" readonly></input></td>
-                                    <td><input type="text" id="tb_telefoneAdd1" name="tb_telefoneAdd1" class="invisible-input" readonly></input></td>
-                                    <td><input type="text" id="tb_emailAdd1" name="tb_emailAdd1" class="invisible-input" readonly></input></td>
-                                    <td><button type="button" id="excluirAdd1" name="excluirAdd1" class="btn btn-danger excluir">Excluir</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <!-- 5° Painel -->
-                    <div id="panel5_CP" class="panel panel-primary painel-medcin-div1" style="padding: 0px">
-                        <div class="panel-heading painel-medcin">
-                            <h3 class="panel-title">Contato Financeiro</h3>
+                        <div class="title-medcin">
+                            <img src="Orçamento - Dados Técnicos.png" style="width: 35%;">
                         </div>
-                        <div class="panel-body">
-
-                            <!-- 10° Input (Contato Financeiro) -->
-                            <div class="form-group col-md-5">
-                                <label>Nome</label>
-                                <input type="text" id="nomeAdd2" name="nomeAdd2" class="form-control" placeholder="Nome">
-                            </div>
                         
-                            <div class="form-group col-md-7">
-                                <label>Departamento</label>
-                                <input type="text" id="departamentoAdd2" name="departamentoAdd2" class="form-control" placeholder="Departamento">
-                            </div>                    
-                        
-                            <div class="form-group col-md-4">
-                                <label>Celular</label>
-                                <input type="text" id="celularAdd2" name="celularAdd2" class="form-control" mask="(00)00000-0000" placeholder="Celular"> 
-                            </div>                    
-                        
-                            <div class="form-group col-md-4">
-                                <label>Telefone</label>
-                                <input type="text" id="telefoneAdd2" name="telefoneAdd2" class="form-control" mask="(00)0000-0000" placeholder="Telefone">
-                            </div>
-                    
-                        
-                            <div class="form-group col-md-4">
-                                <label>E-mail</label>
-                                <input type="text" id="emailAdd2" name="emailAdd2" class="form-control" placeholder="E-mail">
-                            </div>
-
-                            <div class="clearfix"></div>
-                            <br>
-                            <br>
-
-                            <div class="d-grid gap-2 col-6 mx-auto">
-                                <button name="add2" id="add2" type="button" class="btn btn-success button-medcin" onclick="pushAdd2()"><b>Adicionar +</b></button>
-                                <p class="p-cinza">Você pode adicionar vários contatos, clique em adicionar para salvar na tabela, você também pode removê-los.</p>
-                            </div>
-
+                        <div class="clearfix"></div>
+                        <br>
+                
+                        <!-- Tabela 2-->
+                        <div class="table-responsive col-md-12">
+                            <table tablename="tabelaOrcamento2" class="table table-sm" id="tabelaOrcamento2" noaddbutton="true" nodeletebutton="true">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 9%">ID Item</th>
+                                        <th style="width: 9%">Nº Orçamento</th>
+                                        <th style="width: 40%">Descrição</th>
+                                        <th>Prazo de Execução</th>
+                                        <th>Prazo de Entrega</th>
+                                        <th>Orçamento</th>
+                                        <th style="width: 16%">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input type="text" id="tb2_c7_total" name="tb2_c7_total" class="invisible-input" readonly></input></td>
+                                        <td><input type="text" id="tb3_orc" name="tb3_orc" class="invisible-input" readonly></input></td>
+                                        <td><textarea type="text" id="tb_descricaoItem" name="tb_descricaoItem" class="invisible-input descricao-input" readonly></textarea></td>
+                                        <td><input type="text" id="tb_prazoExe" name="tb_prazoExe" class="invisible-input" readonly></input></td>
+                                        <td><input type="text" id="tb_prazoER" name="tb_prazoER" class="invisible-input" readonly></input></td>
+                                        <td><input type="text" id="tb_tOrcamento" name="tb_tOrcamento" class="invisible-input" readonly></input></td>
+                                        <td><button type="button" id="excluirDados" name="excluirDados" class="btn btn-danger excluir">Excluir</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
                         </div>
-                    </div>
-
-                    <!-- Tabela 2-->
-                    <div class="title-medcin">
-                        <h1>Contatos Financeiros</h1>
-                    </div> 
-                    <div class="table-responsive col-md-12">
-                        <table tablename="tabelaAddFinanceiro" class="table table-sm" id="tabelaAddFinanceiro" noaddbutton="true" nodeletebutton="true">
-                            <thead>
-                                <tr>
-                                    <th>Nome</th>
-                                    <th>Departamento</th>
-                                    <th>Celular</th>
-                                    <th>Telefone</th>
-                                    <th>E-mail</th>
-                                    <th>Ações</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input type="text" id="tb_nomeAdd2" name="tb_nomeAdd2" class="invisible-input" readonly></input></td>
-                                    <td><input type="text" id="tb_departamentoAdd2" name="tb_departamentoAdd2" class="invisible-input" readonly></input></td>
-                                    <td><input type="text" id="tb_celularAdd2" name="tb_celularAdd2" class="invisible-input" readonly></input></td>
-                                    <td><input type="text" id="tb_telefoneAdd2" name="tb_telefoneAdd2" class="invisible-input" readonly></input></td>
-                                    <td><input type="text" id="tb_emailAdd2" name="tb_emailAdd2" class="invisible-input" readonly></input></td>
-                                    <td><button type="button" id="excluirAdd2" name="excluirAdd2" class="btn btn-danger excluir">Excluir</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div> 
-
-                    <!-- 6° Painel -->
-                    <div id="panel6_CP" class="panel panel-primary painel-medcin-div1" style="padding: 0px">
-                        <div class="panel-heading painel-medcin">
-                            <h3 class="panel-title">Contato Adicional</h3>
-                        </div>
-                        <div class="panel-body">
-                    
-                            <!-- 11° Input (Contato Adicional) -->
-                            <div class="form-group col-md-5">
-                                <label>Nome</label>
-                                <input type="text" id="nomeAdd3" name="nomeAdd3" class="form-control" placeholder="Nome">
-                            </div>
-                        
-                            <div class="form-group col-md-7">
-                                <label>Departamento</label>
-                                <input type="text" id="departamentoAdd3" name="departamentoAdd3" class="form-control" placeholder="Departamento">
-                            </div>                    
-                        
-                            <div class="form-group col-md-4">
-                                <label>Celular</label>
-                                <input type="text" id="celularAdd3" name="celularAdd3" class="form-control" mask="(00)00000-0000" placeholder="Celular">
-                            </div>                    
-                        
-                            <div class="form-group col-md-4">
-                                <label>Telefone</label>
-                                <input type="text" id="telefoneAdd3" name="telefoneAdd3" class="form-control" mask="(00)0000-0000" placeholder="Telefone">
-                            </div>
-                    
-                        
-                            <div class="form-group col-md-4">
-                                <label>E-mail</label>
-                                <input type="text" id="emailAdd3" name="emailAdd3" class="form-control" placeholder="E-mail">
-                            </div>
-
-                            <div class="clearfix"></div>
-                            <br>
-                            <br>
-
-                            <div class="d-grid gap-2 col-6 mx-auto">
-                                <button name="add3" id="add3" type="button" class="btn btn-success button-medcin" onclick="pushAdd3()"><b>Adicionar +</b></button>
-                                <p class="p-cinza">Você pode adicionar vários contatos, clique em adicionar para salvar na tabela, você também pode removê-los.</p>
-                            </div>
-
-                        </div>
-                    </div>
-
-                     <!-- Tabela 3-->
-                    <div class="title-medcin">
-                        <h1>Contatos Adicionais</h1>
-                    </div> 
-                     <div class="table-responsive col-md-12">
-                        <table tablename="tabelaAddAdicional" class="table table-sm" id="tabelaAddAdicional" noaddbutton="true" nodeletebutton="true">
-                            <thead>
-                                <tr>
-                                    <th>Nome</th>
-                                    <th>Departamento</th>
-                                    <th>Celular</th>
-                                    <th>Telefone</th>
-                                    <th>E-mail</th>
-                                    <th>Ações</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input type="text" id="tb_nomeAdd3" name="tb_nomeAdd3" class="invisible-input" readonly></input></td>
-                                    <td><input type="text" id="tb_departamentoAdd3" name="tb_departamentoAdd3" class="invisible-input" readonly></input></td>
-                                    <td><input type="text" id="tb_celularAdd3" name="tb_celularAdd3" class="invisible-input" readonly></input></td>
-                                    <td><input type="text" id="tb_telefoneAdd3" name="tb_telefoneAdd3" class="invisible-input" readonly></input></td>
-                                    <td><input type="text" id="tb_emailAdd3" name="tb_emailAdd3" class="invisible-input" readonly></input></td>
-                                    <td><button type="button" id="excluirAdd3" name="excluirAdd3" class="btn btn-danger excluir">Excluir</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <!-- 7° Painel -->
-                    <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
-                        <div class="panel-heading painel-medcin">
-                            <h3 class="panel-title">Complementos</h3>
-                        </div>
-                        <div class="panel-body">
-
-                            <!-- 12° Input (Ativo?) -->
-                            <div class="form-group col-md-3">
-                                <label for="ativo">Status</label>
-                                <input name="ativo" type="text" class="form-control" id="ativo" placeholder="Status">
-                            </div>
-
-                            <!-- 13° Input -->
-                            <div class="form-group col-md-3">
-                                <label for="indiceF">Índice Financeiro</label>
-                                <input name="indiceF" type="text" class="form-control" id="indiceF" placeholder="Índice financeiro">
-                            </div>
-
-                            <!-- 14° Input -->
-                            <div class="form-group col-md-3">
-                                <label for="dataClient">Cliente desde</label>
-                                <input name="dataClient" type="date" class="form-control" id="dataClient">
-                            </div>
-                    </div>
                     </div>
                 </div>
-            </div>       
 
-            <!--Navegação 2 (Produtos e Serviços)-->
-            <div id="produtos_servicos_nav" class="container tab-pane" aria-selected="false">
-                <div class="row">
+                <div class="clearfix"></div>
+                <br>
+                <br>
 
-                    <div class="jumbotron jumbotron-fluid">
-                        <div class="container">
-                            <h1 class="display-4 j-medcin-p">Produtos e Serviços</h1>
-                            <p class="lead j-medcin-h1">Cadastro de produtos e serviços (Unitários e Combo)</p>
-                            <button type="button" id="exit_PS" class="btn btn-default button-medcin" onclick="backPS()"><i class="fluigicon fluigicon-chevron-left icon-xs" style="color: white;"></i> Voltar</button>
+                <!-- TB 2 Painel -->
+                <div class="panel panel-primary painel-medcin-div1" style="padding: 0px;">
+                    <div class="panel-heading painel-medcin">
+                        <h3 class="panel-title">Subitens</h3>
+                    </div>
+                    <div class="panel-body">  
+                        
+                        <div class="title-medcin">
+                            <img src="Orçamento - Subitens.png" style="width: 35%;">
                         </div>
-                        </div>
+                        
+                        <div class="clearfix"></div>
+                        <br>
 
-                    <!-- 1° Painel -->
-                    <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
-                        <div class="panel-heading painel-medcin">
-                            <h3 class="panel-title">Informações Básicas</h3>
-                        </div>
-                        <div class="panel-body">
-
-                            <!-- ID (PS-01) Automatico -->
-                            <div class="form-group col-md-2">
-                                <label for="codP">Código do Produto</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon painel-medcin">ID</div>
-                                    <input type="text" id="codP" name="codP" class="form-control form-control-sm mInt" readonly="" style="text-align: center;">
-                                </div>
-                            </div>
-
-                            <div class="clearfix"></div>
-                            
-                            <!-- 1° Input -->
-                            <div class="form-group col-md-3">
-                                <label for="estudoPS">Estudo</label>
-                                <input name="estudoPS" type="text" class="form-control" id="estudoPS" placeholder="Estudo do produto...">
-                            </div>
-
-                            <!-- Input -->
-                            <div id="div_select1" class="form-group col-md-3">
-                                <label for="grupo_item">Grupo do Item</label>
-                                <select name="grupo_item" type="text" class="form-control" id="grupo_item"></select>
-                            </div>
-
-                            <!-- Input -->
-                            <div class="form-group col-md-3">
-                                <label for="p_s">Produto ou Serviço?</label>
-                                <select name="p_s" type="text" class="form-control" id="p_s">
-                                    <option value="">Selecione...</option>
-                                    <option value="Produto">Produto</option>
-                                    <option value="Serviço">Serviço</option>
-                                </select>
-                            </div>
-
-                            <!-- Input -->
-                            <div class="form-group col-md-3">
-                                <label for="buy_sell">Compra e Venda?</label>
-                                <select name="buy_sell" type="text" class="form-control" id="buy_sell">
-                                    <option value="">Selecione...</option>
-                                    <option value="Compra">Compra</option>
-                                    <option value="Compra e Venda">Compra e Venda</option>
-                                </select>
-                            </div>
-
-                            <!-- Input -->
-                            <div class="form-group col-md-6">
-                                <label for="compl">Complemento?</label>
-                                <select name="compl" type="text" class="form-control" id="compl">
-                                    <option value="">Selecione...</option>
-                                    <option value="Sim">Sim</option>
-                                    <option value="Não">Não</option>
-                                </select>
-                            </div>
-
-                            <!-- Input -->
-                            <div id="div_perc" class="form-group col-md-6 nav-close">
-                                <label for="pertence">P/S Pertencente</label>
-                                <select name="pertence" type="text" class="form-control" id="pertence">
-                                    <option value="">Selecione...</option>
-                                </select>
-                            </div>
-
-                            <div class="clearfix"></div>
-
-                            <!-- 2° Input -->
-                            <div class="form-group col-md-12">
-                                <label for="descricao"><h2>Descrição</h2></label>
-                                <p class="p-cinza">Discorra a descrição do produto ou serviço a ser cadastrado</p>
-                                <textarea name="descricao" type="text" class="form-control" id="descricao"></textarea>
-                            </div>
-
-                            <!-- 3° Input -->
-                            <div class="form-group col-md-12">
-                                <label for="specificChar"><h2>Características Específicas</h2></label>
-                                <p class="p-cinza">Relate as caracteristicas específicas desse produto</p>
-                                <textarea name="specificChar" type="text" class="form-control" id="specificChar"></textarea>
-                            </div>
-
-                            <!-- 4° Input -->
-                            <div class="form-group col-md-12">
-                                <label for="descricaoEn"><h2>Descrição em Inglês</h2></label>
-                                <p class="p-cinza">Escreva a descrição do produto ou serviço em inglês</p>
-                                <textarea name="descricaoEn" type="text" class="form-control" id="descricaoEn"></textarea>
-                            </div>
-
-                            <!-- 5° Input -->
-                            <div class="form-group col-md-3">
-                                <label for="controlEstoq">Controle de Estoque</label>
-                                <select name="controlEstoq" type="text" class="form-control" id="controlEstoq">
-                                    <option value="">Selecione...</option>
-                                    <option value="Sim">Sim</option>
-                                    <option value="Não">Não</option>
-                                </select>
-                            </div>
-
-                            <!-- 6° Input -->
-                            <div class="form-group col-md-3">
-                                <label for="pVenda">Preço Médio</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon painel-medcin">R$</div>
-                                    <input name="pVenda" type="text" class="form-control" id="pVenda" placeholder="Média do preço do produto...">
-                                </div>  
-                            </div>
-
-                            <!-- 7° Input -->
-                            <div class="form-group col-md-3">
-                                <label for="pCusto">Preço Mínimo</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon painel-medcin">R$</div>
-                                    <input name="pCusto" type="text" class="form-control" id="pCusto" placeholder="Menor valor do produto..">
-                                </div>
-                            </div>
-
-                            <!-- 8° Input -->
-                            <div class="form-group col-md-3">
-                                <label for="fornecedores">Fornecedores</label>
-                                <input
-                                    type="zoom"
-                                    id = "fornecedores"
-                                    name="fornecedores"
-                                    data-zoom="{
-                                        'displayKey':'nomeFantasia',
-                                        'datasetId':'DSFormulariodeCadastrodeFornecedor',
-                                        'maximumSelectionLength':'1',
-                                        'placeholder':'Selecione...',
-                                        'fields':[
-                                            {
-                                            'field':'idCP',
-                                            'label':'ID'
-                                            },{
-                                            'field':'nomeFantasia',
-                                            'label':'Nome',
-                                            'standard':'true'
-                                            }
-                                        ]
-                                    }"
-                                />
-                            </div>
-
+                        <!-- Tabela 1--> 
+                        <div class="table-responsive col-md-12" >
+                            <table tablename="tb_sub_R" class="table table-sm" id="tb_sub_R" noaddbutton="true" nodeletebutton="true">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 9%">ID Item</th>
+                                        <th style="width: 9%">Nº Orçamento</th>
+                                        <th>Nº Subitem</th>
+                                        <th>Descrição</th>
+                                        <th>Responsável/Estudo do Item</th>
+                                        <th>Ação</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input id="tb_doc_h" name="tb_doc_h" type="text" style="width: 100%;" class="invisible-input" readonly></input></td>
+                                        <td><input id="tb2_orc" name="tb2_orc" type="text" style="width: 100%;" class="invisible-input" readonly></input></td>
+                                        <td style="width: 6%;"><input id="tb_n_h" name="tb_n_h" type="text" style="width: 100%;" class="invisible-input" readonly></input></td>
+                                        <td><input type="text" id="tb_descricao_h" name="tb_descricao_h" class="invisible-input" readonly></input></td>
+                                        <td><input type="text" id="tb_responsavel_h" name="tb_responsavel_h" class="invisible-input" readonly></input></td>
+                                        <td><button type="button" id="excluirSubitemO" name="excluirSubitemO" class="btn btn-danger excluir">Excluir</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
+                </div>
 
-                    <!-- 2° Painel -->
-                    <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
-                        <div class="panel-heading painel-medcin">
-                            <h3 class="panel-title">Subitens</h3>
+                <div class="clearfix"></div>
+                <br>
+                <br>
+                    
+                
+
+                <!-- TB 1 Painel -->
+                <div class="panel panel-primary painel-medcin-div1" style="padding: 0px;">
+                    <div class="panel-heading painel-medcin">
+                        <h3 class="panel-title">Orçamento</h3>
+                    </div>
+                    <div class="panel-body">  
+                        
+                        <div class="title-medcin">
+                            <img src="Orçamento - Orçamento.png" style="width: 35%;">
                         </div>
-                        <div class="panel-body">
+                        
+                        <div class="clearfix"></div>
+                        <br>
 
-                            <div class="clearfix"></div>
-
-                            <br>
-
-                            <div class="d-grid gap-2 col-8 mx-auto">
-                                <button class="btn button-medcin" id="add_subitem" onclick="pushItem();">Novo Sub-Item <i class="fluigicon fluigicon-plus icon-sm"></i></button>
-                            </div>
-                            
-                            <br>
-                            <br>
-
-                            <!-- Tabela 1--> 
-                            <div class="table-responsive col-md-12" >
-                                <table tablename="tb_subitem" class="table table-hover" id="tb_subitem" noaddbutton="true" nodeletebutton="true">
-                                    <thead>
-                                        <tr>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td style="width: 6%;"><input id="tb_doc" name="tb_doc" type="text" style="width: 100%;" class="invisible-input" readonly></input></td>
-                                            <td style="width: 6%;"><input id="tb_n" name="tb_n" type="text" style="width: 100%;" class="invisible-input" readonly></input></td>
-                                            <td><input type="text" id="tb_descricao" name="tb_descricao" class="form-control" placeholder="Descrição do Sub-Item"></input></td>
-                                            <td><input type="text" id="tb_responsavel" name="tb_responsavel" class="form-control" placeholder="Responsável/Estudo do item"></input></td>
-                                            <td><button type="button" id="excluirSubitem" name="excluirSubitem" class="btn btn-danger excluir">Excluir</button></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                                
+                        <!-- Tabela 1--> 
+                        <div class="table-responsive col-md-12" >
+                            <table tablename="tabelaOrcamento" class="table table-sm" id="tabelaOrcamento" noaddbutton="true" nodeletebutton="true">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 9%">ID Item</th>
+                                        <th style="width: 9%">Nº Orçamento</th>
+                                        <th>Estudo</th>
+                                        <th>R$ Tabela</th>
+                                        <th>R$ Valor s/ Desconto</th>
+                                        <th>Desconto (%)</th>
+                                        <th>R$ com Desconto</th>
+                                        <th style="width: 16%">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input type="text" id="tb1_c7_total" name="tb1_c7_total" class="invisible-input" readonly></input></td>
+                                        <td><input type="text" id="tb1_orc" name="tb1_orc" class="invisible-input" readonly></input></td>
+                                        <td><input type="text" id="tb_estudo" name="tb_estudo" class="invisible-input" readonly></input></td>
+                                        <td><input type="text" id="tb_rItem" name="tb_rItem" class="invisible-input" readonly></input></td>
+                                        <td><input type="text" id="tb_rOrc" name="tb_rOrc" class="invisible-input" readonly></input></td>
+                                        <td><input type="text" id="tb_desconto" name="tb_desconto" class="invisible-input" readonly></input></td>
+                                        <td><input type="text" id="tb_orcamentoDesconto" name="tb_orcamentoDesconto" class="invisible-input" readonly></input></td>
+                                        <td><button type="button" id="excluirOrcamento" name="excluirOrcamento" class="btn btn-danger excluir">Excluir</button></td>
+                                        <td><input type="text" id="tb_dateE" name="tb_dateE" style="display: none;" readonly></input></td>
+                                        <td><input type="text" id="tb_dateEcod" name="tb_dateEcod" style="display: none;" readonly></input></td>
+                                        <td><input type="text" id="tb_dateA" name="tb_dateA" style="display: none;" readonly></input></td>
+                                        <td><input type="text" id="tb_dateAcod" name="tb_dateAcod" style="display: none;" readonly></input></td>
+                                        <td><input type="text" id="tb_cp" name="tb_cp" style="display: none;" readonly></input></td>
+                                        <td><input type="text" id="tb_ps" name="tb_ps" style="display: none;" readonly></input></td>
+                                        <td><input type="text" id="tb_cpname" name="tb_cpname" style="display: none;" readonly></input></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
+                </div>
 
-                            <!-- 3° Painel -->
-                            <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
-                                <div class="panel-heading painel-medcin">
-                                    <h3 class="panel-title">Instruções</h3>
-                                </div>
-                                <div class="panel-body">
+                <div class="clearfix"></div>
+                <br>
+                <label>Extrato Total do Orçamento</label>
+                <input name="nProj" type="text" class="invisible-input" id="nProj" readonly>
+                <hr>
+                <div class="form-group col-md-3">
+                    <label for="vTb">Valor de Tabela</label>
+                    <input name="vTb" type="text" class="invisible-input" id="vTb" readonly>
+                </div>
 
-                                    <!-- 10° Input -->
-                                    <div class="form-group col-md-12">
-                                        <label for="metodologia">Métodologia do Produto ou Serviço</label>
-                                        <p class="p-cinza">Detalhe toda a métodologia desse produto ou serviço para integração no relatório final...</p>
-                                        <textarea name="metodologia" type="text" class="form-control" style="height: 200px;" id="metodologia"></textarea>
+                <div class="form-group col-md-3">
+                    <label for="vsD">Valor s/ Desconto</label>
+                    <input name="vsD" type="text" class="invisible-input" id="vsD" readonly>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="vD">Desconto(%)</label>
+                    <input name="vD" type="text" class="invisible-input" id="vD" readonly>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="vcD">Valor c/ Desconto</label>
+                    <input name="vcD" type="text" class="invisible-input" id="vcD" readonly>
+                </div>
+
+                <div class="clearfix"></div>
+                <br>
+
+                
+
+                        <!-- 3° Painel -->
+                        <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
+                            <div class="panel-heading painel-medcin">
+                                <h3 class="panel-title">Prazo de Entrega da Amostra</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                <div class="row col-lg-12">
+                                    <div class="row col-lg-7 div-column1">
+                                        <!-- Input -->
+                                        <div class="form-group col-md-12">
+                                            <label for="amost_nome">Nome da Amostra<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
+                                            <input name="amost_nome" type="text" class="form-control" id="amost_nome" placeholder="Nome da Amostra">
+                                        </div>
+
+                                        <!-- Input -->
+                                        <div class="form-group col-md-12">
+                                            <label for="amost_prazo">Prazo de Entrega<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
+                                            <input name="amost_prazo" type="date" class="form-control" id="amost_prazo" placeholder="Prazo de Entrega">
+                                        </div>
+
+                                        <!-- Input -->
+                                        <div class="form-group col-md-12">
+                                            <label for="amost_receb">Data de Recebimento<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
+                                            <input name="amost_receb" type="date" class="form-control" id="amost_receb" placeholder="Data de Recebimento">
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <button class="btn button-medcin" onclick="amtadd()">Adicionar</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="row col-lg-5 div-column2">
+                                        <img src="Amostra.png" style="width: 70%; opacity: 47%; margin-left: 25%;">
+                                    </div>
+
+
+                                    <!-- Tabela 2-->
+                                    <div class="table-responsive col-md-12">
+                                        <table tablename="tb_amt" class="table table-sm" id="tb_amt" noaddbutton="true" nodeletebutton="true">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nome da Amostra</th>
+                                                    <th>Prazo de Entrega</th>
+                                                    <th>Data de Rebastecimento</th>
+                                                    <th>Ação</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><input type="text" id="tb_nameAmt" name="tb_nameAmt" class="invisible-input" readonly></input></td>
+                                                    <td><input type="date" id="tb_dateFre" name="tb_dateFre" class="invisible-input" readonly></input></td>
+                                                    <td><input type="date" id="tb_dateRec" name="tb_dateRec" class="invisible-input" readonly></input></td>
+                                                    <td><button type="button" id="exAmt" name="exAmt" class="btn btn-danger excluir">Excluir</button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        
                                     </div>
 
                                 </div>
+
+
                             </div>
                         </div>
-            </div>
 
-            <!--Navegação 3 (Orçamentos)-->
-            <div id="orcamento_nav" class="container tab-pane" aria-selected="false">
-                <div class="row">
-
-                    <div class="jumbotron jumbotron-fluid">
-                        <div class="container">
-                        <h1 class="display-4 j-medcin-p">Orçamentos</h1>
-                        <p class="lead j-medcin-h1">Cadastro de orçamentos</p>
-                        <button type="button" id="exit_O" class="btn btn-default button-medcin" onclick="backO()"><i class="fluigicon fluigicon-chevron-left icon-xs" style="color: white;"></i> Voltar</button>
-                        </div>
-                    </div>
-
-                    <!-- 1° Painel -->
-                    <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
-                        <div class="panel-heading painel-medcin">
-                            <h3 class="panel-title">Informações Básicas</h3>
-                        </div>
-                        <div class="panel-body">
-                                                        
-                            <!-- 1° Input -->
-                            <!-- ID (O-01) Automatico -->
-                            <div class="form-group col-md-2">
-                                <label for="idO">ID do Documento</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon painel-medcin">ID</div>
-                                    <input type="text" id="idO" name="idO"  class="form-control form-control-sm mInt" readonly="" style="text-align: center;">
+                        <!-- 4° Painel -->
+                        <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
+                            <div class="panel-heading painel-medcin">
+                                <h3 class="panel-title">Informações Financeiras</h3>
+                            </div>
+                            <div class="panel-body">
+                                
+                                <!-- 17° Input -->
+                                <div class="form-group col-md-12">
+                                    <label for="formPag">Forma de Pagamento<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
+                                    <select name="formPag" type="text" class="form-control" id="formPag" placeholder="Qual a forma de pagamento...?">
+                                        <option value="">Selecione...</option>
+                                        <option value="Padrão">Padrão</option>
+                                        <option value="Diferenciada">Diferenciada</option>
+                                    </select>
                                 </div>
+
+                                <div id="div_pag" class="nav-close">
+
+                                    <div class="col-md-12">
+                                        <hr>
+                                        <br>
+                                    </div>
+
+                                    <!-- Input -->
+                                    <div class="form-group col-md-2">
+                                        <label for="val_total">Valor Total<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
+                                        <input name="val_total" type="text" class="form-control" id="val_total" placeholder="Valor Total"> 
+                                    </div>
+
+                                    <!-- Input -->
+                                    <div class="form-group col-md-2">
+                                        <label for="qtnd_parc">Qntd. de Parcelas<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
+                                        <input name="qtnd_parc" type="text" class="form-control" id="qtnd_parc" placeholder="Número de parcelas"> 
+                                    </div>
+
+                                    <!-- Input -->
+                                    <div class="form-group col-md-3">
+                                        <label for="dateVenc">Data de Vencimento<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
+                                        <input name="dateVenc" type="date" class="form-control" id="dateVenc"> 
+                                    </div>
+
+                                    <!-- Input -->
+                                    <div class="form-group col-md-3">
+                                        <label for="formPag">Forma de Pagamento<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
+                                        <select name="formPagOpc" type="text" class="form-control" id="formPag">
+                                            <option value="">Selecione...</option>
+                                            <option value="1">Boleto</option>
+                                            <option value="2">TED</option>
+                                            <option value="3">DOC</option>
+                                            <option value="4">PIX</option>
+                                            <option value="5">Cartão de Crédito</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Input -->
+                                    <div class="form-group col-md-2">
+                                        <label for="statusGeral">Status Geral<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
+                                        <input name="statusGeral" type="text" class="form-control" id="statusGeral" readonly> 
+                                    </div>
+                                    
+                                </div>
+
+                                <div id="div_tbFinan" class="nav-close">
+                                    <button class="btn button-medcin" onclick="reloadTbFinan();">Atualizar Status <i style="color: white;" class="flaticon flaticon-refresh icon-xs"></i></button>
+                                    <div class="clearfix"></div>
+                                    <br>
+                                    <div class="table-responsive col-md-12">
+                                        <table tablename="tb_financeiro" class="table table-sm" id="tb_financeiro" noaddbutton="true" nodeletebutton="true">
+                                            <thead>
+                                                <tr>
+                                                    <th>Valor Parcela</th>
+                                                    <th>Nº Parcela</th>
+                                                    <th>Data Vencimento</th>
+                                                    <th>Forma de Pagamento</th>
+                                                    <th>NF</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><input type="text" id="tb_vParc" name="tb_vParc" class="invisible-input" readonly></td>
+                                                    <td><input type="text" id="tb_nParc" name="tb_nParc" class="invisible-input" readonly></td>
+                                                    <td><input type="date" id="tb_dateVenc" name="tb_dateVenc" class="form-control"></td>
+                                                    <td><select type="text" id="tb_formPag" name="tb_formPag" class="form-control">
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Boleto</option>
+                                                        <option value="2">TED</option>
+                                                        <option value="3">DOC</option>
+                                                        <option value="4">PIX</option>
+                                                        <option value="5">Cartão de Crédito</option>
+                                                    </select></td>
+                                                    <td><input type="text" id="tb_nf" name="tb_nf" class="form-control"></td>
+                                                    <td><select type="text" id="tb_statusReceb" name="tb_statusReceb" class="form-control">
+                                                        <option value="0">Quitado</option>
+                                                        <option value="1">Em Aberto</option>
+                                                    </select></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        
+                                    </div>
+                                </div>
+
                             </div>
+                        </div>    
 
-                            <div class="clearfix"></div>
+                        <!-- 5° Painel -->
+                        <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
+                            <div class="panel-heading painel-medcin">
+                                <h3 class="panel-title">Controle de Status do Orçamento</h3>
+                            </div>
+                            <div class="panel-body">
 
-                            <!-- 2° Input -->
-                            <div id="zoom1" class="form-group col-md-5">
-                                <label for="codClientP">Código do Cliente/Patrocinador</label>
-                                <input
+                                <!-- 19° Input -->
+                                <div class="form-group col-md-12">
+                                    <label for="regMov">Registro de Movimentação<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
+                                    <input name="regMov" type="text" class="form-control" id="regMov" placeholder="Registro de Movimentação..."> 
+                                </div>
+
+                                <!-- 20° Input -->
+                                <div class="form-group col-md-8">
+                                    <label for="statusO">Status<i style="color: red;" class="flaticon flaticon-snow icon-xs"></i></label>
+                                    <p class="p-cinza">Selecione o status para dar andamento no fluxo.</p>
+                                    <input
                                         type="zoom"
-                                        id = "codClientP"
-                                        name="codClientP"
-                                        data-zoom="{
-                                            'displayKey':'idCP',
-                                            'datasetId':'DSCadastroGeral',
+                                        id = "statusO"
+                                        name="statusO"
+                                        data-zoom="{ 
+                                            'displayKey':'status',
+                                            'datasetId':'dsStatusO',
                                             'maximumSelectionLength':'1',
-                                            'placeholder':'Selecione o Código...',
+                                            'placeholder':'Selecione o status do documento...',
                                             'fields':[
                                                 {
-                                                'field':'idCP',
-                                                'label':'ID'
+                                                'field':'status',
+                                                'label':'Status'
                                                 },{
-                                                'field':'nomeFantasia',
-                                                'label':'Cliente/Patrocinador',
-                                                'standard':'true'
-                                                },{
-                                                'field':'cnpj',
-                                                'label':'CNPJ',
-                                                'standard':'true'
-                                                }
-                                            ]
-                                        }"
-                                    />
-                            </div>
-
-                            <!-- 3° Input -->
-                            <div class="form-group col-md-5">
-                                <label for="client">Cliente/Patrocinador</label>
-                                <input name="client" type="text" class="form-control" id="client" placeholder="Cliente/Patrocinador" readonly>
-                            </div>
-
-                            <!-- 4° Input -->
-                            <div class="form-group col-md-2">
-                                <label for="revisao">Revisão</label>
-                                <input name="revisao" type="number" class="form-control" id="revisao" placeholder="Revisão" readonly>
-                            </div>
-
-                            <!-- 5° Input -->
-                            <div class="form-group col-md-4">
-                                <label for="solicitante">Nome do Solicitante</label>
-                                <input name="solicitante" type="text" class="form-control" id="solicitante" readonly>
-                            </div>
-
-                            <!-- 6° Input -->
-                            <div class="form-group col-md-4">
-                                <label for="dataCadastro">Data do Cadastro</label>
-                                <input name="dataCadastro" type="text" class="form-control" id="dataCadastro" readonly>
-                            </div>
-
-                            <!-- 7° Input -->
-                            <div class="form-group col-md-4">
-                                <label for="dateRevisao">Data da Revisão</label>
-                                <input name="dateRevisao" type="text" class="form-control" id="dateRevisao" value="-1" readonly>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 2° Painel -->
-                    <div id="panel2_O" class="panel panel-primary painel-medcin-div1" style="padding: 0px;">
-                        <div class="panel-heading painel-medcin">
-                            <h3 class="panel-title">Cadastro de Item</h3>
-                        </div>
-                        <div class="panel-body">
-
-                            <!-- 8° Input -->
-                            <div id="zoom2" class="form-group col-md-9">
-                                <label for="item">Código do Item</label>
-                                <input
-                                        type="zoom"
-                                        placeholder="Selecione o item desejado..."
-                                        id = "c7_total"
-                                        name="c7_total"
-                                        data-zoom="{
-                                            'displayKey':'codP',
-                                            'datasetId':'DSCadastroGeral',
-                                            'maximumSelectionLength':'1',
-                                            'placeholder':'Selecione o Código do Produto...',
-                                            'fields':[
-                                                {
-                                                'field':'codP',
-                                                'label':'ID'
-                                                },{
-                                                'field':'estudoPS',
-                                                'label':'Estudo',
-                                                'standard':'true'
-                                                },{
-                                                'field':'descricao',
+                                                'field':'statusDescricao',
                                                 'label':'Descrição',
                                                 'standard':'true'
-                                                },{
-                                                'field':'specificChar',
-                                                'label':'Características'
                                                 }
                                             ]
                                         }"
-                                    />
-                            </div>
-
-                            <!-- 9° Input -->
-                            <div class="form-group col-md-3">
-                                <label for="estudo">Estudo</label>
-                                <input name="estudo" type="text" class="form-control" id="estudo" placeholder="Estudo aplicado">
-                            </div>
-
-                            <div class="clearfix"></div>
-
-                            <!-- 10° Input -->
-                            <div class="form-group col-md-12">
-                                <label for="descricaoItem">Descrição do Item</label>
-                                <textarea name="descricaoItem" type="text" class="form-control" id="descricaoItem"></textarea>
-                            </div>
-
-                            <!-- Tabela --> 
-                            <div class="col-md-12">
-                            <h2>Subitens</h2>
-                            <p class="p-cinza">Será listado todos os subitem que fazem parte do produto/serviço selecionado.</p>
-                            </div>
-
-                            <div class="table-responsive col-md-12" >
-                                <table tablename="tb_sub_I" class="table table-hover" id="tb_sub_I" noaddbutton="true" nodeletebutton="true">
-                                    <thead>
-                                        <tr>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><input id="tb_doc_I" name="tb_doc_I" type="text" style="width: 100%;" class="invisible-input" readonly value="PS-20"></input></td>
-                                            <td style="width: 6%;"><input id="tb_n_I" name="tb_n_I" type="text" style="width: 100%;" class="invisible-input" readonly value="1"></input></td>
-                                            <td><input type="text" id="tb_descricao_I" name="tb_descricao_I" class="form-control" placeholder="Descrição do Sub-Item" value="descrição..."></input></td>
-                                            <td><input type="text" id="tb_responsavel_I" name="tb_responsavel_I" class="form-control" placeholder="Responsável/Estudo do item" value="FPS"></input></td>
-                                            <td><button type="button" id="excluirSubitemOR" name="excluirSubitemOR" class="btn btn-danger excluir nav-close">Excluir</button></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <button id="add_sub" style="display: none;" onclick="wdkAddChild('tb_sub_I');"></button>
-
-                            <div class="clearfix"></div>
-                            <br>
-                            <br>
-
-                            <!-- 11° Input -->
-                            <div class="form-group col-md-6">
-                                <label for="rItem">R$ do Item</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon painel-medcin">R$</div>
-                                    <input name="rItem" type="text" class="form-control" id="rItem" placeholder="Valor padrão do item solicitado">
+                                        />
                                 </div>
-                            </div>
 
-                            <!-- 12° Input -->
-                            <div class="form-group col-md-3">
-                                <label for="prazoExe">Finalização do Estudo</label>
-                                <input name="prazoExe" type="date" class="form-control" id="prazoExe">
-                            </div>
-
-                            <!-- 13° Input -->
-                            <div class="form-group col-md-3">
-                                <label for="prazoER">Prazo para Entrega do Relatório</label>
-                                <input name="prazoER" type="date" class="form-control" id="prazoER">
-                            </div>
-
-                            <div class="clearfix"></div>
-
-                            <!-- 14° Input -->
-                            <div class="form-group col-md-6">
-                                <label for="tOrcamento">R$ Total do Orçamento</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon painel-medcin">R$</div>
-                                        <input name="tOrcamento" type="text" class="form-control" id="tOrcamento" placeholder="Orçamento proposto"> 
+                                <!-- 21° Input -->
+                                <div class="form-group col-md-4">
+                                    <label for="dateAprov">Data da Aprovação</label>
+                                    <p class="p-cinza">Preenchimento automático após a aprovação</p>
+                                    <input name="dateAprov" type="text" class="form-control" style="text-align: center;" id="dateAprov" placeholder="__/__/____" readonly> 
                                 </div>
-                            </div>
 
-                            <!-- 15° Input -->
-                            <div class="form-group col-md-3">
-                                <label for="desconto">Desconto (%)</label>
-                                <div class="input-group">
-                                    <input name="desconto" type="text" class="form-control" id="desconto" placeholder="Desconto aplicado">
-                                    <div class="input-group-addon painel-medcin">%</div>
+                                <div class="col-md-12">
+                                    <hr>
+                                    <h1>Histórico de alterações no orçamento</h1>
+                                    <br>
                                 </div>
-                            </div>
-
-                            <!-- 16° Input -->
-                            <div class="form-group col-md-3">
-                                <label for="orcamentoDesconto">R$ Total c/ Desconto</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon painel-medcin">R$</div>
-                                        <input name="orcamentoDesconto" type="text" class="form-control" id="orcamentoDesconto" placeholder="Valor do orçamento final" readonly>
+                                
+                                <!-- Tabela 2-->
+                                <div class="table-responsive col-md-12">
+                                    <table tablename="tb_historicoStatus" class="table table-sm" id="tb_historicoStatus" noaddbutton="true" nodeletebutton="true">
+                                        <thead>
+                                            <tr>
+                                                <th>Status</th>
+                                                <th>Motivo</th>
+                                                <th>Usuário</th>
+                                                <th>Data</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><input type="text" id="tbhis_status" name="tbhis_status" class="invisible-input" readonly></input></td>
+                                                <td><input type="text" id="tbhis_motivo" name="tbhis_motivo" class="invisible-input" readonly></input></td>
+                                                <td><input type="text" id="tbhis_user" name="tbhis_user" class="invisible-input" readonly></input></td>
+                                                <td><input type="text" id="tbhis_data" name="tbhis_data" class="invisible-input" readonly></input></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    
                                 </div>
+
                             </div>
+                        </div>
 
-                            <div class="clearfix"></div>
-                            <br>
+                        <div id="print" class="print">
+                            <button name="print" id="print" type="button" class="btn btn-danger" onclick="startReport();"><b>Imprimir</b></button>
+                        </div>
+                    </div>                 
+                </div>
 
-                            <div class="d-grid gap-2 col-6 mx-auto">
-                                <button name="add" id="add" type="button" class="btn btn-success button-medcin" onclick="pushTable(); pushTable2(); push_sItens();"><b>Adicionar +</b></button>
-                                <p class="p-cinza">Você pode adicionar vários contatos, clique em adicionar para salvar na tabela, você também pode removê-los.</p>
-                            </div>
+                <div id="relatorio_nav" class="container tab-pane" aria-selected="true">
 
-                          
-                            <button id="add_sub_h" style="display: none;" onclick="wdkAddChild('tb_sub_R');"></button>
-                           
+                    <div id="header" class="header">
+                        <img src="image/header medcin orc.png" alt="" style="width: 35%">
+                    </div>
 
+                    <dic class="clearfix"></dic>
+                    <br>
+                    <br>
+
+                    <div id="pt1" class="pt1 col-md-12">
+                        <table class="table table-striped" tablename="tb_pt1" id="tb_pt1" noaddbutton="true" nodeletebutton="true">
+                            <thead>
+                              <tr>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <br>
+                    <br>
+
+                    <div id="pt2" class="pt2 col-md-12">
+                        <table class="table" tablename="tb_pt2" id="tb_pt2" noaddbutton="true" nodeletebutton="true">
+                            <thead>
+                              <tr>
+                                  <th>Produto(s)</th>
+                                  <th>Estudo(s)</th>
+                                  <th>Quantidade de Amostra</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                              </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <br>
+                    <br>
+
+                    <div id="pt3" class="pt3">
+                        <div class="col-md-12"> 
+                            <h3 style="background: rgb(210, 210, 210); color: black;text-align: center">Princípios Éticos e de Qualidade</h3>
+                        </div>
+
+                        <div class="col-md-12">
+                            <p>Protocolos orientados pelas normas de Boas Práticas Clínicas (GCP).</p>
+                            <p>Ensaios obedecendo às normas internacionais de pesquisa para seres humanos (Declaração de Helsinque) e a resolução 466/12 do Ministério da Saúde.</p>
+                            <p>Estudos efetuados de acordo com o Guia de Segurança da ANVISA (2ª Edição, 2012) e aceitos em Órgãos Regulatórios Nacionais e Internacionais.</p>
+                            <p>Atendimento aos requisitos de Sistema de Gestão da Qualidade – NBR ISO 9001:2015 e de Gestão da Qualidade em Laboratórios – BPL.</p>
+                            <p>Confidencialidade absoluta das informações relativas ao estudo.</p>
+                            
                         </div>
                     </div>
 
@@ -961,211 +843,218 @@
                     <br>
                     <br>
 
-            <!-- TB 1 Painel -->
-            <div class="panel panel-primary painel-medcin-div1" style="padding: 0px;">
-                <div class="panel-heading painel-medcin">
-                    <h3 class="panel-title">Orçamento</h3>
-                </div>
-                <div class="panel-body">  
-                    
-                    <div class="title-medcin">
-                        <h1>Orçamento</h1>
-                    </div>
-                    
-                    <div class="clearfix"></div>
-                    <br>
-
-                    <!-- Tabela 1--> 
-                    <div class="table-responsive col-md-12" >
-                        <table tablename="tabelaOrcamento" class="table table-sm" id="tabelaOrcamento" noaddbutton="true" nodeletebutton="true">
-                            <thead>
-                                <tr>
-                                    <th style="width: 9%">ID Item</th>
-                                    <th style="width: 9%">Nº Orçamento</th>
-                                    <th>Estudo</th>
-                                    <th>R$ Tabela</th>
-                                    <th>Desconto (%)</th>
-                                    <th>R$ com Desconto</th>
-                                    <th style="width: 16%">Ações</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input type="text" id="tb1_c7_total" name="tb1_c7_total" class="invisible-input" readonly></input></td>
-                                    <td><input type="text" id="tb1_orc" name="tb1_orc" class="invisible-input" readonly></input></td>
-                                    <td><input type="text" id="tb_estudo" name="tb_estudo" class="invisible-input" readonly></input></td>
-                                    <td><input type="text" id="tb_rItem" name="tb_rItem" class="invisible-input" readonly></input></td>
-                                    <td><input type="text" id="tb_desconto" name="tb_desconto" class="invisible-input" readonly></input></td>
-                                    <td><input type="text" id="tb_orcamentoDesconto" name="tb_orcamentoDesconto" class="invisible-input" readonly></input></td>
-                                    <td><button type="button" id="excluirOrcamento" name="excluirOrcamento" class="btn btn-danger excluir">Excluir</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-                    <div class="clearfix"></div>
-                    <br>
-                    <br>
-
-            <!-- TB 2 Painel -->
-            <div class="panel panel-primary painel-medcin-div1" style="padding: 0px;">
-                <div class="panel-heading painel-medcin">
-                    <h3 class="panel-title">Subitens</h3>
-                </div>
-                <div class="panel-body">  
-                    
-                    <div class="title-medcin">
-                        <h1>Subitem(s)</h1>
-                    </div>
-                    
-                    <div class="clearfix"></div>
-                    <br>
-
-                    <!-- Tabela 1--> 
-                    <div class="table-responsive col-md-12" >
-                        <table tablename="tb_sub_R" class="table table-sm" id="tb_sub_R" noaddbutton="true" nodeletebutton="true">
-                            <thead>
-                                <tr>
-                                    <th style="width: 9%">ID Item</th>
-                                    <th style="width: 9%">Nº Orçamento</th>
-                                    <th>Nº Subitem</th>
-                                    <th>Descrição</th>
-                                    <th>Responsável/Estudo do Item</th>
-                                    <th>Ação</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input id="tb_doc_h" name="tb_doc_h" type="text" style="width: 100%;" class="invisible-input" readonly></input></td>
-                                    <td><input id="tb2_orc" name="tb2_orc" type="text" style="width: 100%;" class="invisible-input" readonly></input></td>
-                                    <td style="width: 6%;"><input id="tb_n_h" name="tb_n_h" type="text" style="width: 100%;" class="invisible-input" readonly></input></td>
-                                    <td><input type="text" id="tb_descricao_h" name="tb_descricao_h" class="invisible-input" readonly></input></td>
-                                    <td><input type="text" id="tb_responsavel_h" name="tb_responsavel_h" class="invisible-input" readonly></input></td>
-                                    <td><button type="button" id="excluirSubitemO" name="excluirSubitemO" class="btn btn-danger excluir">Excluir</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-                    <div class="clearfix"></div>
-                    <br>
-                    <br>
-                
-            <!-- TB 3 Painel -->
-            <div class="panel panel-primary painel-medcin-div1" style="padding: 0px;">
-                <div class="panel-heading painel-medcin">
-                    <h3 class="panel-title">Dados Técnicos</h3>
-                </div>
-                <div class="panel-body">
-
-                    <div class="title-medcin">
-                        <h1>Dados Técnicos</h1>
-                    </div>
-                    
-                    <div class="clearfix"></div>
-                    <br>
-            
-                    <!-- Tabela 2-->
-                    <div class="table-responsive col-md-12">
-                        <table tablename="tabelaOrcamento2" class="table table-sm" id="tabelaOrcamento2" noaddbutton="true" nodeletebutton="true">
-                            <thead>
-                                <tr>
-                                    <th style="width: 9%">ID Item</th>
-                                    <th style="width: 9%">Nº Orçamento</th>
-                                    <th style="width: 40%">Descrição</th>
-                                    <th>Prazo de Execução</th>
-                                    <th>Prazo de Entrega</th>
-                                    <th>Orçamento</th>
-                                    <th style="width: 16%">Ações</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input type="text" id="tb2_c7_total" name="tb2_c7_total" class="invisible-input" readonly></input></td>
-                                    <td><input type="text" id="tb3_orc" name="tb3_orc" class="invisible-input" readonly></input></td>
-                                    <td><textarea type="text" id="tb_descricaoItem" name="tb_descricaoItem" class="invisible-input descricao-input" readonly></textarea></td>
-                                    <td><input type="text" id="tb_prazoExe" name="tb_prazoExe" class="invisible-input" readonly></input></td>
-                                    <td><input type="text" id="tb_prazoER" name="tb_prazoER" class="invisible-input" readonly></input></td>
-                                    <td><input type="text" id="tb_tOrcamento" name="tb_tOrcamento" class="invisible-input" readonly></input></td>
-                                    <td><button type="button" id="excluirDados" name="excluirDados" class="btn btn-danger excluir">Excluir</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div id="pt4" class="pt4 col-md-12">
                         
-                    </div>
-                </div>
-            </div>
+                        <h3 style="background: rgb(210, 210, 210); color: black;text-align: center">Prazos</h3>
+
+                        <p>Cronograma a depender do momento da aprovação do início do estudo;</p>
+                        <p>EM CASO DE ESTUDOS REALIZADOS VIA TELEMEDICINA:</p>
+                        <p>Estudo realizado via Telemedicina seguindo a Resolução 1643/2020 do Conselho Federal de Medicina.</p>
+                        <br>
+
+                        <table class="table" tablename="tb_pt4" id="tb_pt4" noaddbutton="true" nodeletebutton="true">
+                            <thead>
+                              <tr>
+                                  <th>Produto</th>
+                                  <th>Estudo</th>
+                                  <th>Data de Início</th>
+                                  <th>Previsão do Relatório</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                              </tr>
+                            </tbody>
+                        </table>
+
+                        <p>EM CASO DE SUBMISSÃO AO CEP, ANALISAR QUAIS DOS CENÁRIOS ABAIXO É APROPRIADO:</p>
+	                    <p>Avaliação do projeto de pesquisa por um comitê de ética em pesquisa (CEP) independente, registrado na Plataforma Brasil.</p>
+	                    <p>Se orçamento de medicamento/dispositivo médico:</p>
+	                    <p>Para medicamentos ou produtos para saúde, há a necessidade de registro do protocolo em plataforma indicada em resolução vigente (Clinical Trials, REBEC) e submissão para notificação/análise na ANVISA, cuja execução é de responsabilidade única e exclusivamente do patrocinador, que deverá realizar após o recebimento do parecer do CEP. O prazo será o estabelecido pela Agência.</p>
+                        
+                    </div>     
+                    
                     <div class="clearfix"></div>
                     <br>
                     <br>
-                        <!-- 3° Painel -->
-                    <div class="panel panel-primary painel-medcin-div1" style="padding: 0px">
-                        <div class="panel-heading painel-medcin">
-                            <h3 class="panel-title">Pagamentos e Documentos</h3>
-                        </div>
-                        <div class="panel-body">
 
-                            <!-- 17° Input -->
-                            <div class="form-group col-md-4">
-                                <label for="formPag">Forma de Pagamento</label>
-                                <input name="formPag" type="text" class="form-control" id="formPag" placeholder="Qual a forma de pagamento...?">
-                            </div>
+                    <div id="pt5" class="pt5 col-md-12">
 
-                            <!-- 18° Input -->
-                            <div class="form-group col-md-4">
-                                <label for="infoOrc">Infomações do Orçamento</label>
-                                <input name="infoOrc" type="text" class="form-control" id="infoOrc" placeholder="Informação do Orçamento...">
-                            </div>
+                        <h3 style="background: rgb(210, 210, 210); color: black;text-align: center">Política de Envio de Imagem</h3>
+                        <p>As imagens registradas durante o estudo estarão disponíveis para download através de uma senha de acesso ao Portal Medcin, após envio do relatório final do estudo, conforme prazos descritos na tabela abaixo;</p>
+                        <p>As imagens ficarão disponíveis para download no portal por um prazo de 90 dias a partir da data de upload;</p>
+                        <p>Após o envio das imagens, as mesmas ficarão armazenadas no Centro de Pesquisa por um prazo de 05 anos;</p>
+                        <p>Serão enviadas TODAS as imagens de registro; fica a critério do patrocinador qualquer eventual seleção para utilização posterior.</p>
+                        <p>Em caso de solicitações das imagens após o prazo que estas estavam disponíveis no portal, o Centro de Pesquisa terá 15 dias úteis para disponibilizá-las novamente ao patrocinador;</p>
+                        <p>Em caso de solicitações adicionais, após os prazos mencionados acima, será aplicada uma taxa administrativa de acordo com a quantidade de imagens solicitadas;</p>
 
-                            <!-- 19° Input -->
-                            <div class="form-group col-md-4">
-                                <label for="regMov">Registro de Movimentação</label>
-                                <input name="regMov" type="text" class="form-control" id="regMov" placeholder="Registro de Movimentação..."> 
-                            </div>
+                        <table class="table">
+                            <thead class="table-secondary">
+                              <tr>
+                                  <th>Equipamento</th>
+                                  <th>Prazo de upload a partir da data de envio do relatório</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Primos</td>
+                                <td>03 semanas</td>
+                              </tr>
+                              <tr>
+                                <td>Visia</td>
+                                <td>02 semanas</td>
+                              </tr>
+                              <tr>
+                                <td>Canon</td>
+                                <td>02 semanas</td>
+                              </tr>
+                              <tr>
+                                <td>Termografia</td>
+                                <td>03 semanas</td>
+                              </tr>
+                              <tr>
+                                <td>Microscopia Confocal</td>
+                                <td>03 semanas</td>
+                              </tr>
+                              <tr>
+                                <td>Primos + Termografia</td>
+                                <td>04 semanas</td>
+                              </tr>
+                            </tbody>
+                        </table>
 
-                            <!-- 20° Input -->
-                            <div class="form-group col-md-12">
-                                <label for="statusO">Status</label>
-                                <p class="p-cinza">Selecione o status para dar andamento no fluxo.</p>
-                                <input
-                                    type="zoom"
-                                    id = "statusO"
-                                    name="statusO"
-                                    data-zoom="{ 
-                                        'displayKey':'status',
-                                        'datasetId':'dsStatusO',
-                                        'maximumSelectionLength':'3',
-                                        'placeholder':'Selecione o status do documento...',
-                                        'fields':[
-                                            {
-                                            'field':'status',
-                                            'label':'Status'
-                                            },{
-                                            'field':'statusDescricao',
-                                            'label':'Descrição',
-                                            'standard':'true'
-                                            }
-                                        ]
-                                    }"
-                                    />
-                            </div>
+                    </div>
 
+                    <div class="clearfix"></div>
+                    <br>
+                    <br>
+
+                    <div id="pt6" class="pt6 col-md-12">
+                        <h3 style="background: rgb(210, 210, 210); color: black;text-align: center">Investimento</h3>
+
+                        <table class="table" tablename="tb_pt5" id="tb_pt5" noaddbutton="true" nodeletebutton="true">
+                            <thead>
+                              <tr>
+                                  <th>Descrição</th>
+                                  <th>Valor Unitário (R$)</th>
+                                  <th>Quantidade</th>
+                                  <th>Valor Total (R$)</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                              </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table" tablename="tb_pt5c" id="tb_pt5c" noaddbutton="true" nodeletebutton="true">
+                            <thead>
+                              <tr>
+                                  <th>Subtotal</th>
+                                  <th>Desconto Aplicado</th>
+                                  <th>Total</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                              </tr>
+                            </tbody>
+                        </table>
+                        <p>Forma de pagamento: </p>
+                        <br>                        
+                        <p>Para estudos com custo menor que R$ 2.000,00 ou para reemissões de relatório:</p>
+                        <p>100% na aprovação desta proposta;</p>
+                        <br>
+                        <p>Valores até R$ 10.000,00:</p>
+                        <p>50% na aprovação desta proposta (boleto bancário)  </p>
+                        <p>50% em 30 dias após a aprovação da proposta (boleto bancário)</p>
+                        <br>
+                        <p>Valores acima de R$ 10.000,00:</p>
+                        <p>30% na aprovação desta proposta (boleto bancário)  </p>
+                        <p>40% em 30 dias após a aprovação da proposta (boleto bancário)</p>
+                        <p>30% em 60 dias após a aprovação da proposta (boleto bancário)</p>
+                        <br>
+                        <p>OBSERVAÇÕES:</p>
+                        <p>     Multa de 5% após vencimento do boleto e juros de 3% a.m.</p>
+                        <p>     A validade deste orçamento será de 30 dias</p>
+                        <p>     Em caso de cancelamento de estudos aprovados, será cobrada multa de 10% do valor do estudo referente às custas administrativas.</p>
+                        <p>     Em caso de cancelamento de estudos aprovados em prazo menor a 20 dias antes do início do estudo será cobrado 10% do valor do estudo referente à custos de planejamento e implementação de estudo.</p>
+
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <br>
+                    <br>
+
+                    <div id="pt7" class="pt7 col-md-12">
+                        <h3 style="background: rgb(210, 210, 210); color: black;text-align: center">Informações Importantes</h3>
+
+                        <p>1.	As amostras devem ser encaminhadas para:</p>
+                        <p>Rua Atílio Delanina, 178</p>
+                        <p>Vila Campesina, Osasco</p>
+                        <p>CEP 06023-070</p>
+                        <br>
+                        <p>2.	As embalagens devem ser padronizadas, sem rótulo, não sugestivas quanto à marca, contendo somente as seguintes informações:</p>
+                        <p>Tipo de produto:</p>
+                        <p>Código da amostra:</p>
+                        <p>Validade:</p>
+                        <p>Lote:</p>
+                        <p>Orçamento:</p>
+                        <br>
+                        <p>3.	Documentos necessários antes da execução do estudo (envio por via eletrônica - e-mail):</p>
+                        <p>Orçamento devidamente assinado;</p>
+                        <p>Formulário de informações prévias preenchido e assinado;</p>
+                        <p>Fórmula qualitativa e/ou quali-quantitativa dos produtos de estudo.</p>
+                        <br>
+                        <p>4.	Quando tratar-se de um estudo BPL uma amostra para retenção deverá ser encaminhada conforme previsto nos requisitos da norma;</p>
+                        <br>
+                        <p>5.	Uma amostra de retenção será armazenada até a finalização dos estudos clínicos. Mediante ausência de solicitação formal para devolução das amostras ou solicitação formal de incineração, as mesmas serão descartadas após 15 dias da entrega do relatório final do estudo. A formalização do pedido de devolução ou incineração das amostras deve ser feito previamente e pode constar em contrato previamente negociado;</p>
+                        <br>
+                        <p>6.	Os documentos provenientes do estudo clínico serão armazenados por 05 anos, após este período os documentos serão expurgados, pelo prestador contratado;</p>
+                        <br>
+                        <p>7.	BRINDES: A MEDCIN não trabalha com brindes ou custos adicionais para voluntários, evitando-se custos logísticos e exposição desnecessária do nome da empresa contratante;</p>
+                        <br>
+                        <p>Atenciosamente,</p>
+                        <br>
+                        <div class="col-md-12">
+                            <img src="image/ass.png" style="width: 75%">
                         </div>
                     </div>
-                </div>                 
-            </div>
 
-        <label>Medcin - Fluig</label>
-            <div class="nav-close">
-                <label>Usuário</label>
-                <input id="safety" name="safety">
-                <label>Data</label>
-                <input id="safety2" name="safety2">
-            <div>
+                    <div class="clearfix"></div>
+                    <br>
+                    <br>
+
+                    <div id="pt8" class="pt8 col-md-12">
+                        <h3 style="background: rgb(210, 210, 210); color: black;text-align: center">Aprovação</h3>
+
+                        <p>Aprovo o orçamento acima apresentado, assim como os valores e as condições de pagamento descritas.</p>
+                        <br>
+                        <br>
+                        <p>___________________________________________________                     Data: ____/____/______</p>
+                        <p>Assinatura</p>
+                        <p>Nome:</p>
+                        <p>Cargo:</p>
+
+                    </div>
+
+                </div>
+                
+
+                <!-- Input -->
+                <div class="clearfix"></div>
+                <div class="form-group col-md-4 nav-close">
+                    <label for="descForm">Descrição do Docuemento</label>
+                    <input name="descForm" type="text" class="form-control" id="descForm">
+                </div>
+
+                <label>Medcin - Fluig</label>
+                <div class="nav-close">
+                    <label>Usuário</label>
+                    <input id="safety" name="safety" mask='000,00'>
+                    <label>Data</label>
+                    <input id="safety2" name="safety2">
+                <div>
 
             </div>
 
@@ -1173,6 +1062,7 @@
 
             <script type="text/javascript" src="js/CadastroMaster.js"></script>
             <script type="text/javascript" src="js/mask.js"></script>
+            <script type="text/javascript" src="js/report.js"></script>
             
         </form>
         </div>

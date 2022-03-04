@@ -86,9 +86,13 @@
 
 .table-color {
     
-    background-color: #e8e8e8;
+    background-color: #f6f1ec;
 }
 
 .off {
     pointer-events: none;
+}
+
+.novaAba {
+    target-new: tab ! important;
 }

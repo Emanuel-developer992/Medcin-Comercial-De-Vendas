@@ -1,11 +1,8 @@
+
 // Window para onload da página 
 
 window.onload = function() {
 
-    if (getWKNumState == 0) {
-        
-        idSeq();
-    }
     revisaoDate();
     maskMoney();
     maskPercent();
@@ -14,10 +11,15 @@ window.onload = function() {
 
     usuario('solicitante');
 
+    validarDoc();
+    motherSon();
     nRowHist(); 
 
     tbnrow();
 
+    console.log('----');
+    console.log(getWKNumState());
+    console.log('----');
 };
 
 // API - CEP AUTOMÁTICO
@@ -37,6 +39,54 @@ $("#cep").blur(function(blur) {
         $("#estado").val(dados.localidade);2
     })
 });
+
+//#endregion
+
+// AUTOMAÇÃO CARDS DE CADASTRO
+
+//#region Função de Navegação entre as opções existentes
+
+function cadastroCP() {
+
+    const clienteP = "Cadastro de Cliente/Patrocinador";
+    const cadastroCard = document.getElementById("cadastroCard");
+
+    cadastroCard.value = clienteP;
+
+    $("#cadastro_tabs").removeClass("active");
+    $("#cadastro_nav").removeClass("active");
+    $("#cliente_patrocinador_tabs").addClass("active");
+    $("#cliente_patrocinador_nav").addClass("active");    
+
+};
+
+function cadastroPS() {
+
+    const produtosS = "Cadastro de Produtos e Serviços";
+    const cadastroCard = document.getElementById("cadastroCard");
+
+    cadastroCard.value = produtosS;
+
+    $("#cadastro_tabs").removeClass("active");
+    $("#cadastro_nav").removeClass("active");
+    $("#produtos_servicos_tabs").addClass("active");
+    $("#produtos_servicos_nav").addClass("active");
+
+};
+
+function cadastroO() {
+
+    const orcamento = "Cadastro de Orçamento";
+    const cadastroCard = document.getElementById("cadastroCard");
+
+    cadastroCard.value = orcamento;
+
+    $("#cadastro_tabs").removeClass("active");
+    $("#cadastro_nav").removeClass("active");
+    $("#orcamento_tabs").addClass("active");
+    $("#orcamento_nav").addClass("active");
+
+};
 
 //#endregion
 
@@ -86,9 +136,16 @@ function idSeq() {
 
     var linha = dsCadastro.values.length;
 
+    var inputCP = document.getElementById("idCP");
+    var inputPS = document.getElementById("codP");
     var inputO = document.getElementById("idO");
 
+    inputCP.value = "CP-" + (linha + 1);
+    
+    inputPS.value = "PS-" + (linha + 1);
+    
     inputO.value = "ORC-" + (linha + 1);
+    
     
 };
 
@@ -120,16 +177,6 @@ function pushTable() {
     var inputdesconto = $("#desconto").val();
     var inputorcamentoDesconto = $("#orcamentoDesconto").val();
 
-    var dataE = $("#dataCadastro").val();
-    var cp = $("#codClientP").val();
-    var cpname = $("#client").val();
-
-    var apDia = dataE.substring(0, 2);
-    var apMes = dataE.substring(3, 5);
-    var apAno = dataE.substring(6, 10);
-
-    eCod = apAno+apMes+apDia;
-
     idAll = inputId;
     idOAll = inputIdO;
 
@@ -140,11 +187,6 @@ function pushTable() {
     $("#tb_rOrc___"+idClick).val(inputOrcTab);
     $("#tb_desconto___"+idClick).val(inputdesconto);
     $("#tb_orcamentoDesconto___"+idClick).val(inputorcamentoDesconto);
-    $("#tb_dateE___"+idClick).val(dataE);
-    $("#tb_cp___"+idClick).val(cp);
-    $("#tb_cpname___"+idClick).val(cpname);
-    $("#tb_ps___"+idClick).val(idAll);
-    $("#tb_dateEcod___"+idClick).val(eCod);
     
     $("#c7_total").val("");
     $("#estudo").val("");
@@ -407,7 +449,7 @@ $(document).on('change', "#c7_total",
         var codConstraint = DatasetFactory.createConstraint("codP", inputZoom, inputZoom, ConstraintType.SHOULD);
         var arrayConstraint = new Array(codConstraint)     
         // Busca no Dataset + Condições de Filtro
-        var array = DatasetFactory.getDataset("DSFormulariodeCadastrodeProdutoseServicos", null, arrayConstraint, null)      
+        var array = DatasetFactory.getDataset("DSCadastroGeral", null, arrayConstraint, null)      
         //Valores para integração ao campos
         var descricaoArray = array.values[0].descricao;
         var estudoArray = array.values[0].estudoPS;
@@ -433,7 +475,7 @@ $(document).on('change', "#codClientP",
         var arrayConstraint = new Array(codConstraint);
 
         // Busca no Dataset + Condições de Filtro
-        var array = DatasetFactory.getDataset("DSFormulariodeCadastrodeCliente-Patrocinador", null, arrayConstraint, null);
+        var array = DatasetFactory.getDataset("DSCadastroGeral", null, arrayConstraint, null);
 
         //Valores para integração ao campos
         var fantasia = array.values[0].nomeFantasia
@@ -541,7 +583,7 @@ function pushSub_i() {
     var arrayConstraint = new Array(tbConstraint, docConstraint);
 
     // Busca no Dataset + Condições de Filtro
-    var array = DatasetFactory.getDataset("DSFormulariodeCadastrodeProdutoseServicos", null, arrayConstraint, null);
+    var array = DatasetFactory.getDataset("DSCadastroGeral", null, arrayConstraint, null);
 
     var nRow = array.values.length;
 
@@ -610,6 +652,12 @@ function push_sItens() {
     nLast = nFirst + rows;
     
     nFirst = nFirst +1;
+    
+    
+    console.log('---')
+    console.log(nFirst)
+    console.log(nLast)
+    console.log('---')
 
     for (var i = nFirst; i <= nLast; i++) {
 
@@ -627,6 +675,14 @@ function push_sItens() {
         $("#tb_n_h___" + nVariavel).val(column2);
         $("#tb_descricao_h___" + nVariavel).val(column3);
         $("#tb_responsavel_h___" + nVariavel).val(column4);
+
+        console.log('>>>>');
+        console.log(column1);
+        console.log(column2);
+        console.log(column3);
+        console.log(column4);
+        console.log(nVariavel);
+        console.log('<<<<');
 
         eventFire(document.getElementById('excluirSubitemOR___' + nVariavel), 'click');
     
@@ -764,6 +820,7 @@ function aprovacao() {
     }
     
     if (nProcesso == 34 || nProcesso == 23 || nProcesso == 15 || statusCard == "Cadastro de Orçamento") {
+        cadastroO();
 
         if (nProcesso == 34 || nProcesso == 23 || nProcesso == 15) {
 
@@ -874,29 +931,223 @@ function usuario(id) {
         
 };
 
+function btnCpf() {
+
+    $('#div_cpf').removeClass();
+    $('#div_cnpj').removeClass();
+    
+    $('#div_cpf').addClass('form-group col-md-6');
+    $('#div_cnpj').addClass('form-group col-md-6 nav-close');
+    
+
+};
+
+function btnCnpj() {
+
+    $('#div_cpf').removeClass();
+    $('#div_cnpj').removeClass();
+    
+    $('#div_cpf').addClass('form-group col-md-6 nav-close');
+    $('#div_cnpj').addClass('form-group col-md-6');
+
+};
+
+function validarDoc(value, id) {
+
+    var valid = 0;
+    var dataset = DatasetFactory.getDataset("DSCadastroGeral", null, null, null);
+
+    for (var i = 0; i < dataset.values.length; i++) {
+
+        if (id == 0) {
+            if (dataset.values[i].cnpj == value) {
+                valid++;
+            }
+        }
+        else {
+            if (dataset.values[i].cpf == value) {
+                valid++;
+            }
+        }
+    }
+
+    return valid;
+};
+
+$(document).on('change', "#cnpj",
+    function validCnpj() {
+       
+        var inputCnpj = $('#cnpj').val();
+        
+        var valid = validarDoc(inputCnpj, 0);
+
+        if (valid > 0) {
+            $('#cnpj').removeClass();
+            $('#p_cnpj').removeClass('nav-close');
+            $('#label_cnpj').removeClass();
+
+            $('#cnpj').addClass('form-control doc-error');
+            $('#label_cnpj').addClass('doc-error');
+
+            $('#validCnpj').removeClass('nav-close');
+            $('#validCnpj').addClass('bannerStage1');
+
+            setTimeout(function(){
+                $('#validCnpj').removeClass('bannerStage1');
+                $('#validCnpj').addClass('bannerStage2');
+                    setTimeout(function(){
+                    $('#validCnpj').addClass('nav-close');
+                    $('#validCnpj').removeClass('bannerStage2');
+                }, 2000);
+            }, 5000);
+
+        }
+        else {
+
+            $('#cnpj').removeClass();
+            $('#label_cnpj').removeClass(); 
+
+            $('#p_cnpj').addClass('nav-close');
+            $('#cnpj').addClass('form-control');
+
+        }
+    }
+);
+
+$(document).on('change', "#cpf",
+    function validCpf() {
+       
+        var inputCpf = $('#cpf').val();
+        
+        var valid = validarDoc(inputCpf, 1);
+
+        if (valid > 0) {
+            $('#cpf').removeClass();
+            $('#p_cpf').removeClass('nav-close');
+            $('#label_cpf').removeClass();
+
+            $('#cpf').addClass('form-control doc-error');
+            $('#label_cpf').addClass('doc-error');
+
+            $('#validCpf').removeClass('nav-close');
+            $('#validCpf').addClass('bannerStage1');
+
+            setTimeout(function(){
+                $('#validCpf').removeClass('bannerStage1');
+                $('#validCpf').addClass('bannerStage2');
+                setTimeout(function(){
+                    $('#validCpf').addClass('nav-close');
+                    $('#validCpf').removeClass('bannerStage2');
+                }, 2000);
+            }, 5000);
+        }
+        else {
+
+            $('#cpf').removeClass();
+            $('#label_cpf').removeClass(); 
+
+            $('#p_cpf').addClass('nav-close');
+            $('#cpf').addClass('form-control');
+
+        }
+    }
+);
+
+function motherSon() {
+
+
+    var dataset = DatasetFactory.getDataset("DSCadastroGeral", null, null, null); 
+
+    for (var i = 0; i < dataset.values.length; i++) {
+
+        var array = dataset.values[i].codP.split('');
+
+        if (array[4] == '-') {
+        }
+        else if (array[5] == '-') {
+        }
+        else if (array[6] == '-') {
+        }
+        else {
+
+            $('#pertence').append($('<option>', {
+
+                value: dataset.values[i].codP,
+                text: dataset.values[i].codP
+            }));
+        }
+        
+    }   
+}
+
+$(document).on('change', "#pertence",
+    function idSon() {
+       
+        var input = $('#pertence').val();
+        var nIdSeq = 0;
+
+        var dataset = DatasetFactory.getDataset("DSCadastroGeral", null, null, null); 
+
+        for (var i = 0; i < dataset.values.length; i++) {
+
+            var array = dataset.values[i].codP.split('');
+
+            if (dataset.values[i].codP.length > 4) {
+                if (array[4] == '-') {
+                    var idDataset = dataset.values[i].codP.substring(0, 4);
+                }
+                else if (array[5] == '-') {
+                    var idDataset = dataset.values[i].codP.substring(0, 5);
+                }
+                else if (array[6] == '-') {
+                    var idDataset = dataset.values[i].codP.substring(0, 6);
+                }
+                else {
+                    var idDataset = dataset.values[i].codP;
+                }
+            }
+            
+            else {
+                var idDataset = dataset.values[i].codP;
+            }
+
+            if (idDataset == input) {
+                nIdSeq++;
+            }
+
+        }
+
+        $('#codP').val(input+'-'+nIdSeq);
+
+    });
+
+
+$(document).on('change', "#compl",
+    function pS() {
+
+        var input = $('#compl').val();
+
+        if (input == 'Sim') {
+            $('#div_perc').removeClass();
+            $('#div_perc').addClass('form-group col-md-6');
+
+        }
+        else {
+            $('#div_perc').removeClass();
+            $('#div_perc').addClass('form-group col-md-6 nav-close');
+        }
+        
+    }
+);
 
 $(document).on('change', "#statusO",
     function dateAprov() {
    
         var status = $('#statusO').val();
-        var date = revisaoDate();
+        var date = revisaoDate(); 
 
         if (status == 'Aprovado') {
             $('#dateAprov').val(date);
-
-            var dateA = $('#dateAprov').val();
-
-            var apDia = dateA.substring(0, 2);
-            var apMes = dateA.substring(3, 5);
-            var apAno = dateA.substring(6, 10);
-
-            var aCod = apAno+apMes+apDia;
-            
-            for (var i = 1; i <= idClick; i++){
-                console.log(i);
-                $('#tb_dateA___'+i).val(dateA);
-                $('#tb_dateAcod___'+i).val(aCod);
-            }
         }
         else {
             $('#dateAprov').val('__/__/____');
@@ -942,6 +1193,7 @@ $(document).on('change', "#formPag",
 
             soma = soma + parseFloat(($('#tb_orcamentoDesconto___'+i).val()).replace(',', '.'));
 
+            console.log(soma);
         }
         $('#val_total').val(soma.toString().replace('.', ','));
     }
@@ -1035,6 +1287,7 @@ function reloadTbFinan() {
 
     for (var i = 0; i < nRow; i++) {
         somaStatus = somaStatus + $("#tb_statusReceb___"+(i+1)).val();
+        console.log(somaStatus);
     }
 
     if(somaStatus == 0) {
@@ -1108,72 +1361,4 @@ function allValues() {
     $('#vD').val(soma_desc.replace('.', ',')+'%');
     $('#vcD').val('R$ '+soma_orcDesc.replace('.', ','));
     
-}
-
-$(document).on('change', "#name_solic",
-    function descFormId() {
-		
-		var name = $('#name_solic').val();
-        var id = $('#idO').val();
-		var dataset = DatasetFactory.getDataset("processAttachment", null, null, null);
-		var nRow = dataset.values.length;
-	
-		var nProcess = dataset.values[nRow-1]['processAttachmentPK.processInstanceId'];
-	
-		$('#descForm').val(nProcess+1+' - '+id+' - '+name);
-        console.log($('#descForm').val());
-		
-    }
-);
-
-function numbProj() {
-    var ClientPatroci = $("#codClientP").val()[0];
-    var revisao = $("#revisao").val();
-    var dateOrc = $("#dataCadastro").val();
-    var orcamento = $("#idO").val();
-
-    ClientPatroci = onlyN(ClientPatroci);
-    var orcN = onlyN(orcamento);
-
-    dateOrc = dateOrc.replace('/', '.');
-    dateOrc = dateOrc.replace('/', '.');
-  
-
-    ClientPatroci = numbZero(ClientPatroci);
-    orcN = numbZero(orcN);
-    revisao = numbZero(revisao);
-
-    var projectN = ClientPatroci+'.'+orcN+'.'+revisao+'.'+dateOrc;  
-    
-    $('#nProj').val(projectN);
-    console.log(projectN);
-};
-
-function onlyN(string) {
-    var numsStr = string.replace(/[^0-9]/g,'');
-    return parseInt(numsStr);
-}
-
-function numbZero(number) {
-    n = parseInt(number);
-    if (n < 10) {
-        n = '00'+n;
-    }
-    else if (n < 100) {
-        n = '0'+n;
-    }
-    
-    return n;
-}
-
-function salvar() {
-    try {
-    numbProj();
-    pushTable();
-    pushTable2();
-    push_sItens();
-    financeiroTb();
-    } catch (e) {
-        console.log('ERRO ->'+e)
-    }
 }
